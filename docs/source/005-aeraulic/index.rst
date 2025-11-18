@@ -1,13 +1,10 @@
 .. _aeraulic:
 
-5. Modèles Aerauliques
+5. Aeraulic Models
 ======================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Modèles Aerauliques:
+   :caption: Aeraulic Models:
 
    perte_pression_lineaire
-   modelisation_tube
-   perte_charge_lineaire
-   autorite_vanne
