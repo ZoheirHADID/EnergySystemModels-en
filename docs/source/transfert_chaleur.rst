@@ -1,7 +1,7 @@
-Transfert de Chaleur
+Heat Transfer
 ====================
 
-L'image ci-dessous montre un exemple de transfert de chaleur confectif et radiatif à travers un échangeur de chaleur à plaques non isolé dont la température de la paroi est de 60°C et la température ambiante est de 25°C.:
+The image below shows an example of convective and radiative heat transfer through an uninsulated plate heat exchanger with a wall temperature of 60°C and an ambient temperature of 25°C:
 
 .. image:: images/PlateHeatTransfer.png
    :alt: Plate Heat Transfer
