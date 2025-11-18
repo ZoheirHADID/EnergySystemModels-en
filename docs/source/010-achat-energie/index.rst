@@ -1,11 +1,11 @@
-.. _achat-energie:
+.. _energy-purchase:
 
-10. Achat d'énergie
+10. Energy Purchase
 ======================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Achat d'énergie:
+   :caption: Energy Purchase:
 
    contrat_electricite
    contrat_gaz
