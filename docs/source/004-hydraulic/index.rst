@@ -1,14 +1,11 @@
 .. _hydraulic:
 
-4. Modèles Hydrauliques
+4. Hydraulic Models
 =======================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Modèles Hydrauliques:
+   :caption: Hydraulic Models:
 
    perte_pression_lineaire
    TA_valve
-   modelisation_tube
-   perte_charge_lineaire
-   autorite_vanne
