@@ -8,41 +8,41 @@ The image below shows an example of a composite wall used for heat transfer simu
    :width: 500px
    :align: center
 
-Exemple de simulation du transfert de chaleur dans un mur composite :
+Example of heat transfer simulation in a composite wall:
 
 .. code-block:: python
 
     from HeatTransfer import CompositeWall
 
-    # Créer un mur composite avec des coefficients de convection externes et internes
+    # Create a composite wall with external and internal convection coefficients
     wall = CompositeWall.Object(he=23, hi=8, Ti=20, Te=-10, A=10)
 
-    # Ajouter des couches au mur en utilisant les noms des matériaux
-    wall.add_layer(thickness=0.20, material='Parpaings creux')  # Parpaing
-    wall.add_layer(thickness=0.05, material='Polystyrène')  # Polystyrène
-    wall.add_layer(thickness=0.02, material='Plâtre')  # Plâtre
+    # Add layers to the wall using material names
+    wall.add_layer(thickness=0.20, material='Parpaings creux')  # Hollow concrete blocks
+    wall.add_layer(thickness=0.05, material='Polystyrène')  # Polystyrene
+    wall.add_layer(thickness=0.02, material='Plâtre')  # Plaster
 
-    # Calculer le transfert de chaleur et les températures à chaque interface de couche
+    # Calculate heat transfer and temperatures at each layer interface
     wall.calculate()
     wall.df
     print(f"df = {wall.df}")
     print(f"R_total = {wall.R_total} m².°C/W")
 
-Résultat attendu :
+Expected result:
 
 .. list-table::
    :header-rows: 1
 
-   * - Épaisseur (m)
-     - Matériau
-     - Conductivité (W/m.°C)
-     - Résistance (m².°C/W)
-     - Température entrée (°C)
-     - Température sortie (°C)
+   * - Thickness (m)
+     - Material
+     - Conductivity (W/m.°C)
+     - Resistance (m².°C/W)
+     - Entry Temperature (°C)
+     - Exit Temperature (°C)
      - Q (W)
      - A (m²)
    * - NaN
-     - Air extérieur
+     - Outdoor air
      - NaN
      - 0.043478
      - -10.000000
@@ -50,7 +50,7 @@ Résultat attendu :
      - 148.661889
      - 10
    * - 0.20
-     - Parpaings creux
+     - Hollow concrete blocks
      - 1.40
      - 0.142857
      - -9.353644
@@ -58,7 +58,7 @@ Résultat attendu :
      - 148.661889
      - 10
    * - 0.05
-     - Polystyrène
+     - Polystyrene
      - 0.03
      - 1.666667
      - -7.229903
@@ -66,7 +66,7 @@ Résultat attendu :
      - 148.661889
      - 10
    * - 0.02
-     - Plâtre
+     - Plaster
      - 0.50
      - 0.040000
      - 17.547079
@@ -74,7 +74,7 @@ Résultat attendu :
      - 148.661889
      - 10
    * - NaN
-     - Air intérieur
+     - Indoor air
      - NaN
      - 0.125000
      - 18.141726
@@ -82,7 +82,7 @@ Résultat attendu :
      - 148.661889
      - 10
 
-Liste des matériaux disponibles
+List of Available Materials
 -------------------------------
 
 .. list-table::
@@ -134,45 +134,45 @@ Liste des matériaux disponibles
      - Air
      - None
 
-Explication des équations utilisées
+Explanation of the Equations Used
 -----------------------------------
 
-Le modèle de transfert de chaleur dans un mur composite utilise les équations suivantes pour calculer la résistance thermique totale, le flux thermique et les températures aux interfaces des couches :
+The composite wall heat transfer model uses the following equations to calculate total thermal resistance, heat flux, and temperatures at layer interfaces:
 
-1. **Résistance thermique de convection** :
-   - Résistance externe : 
+1. **Convective thermal resistance**:
+   - External resistance: 
      .. math::
        R_e = \frac{1}{h_e}
        
-   - Résistance interne : 
+   - Internal resistance: 
      .. math::
        R_i = \frac{1}{h_i}
 
-2. **Résistance thermique des couches** :
-   - Pour chaque couche, la résistance thermique est calculée comme suit :
+2. **Thermal resistance of layers**:
+   - For each layer, thermal resistance is calculated as follows:
      .. math::
-       R_{\text{couche}} = \frac{\text{épaisseur}}{\text{conductivité}}
+       R_{\text{layer}} = \frac{\text{thickness}}{\text{conductivity}}
 
-3. **Résistance thermique totale** :
-   - La résistance thermique totale du mur composite est la somme des résistances de convection et des résistances des couches :
+3. **Total thermal resistance**:
+   - The total thermal resistance of the composite wall is the sum of convective resistances and layer resistances:
      .. math::
-       R_{\text{total}} = R_e + R_i + \sum R_{\text{couches}}
+       R_{\text{total}} = R_e + R_i + \sum R_{\text{layers}}
 
-4. **Coefficient de transmission thermique** :
-   - Le coefficient de transmission thermique est l'inverse de la résistance thermique totale :
+4. **Heat transfer coefficient**:
+   - The heat transfer coefficient is the inverse of total thermal resistance:
      .. math::
        U = \frac{1}{R_{\text{total}}}
 
-5. **Flux thermique** :
-   - Le flux thermique à travers le mur composite est calculé en utilisant la loi de Fourier :
+5. **Heat flux**:
+   - Heat flux through the composite wall is calculated using Fourier's law:
      .. math::
        Q = U \cdot A \cdot (T_i - T_e)
-   où \( A \) est la surface du mur, \( T_i \) est la température intérieure, et \( T_e \) est la température extérieure.
+   where \( A \) is the wall surface area, \( T_i \) is the indoor temperature, and \( T_e \) is the outdoor temperature.
 
-6. **Températures aux interfaces des couches** :
-   - La température de la paroi extérieure après la résistance convective est calculée comme suit :
+6. **Temperatures at layer interfaces**:
+   - The external wall temperature after convective resistance is calculated as follows:
      .. math::
-       T_{\text{paroi extérieure}} = T_e + \frac{Q \cdot R_e}{A}
+       T_{\text{external wall}} = T_e + \frac{Q \cdot R_e}{A}
    - Les températures aux interfaces des couches sont ensuite calculées en utilisant le flux thermique et les résistances thermiques :
      .. math::
        T_{\text{interface}} = T_{\text{précédente}} + \frac{Q \cdot R_{\text{couche}}}{A}
