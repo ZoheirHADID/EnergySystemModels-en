@@ -8,111 +8,111 @@ The image below shows an example of convective and radiative heat transfer throu
    :width: 300px
    :align: center
 
-Les déperditions de chaleur à travers les parois de l'échangeur de chaleur à plaques peuvent être calculées en utilisant la classe PlateHeatTransfer. Cette classe permet de calculer les déperditions de chaleur à travers les parois horizontales et verticales de l'échangeur de chaleur à plaques. Les déperditions de chaleur à travers les parois horizontales et verticales peuvent être calculées en utilisant les paramètres suivants :
+Heat losses through the walls of the plate heat exchanger can be calculated using the PlateHeatTransfer class. This class allows calculating heat losses through horizontal and vertical walls of the plate heat exchanger. Heat losses through horizontal and vertical walls can be calculated using the following parameters:
 
 .. code-block:: python
 
     from EnergySystemModels.TransfertChaleur import PlateHeatTransfer
 
-    # Température de la paroi en °C
+    # Wall temperature in °C
     Tp = 60
-    # Température ambiante en °C
+    # Ambient temperature in °C
     Ta = 25
-    # Longueur en mètres
+    # Length in meters
     L = 0.6
-    # Largeur en mètres
+    # Width in meters
     W = 0.8
-    # Hauteur en mètres
+    # Height in meters
     H = 1.5
 
-    # Calcul du transfert de chaleur pour la paroi horizontale supérieure
+    # Calculate heat transfer for the upper horizontal wall
     haut = PlateHeatTransfer.Object(
         orientation='horizontal_up',
-        Tp=Tp,  # Température de la paroi en °C
-        Ta=Ta,  # Température ambiante en °C
-        W=W,    # Largeur en mètres
-        L=L     # Longueur en mètres
+        Tp=Tp,  # Wall temperature in °C
+        Ta=Ta,  # Ambient temperature in °C
+        W=W,    # Width in meters
+        L=L     # Length in meters
     ).calculate()
 
-    # Calcul du transfert de chaleur pour la paroi horizontale inférieure
+    # Calculate heat transfer for the lower horizontal wall
     bas = PlateHeatTransfer.Object(
         orientation='horizontal_down',
-        Tp=Tp,  # Température de la paroi en °C
-        Ta=Ta,  # Température ambiante en °C
-        W=W,    # Largeur en mètres
-        L=L     # Longueur en mètres
+        Tp=Tp,  # Wall temperature in °C
+        Ta=Ta,  # Ambient temperature in °C
+        W=W,    # Width in meters
+        L=L     # Length in meters
     ).calculate()
 
-    # Calcul du transfert de chaleur pour la première paroi verticale
+    # Calculate heat transfer for the first vertical wall
     vertical1 = PlateHeatTransfer.Object(
         orientation='vertical',
-        Tp=Tp,  # Température de la paroi en °C
-        Ta=Ta,  # Température ambiante en °C
-        W=W,    # Largeur en mètres
-        H=H     # Hauteur en mètres
+        Tp=Tp,  # Wall temperature in °C
+        Ta=Ta,  # Ambient temperature in °C
+        W=W,    # Width in meters
+        H=H     # Height in meters
     ).calculate() * 2
 
-    # Calcul du transfert de chaleur pour la deuxième paroi verticale
+    # Calculate heat transfer for the second vertical wall
     vertical2 = PlateHeatTransfer.Object(
         orientation='vertical',
-        Tp=Tp,  # Température de la paroi en °C
-        Ta=Ta,  # Température ambiante en °C
-        W=L,    # Largeur en mètres
-        H=H     # Hauteur en mètres
+        Tp=Tp,  # Wall temperature in °C
+        Ta=Ta,  # Ambient temperature in °C
+        W=L,    # Width in meters
+        H=H     # Height in meters
     ).calculate() * 2
 
-    # Calcul du transfert de chaleur total
+    # Calculate total heat transfer
     total = haut + bas + vertical1 + vertical2
     print(f"{round(total, 0)} W = {round(haut, 0)} W + {round(bas, 0)} W + {round(vertical1, 0)} W + {round(vertical2, 0)} W")
 
-Résultat : 
+Result: 
 1957.0 W = 191.0 W + 190.0 W + 900.0 W + 675.0 W
 
-Explication des équations utilisées
+Explanation of the Equations Used
 -----------------------------------
 
-La classe `PlateHeatTransfer` utilise différentes équations pour calculer les déperditions de chaleur en fonction de l'orientation de la plaque (horizontale ou verticale). Voici les principales équations utilisées :
+The `PlateHeatTransfer` class uses different equations to calculate heat losses depending on the orientation of the plate (horizontal or vertical). Here are the main equations used:
 
-### Paramètres calculés
+### Calculated Parameters
 
-- **Température du film (Tf)** : Température moyenne entre la paroi et l'air ambiant.
+- **Film temperature (Tf)**: Average temperature between the wall and ambient air.
 .. math::
 
   Tf = \frac{Tp + Ta}{2}
 
-- **Viscosité cinématique (v)** : 
+- **Kinematic viscosity (v)**: 
 .. math::
 
   v = \frac{\mu}{\rho_{ref}}
 
-- **Densité à la température du film (ρ)** :
+- **Density at film temperature (ρ)**:
 .. math::
 
   \rho = \rho_{ref} \left(1 - \beta (Tf - 20)\right)
 
-- **Diffusivité thermique (a)** :
+- **Thermal diffusivity (a)**:
 .. math::
 
   a = \frac{k}{\rho \cdot Cp}
 
-- **Nombre de Prandtl (Pr)** :
+- **Prandtl number (Pr)**:
 .. math::
 
   Pr = \frac{v}{a}
 
-- **Nombre de Grashof (Gr)** :
+- **Grashof number (Gr)**:
 .. math::
 
   Gr = \frac{g \cdot \beta \cdot (Tp - Ta) \cdot \left(\frac{W \cdot L}{2W + 2L}\right)^3}{v^2}
 
-- **Nombre de Rayleigh (Ra)** :
+- **Rayleigh number (Ra)**:
 .. math::
 
   Ra = Gr \cdot Pr
 
-### Plaque horizontale face vers le bas
+### Horizontal Plate Facing Downward
 
-- **Nombre de Nusselt (Nu)** :
+- **Nusselt number (Nu)**:
 .. math::
 
   Nu = 0.27 \cdot Ra^{0.25} \quad \text{si} \quad 10^4 < Ra < 10^7
