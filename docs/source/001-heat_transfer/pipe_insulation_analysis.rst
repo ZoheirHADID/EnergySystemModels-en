@@ -3,7 +3,7 @@
 
 L'image ci-dessous montre un exemple de tuyau isolé avec les paramètres de simulation :
 
-.. image:: ../images/PipeInsulationAnalysis.png
+.. image:: ../images/001_heat_transfer_pipe_insulation.png
    :alt: Pipe Insulation Analysis
    :width: 600px
    :align: center
@@ -53,7 +53,7 @@ Exemple de simulation de l'isolation des tuyaux :
 
 L'image ci-dessous montre l'évolution des déperditions et de la température de surface de l'isolant en fonction de l'épaisseur de l'isolant :
 
-.. image:: ../images/PipeInsulationAnalysis-evolution.png
+.. image:: ../images/001_heat_transfer_pipe_evolution.png
    :alt: Pipe Insulation Analysis Evolution
    :width: 600px
    :align: center

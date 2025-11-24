@@ -7,7 +7,7 @@
 
 This Python class calculates pressure drops through different TA valve models using **official Kv data** from IMI TA manufacturer based on the number of opening turns.
 
-.. image:: ../images/TAValve.png
+.. image:: ../images/004_TA_valve.png
    :alt: TA Valve
    :width: 800px
    :align: center

@@ -5,7 +5,7 @@ CTA d'air neuf
 
 L'image ci-dessous montre le schéma de la CTA :
 
-.. image:: ../images/AHUFreshAir.png
+.. image:: ../images/003_ahu_fresh_air.png
    :alt: AHU Fresh Air
    :width: 600px
    :align: center
@@ -64,7 +64,7 @@ Résultats
 
 Le diagramme psychrométrique ci-dessous montre les points de fonctionnement de la CTA :
 
-.. image:: ../images/AHUFreshAir-Figure_1.png
+.. image:: ../images/003_ahu_fresh_air_figure1.png
    :alt: Diagramme psychrométrique
    :width: 600px
    :align: center

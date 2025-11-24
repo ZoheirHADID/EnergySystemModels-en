@@ -3,7 +3,7 @@
 
 The image below shows an example of a composite wall used for heat transfer simulation:
 
-.. image:: ../images/CompositeWall.png
+.. image:: ../images/001_heat_transfer_composite_wall.png
    :alt: Composite Wall
    :width: 500px
    :align: center
