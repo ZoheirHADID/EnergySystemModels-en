@@ -1,9 +1,9 @@
 .. _cta_air_neuf:
 
-CTA d'air neuf
-==============
+Fresh Air AHU
+=============
 
-L'image ci-dessous montre le schéma de la CTA :
+The image below shows the AHU schematic:
 
 .. image:: ../images/003_ahu_fresh_air.png
    :alt: AHU Fresh Air
@@ -13,16 +13,16 @@ L'image ci-dessous montre le schéma de la CTA :
 .. code-block:: python
 
     # =============================================================================
-    # Modèle AHU (Air frais + Batterie de chauffage + Humidificateur)
+    # AHU Model (Fresh Air + Heating Coil + Humidifier)
     # =============================================================================
 
-    # module de calcul des prop d'air humide
+    # humid air properties calculation module
     from AHU import FreshAir
-    # Composant Batterie de chauffage
+    # Heating Coil Component
     from AHU import HeatingCoil
-    # composant Humidificateur (vapeur ou adiabatique)
+    # Humidifier component (steam or adiabatic)
     from AHU.Humidification import Humidifier
-    # connexion entre les composants
+    # connection between components
     from AHU.Connect import Air_connect
 
     AN = FreshAir.Object()
@@ -39,9 +39,9 @@ L'image ci-dessous montre le schéma de la CTA :
     print(f"BC.df : {BC.df}")
 
     HMD = Humidifier.Object()
-    HMD.wo_target = 8  # g/Kg air sec
+    HMD.wo_target = 8  # g/Kg dry air
     Air_connect(HMD.Inlet, BC.Outlet)
-    HMD.HumidType = "vapeur"  # par défaut : Humidificateur adiabatique
+    HMD.HumidType = "vapeur"  # default: Adiabatic Humidifier
     HMD.calculate()
     print(f"HMD.df : {HMD.df}")
 
@@ -51,25 +51,25 @@ L'image ci-dessous montre le schéma de la CTA :
 
     chart = PsychrometricChart.Object(figsize=(12, 4))
 
-    # options d'affichage
-    chart.set_title('CTA batterie chaude & Humidificateur vapeur ')
+    # display options
+    chart.set_title('AHU hot coil & Steam Humidifier ')
 
     custom_points = [{'h': BC.Inlet.h, 'w': BC.Inlet.w}, {'h': BC.Outlet.h, 'w': BC.Outlet.w}, {'h': HMD.Outlet.h, 'w': HMD.Outlet.w}]
     chart.add_points(custom_points)
 
     chart.show(draw_arrows=True)
 
-Résultats
-=========
+Results
+=======
 
-Le diagramme psychrométrique ci-dessous montre les points de fonctionnement de la CTA :
+The psychrometric diagram below shows the AHU operating points:
 
 .. image:: ../images/003_ahu_fresh_air_figure1.png
-   :alt: Diagramme psychrométrique
+   :alt: Psychrometric Diagram
    :width: 600px
    :align: center
 
-Les tableaux ci-dessous montrent les résultats des calculs pour chaque composant de la CTA :
+The tables below show the calculation results for each AHU component:
 
 **AN.df :**
 

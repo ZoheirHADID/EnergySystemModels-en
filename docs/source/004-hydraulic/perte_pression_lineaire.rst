@@ -1,19 +1,19 @@
 .. _straight_pipe:
 
-4.1. de la perte de charge linéaire d'un conduit d'eau
-========================================================
+4.1. Linear pressure drop in a water pipe
+==========================================
 
-4.1.1. Exemple d'utilisation de "StraightPipe"
---------------------------------------------
+4.1.1. Usage Example of "StraightPipe"
+---------------------------------------
 
-L'image ci-dessous montre un exemple de tube avec la source et le puits :
+The image below shows an example of a pipe with the source and the sink:
 
 .. image:: ../images/004_hydraulic_straight_pipe.png
    :alt: Straight Pipe
    :width: 800px
    :align: center
 
-Le code suivant montre comment utiliser la classe "StraightPipe" pour calculer la perte de charge linéaire d'un conduit d'eau :
+The following code shows how to use the "StraightPipe" class to calculate the linear pressure drop in a water pipe:
 
 .. code-block:: python
 
@@ -48,8 +48,8 @@ Le code suivant montre comment utiliser la classe "StraightPipe" pour calculer l
 
 
 
-Résultats :
------------
+Results:
+--------
 
 Source
 ------
