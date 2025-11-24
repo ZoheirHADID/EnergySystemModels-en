@@ -46,7 +46,7 @@ Input parameters
     COMPRESSOR.fluid = "air"
     COMPRESSOR.F = 1
 
-    # Calculationationationate Compressor
+    # Calculationationationationate Compressor
     COMPRESSOR.calculate()
 
     # Print result

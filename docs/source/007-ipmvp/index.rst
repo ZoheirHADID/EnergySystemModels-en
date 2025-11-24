@@ -7,4 +7,4 @@
    :maxdepth: 2
    :caption: IPMVP:
 
-   exemples
+   examples

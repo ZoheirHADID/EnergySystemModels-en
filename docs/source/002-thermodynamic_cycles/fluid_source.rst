@@ -6,13 +6,13 @@ Fluid Source
 2.1. Modèle Physique et paramètre d'entrée
 ------------------------------------------
 
-Le modèle Fluid Source calcule le flow rate massique as a function of diverses conditions d'entrée et des propriétés of the fluid. Le modèle utilise la bibliothèque CoolProp for déterminer les propriétés of the fluid et effectue les calculs suivants :
+Le model Fluid Source calcule le flow rate massique as a function of diverses conditions d'entrée et des propriétés of the fluid. Le model utilise la bibliothèque CoolProp for déterminer les propriétés of the fluid et effectue les calculs suivants :
 
 1. Convertir les flow rates volumiques en flow rates massiques en utilisant la densité of the fluid.
 2. Calculer l'enthalpie de sortie et déterminer la qualité of the fluid (liquide, vapeur, diphasique ou supercritique).
-3. Mettre à jour les propriétés de sortie et générer un DataFrame with les résultats.
+3. Mettre à jour les propriétés de sortie et générer un DataFrame with les results.
 
-Les principales équations utilisées in le modèle sont :
+Les principales équations utilisées in le model sont :
 
 - Flow rate massique à partir de mètres cubes standards by heure (Sm³/h) :
 
@@ -46,7 +46,7 @@ où :
 - :math:`P_{in}` et :math:`T_{in}` sont la pressure et la temperature d'entrée,
 - :math:`H_v` et :math:`H_l` sont les enthalpies de la vapeur et du liquide à la pressure d'entrée.
 
-Les paramètres d'entrée du modèle sont les suivants :
+Les paramètres d'entrée du model sont les suivants :
 
 .. list-table:: 
    :header-rows: 1
@@ -89,7 +89,7 @@ Les paramètres d'entrée du modèle sont les suivants :
     # SOURCE.F_Sm3s = 2937.482966 / 3600 # SOURCE.F_m3s = 2480.143675 / 3600
     # SOURCE.F_Sm3h = 1 # SOURCE.F_m3h = 2480.143675 # SOURCE.F_kgh = 3600
 
-    # Calculationationationate Object
+    # Calculationationationationate Object
     SOURCE.calculate()
 
     # Data output

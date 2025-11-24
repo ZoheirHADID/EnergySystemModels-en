@@ -134,7 +134,7 @@ où :
 - **Quote-part distribution** : part fixe annuelle de l’acheminement distribution (ATRD)
 - **20,80 %** : taux fixe appliqué à la distribution
 - **4,71 %** : taux appliqué à la part transport
-- **Coefficient** : coefficient de proportionnalité (exemple : 83,21)
+- **Coefficient** : coefficient de proportionnalité (example : 83,21)
 
 Les valeurs des taux et du coefficient sont fixées by la réglementation et peuvent évoluer.
 
@@ -147,7 +147,7 @@ Elle se calcule simplement en multipliant la consommation totale (en kWh) by le 
 
    TICGN = Consommation totale (kWh) × taux TICGN (€/kWh)
 
-Par exemple, for une consommation totale de 100 000 kWh et un taux TICGN de 0,00837 €/kWh :
+Par example, for une consommation totale de 100 000 kWh et un taux TICGN de 0,00837 €/kWh :
 
    TICGN = 100 000 × 0,00837 = 837,00 €
 
@@ -169,17 +169,17 @@ La part fourniture correspond à la consommation de gaz facturée by le fourniss
      - Coût de la consommation de gaz (énergie fournie by le fournisseur)
 
 ------------------------------------------------------------
-4. Modèle de calcul et exemple Python
+4. Modèle de calcul et example Python
 ------------------------------------------------------------
 
-Cette section présente un exemple d’utilisation des fonctions Python to calculate les différentes composantes d’une facture de gaz naturel.
+Cette section présente un example d’utilisation des fonctions Python to calculate les différentes composantes d’une facture de gaz naturel.
 
 **Example de calcul ATR (ATRD + ATRT) en Python :**
 
 .. note::
 
-   Dans cet exemple, la facture donne directement les valeurs de `CJN_MWh_j` (capacité journalière normalisée) et de `modulation_MWh_j` (la modulation hivernale).  
-   Si ces paramètres sont renseignés (`CJN_MWh_j=93`, `modulation_MWh_j=20.891`), ils ne sont donc pas recalculés by le modèle mais utilisés tels quels in le calcul.
+   Dans cet example, la facture donne directement les valeurs de `CJN_MWh_j` (capacité journalière normalisée) et de `modulation_MWh_j` (la modulation hivernale).  
+   Si ces paramètres sont renseignés (`CJN_MWh_j=93`, `modulation_MWh_j=20.891`), ils ne sont donc pas recalculés by le model mais utilisés tels quels in le calcul.
 
 .. code-block:: python
 
@@ -291,7 +291,7 @@ Les paramètres à renseigner in `input_Contrat`, `input_Facture` et `input_Tari
 
 .. admonition:: Remarque
 
-   Les fonctions ATRD_calculation et ATRT_calculation allow to distinguer le coût d’acheminement on le réseau de distribution et on le réseau de transport. Les résultats sont affichés séparément for chaque composante.
+   Les fonctions ATRD_calculation et ATRT_calculation allow to distinguer le coût d’acheminement on le réseau de distribution et on le réseau de transport. Les results sont affichés séparément for chaque composante.
 
 .. toctree::
    :maxdepth: 1

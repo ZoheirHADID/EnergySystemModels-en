@@ -1,12 +1,12 @@
 Contexte IPMVP
 ==============
 
-Le module implémente l'Option C de l'IPMVP (analyse de bâtiment/site entier with modèle statistique).
+Le module implémente l'Option C de l'IPMVP (analyse de bâtiment/site entier with model statistique).
 
 Option C : Principe
 -------------------
 
-Utilise les compteurs généraux et construit un modèle de régression for établir la baseline :
+Utilise les compteurs généraux et construit un model de régression for établir la baseline :
 
 .. math::
 
@@ -22,5 +22,5 @@ Critères de validation (ASHRAE Guideline 14)
 ---------------------------------------------
 
 * **R² ≥ 0.75**
-* **CV(RMSE) ≤ 15%** (données mensuelles)
-* **CV(RMSE) ≤ 30%** (données horaires)
+* **CV(RMSE) ≤ 15%** (data mensuelles)
+* **CV(RMSE) ≤ 30%** (data horaires)

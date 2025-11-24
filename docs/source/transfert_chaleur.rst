@@ -25,7 +25,7 @@ Heat losses through the walls of the plate heat exchanger can be calculated usin
     # Height in meters
     H = 1.5
 
-    # Calculationationationate heat transfer for the upper horizontal wall
+    # Calculationationationationate heat transfer for the upper horizontal wall
     haut = PlateHeatTransfer.Object(
         orientation='horizontal_up',
         Tp=Tp,  # Wall temperature in °C
@@ -34,7 +34,7 @@ Heat losses through the walls of the plate heat exchanger can be calculated usin
         L=L     # Length in meters
     ).calculate()
 
-    # Calculationationationate heat transfer for the lower horizontal wall
+    # Calculationationationationate heat transfer for the lower horizontal wall
     bas = PlateHeatTransfer.Object(
         orientation='horizontal_down',
         Tp=Tp,  # Wall temperature in °C
@@ -43,7 +43,7 @@ Heat losses through the walls of the plate heat exchanger can be calculated usin
         L=L     # Length in meters
     ).calculate()
 
-    # Calculationationationate heat transfer for the first vertical wall
+    # Calculationationationationate heat transfer for the first vertical wall
     vertical1 = PlateHeatTransfer.Object(
         orientation='vertical',
         Tp=Tp,  # Wall temperature in °C
@@ -52,7 +52,7 @@ Heat losses through the walls of the plate heat exchanger can be calculated usin
         H=H     # Height in meters
     ).calculate() * 2
 
-    # Calculationationationate heat transfer for the second vertical wall
+    # Calculationationationationate heat transfer for the second vertical wall
     vertical2 = PlateHeatTransfer.Object(
         orientation='vertical',
         Tp=Tp,  # Wall temperature in °C
@@ -61,7 +61,7 @@ Heat losses through the walls of the plate heat exchanger can be calculated usin
         H=H     # Height in meters
     ).calculate() * 2
 
-    # Calculationationationate total heat transfer
+    # Calculationationationationate total heat transfer
     total = haut + bas + vertical1 + vertical2
     print(f"{round(total, 0)} W = {round(haut, 0)} W + {round(bas, 0)} W + {round(vertical1, 0)} W + {round(vertical2, 0)} W")
 
@@ -73,7 +73,7 @@ Explanation of the Equations Used
 
 The `PlateHeatTransfer` class uses different equations to calculate heat losses depending on the orientation of the plate (horizontal or vertical). Here are the main equations used:
 
-### Calculationationationated Parameters
+### Calculationationationationated Parameters
 
 - **Film temperature (Tf)**: Average temperature between the wall and ambient air.
 .. math::

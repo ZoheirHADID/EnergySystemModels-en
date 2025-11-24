@@ -1,7 +1,7 @@
 Meteorological Data
 =======================
 
-MeteoCiel - Données historiques
+MeteoCiel - Data historiques
 --------------------------------
 
 .. code-block:: python
@@ -10,7 +10,7 @@ MeteoCiel - Données historiques
    from datetime import datetime
 
    # Retrieve historical weather data from MeteoCiel
-   # 10637 : code station (exemple : Paris-Montsouris)
+   # 10637 : code station (example : Paris-Montsouris)
    # Codes stations : 7480=Lyon, 7650=Marseille, 7510=Bordeaux, 7630=Toulouse
    # Find codes on https://www.meteociel.fr
    df_histo, df_day, df_month, df_year = MeteoCiel_histoScraping(
@@ -22,14 +22,14 @@ MeteoCiel - Données historiques
    )
 
    # DataFrames retournés :
-   # df_histo : données horaires (T, HR, P, Vent, Précipitations)
+   # df_histo : data horaires (T, HR, P, Vent, Précipitations)
    # df_day : journalier (T_moy/min/max, DJU_chaud, DJU_froid)
    # df_month : mensuel (T_moy, DJU_chaud_cumul, DJU_froid_cumul)
    # df_year : annuel (T_moy, DJU_annuel)
    
    print(df_month[['mois', 'T_moy', 'DJU_chaud', 'DJU_froid']])
 
-OpenWeatherMap - Données temps réel
+OpenWeatherMap - Data temps réel
 ------------------------------------
 
 .. code-block:: python
@@ -47,7 +47,7 @@ OpenWeatherMap - Données temps réel
        units='metric'        # Unités métriques (°C, m/s)
    )
    
-   # Données actuelles
+   # Data actuelles
    print(f"Temperature : {data['current']['temp']}°C")
    print(f"Humidité : {data['current']['humidity']}%")
    print(f"Speed vent : {data['current']['wind_speed']} m/s")

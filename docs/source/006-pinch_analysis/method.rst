@@ -20,7 +20,7 @@ Result DataFrames
    pinch.df_intervals                        # Intervalles de temperature
    pinch.df_decomposition_flux               # Décomposition by intervalle
    pinch.df_surplus_deficit                  # Surplus/déficit énergétique
-   pinch.df_composite_curve                  # Données courbes composites
+   pinch.df_composite_curve                  # Composite curve data
    pinch.df_heat_exchange_combinations       # Combinaisons d'échange
 
 Calculated Attributes
@@ -38,7 +38,7 @@ Calculated Attributes
 Intervalles de temperature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On crée une liste de tous les changements de temperature in le système for diviser le problème en intervalles.
+On crée une liste de tous les changements de temperature in le system for diviser le problème en intervalles.
 
 Étape 3 : Calcul du problème table (Problem Table)
 --------------------------------------------------
@@ -98,7 +98,7 @@ Identification du Pinch
 Le point Pinch est visible on les courbes composites :
 
 * C'est le point où l'écart vertical between CCC et CCF est minimal (= ΔTmin)
-* Il divise le système en deux régions thermiquement indépendantes
+* Il divise le system en deux régions thermiquement indépendantes
 
 Étape 5 : Construction de la Grande Courbe Composite (GCC)
 ----------------------------------------------------------

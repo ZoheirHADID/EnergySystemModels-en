@@ -1,7 +1,7 @@
 Usage du module IPMVP
 ===========================
 
-Le module IPMVP d'EnergySystemModels allows to créer des modèles de baseline et de calculer les économies d'énergie according to l'Option C.
+Le module IPMVP d'EnergySystemModels allows to créer des models de baseline et de calculer les économies d'énergie according to l'Option C.
 
 Example de base
 ---------------
@@ -12,7 +12,7 @@ Example de base
    import pandas as pd
    from datetime import datetime
 
-   # Charger les données
+   # Charger les data
    df = pd.read_excel("consommations.xlsx")
    df['Timestamp'] = pd.to_datetime(df['Timestamp'])
    df = df.set_index('Timestamp')
@@ -27,7 +27,7 @@ Example de base
    X = df[['DJU_chaud', 'DJU_froid']]  # Variables indépendantes
    y = df['consommation_kWh']  # Variable dépendante
 
-   # Create le modèle IPMVP
+   # Create le model IPMVP
    model = Mathematical_Models(
        y, X,
        start_baseline, end_baseline,
@@ -55,7 +55,7 @@ Paramètres
 Attributs disponibles
 ---------------------
 
-Après création du modèle, les attributs suivants sont disponibles :
+Après création du model, les attributs suivants sont disponibles :
 
 * ``model.r2`` : Coefficient de détermination R²
 * ``model.cv_rmse`` : Coefficient de variation du RMSE (%)
@@ -71,7 +71,7 @@ Methods de visualisation
 
 .. code-block:: python
 
-   # Quality du modèle baseline
+   # Quality du model baseline
    model.plot_baseline_fit()
    
    # Comparaison mensuelle
@@ -86,16 +86,16 @@ Methods de visualisation
 Critères de validation
 -----------------------
 
-Pour un modèle valide :
+Pour un model valide :
 
 * **R² ≥ 0.75**
-* **CV(RMSE) ≤ 15%** (données mensuelles)
-* **CV(RMSE) ≤ 30%** (données horaires)
+* **CV(RMSE) ≤ 15%** (data mensuelles)
+* **CV(RMSE) ≤ 30%** (data horaires)
 
 Calcul des Degrés Jours Unifiés (DJU)
 --------------------------------------
 
-Les DJU sont essentiels for les modèles de baseline thermiquement sensibles.
+Les DJU sont essentiels for les models de baseline thermiquement sensibles.
 
 DJU Chauffage
 ~~~~~~~~~~~~~
@@ -129,9 +129,9 @@ Calcul with pandas
    import pandas as pd
 
    # Temperatures extérieures horaires
-   df['T_ext'] = ...  # Données météo
+   df['T_ext'] = ...  # Data météo
 
-   # Calculationationation des DJU journaliers
+   # Calculationationationation des DJU journaliers
    df_daily = df.resample('D').mean()
    
    # DJU chauffage base 18
@@ -140,15 +140,15 @@ Calcul with pandas
    # DJU refroidissement base 21
    df_daily['DJU_froid'] = (df_daily['T_ext'] - 21).clip(lower=0)
 
-Sources de données météo
+Sources de data météo
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * **MeteoCiel** : Module du package EnergySystemModels (voir chapitre Météo)
 * **OpenWeatherMap** : API temps réel et historique
-* **Météo-France** : Données officielles (SYNOP)
-* **NOAA** : Données internationales
+* **Météo-France** : Data officielles (SYNOP)
+* **NOAA** : Data internationales
 
-Validation du modèle
+Validation du model
 ---------------------
 
 Critères ASHRAE Guideline 14
@@ -163,15 +163,15 @@ Critères ASHRAE Guideline 14
 où :
 
 * y_i = consommation mesurée
-* ŷ_i = consommation prédite by le modèle
+* ŷ_i = consommation prédite by le model
 * ȳ = consommation moyenne
 * n = nombre d'observations
-* p = nombre de paramètres du modèle
+* p = nombre de paramètres du model
 
 **Seuils d'acceptation** :
 
-* Données mensuelles : CV(RMSE) ≤ **15%**
-* Données horaires : CV(RMSE) ≤ **30%**
+* Data mensuelles : CV(RMSE) ≤ **15%**
+* Data horaires : CV(RMSE) ≤ **30%**
 
 **R² (Coefficient de détermination)** :
 
@@ -190,7 +190,7 @@ Le module IPMVP utilise la méthode du **z-score** :
 
    z_i = \frac{y_i - \bar{y}}{\sigma_y}
 
-Les points with |z| > seuil (typiquement 3) sont considérés comme aberrants et exclus du modèle.
+Les points with |z| > seuil (typiquement 3) sont considérés comme aberrants et exclus du model.
 
 Analyse des résidus
 ~~~~~~~~~~~~~~~~~~~
@@ -236,7 +236,7 @@ Calcul des économies
 
    \text{Économies}_{\text{mois}} = E_{\text{baseline,ajustée}} - E_{\text{mesurée}}
 
-où E_baseline,ajustée est calculée en appliquant le modèle de baseline aux conditions réelles de la période de rapport.
+où E_baseline,ajustée est calculée en appliquant le model de baseline aux conditions réelles de la période de rapport.
 
 Économies cumulées
 ~~~~~~~~~~~~~~~~~~
@@ -252,7 +252,7 @@ Taux de réalisation
 
    \text{Taux réalisation} = \frac{\text{Économies mesurées}}{\text{Économies garanties}} \times 100\%
 
-Example de résultat
+Example de result
 ~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
@@ -295,7 +295,7 @@ Example
 
 .. code-block:: python
 
-   # Calculationationation de l'incertitude
+   # Calculationationationation de l'incertitude
    se = model.standard_error
    ic_90 = 1.645 * se
    ic_95 = 1.96 * se
@@ -317,7 +317,7 @@ Modèle horaire
 
 .. code-block:: python
 
-   # Données horaires
+   # Data horaires
    df_hourly = df  # Pas de resampling
    X_hourly = df_hourly[variables]
    y_hourly = df_hourly['consommation_kWh']
@@ -348,7 +348,7 @@ Modèle mensuel
 
    model_monthly = Mathematical_Models(y_monthly, X_monthly, ...)
 
-**Recommandation** : Utiliser des données mensuelles for la plupart des projets (équilibre précision/simplicité).
+**Recommandation** : Utiliser des data mensuelles for la plupart des projets (équilibre précision/simplicité).
 
 Cas particuliers
 ----------------
@@ -374,7 +374,7 @@ Pour les sites industriels :
 Bâtiments multi-usages
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Séparer by usage si possible, sinon utiliser un modèle composite :
+Séparer by usage si possible, sinon utiliser un model composite :
 
 .. code-block:: python
 
@@ -383,7 +383,7 @@ Séparer by usage si possible, sinon utiliser un modèle composite :
 Export et reporting
 -------------------
 
-Export des résultats
+Export des results
 ~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python

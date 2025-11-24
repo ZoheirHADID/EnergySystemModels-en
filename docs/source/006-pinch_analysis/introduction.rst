@@ -1,7 +1,7 @@
 Pinch Analysis
 =============
 
-Le module ``PinchAnalysis`` optimise la récupération de chaleur between flux chauds et froids.
+The ``PinchAnalysis`` module optimizes heat recovery between hot and cold streams.
 
 Usage
 -----------

@@ -1,4 +1,4 @@
-.. _exemple_ahu_frais:
+.. _example_ahu_frais:
 
 Fresh Air AHU Example
 ====================
@@ -6,7 +6,7 @@ Fresh Air AHU Example
 .. code-block:: python
 
     # =============================================================================
-    # Modèle AHU (Air frais + Batterie de chauffage + Humidificateur)
+    # AHU Model (Fresh Air + Heating Coil + Humidifier)
     # =============================================================================
 
     #module de calcul des prop d'air humide
@@ -23,7 +23,7 @@ Fresh Air AHU Example
     BC=HeatingCoil.Object()
     HMD=Humidifier.Object()
 
-    #Récupération des données entrées by l'utilisateur
+    #Retrieval of data entered by the user
     AN.F_m3h=3000 #m3/h
     AN.T=14 #°C
     AN.RH_FreshAir=71 # %
@@ -40,13 +40,13 @@ Fresh Air AHU Example
     HMD.HumidType="vapeur" #par défaut : Humidificateur adiabatique
     HMD.calculate()
 
-    #enregistrer les résultats du module d'air neuf
+    #enregistrer les results du module d'air neuf
     print("Absolute Humidity of Fresh Air  g/kg_as",round(AN.w,1))
     print("Saturated Vapor Pressure of Fresh Air   Pa",round(AN.Pvsat,0))
     print("Wet Bulb Temperature of Fresh Air  °C",round(AN.T_hum,1))
     print("Enthalpy Spécifique de l'Air Frais  KJ/Kg_as",round(AN.h,3))
 
-    #enregistrer les résultats de la Batterie de préchauffage
+    #enregistrer les results de la Batterie de préchauffage
     print("Enthalpy Spécifique de la Batterie de Chauffage KJ/Kg_as",round(BC.ho,1))
     print("Power Thermique de la Batterie de Chauffage  kW",round(BC.Qth,1))
     print("Relative Humidity of Heating Coil %",round(BC.RH_out,1))
@@ -54,5 +54,5 @@ Fresh Air AHU Example
     print("Dry Air Mass Flow Rate of Humidifier Kg/s",round(HMD.F_dry,3)) 
 
     # =============================================================================
-    # Fin du Modèle AHU
+    # End of AHU Model
     # =============================================================================

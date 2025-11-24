@@ -65,7 +65,7 @@ Example : Acquisition périodique
            df = OpenWeatherMap_call_location.API_call_location("48.858370", "2.294481")
            data_history.append(df)
            
-           print(f"[{datetime.now()}] Données récupérées : T={df['T(degC)'].values[0]}°C")
+           print(f"[{datetime.now()}] Data récupérées : T={df['T(degC)'].values[0]}°C")
            
            # Sauvegarder périodiquement
            if len(data_history) % 24 == 0:  # Toutes les 24 heures

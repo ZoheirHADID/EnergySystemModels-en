@@ -2,7 +2,7 @@
 ===================================================================================================
 
 
-The image below shows un exemple de transfert de chaleur confectif et radiatif à travers un échangeur de chaleur à plaques non isolé dont la temperature de la paroi est de 60°C et la temperature ambiante est de 25°C.:
+The image below shows un example de transfert de chaleur confectif et radiatif à travers un échangeur de chaleur à plaques non isolé dont la temperature de la paroi est de 60°C et la temperature ambiante est de 25°C.:
 
 .. image:: ../images/PlateHeatTransfer.png
    :alt: Plate Heat Transfer
@@ -42,8 +42,8 @@ Les déperditions de chaleur à travers les parois de l'échangeur de chaleur à
   print("\nAccès au DataFrame:")
   print(objet.df)
 
-  # Analyse des données
-  print("\nAnalyse des données:")
+  # Analyse des data
+  print("\nAnalyse des data:")
   print(f"Transfer total: {objet.get_total_heat_transfer():.2f} W")
   # On exclut la dernière ligne 'TOTAL' for trouver la face with le max
   print(f"Face with le plus grand transfert: {objet.df.iloc[:-1]['Heat Transfer (W)'].idxmax()}")
@@ -56,7 +56,7 @@ Result
 
 **Temperature ambiante:** 25°C
 
-**Tableau des résultats de transfert de chaleur:**
+**Tableau des results de transfert de chaleur:**
 
 +--------+-------------------+--------------+--------+--------+--------+----------+-------------------+-------------------+
 | Face   | Orientation       | Surface (m²) | Tp (°C)| Ta (°C)| ΔT (°C)| Isolated | Heat Transfer (W) | Heat Flux (W/m²) |
@@ -98,7 +98,7 @@ Result
   5             337.58            375.09  
   6            1956.56            379.18  
 
-**Analyse des données:**
+**Analyse des data:**
 
 - **Transfer total:** 1956.56 W
 - **Face with le plus grand transfert:** front et back (450.11 W chacune)

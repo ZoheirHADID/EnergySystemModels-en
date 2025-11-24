@@ -23,10 +23,10 @@ Production Photovoltaïque
    # Retrieve module/inverter data from PVGIS
    system.retrieve_module_inverter_data()
    
-   # Retrieve les données météo annuelles
+   # Retrieve annual weather data
    system.retrieve_weather_data()
    
-   # Calculationationationate the production
+   # Calculationationationationate the production
    system.calculate_solar_parameters()
 
    # Access results
@@ -37,7 +37,7 @@ Production Photovoltaïque
    print(f"Productible spécifique : {specific_yield:.0f} kWh/kWc/an")
    print(system.df_results)  # DataFrame with hourly production
 
-   # Calculationationation économique (exemple autoconsommation 40%)
+   # Calculationationationation économique (example autoconsommation 40%)
    autoconso_rate = 0.40
    energy_selfconsumed = annual_prod * autoconso_rate      # Energy autoconsommée
    energy_injected = annual_prod * (1 - autoconso_rate)    # Energy injectée

@@ -5,7 +5,7 @@ Certificats d'Économies d'Energy
 
    from CEE.CEE import calcul_CEE
 
-   # Calculationationation CEE for une opération d'isolation
+   # Calculationationationation CEE for une opération d'isolation
    # Fiche BAR-EN-101 : Isolation de combles ou de toitures
    kWh_cumac = calcul_CEE(
        fiche="BAR-EN-101",         # Code fiche standardisée
@@ -82,7 +82,7 @@ Projet multi-opérations
        {"fiche": "BAT-TH-113", "surface_gtb": 3000}
    ]
 
-   # Calculationationation for chaque opération
+   # Calculationationationation for chaque opération
    total_kWh_cumac = 0
    details = []
 

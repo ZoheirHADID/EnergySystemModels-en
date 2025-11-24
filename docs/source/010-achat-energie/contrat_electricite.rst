@@ -101,10 +101,10 @@ The general TURPE formula is therefore :
       # Création du calculateur TURPE
       turpe_calculator = TurpeCalculator(contrat, tarif, facture)
 
-      # Calculationationation du TURPE
+      # Calculationationationation du TURPE
       turpe_calculator.calculate_turpe()
 
-      # Affichage des résultats
+      # Affichage des results
       print(f"Acheminement (€) : {turpe_calculator.euro_TURPE}")
       # print(f"Taxes et Contributions (€) : {turpe_calculator.euro_taxes_contrib}")
 
@@ -292,13 +292,13 @@ The general TURPE formula is therefore :
    :maxdepth: 1
    :caption: Examples TURPE
 
-   exemples/exemple_hta_cu_pf
-   exemples/exemple_hta_cu_pm
-   exemples/exemple_hta_lu_pf
-   exemples/exemple_hta_lu_pm
+   examples/example_hta_cu_pf
+   examples/example_hta_cu_pm
+   examples/example_hta_lu_pf
+   examples/example_hta_lu_pm
 
-   exemples/exemple_bt_m36_cu4
-   exemples/exemple_bt_p36_cu
+   examples/example_bt_m36_cu4
+   examples/example_bt_p36_cu
    
 
 

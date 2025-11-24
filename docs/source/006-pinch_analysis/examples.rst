@@ -31,7 +31,7 @@ Pinch Analysis
    print(pinch.stream_list)                    # Flows with shifted temperatures
    print(pinch.df_intervals)                   # Intervalles de temperature
    print(pinch.df_surplus_deficit)             # Bilan énergétique
-   print(pinch.df_composite_curve)             # Données courbes composites
+   print(pinch.df_composite_curve)             # Composite curve data
    print(pinch.df_heat_exchange_combinations)  # Combinaisons d'échange
    
    # Générer les visualisations
@@ -67,7 +67,7 @@ Une unité de distillation comporte :
 * **Flux de procédé chaud H2** : hydrocarbure de 180°C à 70°C
 * **Flux de procédé froid C2** : charge à préchauffer de 30°C à 120°C
 
-Données
+Data
 ~~~~~~~
 
 .. code-block:: python
@@ -119,7 +119,7 @@ Example 3 : Intégration with sources d'énergie multiples
 Contexte
 ~~~~~~~~
 
-Dans un procédé complexe, on dispose de plusieurs niveaux d'utilités :
+In a complex process, there are several utility levels :
 
 * **Vapeur HP** : 250°C, coût élevé
 * **Vapeur MP** : 150°C, coût moyen
@@ -131,7 +131,7 @@ Optimisation via la GCC
 
 .. code-block:: python
 
-   # Après avoir créé l'objet PinchAnalysis
+   # After creating the PinchAnalysis object
    pinch.plot_GCC()
    plt.axhline(y=250, color='r', linestyle='--', label='Vapeur HP (250°C)')
    plt.axhline(y=150, color='orange', linestyle='--', label='Vapeur MP (150°C)')
@@ -198,15 +198,15 @@ Plus ΔTmin est faible :
 
 Le ΔTmin optimal se trouve by optimisation technico-économique (analyse TAC).
 
-Example 5 : Export des résultats
+Example 5 : Export des results
 ---------------------------------
 
-Sauvegarde des données
+Data Backup
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
-   # Exporter les résultats to Excel
+   # Exporter les results to Excel
    with pd.ExcelWriter('resultats_pinch.xlsx') as writer:
        pinch.stream_list.to_excel(writer, sheet_name='Flux', index=False)
        pinch.df_intervals.to_excel(writer, sheet_name='Intervalles', index=False)
@@ -261,7 +261,7 @@ Génération de rapport automatique
 Bonnes pratiques
 ----------------
 
-1. **Validation des données**
+1. **Data Validation**
    
    * Vérifier que tous les flux chauds ont Ti > To
    * Vérifier que tous les flux froids ont Ti < To
@@ -273,7 +273,7 @@ Bonnes pratiques
    * Procédés cryogéniques : 3-5°C
    * Procédés haute temperature : 20-40°C
 
-3. **Interprétation des résultats**
+3. **Interprétation des results**
    
    * Comparer les économies d'énergie au coût d'investissement
    * Vérifier la faisabilité technique (contraintes de pressure, encrassement)

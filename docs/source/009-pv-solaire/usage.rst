@@ -8,7 +8,7 @@ Example de base
 
    from PV.ProductionElectriquePV import SolarSystem
 
-   # Create un système solaire
+   # Create un system solaire
    system = SolarSystem(
        latitude=48.8566,          # Latitude (Paris)
        longitude=2.3522,          # Longitude
@@ -19,13 +19,13 @@ Example de base
        system_capacity=48.9       # Power crête (kWp)
    )
 
-   # Retrieve les données de modules et onduleurs
+   # Retrieve les data de modules et onduleurs
    system.retrieve_module_inverter_data()
 
-   # Retrieve les données météorologiques
+   # Retrieve les data météorologiques
    system.retrieve_weather_data()
 
-   # Calculationationationate the production
+   # Calculationationationationate the production
    system.calculate_solar_parameters()
 
    # Visualize
@@ -34,7 +34,7 @@ Example de base
 Paramètres
 ----------
 
-* **latitude/longitude** : Coordonnées GPS
+* **latitude/longitude** : Coordata GPS
 * **tilt** : Inclinaison (0°=horizontal, latitude-10° optimal)
 * **azimuth** : Orientation (180°=Sud, 90°=Est, 270°=Ouest)
 * **system_capacity** : Power crête (kWc)
