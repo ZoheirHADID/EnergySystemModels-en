@@ -46,7 +46,7 @@ Input parameters
     TURBINE.fluid = "air"
     TURBINE.F = 1
 
-    # Calculationate Turbine
+    # Calculationationate Turbine
     TURBINE.calculate()
 
     # Print result

@@ -71,7 +71,7 @@ Methods de visualisation
 
 .. code-block:: python
 
-   # Qualité du modèle baseline
+   # Quality du modèle baseline
    model.plot_baseline_fit()
    
    # Comparaison mensuelle
@@ -131,7 +131,7 @@ Calcul avec pandas
    # Temperatures extérieures horaires
    df['T_ext'] = ...  # Données météo
 
-   # Calculation des DJU journaliers
+   # Calculationation des DJU journaliers
    df_daily = df.resample('D').mean()
    
    # DJU chauffage base 18
@@ -295,7 +295,7 @@ Example
 
 .. code-block:: python
 
-   # Calculation de l'incertitude
+   # Calculationation de l'incertitude
    se = model.standard_error
    ic_90 = 1.645 * se
    ic_95 = 1.96 * se
@@ -356,7 +356,7 @@ Cas particuliers
 Changement d'usage du bâtiment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Si l'usage change significativement (ex : augmentation de la surface occupée), ajouter une variable :
+Si l'usage change significativement (ex : augmentation of the surface occupée), ajouter une variable :
 
 .. code-block:: python
 
@@ -401,7 +401,7 @@ Visualisations automatiques
 .. code-block:: python
 
    # Graphiques intégrés
-   model.plot_baseline_fit()  # Qualité de l'ajustement
+   model.plot_baseline_fit()  # Quality de l'ajustement
    model.plot_monthly_comparison()  # Baseline vs mesures
    model.plot_cumulative_savings()  # Économies cumulées
    model.plot_residuals()  # Analyse des résidus

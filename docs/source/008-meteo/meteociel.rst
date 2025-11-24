@@ -50,7 +50,7 @@ OpenWeatherMap - Données temps réel
    # Données actuelles
    print(f"Temperature : {data['current']['temp']}°C")
    print(f"Humidité : {data['current']['humidity']}%")
-   print(f"Vitesse vent : {data['current']['wind_speed']} m/s")
+   print(f"Speed vent : {data['current']['wind_speed']} m/s")
    
    # Prévisions horaires (48h)
    for hour in data['hourly'][:24]:

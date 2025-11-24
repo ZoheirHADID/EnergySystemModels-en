@@ -32,7 +32,7 @@ Usage
       faces_config=thermal_measurements
   )
   
-  # Calculationate heat transfers
+  # Calculationationate heat transfers
   objet.calculate()
 
   # Display results

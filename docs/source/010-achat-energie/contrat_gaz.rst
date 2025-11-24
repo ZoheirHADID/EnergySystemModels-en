@@ -229,7 +229,7 @@ Les paramètres à renseigner dans `input_Contrat`, `input_Facture` et `input_Ta
 
 **Tableau des paramètres d'entrée pour le calcul gaz**
 
-***Déclarer un contrat gaz***
+***Declare a Contract gaz***
 
 .. list-table::
    :header-rows: 1
@@ -260,7 +260,7 @@ Les paramètres à renseigner dans `input_Contrat`, `input_Facture` et `input_Ta
      - 0 à 10
      - Niveau tarifaire régional
 
-***Déclarer une facture gaz***
+***Declare an Invoice gaz***
 
 .. list-table::
    :header-rows: 1
@@ -271,7 +271,7 @@ Les paramètres à renseigner dans `input_Contrat`, `input_Facture` et `input_Ta
      - Description
    * - start, end
      - Date (YYYY-MM-DD)
-     - Début et fin de la période de facturation
+     - Start and end of billing period
    * - kWh_total
      -  ≥ 0
      - Consommation totale sur la période (kWh)

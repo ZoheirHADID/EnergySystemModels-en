@@ -142,7 +142,7 @@ Règles de conception
 
 4. **Règle du tick-off** : apparier les flux en priorité pour satisfaire les objectifs de récupération
 
-Nombre minimum d'échangeurs
+Number minimum d'échangeurs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Le nombre minimum théorique d'unités (MER - Minimum Energy Recovery) se calcule par :

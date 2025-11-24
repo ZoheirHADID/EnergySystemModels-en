@@ -19,11 +19,11 @@ Nomenclature
      - Dry Air Mass Flow Rate
      - kg/s
    * - h_in
-     - Enthalpie à l'entrée
+     - Enthalpy à l'entrée
      - Inlet Enthalpy
      - kJ/kg
    * - h_out
-     - Enthalpie à la sortie
+     - Enthalpy à la sortie
      - Outlet Enthalpy
      - kJ/kg
    * - Inlet
@@ -39,7 +39,7 @@ Nomenclature
      - Atmospheric Pressure
      - Pascal
    * - P_drop
-     - Perte de pressure
+     - Loss de pressure
      - Pressure Drop
      - Pascal
    * - Pv
@@ -91,7 +91,7 @@ Nomenclature
      - Inlet Absolute Humidity
      - g/kg d'air sec
    * - ρ_hum
-     - Densité de l'air humide
+     - Density de l'air humide
      - Humid Air Density
      - kg/m³
    * - v_hum

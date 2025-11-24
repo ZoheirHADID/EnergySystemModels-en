@@ -4,22 +4,22 @@ Introduction au module IPMVP
 Objectif
 --------
 
-Le module IPMVP d'EnergySystemModels allows to quantifier les économies d'énergie selon le protocole IPMVP (Option C) en créant des modèles de baseline basés sur des régressions polynomiales.
+The IPMVP module of EnergySystemModels allows quantifying energy savings according to the IPMVP protocol (Option C) by creating baseline models based on polynomial regressions.
 
 Principe
 --------
 
-Le module compare la consommation énergétique avant (baseline) et après un projet d'efficacité énergétique, en ajustant pour les variables indépendantes (météo, production, occupation).
+The module compares energy consumption before (baseline) and after an energy efficiency project, adjusting for independent variables (weather, production, occupation).
 
 .. math::
 
    \text{Économies} = \text{Baseline}_{\text{ajustée}} - \text{Consommation}_{\text{mesurée}}
 
-Structure des données d'entrée
+Input Data Structure
 -------------------------------
 
-Le module nécessite :
+The module requires :
 
-* **y** : Série temporelle de la consommation énergétique (kWh)
-* **X** : DataFrame des variables indépendantes (DJU, production, etc.)
-* **Périodes** : Dates de début/fin des périodes baseline et reporting
+* **y** : Time series of energy consumption (kWh)
+* **X** : DataFrame of independent variables (HDD, production, etc.)
+* **Periods** : Start/end dates of baseline and reporting periods

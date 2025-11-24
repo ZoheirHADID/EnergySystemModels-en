@@ -1,6 +1,6 @@
 .. _exemple_ahu_frais:
 
-Example de AHU Frais
+Fresh Air AHU Example
 ====================
 
 .. code-block:: python
@@ -41,17 +41,17 @@ Example de AHU Frais
     HMD.calculate()
 
     #enregistrer les résultats du module d'air neuf
-    print("Humidité Absolue de l'Air Frais  g/kg_as",round(AN.w,1))
-    print("Pressure de Vapeur Saturée de l'Air Frais   Pa",round(AN.Pvsat,0))
-    print("Temperature de Bulbe Humide de l'Air Frais  °C",round(AN.T_hum,1))
-    print("Enthalpie Spécifique de l'Air Frais  KJ/Kg_as",round(AN.h,3))
+    print("Absolute Humidity of Fresh Air  g/kg_as",round(AN.w,1))
+    print("Saturated Vapor Pressure of Fresh Air   Pa",round(AN.Pvsat,0))
+    print("Wet Bulb Temperature of Fresh Air  °C",round(AN.T_hum,1))
+    print("Enthalpy Spécifique de l'Air Frais  KJ/Kg_as",round(AN.h,3))
 
     #enregistrer les résultats de la Batterie de préchauffage
-    print("Enthalpie Spécifique de la Batterie de Chauffage KJ/Kg_as",round(BC.ho,1))
-    print("Puissance Thermique de la Batterie de Chauffage  kW",round(BC.Qth,1))
-    print("Humidité Relative de la Batterie de Chauffage %",round(BC.RH_out,1))
-    print("Flow rate Massique de Vapeur de l'Humidificateur Kg/s",round(HMD.F_water,3))  
-    print("Flow rate Massique d'Air Sec de l'Humidificateur Kg/s",round(HMD.F_dry,3)) 
+    print("Enthalpy Spécifique de la Batterie de Chauffage KJ/Kg_as",round(BC.ho,1))
+    print("Power Thermique de la Batterie de Chauffage  kW",round(BC.Qth,1))
+    print("Relative Humidity of Heating Coil %",round(BC.RH_out,1))
+    print("Mass Flow Rate of Humidifier Steam Kg/s",round(HMD.F_water,3))  
+    print("Dry Air Mass Flow Rate of Humidifier Kg/s",round(HMD.F_dry,3)) 
 
     # =============================================================================
     # Fin du Modèle AHU

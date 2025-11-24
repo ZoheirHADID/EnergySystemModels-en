@@ -1,6 +1,6 @@
 .. _ipmvp:
 
-7. IPMVP - Mesure et Vérification
+7. IPMVP - Measurement and Verification
 ==================================
 
 .. toctree::

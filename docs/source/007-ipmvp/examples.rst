@@ -1,4 +1,4 @@
-IPMVP - Mesure et Vérification
+IPMVP - Measurement and Verification
 ===============================
 
 .. code-block:: python
@@ -40,7 +40,7 @@ IPMVP - Mesure et Vérification
    )
 
    # 5. Accéder aux résultats
-   print(f"R² (qualité du modèle): {model.r2:.3f}")
+   print(f"R² (model quality): {model.r2:.3f}")
    print(f"CV(RMSE): {model.cv_rmse:.1f}%")
    print(f"Économies totales: {model.total_savings:.0f} kWh")
    print(f"Réduction: {model.savings_percentage:.1f}%")

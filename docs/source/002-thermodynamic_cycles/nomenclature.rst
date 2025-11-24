@@ -13,16 +13,16 @@ Nomenclature
      - Flow rate massique
      - kg/s
    * - :math:`F_{Sm3h}`
-     - Flow rate volumique en mètres cubes standards par heure
+     - Flow rate volumique in meters cubes standards par heure
      - Sm³/h
    * - :math:`F_{Nm3h}`
-     - Flow rate volumique en mètres cubes normaux par heure
+     - Flow rate volumique in meters cubes normaux par heure
      - Nm³/h
    * - :math:`F_{m3s}`
-     - Flow rate volumique en mètres cubes par seconde
+     - Flow rate volumique in meters cubes par seconde
      - m³/s
    * - :math:`\rho`
-     - Densité du fluide
+     - Density of the fluid
      - kg/m³
    * - :math:`P_{std}`
      - Pressure standard
@@ -43,14 +43,14 @@ Nomenclature
      - Temperature d'entrée
      - K
    * - :math:`h_{out}`
-     - Enthalpie de sortie
+     - Enthalpy de sortie
      - J/kg
    * - :math:`H_v`
-     - Enthalpie de la vapeur
+     - Enthalpy de la vapeur
      - J/kg
    * - :math:`H_l`
-     - Enthalpie du liquide
+     - Enthalpy du liquide
      - J/kg
    * - :math:`Q`
-     - Qualité du fluide
+     - Quality of the fluid
      - -

@@ -25,7 +25,7 @@ Example de base
    # Retrieve les données météorologiques
    system.retrieve_weather_data()
 
-   # Calculationate the production
+   # Calculationationate the production
    system.calculate_solar_parameters()
 
    # Visualize

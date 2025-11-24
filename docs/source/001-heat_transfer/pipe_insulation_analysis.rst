@@ -1,14 +1,14 @@
-1.3. Analyse de l'pipe insulation
+1.3. Analysis of pipe insulation
 ======================================
 
-The image below shows un exemple de insulated pipe avec les simulation parameters :
+The image below shows an example of an insulated pipe with simulation parameters :
 
 .. image:: ../images/001_heat_transfer_pipe_insulation.png
    :alt: Pipe Insulation Analysis
    :width: 600px
    :align: center
 
-Example de simulation de l'pipe insulation :
+Pipe insulation simulation example :
 
 .. code-block:: python
 
@@ -42,7 +42,7 @@ Example de simulation de l'pipe insulation :
 
     ax2 = ax1.twinx()  # instancier un second axe qui partage le même axe x
     color = 'tab:red'
-    ax2.set_ylabel('Temperature de surface (°C)', color=color)  # nous avons déjà géré l'étiquette x avec ax1
+    ax2.set_ylabel('Temperature de surface (°C)', color=color)  # we already handled the x label with ax1
     ax2.plot(insulation_thicknesses, surface_temperatures, marker='x', color=color, label='Temperature de surface (°C)')
     ax2.tick_params(axis='y', labelcolor=color)
 
@@ -51,7 +51,7 @@ Example de simulation de l'pipe insulation :
     plt.grid(True)
     plt.show()
 
-The image below shows l'évolution des déperditions et de la temperature de surface de l'isolant as a function of l'insulation thickness :
+The image below shows l'évolution des déperditions et de la temperature of insulation surface as a function of l'insulation thickness :
 
 .. image:: ../images/001_heat_transfer_pipe_evolution.png
    :alt: Pipe Insulation Analysis Evolution
@@ -61,19 +61,19 @@ The image below shows l'évolution des déperditions et de la temperature de sur
 Explanation of Equations Used
 -----------------------------------
 
-Le modèle d'pipe insulation uses the following equations to calculate les heat loss et la temperature de surface de l'isolant :
+The pipe insulation model uses the following equations to calculate les heat loss et la temperature of insulation surface :
 
-1. **Résistance thermique de convection interne** :
+1. **Internal convection thermal resistance** :
    
    .. math::
      R_{\text{conv, int}} = \frac{1}{h_{\text{inner}} \cdot 2 \pi r_{\text{inner}} \cdot L}
 
-2. **Résistance thermique de conduction à travers l'isolant** :
+2. **Conduction thermal resistance through insulation** :
    
    .. math::
      R_{\text{cond}} = \frac{\ln\left(\frac{r_{\text{outer}}}{r_{\text{inner}}}\right)}{2 \pi k_{\text{insulation}} \cdot L}
 
-3. **Résistance thermique de convection externe** :
+3. **External convection thermal resistance** :
    
    .. math::
      R_{\text{conv, ext}} = \frac{1}{h_{\text{outer}} \cdot 2 \pi r_{\text{outer}} \cdot L}
@@ -88,49 +88,49 @@ Le modèle d'pipe insulation uses the following equations to calculate les heat 
    .. math::
      Q = \frac{T_{\text{fluid}} - T_{\text{ambient}}}{R_{\text{total}}}
 
-6. **Temperature de surface de l'isolant** :
+6. **Temperature of insulation surface** :
    
    .. math::
      T_{\text{surface}} = T_{\text{fluid}} - Q \cdot R_{\text{conv, int}} - Q \cdot R_{\text{cond}}
 
-Ces équations allow to déterminer les heat loss à travers l'isolant et la temperature de surface de l'isolant as a function ofs simulation parameters.
+These equations allow us to determine heat loss through the insulation and the insulation surface temperature as a function of simulation parameters.
 
 Summary of Equations Used for Calculation
 ---------------------------------------------
 
-Le modèle utilise les propriétés thermophysiques des matériaux et des fluides to calculate les heat loss et la temperature de surface de l'isolant. Voici un résumé des équations utilisées :
+The model uses the thermophysical properties of materials and fluids to calculate heat loss and insulation surface temperature. Here is a summary of the equations used :
 
-1. **Propriétés de l'air ambiant** :
+1. **Properties de l'air ambiant** :
    - Temperature ambiante : \( T_{\text{amb}} = 20 \, \text{°C} \)
    - Humidité relative : \( \text{Humidité} = 40 \% \)
    - Capacité thermique spécifique : \( C_p = 1007 \, \text{J/kg-°C} \)
-   - Coefficient de dilatation thermique : \( \beta = 0.0034 \, \text{1/K} \)
-   - Viscosité dynamique : \( \mu = 0.0000185 \, \text{kg/m-s} \)
-   - Densité à la temperature de référence de 20°C : \( \rho_{\text{ref}} = 1.201 \, \text{kg/m}^3 \)
+   - Coefficient thermal expansion coefficient : \( \beta = 0.0034 \, \text{1/K} \)
+   - Viscosity dynamique : \( \mu = 0.0000185 \, \text{kg/m-s} \)
+   - Density at reference temperature of 20°C : \( \rho_{\text{ref}} = 1.201 \, \text{kg/m}^3 \)
    - Conductivité thermique : \( k = 0.0261 \, \text{W/m-°C} \)
 
-2. **Calcul des propriétés de l'air ambiant** :
+2. **Calculation of Ambient Air Properties** :
 
-   - Nombre de Rayleigh : 
+   - Number Rayleigh number : 
      
      .. math::
        Ra_{\text{air}} = \frac{g \cdot \beta \cdot \rho_{\text{air}}^2 \cdot C_p \cdot (T_c - T_{\text{amb}}) \cdot d_{\text{e, isolé}}^3}{k_{\text{air}} \cdot \mu_{\text{air}}}
-   - Nombre de Nusselt : 
+   - Number Nusselt number : 
      
      .. math::
        Nu = \left(0.60 + \frac{0.387 \cdot Ra_{\text{air}}^{1/6}}{\left(1 + \left(\frac{0.559}{Pr_{\text{air}}}\right)^{9/16}\right)^{8/27}}\right)^2
-   - Coefficient de transfert de chaleur moyen : 
+   - Coefficient average heat transfer coefficient : 
      
      .. math::
        h_{\text{air}} = \frac{Nu \cdot k_{\text{air}}}{d_{\text{e, isolé}}}
 
-3. **Calcul des heat loss** :
+3. **Heat Loss Calculation** :
 
-   - Transfert de chaleur convectif : 
+   - Transfer convective heat transfer : 
      
      .. math::
        q_{\text{conv}} = h_{\text{air}} \cdot A_{\text{e, isolé}} \cdot (T_c - T_{\text{amb}})
-   - Transfert de chaleur radiatif : 
+   - Transfer radiative heat transfer : 
      
      .. math::
        q_{\text{rad}} = \sigma \cdot A_{\text{e, isolé}} \cdot \epsilon \cdot \left((T_c + 273.15)^4 - T_{\text{amb, K}}^4\right)
@@ -139,19 +139,19 @@ Le modèle utilise les propriétés thermophysiques des matériaux et des fluide
      .. math::
        q_{\text{total}} = q_{\text{conv}} + q_{\text{rad}}
 
-4. **Calcul des temperatures** :
+4. **Temperature Calculation** :
 
-   - Temperature de la paroi interne : 
+   - Temperature of the inner wall : 
      
      .. math::
        T_{\text{paroi, int}} = T_{\text{fluid}} - q_{\text{total}} \cdot R_{\text{conv, int}}
-   - Temperature de la paroi externe : 
+   - Temperature of the outer wall : 
      
      .. math::
        T_{\text{paroi, ext}} = T_{\text{paroi, int}} - q_{\text{total}} \cdot R_{\text{cond, tube}}
-   - Temperature de surface de l'isolant : 
+   - Temperature of insulation surface : 
      
      .. math::
        T_{\text{surface}} = T_{\text{paroi, ext}} - q_{\text{total}} \cdot R_{\text{cond, isolant}}
 
-Ces équations allow to déterminer les heat loss à travers l'isolant et la temperature de surface de l'isolant as a function ofs simulation parameters.
+These equations allow us to determine heat loss through the insulation and the insulation surface temperature as a function of simulation parameters.

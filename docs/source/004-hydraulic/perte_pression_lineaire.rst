@@ -165,46 +165,46 @@ Nomenclature
      - Flow rate mass in kilograms per second
      - kg/s
    * - F_m3s
-     - Flow rate volumétrique en mètres cubes par seconde
+     - Flow rate volumetric in cubic meters per second
      - m³/s
    * - F_Sm3s
-     - Flow rate volumétrique standard en mètres cubes par seconde
+     - Flow rate standard volumetric in cubic meters per second
      - m³/s
    * - Inlet.F
-     - Flow rate massique à l'entrée en kilogrammes par seconde
+     - Flow rate mass flow at inlet in kilograms per second
      - kg/s
    * - Inlet.h
-     - Enthalpie à l'entrée en joules par kilogramme
+     - Enthalpy at inlet in joules per kilogram
      - J/kg
    * - Outlet.h
-     - Enthalpie à la sortie en joules par kilogramme
+     - Enthalpy at outlet in joules per kilogram
      - J/kg
    * - A
-     - Section du tube en mètres carrés
+     - Section of the tube in square meters
      - m²
    * - V
-     - Vitesse d'écoulement en mètres par seconde
+     - Speed flow in meters per second
      - m/s
    * - Re
-     - Nombre de Reynolds
+     - Number Reynolds number
      - -
    * - delta_P
-     - Perte de pressure en pascals
+     - Loss pressure in pascals
      - Pa
    * - Inlet.P
-     - Pressure à l'entrée en pascals
+     - Pressure at inlet in pascals
      - Pa
    * - H
-     - Puissance en watts
+     - Power in watts
      - W
    * - fluid_quality
-     - Qualité du fluide
+     - Quality of the fluid
      - -
    * - Q
      - Flow rate thermique
      - -
    * - D
-     - Densité en kilogrammes par mètre cube
+     - Density in kilograms per cubic meter
      - kg/m³
    * - Ti
      - Temperature inlet in Kelvin
@@ -213,37 +213,37 @@ Nomenclature
      - Temperature outlet in Kelvin
      - K
    * - roughness
-     - Rugosité de la surface
+     - Roughness of the surface
      - m
    * - d_hyd
-     - Diamètre hydraulique en mètres
+     - Diameter hydraulic in meters
      - m
    * - L
-     - Longueur en mètres
+     - Length in meters
      - m
    * - K
-     - Rugosité en mètres
+     - Roughness in meters
      - m
    * - alpha
-     - Angle d'inclinaison du tube en radians
+     - Angle of tube inclination in radians
      - rad
    * - delta_Z
-     - Hauteur du tuyau en mètres
+     - Height du tuyau in meters
      - m
    * - delta_H
-     - Perte de pressure en mètres
+     - Loss de pressure in meters
      - m
    * - eta
-     - Viscosité dynamique du fluide
+     - Viscosity dynamique of the fluid
      - Pa·s
    * - rho
-     - Densité du fluide
+     - Density of the fluid
      - kg/m³
    * - delta_P
-     - Perte de pressure due aux frottements
+     - Loss pressure loss due to friction
      - Pa
    * - diff_P
-     - Différence de pressure entre l'entrée et la sortie
+     - Difference pressure difference between inlet and outlet
      - Pa
    * - m_flow
      - Flow rate mass in kilograms per second
@@ -252,14 +252,14 @@ Nomenclature
      - Périmètre
      - m
    * - A
-     - Section du tube en mètres carrés
+     - Section of the tube in square meters
      - m²
    * - V
-     - Vitesse d'écoulement en mètres par seconde
+     - Speed flow in meters per second
      - m/s
    * - Re
-     - Nombre de Reynolds
+     - Number Reynolds number
      - -
    * - h
-     - Enthalpie en joules par kilogramme
+     - Enthalpy in joules per kilogram
      - J/kg

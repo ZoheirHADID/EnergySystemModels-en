@@ -1,6 +1,6 @@
 .. _calcul_turpe:
 
-10.1. Calcul du coût du réseau électrique
+10.1. Electricity Grid Cost Calculation
 ============================================================
 
 10.1.1. TURPE
@@ -15,42 +15,42 @@ Le prix payé annuellement pour l’utilisation des réseaux publics de distribu
    * - Abréviation
      - Description
    * - **CG**
-     - Composante annuelle de gestion
+     - Annual management component
    * - **CC**
-     - Composante annuelle de comptage
+     - Annual metering component
    * - **CS**
-     - Composante annuelle de soutirage
+     - Annual withdrawal component
    * - **CMDPS**
-     - Composante mensuelle des dépassements de puissance souscrite
+     - Monthly component for exceeding subscribed power
    * - **CACS**
-     - Composante annuelle des alimentations complémentaires et de secours
+     - Annual component for supplementary and backup supplies
    * - **CR**
-     - Composante de regroupement
+     - Grouping component
    * - **CER**
      - Composante annuelle de l’énergie réactive
    * - **CI**
-     - Composante annuelle des injections
+     - Annual injection component
 
-La formule générale du TURPE est donc :
+The general TURPE formula is therefore :
 
 .. code-block:: text
 
    TURPE = CG + CC + CS + CMDPS + CACS + CR + CER + CI
 
-**Détail des composantes :**
+**Component Details :**
 
-- **CG** : Frais fixes de gestion du contrat.
-- **CC** : Frais liés à la mise à disposition et à la relève du compteur.
+- **CG** : Fixed contract management fees.
+- **CC** : Fees related to meter provision and reading.
 - **CS** : Frais liés à la quantité d’énergie soutirée du réseau.
-- **CMDPS** : Pénalités en cas de dépassement de la puissance souscrite.
-- **CACS** : Frais pour les alimentations complémentaires ou de secours.
-- **CR** : Frais de regroupement de plusieurs sites.
+- **CMDPS** : Penalties for exceeding subscribed power.
+- **CACS** : Fees for supplementary or backup supplies.
+- **CR** : Fees for grouping multiple sites.
 - **CER** : Frais liés à l’énergie réactive consommée.
 - **CI** : Frais pour l’injection d’énergie sur le réseau.
 
-.. admonition:: Guide d'utilisation du calcul TURPE
+.. admonition:: TURPE Calculation User Guide
 
-   Voici un exemple d'utilisation des fonctions to calculate le TURPE :
+   Here is an example of using the functions to calculate TURPE :
 
    .. code-block:: python
 
@@ -101,18 +101,18 @@ La formule générale du TURPE est donc :
       # Création du calculateur TURPE
       turpe_calculator = TurpeCalculator(contrat, tarif, facture)
 
-      # Calculation du TURPE
+      # Calculationation du TURPE
       turpe_calculator.calculate_turpe()
 
       # Affichage des résultats
       print(f"Acheminement (€) : {turpe_calculator.euro_TURPE}")
       # print(f"Taxes et Contributions (€) : {turpe_calculator.euro_taxes_contrib}")
 
-   Les paramètres à renseigner dans `input_Contrat`, `input_Tarif` et `input_Facture` sont détaillés dans les tableaux ci-dessous. Adaptez-les selon votre profil de consommation, votre contrat et les tarifs en vigueur.
+   The parameters to fill in `input_Contrat`, `input_Tarif` and `input_Facture` are detailed in the tables below. Adapt them according to your consumption profile, your contract and the current tariffs.
 
-**Tableau des paramètres d'entrée pour le calcul TURPE**
+**Table of Input Parameters for TURPE Calculation**
 
-***Déclarer un contrat***
+***Declare a Contract***
 
 .. list-table::
    :header-rows: 1
@@ -123,30 +123,30 @@ La formule générale du TURPE est donc :
      - Description
    * - domaine_tension
      - "BT < 36 kVA", "BT > 36 kVA", "HTA"
-     - Domaine de tension du raccordement
+     - Connection voltage domain
    * - PS_pointe
      - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
-     - Puissance souscrite en période de pointe (selon domaine de tension)
+     - Power souscrite en période de pointe (selon domaine de tension)
    * - PS_HPH
      - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
-     - Puissance souscrite en heures pleines hiver
+     - Power souscrite en heures pleines hiver
    * - PS_HCH
      - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
-     - Puissance souscrite en heures creuses hiver
+     - Power souscrite en heures creuses hiver
    * - PS_HPB
      - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
-     - Puissance souscrite en heures pleines été
+     - Power souscrite en heures pleines été
    * - PS_HCB
      - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
-     - Puissance souscrite en heures creuses été
+     - Power souscrite en heures creuses été
    * - version_utilisation
      - Voir tableau dédié ci-dessous
-     - Option tarifaire selon le domaine de tension
+     - Tariff option according to voltage domain
    * - pourcentage_ENR
      - 0 à 100 (%)
-     - Pourcentage d'énergie renouvelable injectée ou autoconsommée
+     - Percentage of renewable energy injected or self-consumed
 
-**Versions d'utilisation selon le domaine de tension**
+**Usage Versions by Voltage Domain**
 
 ***BT < 36 kVA***
 
@@ -167,9 +167,9 @@ La formule générale du TURPE est donc :
    * - LU
      - Longue Usage
    * - CU4_ac
-     - Contrat Unique 4 périodes avec autoproduction collective et/ou alimentation de secours
+     - Single Contract 4 periods with collective self-production and/or backup supply
    * - MU_ac
-     - Multi-usage avec autoproduction collective et/ou alimentation de secours
+     - Multi-use with collective self-production and/or backup supply
 
 ***BT > 36 kVA***
 
@@ -182,11 +182,11 @@ La formule générale du TURPE est donc :
    * - CU
      - Contrat Unique (tarification standard BT > 36 kVA)
    * - LU
-     - Longue Usage (tarification spécifique pour usages prolongés)
+     - Long Use (specific pricing for extended use)
    * - CU_ac
-     - Contrat Unique avec autoproduction collective et/ou alimentation de secours
+     - Single Contract with collective self-production and/or backup supply
    * - LU_ac
-     - Longue Usage avec autoproduction collective et/ou alimentation de secours
+     - Long Use with collective self-production and/or backup supply
 
 ***HTA***
 
@@ -197,13 +197,13 @@ La formule générale du TURPE est donc :
    * - Version d'utilisation
      - Description
    * - CU_pf
-     - Contrat CU (Contrat Unique) avec pointe fixe
+     - SC Contract (Single Contract) with fixed peak
    * - CU_pm
-     - Contrat CU (Contrat Unique) avec pointe mobile
+     - SC Contract (Single Contract) with mobile peak
    * - LU_pf
-     - Contrat LU (Longue Usage) avec pointe fixe
+     - LU Contract (Long Use) with fixed peak
    * - LU_pm
-     - Contrat LU (Longue Usage) avec pointe mobile
+     - LU Contract (Long Use) with mobile peak
 
 ***Déclarer vos tarifs***
 
@@ -216,7 +216,7 @@ La formule générale du TURPE est donc :
      - Description
    * - c_euro_kWh_pointe
      -  ≥ 0 (€/kWh)
-     - Tarif unitaire période de pointe
+     - Unit price peak period
    * - c_euro_kWh_HPB
      -  ≥ 0 (€/kWh)
      - Tarif unitaire heures pleines été
@@ -234,7 +234,7 @@ La formule générale du TURPE est donc :
      - Tarif unitaire TCFE (taxe communale/foncière)
    * - c_euro_kWh_certif_capacite_pointe
      -  ≥ 0 (€/kWh)
-     - Certificat capacité période de pointe
+     - Peak period capacity certificate
    * - c_euro_kWh_certif_capacite_HPH
      -  ≥ 0 (€/kWh)
      - Certificat capacité heures pleines hiver
@@ -254,7 +254,7 @@ La formule générale du TURPE est donc :
      -  ≥ 0 (€/kWh)
      - Tarif ARENH (Accès régulé à l'électricité nucléaire historique)
 
-***Déclarer une facture***
+***Declare an Invoice***
 
 .. list-table::
    :header-rows: 1
@@ -265,10 +265,10 @@ La formule générale du TURPE est donc :
      - Description
    * - start, end
      - Date (YYYY-MM-DD)
-     - Début et fin de la période de facturation
+     - Start and end of billing period
    * - heures_depassement
      - Entier ≥ 0
-     - Nombre d'heures de dépassement de puissance souscrite
+     - Number of hours exceeding subscribed power
    * - depassement_PS_HPB
      -  ≥ 0 (kW ou kVA)
      - Dépassement de puissance souscrite en HPB
