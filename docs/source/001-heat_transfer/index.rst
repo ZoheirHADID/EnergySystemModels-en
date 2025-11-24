@@ -9,4 +9,5 @@
 
    transfert_chaleur
    composite_wall_heat_transfer
+   parallelepiped_body
    pipe_insulation_analysis

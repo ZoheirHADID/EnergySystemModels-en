@@ -1,0 +1,303 @@
+Pinch Analysis
+=============
+
+.. code-block:: python
+
+   import pandas as pd
+   from PinchAnalysis import PinchAnalysis
+
+   # Créer un DataFrame avec les flux thermiques
+   # Ti/To : températures initiale/finale [°C]
+   # mCp : débit de capacité thermique [kW/K]
+   # dTmin2 : ΔTmin/2 pour chaque flux [K]
+   # integration : inclure le flux dans l'analyse
+   df = pd.DataFrame({
+       'Ti': [200, 125, 50, 45],      # 2 flux chauds, 2 flux froids
+       'To': [50, 45, 250, 195],      
+       'mCp': [3.0, 2.5, 2.0, 4.0],   
+       'dTmin2': [5, 5, 5, 5],        
+       'integration': [True, True, True, True]
+   })
+
+   # Create the object d'analyse
+   pinch = PinchAnalysis.Object(df)
+   
+   # Accéder aux résultats
+   print(f"Pinch Point: {pinch.T_pinch}°C")
+   print(f"Hot Utility minimale: {pinch.Qh_min} kW")
+   print(f"Cold Utility minimale: {pinch.Qc_min} kW")
+   
+   # Result DataFrames
+   print(pinch.stream_list)                    # Flux avec températures décalées
+   print(pinch.df_intervals)                   # Intervalles de température
+   print(pinch.df_surplus_deficit)             # Bilan énergétique
+   print(pinch.df_composite_curve)             # Données courbes composites
+   print(pinch.df_heat_exchange_combinations)  # Combinaisons d'échange
+   
+   # Générer les visualisations
+   pinch.plot_composites_curves()              # Composite Curves
+   pinch.plot_GCC()                            # Grand Composite Curve
+   pinch.plot_streams_and_temperature_intervals()  # Flux et intervalles
+   pinch.graphical_hen_design()                # Heat Exchanger Network
+   print("\nHeat Exchanger Network de chaleur :")
+   print(hen.df_matches)
+
+   # Visualisation graphique du HEN
+   pinch.graphical_hen_design()
+   plt.show()
+
+Le réseau d'échangeurs optimal pourrait ressembler à :
+
+* **E1** : H1 (200°C → 120°C) échange avec C2 (120°C → 195°C) → 240 kW
+* **E2** : H2 (125°C → 45°C) échange avec C1 (50°C → 130°C) → 200 kW
+* **E3** : H1 (120°C → 50°C) échange avec C1 (130°C → 250°C) → 210 kW
+* **E4** : C2 (45°C → 120°C) chauffé par utilité chaude → 300 kW
+* **E5** : H1 refroidi par utilité froide → 50 kW
+
+Example 2 : Optimisation d'une unité de distillation
+-----------------------------------------------------
+
+Contexte industriel
+~~~~~~~~~~~~~~~~~~~
+
+Une unité de distillation comporte :
+
+* **Rebouilleur** (flux froid C1) : chauffe le pied de colonne de 90°C à 140°C
+* **Condenseur** (flux chaud H1) : refroidit la tête de colonne de 65°C à 40°C
+* **Flux de procédé chaud H2** : hydrocarbure de 180°C à 70°C
+* **Flux de procédé froid C2** : charge à préchauffer de 30°C à 120°C
+
+Données
+~~~~~~~
+
+.. code-block:: python
+
+   df_distillation = pd.DataFrame({
+       'id': [1, 2, 3, 4],
+       'name': ['Condenseur', 'Rebouilleur', 'Hydrocarbure', 'Charge'],
+       'Ti': [65, 90, 180, 30],
+       'To': [40, 140, 70, 120],
+       'mCp': [5.0, 6.0, 3.5, 4.0],
+       'dTmin2': [5, 5, 5, 5],
+       'integration': [True, True, True, True]
+   })
+
+   # Pinch Analysis
+   pinch_dist = PinchAnalysis(df_distillation)
+
+   # Results
+   print(f"Hot Utility minimale : {pinch_dist.Qh_min:.1f} kW")
+   print(f"Cold Utility minimale : {pinch_dist.Qc_min:.1f} kW")
+
+   # Visualisation
+   pinch_dist.plot_composites_curves()
+   plt.show()
+
+Interprétation
+~~~~~~~~~~~~~~
+
+L'analyse Pinch révèle que :
+
+* Le flux d'hydrocarbure chaud (H2) peut préchauffer la charge (C2)
+* Le rebouilleur nécessite toujours une utilité chaude (vapeur)
+* Le condenseur peut récupérer une partie de sa chaleur
+
+Optimisation proposée :
+
+1. **Échangeur E1** : Hydrocarbure (180°C → 90°C) préchauffe la Charge (30°C → 120°C) → 360 kW récupérés
+2. **Hot Utility** : Vapeur chauffe le Rebouilleur → 300 kW requis (au lieu de 360 kW sans intégration)
+3. **Cold Utility** : Eau de refroidissement refroidit le Condenseur → 125 kW requis
+
+**Économie annuelle** (estimée) :
+
+* Réduction de vapeur : 60 kW × 8000 h/an × 0,03 €/kWh = **14 400 €/an**
+* Réduction d'eau de refroidissement : économie additionnelle
+
+Example 3 : Intégration avec sources d'énergie multiples
+---------------------------------------------------------
+
+Contexte
+~~~~~~~~
+
+Dans un procédé complexe, on dispose de plusieurs niveaux d'utilités :
+
+* **Vapeur HP** : 250°C, coût élevé
+* **Vapeur MP** : 150°C, coût moyen
+* **Vapeur BP** : 120°C, coût faible
+* **Eau de refroidissement** : 15-25°C
+
+Optimisation via la GCC
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   # Après avoir créé l'objet PinchAnalysis
+   pinch.plot_GCC()
+   plt.axhline(y=250, color='r', linestyle='--', label='Vapeur HP (250°C)')
+   plt.axhline(y=150, color='orange', linestyle='--', label='Vapeur MP (150°C)')
+   plt.axhline(y=120, color='y', linestyle='--', label='Vapeur BP (120°C)')
+   plt.axhline(y=20, color='b', linestyle='--', label='Eau refroidissement (20°C)')
+   plt.legend()
+   plt.show()
+
+La GCC permet de déterminer :
+
+* Quelle vapeur utiliser à quel niveau de température
+* Les économies potentielles en remplaçant la vapeur HP par de la vapeur BP quand possible
+
+Example 4 : Analyse de flexibilité
+-----------------------------------
+
+Étude de sensibilité au ΔTmin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   import numpy as np
+
+   # Balayage du ΔTmin
+   dTmin_values = np.arange(5, 30, 2.5)
+   Qh_values = []
+   Qc_values = []
+
+   df_base = pd.DataFrame({
+       'id': [1, 2, 3, 4],
+       'name': ['H1', 'H2', 'C1', 'C2'],
+       'Ti': [200, 125, 50, 45],
+       'To': [50, 45, 250, 195],
+       'mCp': [3.0, 2.5, 2.0, 4.0],
+       'integration': [True, True, True, True]
+   })
+
+   for dTmin in dTmin_values:
+       df_test = df_base.copy()
+       df_test['dTmin2'] = dTmin / 2
+       
+       pinch_test = PinchAnalysis(df_test)
+       Qh_values.append(pinch_test.Qh_min)
+       Qc_values.append(pinch_test.Qc_min)
+
+   # Tracer l'évolution
+   plt.figure(figsize=(10, 6))
+   plt.plot(dTmin_values, Qh_values, 'ro-', label='Hot Utility')
+   plt.plot(dTmin_values, Qc_values, 'bo-', label='Cold Utility')
+   plt.xlabel('ΔTmin [°C]')
+   plt.ylabel('Utilités [kW]')
+   plt.title('Sensibilité au ΔTmin')
+   plt.legend()
+   plt.grid(True)
+   plt.show()
+
+Interprétation économique
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Plus ΔTmin est faible :
+
+* ✅ Moins d'utilités consommées → coûts opérationnels réduits
+* ❌ Plus de surface d'échange → coûts d'investissement élevés
+
+Le ΔTmin optimal se trouve par optimisation technico-économique (analyse TAC).
+
+Example 5 : Export des résultats
+---------------------------------
+
+Sauvegarde des données
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   # Exporter les résultats vers Excel
+   with pd.ExcelWriter('resultats_pinch.xlsx') as writer:
+       pinch.stream_list.to_excel(writer, sheet_name='Flux', index=False)
+       pinch.df_intervals.to_excel(writer, sheet_name='Intervalles', index=False)
+       pinch.df_surplus_deficit.to_excel(writer, sheet_name='Surplus_Deficit', index=False)
+       
+       # Résumé
+       df_summary = pd.DataFrame({
+           'Paramètre': ['T Pinch', 'Qh min', 'Qc min', 'Q récupéré', 'ΔTmin'],
+           'Valeur': [pinch.T_pinch, pinch.Qh_min, pinch.Qc_min, 
+                      pinch.Q_recovered, df['dTmin2'].iloc[0]*2],
+           'Unité': ['°C', 'kW', 'kW', 'kW', '°C']
+       })
+       df_summary.to_excel(writer, sheet_name='Résumé', index=False)
+
+   print("Results exportés vers resultats_pinch.xlsx")
+
+Génération de rapport automatique
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   # Créer un rapport PDF avec tous les graphiques
+   from matplotlib.backends.backend_pdf import PdfPages
+
+   with PdfPages('rapport_pinch.pdf') as pdf:
+       # Page 1 : Composite Curves
+       pinch.plot_composites_curves()
+       plt.title('Courbes Composites du Procédé')
+       pdf.savefig()
+       plt.close()
+
+       # Page 2 : GCC
+       pinch.plot_GCC()
+       plt.title('Grande Courbe Composite')
+       pdf.savefig()
+       plt.close()
+
+       # Page 3 : Flux et intervalles
+       pinch.plot_streams_and_temperature_intervals()
+       plt.title('Flux de procédé et intervalles de température')
+       pdf.savefig()
+       plt.close()
+
+       # Page 4 : Heat Exchanger Network
+       pinch.graphical_hen_design()
+       plt.title('Heat Exchanger Network de chaleur')
+       pdf.savefig()
+       plt.close()
+
+   print("Rapport PDF généré : rapport_pinch.pdf")
+
+Bonnes pratiques
+----------------
+
+1. **Validation des données**
+   
+   * Vérifier que tous les flux chauds ont Ti > To
+   * Vérifier que tous les flux froids ont Ti < To
+   * S'assurer que mCp > 0 pour tous les flux
+
+2. **Choix du ΔTmin**
+   
+   * Procédés standards : 10-20°C
+   * Procédés cryogéniques : 3-5°C
+   * Procédés haute température : 20-40°C
+
+3. **Interprétation des résultats**
+   
+   * Comparer les économies d'énergie au coût d'investissement
+   * Vérifier la faisabilité technique (contraintes de pression, encrassement)
+   * Analyser la robustesse face aux variations de procédé
+
+4. **Itération**
+   
+   * Tester plusieurs configurations
+   * Varier le ΔTmin pour trouver l'optimum économique
+   * Intégrer progressivement les échangeurs par ordre de priorité
+
+Ressources complémentaires
+---------------------------
+
+Documentation du module
+~~~~~~~~~~~~~~~~~~~~~~~
+
+* Fonctions de calcul : ``PinchAnalysis.functions``
+* Visualisation : ``plot_composites_curves()``, ``plot_GCC()``
+* Conception HEN : ``HeatExchangerNetwork()``
+
+Références bibliographiques
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Kemp, I. C. (2007). *Pinch Analysis and Process Integration*
+* Smith, R. (2005). *Chemical Process Design and Integration*
+* Seider et al. (2016). *Product and Process Design Principles*

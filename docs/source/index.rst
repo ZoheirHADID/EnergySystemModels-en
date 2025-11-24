@@ -1,106 +1,38 @@
-**Objective and Approach**
+EnergySystemModels Documentation
+=================================
+
+Welcome to the EnergySystemModels library documentation!
+
+**Developed by Zoheir HADID**
+
+Objective and Approach
+----------------------
 
 This documentation presents the EnergySystemModels Python library, designed to facilitate calculations and analyses related to energy efficiency. By providing Python-written models, you can easily put energy efficiency concepts into practice. The calculation tools can also facilitate understanding and analysis of complex data related to energy efficiency.
 
-
-
-**Prerequisites**
+Prerequisites
+-------------
 
 In order to better understand the energy efficiency models presented in this document and the accompanying Python calculation tools, prior knowledge of programming is necessary, particularly in the Python language. However, the models are presented step by step, in a simple and accessible manner, to facilitate their adoption by a wide audience.
 
-
+Table of Contents
+-----------------
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
-
-   usage   usage
-
-   001-heat_transfer/index   001-heat_transfer/index
-
-   002-thermodynamic_cycles/index   002-thermodynamic_cycles/index
-
-   003-ahu_modules/index   003-ahu_modules/index
-
-   004-hydraulic/index   004-hydraulic/index
-
-   005-aeraulic/index   005-aeraulic/index
-
-   010-achat-energie/index   010-achat-energie/index
-
-
-
-   api   chiller_example
-
-   weather_data
-   ipmvp
-   solar_production
-   turpe_calculation
-
-   traitement_air/index
+   usage
+   001-heat_transfer/index
+   002-thermodynamic_cycles/index
+   003-ahu_modules/index
+   004-hydraulic/index
+   005-aeraulic/index
+   006-pinch_analysis/index
+   007-ipmvp/index
+   008-meteo/index
+   009-pv-solaire/index
+   010-achat-energie/index
+   011-cee/index
    nomenclature
-   cta_air_neuf
-   recuperation_chaleur_air_humide
-   cta_recirculation
-   optimisation
-
-   annexes_traitement_air/index
-   melangeur_air_humide
-   batterie_chaude
-   batterie_froide_sensible
-   echangeur_double_flux
-   roue_thermique
-
-   fonctions_calcul_air_humide/index
-   pression_vapeur_saturee
-   humidite_relative
-   temperature_rosee
-   temperature_seche
-   diagramme_psychrometrique
-
-   groupes_frigorifiques/index
-   cycle_monoetage_simple
-   pac_stirling_olvondo
-
-   production_air_comprime/index
-   compresseur_monoetage
-   compresseur_etage
-
-   echangeurs_chaleur/index
-   consignateur_temperature
-   dimensionnement_echangeur
-   fonctionnement_echangeur
-   dimensionnement_aerorefrigerant
-
-   modelisation_radiateur_tubulaire
-
-   hydraulique/index
-   perte_pression_lineaire
-   modelisation_tube
-   perte_charge_lineaire
-   autorite_vanne
-
-   integration_thermique/index
-   cascade_thermique
-   pinch_analysis
-   decomposition_flux
-   grande_courbe_composite
-   courbes_composites
-   reseau_echangeur_chaleur
-   stockage_chaleur
-
-   facture_electricite
-
-   donnees_meteo/index
-   openweathermap
-   meteociel_web_scraping
-
-   calcul_deperditions/index
-   deperditions_plaque
-   deperditions_echangeur
-
-   facture_gaz_naturel
-
-   api/index
+   api
