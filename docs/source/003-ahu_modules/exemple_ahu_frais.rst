@@ -23,7 +23,7 @@ Fresh Air AHU Example
     BC=HeatingCoil.Object()
     HMD=Humidifier.Object()
 
-    #Récupération des données entrées par l'utilisateur
+    #Récupération des données entrées by l'utilisateur
     AN.F_m3h=3000 #m3/h
     AN.T=14 #°C
     AN.RH_FreshAir=71 # %

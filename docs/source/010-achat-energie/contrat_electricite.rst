@@ -6,7 +6,7 @@
 10.1.1. TURPE
 --------------------------------------------
 
-Le prix payé annuellement pour l’utilisation des réseaux publics de distribution (RPD) est la somme des composantes suivantes :
+Le prix payé annuellement for l’utilisation des réseaux publics de distribution (RPD) est la somme des composantes suivantes :
 
 .. list-table::
    :header-rows: 1
@@ -46,7 +46,7 @@ The general TURPE formula is therefore :
 - **CACS** : Fees for supplementary or backup supplies.
 - **CR** : Fees for grouping multiple sites.
 - **CER** : Frais liés à l’énergie réactive consommée.
-- **CI** : Frais pour l’injection d’énergie sur le réseau.
+- **CI** : Frais for l’injection d’énergie on le réseau.
 
 .. admonition:: TURPE Calculation User Guide
 
@@ -68,7 +68,7 @@ The general TURPE formula is therefore :
           pourcentage_ENR=0
       )
 
-      # 2. Définition des tarifs unitaires (en €/kWh ou selon composante)
+      # 2. Definition of unit tariffs (in €/kWh or by component)
       tarif = input_Tarif(
           c_euro_kWh_pointe=0,
           c_euro_kWh_HPB=0,
@@ -101,7 +101,7 @@ The general TURPE formula is therefore :
       # Création du calculateur TURPE
       turpe_calculator = TurpeCalculator(contrat, tarif, facture)
 
-      # Calculationation du TURPE
+      # Calculationationation du TURPE
       turpe_calculator.calculate_turpe()
 
       # Affichage des résultats
@@ -125,19 +125,19 @@ The general TURPE formula is therefore :
      - "BT < 36 kVA", "BT > 36 kVA", "HTA"
      - Connection voltage domain
    * - PS_pointe
-     - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
+     - 0 to 36 (kW) for LV < 36 kVA; >36 to ~250 (kW) for LV > 36 kVA; generally >250 kW for MV
      - Power souscrite en période de pointe (selon domaine de tension)
    * - PS_HPH
-     - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
+     - 0 to 36 (kW) for LV < 36 kVA; >36 to ~250 (kW) for LV > 36 kVA; generally >250 kW for MV
      - Power souscrite en heures pleines hiver
    * - PS_HCH
-     - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
+     - 0 to 36 (kW) for LV < 36 kVA; >36 to ~250 (kW) for LV > 36 kVA; generally >250 kW for MV
      - Power souscrite en heures creuses hiver
    * - PS_HPB
-     - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
+     - 0 to 36 (kW) for LV < 36 kVA; >36 to ~250 (kW) for LV > 36 kVA; generally >250 kW for MV
      - Power souscrite en heures pleines été
    * - PS_HCB
-     - 0 à 36 (kW) pour BT < 36 kVA ; >36 à ~250 (kW) pour BT > 36 kVA ; généralement >250 kW pour HTA
+     - 0 to 36 (kW) for LV < 36 kVA; >36 to ~250 (kW) for LV > 36 kVA; generally >250 kW for MV
      - Power souscrite en heures creuses été
    * - version_utilisation
      - Voir tableau dédié ci-dessous

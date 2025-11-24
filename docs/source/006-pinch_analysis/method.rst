@@ -16,9 +16,9 @@ Result DataFrames
 
 .. code-block:: python
 
-   pinch.stream_list                         # Flux avec temperatures décalées
+   pinch.stream_list                         # Flows with shifted temperatures
    pinch.df_intervals                        # Intervalles de temperature
-   pinch.df_decomposition_flux               # Décomposition par intervalle
+   pinch.df_decomposition_flux               # Décomposition by intervalle
    pinch.df_surplus_deficit                  # Surplus/déficit énergétique
    pinch.df_composite_curve                  # Données courbes composites
    pinch.df_heat_exchange_combinations       # Combinaisons d'échange
@@ -38,12 +38,12 @@ Calculated Attributes
 Intervalles de temperature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On crée une liste de tous les changements de temperature dans le système pour diviser le problème en intervalles.
+On crée une liste de tous les changements de temperature in le système for diviser le problème en intervalles.
 
 Étape 3 : Calcul du problème table (Problem Table)
 --------------------------------------------------
 
-Bilan énergétique par intervalle
+Bilan énergétique by intervalle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Pour chaque intervalle de temperature, on calcule :
@@ -75,7 +75,7 @@ Courbe Composite Chaude (CCC)
 
 Construction :
 
-1. Tracer chaque flux chaud dans le diagramme H-T (enthalpie-temperature)
+1. Tracer chaque flux chaud in le diagramme H-T (enthalpie-temperature)
 2. Décaler verticalement de -ΔTmin/2
 3. Sommer horizontalement tous les flux chauds
 
@@ -86,7 +86,7 @@ Courbe Composite Froide (CCF)
 
 Construction :
 
-1. Tracer chaque flux froid dans le diagramme H-T
+1. Tracer chaque flux froid in le diagramme H-T
 2. Décaler verticalement de +ΔTmin/2
 3. Sommer horizontalement tous les flux froids
 
@@ -95,9 +95,9 @@ La CCF représente le profil de chauffage total du procédé.
 Identification du Pinch
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le point Pinch est visible sur les courbes composites :
+Le point Pinch est visible on les courbes composites :
 
-* C'est le point où l'écart vertical entre CCC et CCF est minimal (= ΔTmin)
+* C'est le point où l'écart vertical between CCC et CCF est minimal (= ΔTmin)
 * Il divise le système en deux régions thermiquement indépendantes
 
 Étape 5 : Construction de la Grande Courbe Composite (GCC)
@@ -105,7 +105,7 @@ Le point Pinch est visible sur les courbes composites :
 
 La GCC se construit en :
 
-1. Calculant la différence entre CCC et CCF à chaque temperature
+1. Calculant la différence between CCC et CCF à chaque temperature
 2. Traçant cette différence as a function of la temperature décalée
 
 Interprétation de la GCC
@@ -132,20 +132,20 @@ Règles de conception
 1. **Ne pas traverser le Pinch** : aucun échangeur ne doit transférer de la chaleur à travers le point Pinch
 2. **Zone au-dessus du Pinch** :
    
-   * Respecter CPchaud ≥ CPfroid pour chaque échangeur
+   * Respecter CPchaud ≥ CPfroid for chaque échangeur
    * Utiliser uniquement des utilités chaudes
 
 3. **Zone en-dessous du Pinch** :
    
-   * Respecter CPchaud ≤ CPfroid pour chaque échangeur
+   * Respecter CPchaud ≤ CPfroid for chaque échangeur
    * Utiliser uniquement des utilités froides
 
-4. **Règle du tick-off** : apparier les flux en priorité pour satisfaire les objectifs de récupération
+4. **Règle du tick-off** : apparier les flux en priorité for satisfaire les objectifs de récupération
 
 Number minimum d'échangeurs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le nombre minimum théorique d'unités (MER - Minimum Energy Recovery) se calcule par :
+Le nombre minimum théorique d'unités (MER - Minimum Energy Recovery) se calcule by :
 
 .. math::
 
@@ -153,7 +153,7 @@ Le nombre minimum théorique d'unités (MER - Minimum Energy Recovery) se calcul
 
 où N_streams est le nombre total de flux (chauds + froids + utilités).
 
-En pratique, on ajoute souvent des échangeurs supplémentaires pour :
+En pratique, on ajoute souvent des échangeurs supplémentaires for :
 
 * Améliorer la flexibilité opérationnelle
 * Faciliter la maintenance
@@ -162,7 +162,7 @@ En pratique, on ajoute souvent des échangeurs supplémentaires pour :
 Optimisation coût-énergie
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le choix du ΔTmin est un compromis entre :
+Le choix du ΔTmin est un compromis between :
 
 * **ΔTmin faible** : moins d'utilités mais plus de surface d'échange (coût capital)
 * **ΔTmin élevé** : moins de surface mais plus d'utilités (coût opérationnel)
@@ -183,7 +183,7 @@ Il est important d'analyser la robustesse de la solution vis-à-vis de :
 * Disponibilité des flux (arrêts, maintenance)
 * Modes opératoires différents (démarrage, arrêt, régime partiel)
 
-Outils pour l'analyse de sensibilité :
+Outils for l'analyse de sensibilité :
 
 * **Grid diagram** : visualisation de la flexibilité du réseau
 * **Plus-Minus principle** : calcul des marges de sécurité
@@ -192,7 +192,7 @@ Outils pour l'analyse de sensibilité :
 Logiciels disponibles
 ----------------------
 
-Plusieurs logiciels commerciaux et open-source existent pour l'analyse Pinch :
+Plusieurs logiciels commerciaux et open-source existent for l'analyse Pinch :
 
 * **Aspen Energy Analyzer** (Aspen Technology)
 * **SPRINT** (Centre for Process Integration, Université de Manchester)

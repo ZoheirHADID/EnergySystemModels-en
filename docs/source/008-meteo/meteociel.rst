@@ -9,10 +9,10 @@ MeteoCiel - Données historiques
    from MeteoCiel.MeteoCiel_Scraping import MeteoCiel_histoScraping
    from datetime import datetime
 
-   # Retrieve données météo historiques depuis MeteoCiel
+   # Retrieve historical weather data from MeteoCiel
    # 10637 : code station (exemple : Paris-Montsouris)
    # Codes stations : 7480=Lyon, 7650=Marseille, 7510=Bordeaux, 7630=Toulouse
-   # Trouver codes sur https://www.meteociel.fr
+   # Find codes on https://www.meteociel.fr
    df_histo, df_day, df_month, df_year = MeteoCiel_histoScraping(
        10637,                      # Code station MeteoCiel
        datetime(2020, 1, 1),       # Date début
@@ -37,7 +37,7 @@ OpenWeatherMap - Données temps réel
    from OpenWeatherMap.OpenWeatherMap import OpenWeatherMap_call_location
 
    # Retrieve météo actuelle + prévisions
-   # Nécessite clé API OpenWeatherMap (gratuite sur openweathermap.org)
+   # Requires OpenWeatherMap API key (free on openweathermap.org)
    api_key = "VOTRE_CLE_API"
    
    data = OpenWeatherMap_call_location(

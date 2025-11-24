@@ -5,7 +5,7 @@
 
     from Facture.TURPE import input_Contrat, TurpeCalculator, input_Facture, input_Tarif
 
-    # Example cohérent : puissance souscrite typique pour un contrat HTA CU_pf (ex : 500 kW)
+    # Example cohérent : puissance souscrite typique for un contrat HTA CU_pf (ex : 500 kW)
     contrat = input_Contrat(
         domaine_tension="HTA",
         PS_pointe=500,
@@ -31,7 +31,7 @@
         c_euro_kWh_ENR=0.01,
         c_euro_kWh_ARENH=0.042
     )
-    # Consommation mensuelle cohérente avec 500 kW souscrits (~300 MWh/mois si 100% utilisation)
+    # Consommation mensuelle cohérente with 500 kW souscrits (~300 MWh/mois si 100% utilisation)
     facture = input_Facture(
         start="2025-02-01",
         end="2025-02-28",

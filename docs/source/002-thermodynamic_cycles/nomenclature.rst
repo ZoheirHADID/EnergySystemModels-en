@@ -13,13 +13,13 @@ Nomenclature
      - Flow rate massique
      - kg/s
    * - :math:`F_{Sm3h}`
-     - Flow rate volumique in meters cubes standards par heure
+     - Flow rate volumique in meters cubes standards by heure
      - Sm³/h
    * - :math:`F_{Nm3h}`
-     - Flow rate volumique in meters cubes normaux par heure
+     - Flow rate volumique in meters cubes normaux by heure
      - Nm³/h
    * - :math:`F_{m3s}`
-     - Flow rate volumique in meters cubes par seconde
+     - Flow rate volumique in meters cubes by seconde
      - m³/s
    * - :math:`\rho`
      - Density of the fluid

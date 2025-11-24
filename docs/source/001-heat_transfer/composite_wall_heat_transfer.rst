@@ -22,7 +22,7 @@ Example of heat transfer simulation in a composite wall:
     wall.add_layer(thickness=0.05, material='Polystyrène')  # Polystyrene
     wall.add_layer(thickness=0.02, material='Plâtre')  # Plaster
 
-    # Calculationationate heat transfer and temperatures at each layer interface
+    # Calculationationationate heat transfer and temperatures at each layer interface
     wall.calculate()
     wall.df
     print(f"df = {wall.df}")

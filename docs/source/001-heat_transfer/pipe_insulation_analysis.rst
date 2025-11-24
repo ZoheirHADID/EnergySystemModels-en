@@ -20,7 +20,7 @@ Pipe insulation simulation example :
     pipe.calculate()
     print(pipe.df)
 
-    # Simulation de l'effet de l'insulation thickness sur les heat loss
+    # Simulation of insulation thickness effect on heat loss
     insulation_thicknesses = [0.0001 + 0.005 * i for i in range(41)]  # Épaisseurs de 0.0001m à 0.2001m
     heat_losses = []
     surface_temperatures = []
@@ -47,7 +47,7 @@ Pipe insulation simulation example :
     ax2.tick_params(axis='y', labelcolor=color)
 
     fig.tight_layout()  # sinon l'étiquette y de droite est légèrement coupée
-    plt.title('Effet de l\'épaisseur de l\'isolant sur les heat loss et la temperature de surface')
+    plt.title('Effet de l\'épaisseur de l\'isolant on les heat loss et la temperature de surface')
     plt.grid(True)
     plt.show()
 

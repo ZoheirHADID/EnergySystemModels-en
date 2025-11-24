@@ -45,8 +45,8 @@ Les déperditions de chaleur à travers les parois de l'échangeur de chaleur à
   # Analyse des données
   print("\nAnalyse des données:")
   print(f"Transfer total: {objet.get_total_heat_transfer():.2f} W")
-  # On exclut la dernière ligne 'TOTAL' pour trouver la face avec le max
-  print(f"Face avec le plus grand transfert: {objet.df.iloc[:-1]['Heat Transfer (W)'].idxmax()}")
+  # On exclut la dernière ligne 'TOTAL' for trouver la face with le max
+  print(f"Face with le plus grand transfert: {objet.df.iloc[:-1]['Heat Transfer (W)'].idxmax()}")
   print(f"Valeur max: {objet.df.iloc[:-1]['Heat Transfer (W)'].max():.2f} W")
 
 Result
@@ -101,8 +101,8 @@ Result
 **Analyse des données:**
 
 - **Transfer total:** 1956.56 W
-- **Face avec le plus grand transfert:** front et back (450.11 W chacune)
-- **Transfer maximal par face:** 450.11 W
+- **Face with le plus grand transfert:** front et back (450.11 W chacune)
+- **Transfer maximal by face:** 450.11 W
 
 Explanation of Equations Used
 -----------------------------------
@@ -111,7 +111,7 @@ La classe `PlateHeatTransfer` utilise différentes équations to calculate les d
 
 ### Paramètres calculés
 
-- **Temperature du film (Tf)** : Temperature moyenne entre la paroi et l'air ambiant.
+- **Temperature du film (Tf)** : Temperature moyenne between la paroi et l'air ambiant.
 .. math::
 
   Tf = \frac{Tp + Ta}{2}
@@ -146,7 +146,7 @@ La classe `PlateHeatTransfer` utilise différentes équations to calculate les d
 
   Ra = Gr \cdot Pr
 
-### Plaque horizontale face vers le bas
+### Plaque horizontale face to le bas
 
 - **Number Nusselt number (Nu)** :
 .. math::
@@ -162,7 +162,7 @@ La classe `PlateHeatTransfer` utilise différentes équations to calculate les d
 
   h = \frac{Nu \cdot k}{\frac{W \cdot L}{2W + 2L}}
 
-### Plaque horizontale face vers le haut
+### Plaque horizontale face to le haut
 
 - **Number Nusselt number (Nu)** :
 .. math::

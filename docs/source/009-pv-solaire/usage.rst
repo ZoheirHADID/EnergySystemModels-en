@@ -13,7 +13,7 @@ Example de base
        latitude=48.8566,          # Latitude (Paris)
        longitude=2.3522,          # Longitude
        location_name='Paris',
-       tilt=34,                   # Inclinaison optimale pour Paris
+       tilt=34,                   # Inclinaison optimale for Paris
        timezone='Etc/GMT-1',
        azimuth=180.0,             # Plein sud
        system_capacity=48.9       # Power crête (kWp)
@@ -25,7 +25,7 @@ Example de base
    # Retrieve les données météorologiques
    system.retrieve_weather_data()
 
-   # Calculationationate the production
+   # Calculationationationate the production
    system.calculate_solar_parameters()
 
    # Visualize

@@ -4,13 +4,13 @@ OpenWeatherMap API
 Configuration
 -------------
 
-1. Créer un compte sur https://openweathermap.org
+1. Create an account on https://openweathermap.org
 2. Récupérer la clé API (plan gratuit : 1000 appels/jour)
 
 Usage
 -----------
 
-Par GPS coordinates
+By GPS coordinates
 ~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
@@ -34,14 +34,14 @@ DataFrames retournés
 * **T(degC)** : Temperature
 * **RH(%)** : Humidité relative
 
-Par nom de ville
+By city name
 ~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
    from OpenWeatherMap import OpenWeatherMap_call_city
    
-   # Récupération pour une ville
+   # Retrieval for a city
    df = OpenWeatherMap_call_city.API_call_city("Paris", "FR")
    
    print(f"Temperature : {df['T(degC)'].values[0]}°C")
@@ -56,7 +56,7 @@ Example : Acquisition périodique
    import pandas as pd
    from datetime import datetime
 
-   # Liste pour stocker les données
+   # List to store data
    data_history = []
 
    # Boucle d'acquisition toutes les heures
@@ -84,4 +84,4 @@ Limites
 
 * **1000 appels/jour** (plan gratuit)
 * Ne pas interroger plus d'une fois toutes les 10-15 minutes
-* Utiliser MeteoCiel pour données historiques
+* Use MeteoCiel for historical data

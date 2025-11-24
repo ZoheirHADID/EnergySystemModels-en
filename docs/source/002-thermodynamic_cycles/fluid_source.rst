@@ -6,25 +6,25 @@ Fluid Source
 2.1. Modèle Physique et paramètre d'entrée
 ------------------------------------------
 
-Le modèle Fluid Source calcule le flow rate massique as a function of diverses conditions d'entrée et des propriétés of the fluid. Le modèle utilise la bibliothèque CoolProp pour déterminer les propriétés of the fluid et effectue les calculs suivants :
+Le modèle Fluid Source calcule le flow rate massique as a function of diverses conditions d'entrée et des propriétés of the fluid. Le modèle utilise la bibliothèque CoolProp for déterminer les propriétés of the fluid et effectue les calculs suivants :
 
 1. Convertir les flow rates volumiques en flow rates massiques en utilisant la densité of the fluid.
 2. Calculer l'enthalpie de sortie et déterminer la qualité of the fluid (liquide, vapeur, diphasique ou supercritique).
-3. Mettre à jour les propriétés de sortie et générer un DataFrame avec les résultats.
+3. Mettre à jour les propriétés de sortie et générer un DataFrame with les résultats.
 
-Les principales équations utilisées dans le modèle sont :
+Les principales équations utilisées in le modèle sont :
 
-- Flow rate massique à partir de mètres cubes standards par heure (Sm³/h) :
+- Flow rate massique à partir de mètres cubes standards by heure (Sm³/h) :
 
   .. math::
     \dot{m} = \frac{F_{Sm3h}}{3600} \cdot \rho(P_{std}, T_{std})
 
-- Flow rate massique à partir de mètres cubes normaux par heure (Nm³/h) :
+- Flow rate massique à partir de mètres cubes normaux by heure (Nm³/h) :
 
   .. math::
     \dot{m} = \frac{F_{Nm3h}}{3600} \cdot \rho(P_{std}, T_{norm})
 
-- Flow rate massique à partir de mètres cubes par seconde (m³/s) :
+- Flow rate massique à partir de mètres cubes by seconde (m³/s) :
 
   .. math::
     \dot{m} = F_{m3s} \cdot \rho(P_{in}, T_{in})
@@ -89,7 +89,7 @@ Les paramètres d'entrée du modèle sont les suivants :
     # SOURCE.F_Sm3s = 2937.482966 / 3600 # SOURCE.F_m3s = 2480.143675 / 3600
     # SOURCE.F_Sm3h = 1 # SOURCE.F_m3h = 2480.143675 # SOURCE.F_kgh = 3600
 
-    # Calculationationate Object
+    # Calculationationationate Object
     SOURCE.calculate()
 
     # Data output

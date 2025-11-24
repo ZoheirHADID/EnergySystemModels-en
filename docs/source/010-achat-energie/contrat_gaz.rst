@@ -9,16 +9,16 @@ Introduction
 La facture de gaz naturel se compose généralement de trois grandes parties principales :
 
 - **La part acheminement** : liée au transport (ATRT) et à la distribution (ATRD) du gaz jusqu’au site de consommation.
-- **La part Taxes et contributions** : comprenant la TICGN (Taxe Intérieure sur la Consommation de Gaz Naturel) et CTA (Contribution Tarifaire d’Acheminement).
-- **La part Fourniture** : correspondant à la consommation de gaz facturée par le fournisseur.
+- **La part Taxes et contributions** : comprenant la TICGN (Taxe Intérieure on la Consommation de Gaz Naturel) et CTA (Contribution Tarifaire d’Acheminement).
+- **La part Fourniture** : correspondant à la consommation de gaz facturée by le fournisseur.
 
-Chacune de ces composantes joue un rôle spécifique dans le coût global de la fourniture de gaz. Les sections suivantes détaillent chacune de ces parties.
+Chacune de ces composantes joue un rôle spécifique in le coût global de la fourniture de gaz. Les sections suivantes détaillent chacune de ces parties.
 
 ------------------------------------------------------------
 1. Acheminement (ATRD & ATRT)
 ------------------------------------------------------------
 
-Le prix payé pour l’utilisation du réseau de distribution et de transport du gaz naturel comprend principalement deux volets :
+Le prix payé for l’utilisation du réseau de distribution et de transport du gaz naturel comprend principalement deux volets :
 - **ATRD** : Accès des Tiers au Réseau de Distribution
 - **ATRT** : Accès des Tiers au Réseau de Transport
 
@@ -29,9 +29,9 @@ Le prix payé pour l’utilisation du réseau de distribution et de transport du
    * - Composant
      - Description
    * - **ATRD**
-     - Coût d’acheminement sur le réseau de distribution (GRDF ou régie locale)
+     - Coût d’acheminement on le réseau de distribution (GRDF ou régie locale)
    * - **ATRT**
-     - Coût d’acheminement sur le réseau de transport (GRTgaz ou Teréga)
+     - Coût d’acheminement on le réseau de transport (GRTgaz ou Teréga)
 
 La formule générale du coût d’acheminement du gaz est donc :
 
@@ -41,7 +41,7 @@ La formule générale du coût d’acheminement du gaz est donc :
 
 **Explication du calcul de l'ATRT**
 
-L’ATRT (Accès des Tiers au Réseau de Transport) correspond au coût d’acheminement sur le réseau de transport du gaz naturel (GRTgaz ou Teréga). Ce coût est composé de plusieurs termes, chacun lié à une fonction spécifique du réseau.
+L’ATRT (Accès des Tiers au Réseau de Transport) correspond au coût d’acheminement on le réseau de transport du gaz naturel (GRTgaz ou Teréga). Ce coût est composé de plusieurs termes, chacun lié à une fonction spécifique du réseau.
 
 **Composantes du tarif ATRT :**
 
@@ -57,10 +57,10 @@ L’ATRT (Accès des Tiers au Réseau de Transport) correspond au coût d’ache
      - Coût d’accès au réseau principal (capacité de sortie)
    * - **TCR** (réseau régional)
      - ``CJN × TCR × NTR``
-     - Coût d’acheminement régional, pondéré par le niveau tarifaire (NTR)
+     - Coût d’acheminement régional, pondéré by le niveau tarifaire (NTR)
    * - **TCL** (capacité de livraison)
      - ``CJN × TCL_PITD``
-     - Coût pour la livraison à un point de distribution (PITD), dépend du GRT
+     - Coût for la livraison à un point de distribution (PITD), dépend du GRT
    * - **TS** (compensation stockage)
      - ``Modulation_hivernale × coef_stockage``
      - Coût de modulation hivernale, lié à la variabilité saisonnière de la consommation
@@ -77,9 +77,9 @@ L’ATRT (Accès des Tiers au Réseau de Transport) correspond au coût d’ache
    * - **Terme**
      - **Description**
    * - **CAR**
-     - Consommation Annuelle de Référence (en MWh/an), fournie dans le contrat
+     - Consommation Annuelle de Référence (en MWh/an), fournie in le contrat
    * - **Zi**
-     - Coefficient climatique selon la station météo et le profil de consommation
+     - Coefficient climatique according to la station météo et le profil de consommation
    * - **A**
      - Coefficient réseau (dépend de GRTgaz ou Téréga)
    * - **CJN**
@@ -87,21 +87,21 @@ L’ATRT (Accès des Tiers au Réseau de Transport) correspond au coût d’ache
    * - **Modulation_hivernale**
      - Variation saisonnière de la consommation : ``Modulation = CJN - (CAR / 365)``
    * - **TCS**
-     - Tarif unitaire de sortie du réseau principal (€/MWh/j/an), fixé par la CRE
+     - Tarif unitaire de sortie du réseau principal (€/MWh/j/an), fixé by la CRE
    * - **TCR**
-     - Tarif unitaire du réseau régional (€/MWh/j/an), fixé par la CRE
+     - Tarif unitaire du réseau régional (€/MWh/j/an), fixé by la CRE
    * - **NTR**
-     - Niveau Tarifaire Régional (de 0 à 10) selon la localisation du site
+     - Niveau Tarifaire Régional (de 0 à 10) according to la localisation du site
    * - **TCL_PITD**
      - Tarif de livraison au point d’interface transport/distribution (€/MWh/j/an)
    * - **coef_stockage**
-     - Coefficient unitaire de stockage (€/MWh), ex : 139,06 €/MWh pour 2024–2025
+     - Coefficient unitaire de stockage (€/MWh), ex : 139,06 €/MWh for 2024–2025
    * - **TS**
      - Terme de stockage : ``TS = Modulation_hivernale × coef_stockage``
    * - **Total ATRT**
      - Coût global d’accès au réseau de transport : ``ATRT = CJN × (TCS + TCR × NTR + TCL) + TS``
 
-L’addition de ces composantes donne le coût total du transport (ATRT) sur la période.
+L’addition de ces composantes donne le coût total du transport (ATRT) on la période.
 
 ------------------------------------------------------------
 2. Taxes et contributions
@@ -116,14 +116,14 @@ Cette partie regroupe les taxes et contributions obligatoires appliquées à la 
    * - Composant
      - Description
    * - **TICGN**
-     - Taxe Intérieure sur la Consommation de Gaz Naturel
+     - Taxe Intérieure on la Consommation de Gaz Naturel
    * - **CTA**
-     - Contribution Tarifaire d’Acheminement (part sociale sur l’acheminement)
+     - Contribution Tarifaire d’Acheminement (part sociale on l’acheminement)
 
 **Calcul of the AHU (Contribution Tarifaire d’Acheminement)**
 
 La CTA est une contribution sociale appliquée à la part fixe de l’acheminement (ATRD).  
-Elle est calculée selon la formule suivante :
+Elle est calculée according to la formule suivante :
 
 .. code-block:: text
 
@@ -136,28 +136,28 @@ où :
 - **4,71 %** : taux appliqué à la part transport
 - **Coefficient** : coefficient de proportionnalité (exemple : 83,21)
 
-Les valeurs des taux et du coefficient sont fixées par la réglementation et peuvent évoluer.
+Les valeurs des taux et du coefficient sont fixées by la réglementation et peuvent évoluer.
 
-**Calcul de la TICGN (Taxe Intérieure sur la Consommation de Gaz Naturel)**
+**Calcul de la TICGN (Taxe Intérieure on la Consommation de Gaz Naturel)**
 
-La TICGN est une taxe appliquée sur la quantité de gaz naturel consommée.  
-Elle se calcule simplement en multipliant la consommation totale (en kWh) par le taux unitaire de la TICGN.
+La TICGN est une taxe appliquée on la quantité de gaz naturel consommée.  
+Elle se calcule simplement en multipliant la consommation totale (en kWh) by le taux unitaire de la TICGN.
 
 .. code-block:: text
 
    TICGN = Consommation totale (kWh) × taux TICGN (€/kWh)
 
-Par exemple, pour une consommation totale de 100 000 kWh et un taux TICGN de 0,00837 €/kWh :
+Par exemple, for une consommation totale de 100 000 kWh et un taux TICGN de 0,00837 €/kWh :
 
    TICGN = 100 000 × 0,00837 = 837,00 €
 
-Le taux TICGN est fixé par la réglementation et peut évoluer chaque année.
+Le taux TICGN est fixé by la réglementation et peut évoluer chaque année.
 
 ------------------------------------------------------------
 3. Fourniture
 ------------------------------------------------------------
 
-La part fourniture correspond à la consommation de gaz facturée par le fournisseur. Elle dépend du volume de gaz consommé (en kWh ou MWh) et du prix unitaire négocié dans le contrat de fourniture.
+La part fourniture correspond à la consommation de gaz facturée by le fournisseur. Elle dépend du volume de gaz consommé (en kWh ou MWh) et du prix unitaire négocié in le contrat de fourniture.
 
 .. list-table::
    :header-rows: 1
@@ -166,7 +166,7 @@ La part fourniture correspond à la consommation de gaz facturée par le fournis
    * - Composant
      - Description
    * - **Fourniture**
-     - Coût de la consommation de gaz (énergie fournie par le fournisseur)
+     - Coût de la consommation de gaz (énergie fournie by le fournisseur)
 
 ------------------------------------------------------------
 4. Modèle de calcul et exemple Python
@@ -179,7 +179,7 @@ Cette section présente un exemple d’utilisation des fonctions Python to calcu
 .. note::
 
    Dans cet exemple, la facture donne directement les valeurs de `CJN_MWh_j` (capacité journalière normalisée) et de `modulation_MWh_j` (la modulation hivernale).  
-   Si ces paramètres sont renseignés (`CJN_MWh_j=93`, `modulation_MWh_j=20.891`), ils ne sont donc pas recalculés par le modèle mais utilisés tels quels dans le calcul.
+   Si ces paramètres sont renseignés (`CJN_MWh_j=93`, `modulation_MWh_j=20.891`), ils ne sont donc pas recalculés by le modèle mais utilisés tels quels in le calcul.
 
 .. code-block:: python
 
@@ -225,9 +225,9 @@ Cette section présente un exemple d’utilisation des fonctions Python to calcu
        atr.plot_detail()
        atr.plot_euro_MWh()
 
-Les paramètres à renseigner dans `input_Contrat`, `input_Facture` et `input_Tarif` sont détaillés ci-dessous. Adaptez-les selon votre contrat et votre consommation.
+Les paramètres à renseigner in `input_Contrat`, `input_Facture` et `input_Tarif` sont détaillés ci-dessous. Adaptez-les according to votre contrat et votre consommation.
 
-**Tableau des paramètres d'entrée pour le calcul gaz**
+**Tableau des paramètres d'entrée for le calcul gaz**
 
 ***Declare a Contract gaz***
 
@@ -274,7 +274,7 @@ Les paramètres à renseigner dans `input_Contrat`, `input_Facture` et `input_Ta
      - Start and end of billing period
    * - kWh_total
      -  ≥ 0
-     - Consommation totale sur la période (kWh)
+     - Consommation totale on la période (kWh)
 
 ***Déclarer vos tarifs gaz***
 
@@ -291,7 +291,7 @@ Les paramètres à renseigner dans `input_Contrat`, `input_Facture` et `input_Ta
 
 .. admonition:: Remarque
 
-   Les fonctions ATRD_calculation et ATRT_calculation allow to distinguer le coût d’acheminement sur le réseau de distribution et sur le réseau de transport. Les résultats sont affichés séparément pour chaque composante.
+   Les fonctions ATRD_calculation et ATRT_calculation allow to distinguer le coût d’acheminement on le réseau de distribution et on le réseau de transport. Les résultats sont affichés séparément for chaque composante.
 
 .. toctree::
    :maxdepth: 1

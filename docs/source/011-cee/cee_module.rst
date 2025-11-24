@@ -5,7 +5,7 @@ Certificats d'Économies d'Energy
 
    from CEE.CEE import calcul_CEE
 
-   # Calculationation CEE pour une opération d'isolation
+   # Calculationationation CEE for une opération d'isolation
    # Fiche BAR-EN-101 : Isolation de combles ou de toitures
    kWh_cumac = calcul_CEE(
        fiche="BAR-EN-101",         # Code fiche standardisée
@@ -28,7 +28,7 @@ Fiches principales
 
 .. code-block:: python
 
-   # Pompe à chaleur air/eau
+   # Air/water heat pump
    calcul_CEE(fiche="BAR-TH-104", puissance=12, zone="H1", type_pac="air/eau")
    
    # Chaudière haute performance
@@ -63,7 +63,7 @@ Fiches principales
    # Variateurs de vitesse
    calcul_CEE(fiche="IND-UT-102", puissance_moteur=55, heures_fonctionnement=6000)
    
-   # Récupération chaleur fatale
+   # Waste heat recovery
    calcul_CEE(fiche="IND-UT-103", puissance_recuperee=500, heures_fonctionnement=5000)
 
 Projet multi-opérations
@@ -82,7 +82,7 @@ Projet multi-opérations
        {"fiche": "BAT-TH-113", "surface_gtb": 3000}
    ]
 
-   # Calculationation pour chaque opération
+   # Calculationationation for chaque opération
    total_kWh_cumac = 0
    details = []
 

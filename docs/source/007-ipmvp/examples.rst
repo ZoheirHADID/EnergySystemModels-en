@@ -19,7 +19,7 @@ IPMVP - Measurement and Verification
        base_refroidissement=23      # Base de calcul DJU refroidissement
    )
 
-   # 2. Fusionner avec vos données de consommation
+   # 2. Fusionner with vos données de consommation
    df = df_month.copy()
    df['consommation_kWh'] = [12500, 11800, ...]  # Vos factures mensuelles
 

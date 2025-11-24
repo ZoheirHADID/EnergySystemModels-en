@@ -1,7 +1,7 @@
 Usage du module IPMVP
 ===========================
 
-Le module IPMVP d'EnergySystemModels allows to créer des modèles de baseline et de calculer les économies d'énergie selon l'Option C.
+Le module IPMVP d'EnergySystemModels allows to créer des modèles de baseline et de calculer les économies d'énergie according to l'Option C.
 
 Example de base
 ---------------
@@ -95,7 +95,7 @@ Pour un modèle valide :
 Calcul des Degrés Jours Unifiés (DJU)
 --------------------------------------
 
-Les DJU sont essentiels pour les modèles de baseline thermiquement sensibles.
+Les DJU sont essentiels for les modèles de baseline thermiquement sensibles.
 
 DJU Chauffage
 ~~~~~~~~~~~~~
@@ -121,7 +121,7 @@ Example : base 21°C
 * Si T_ext = 28°C → DJU = 28 - 21 = **7 DJU**
 * Si T_ext = 18°C → DJU = **0 DJU**
 
-Calcul avec pandas
+Calcul with pandas
 ~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
@@ -131,7 +131,7 @@ Calcul avec pandas
    # Temperatures extérieures horaires
    df['T_ext'] = ...  # Données météo
 
-   # Calculationation des DJU journaliers
+   # Calculationationation des DJU journaliers
    df_daily = df.resample('D').mean()
    
    # DJU chauffage base 18
@@ -163,7 +163,7 @@ Critères ASHRAE Guideline 14
 où :
 
 * y_i = consommation mesurée
-* ŷ_i = consommation prédite par le modèle
+* ŷ_i = consommation prédite by le modèle
 * ȳ = consommation moyenne
 * n = nombre d'observations
 * p = nombre de paramètres du modèle
@@ -190,7 +190,7 @@ Le module IPMVP utilise la méthode du **z-score** :
 
    z_i = \frac{y_i - \bar{y}}{\sigma_y}
 
-Les points avec |z| > seuil (typiquement 3) sont considérés comme aberrants et exclus du modèle.
+Les points with |z| > seuil (typiquement 3) sont considérés comme aberrants et exclus du modèle.
 
 Analyse des résidus
 ~~~~~~~~~~~~~~~~~~~
@@ -295,7 +295,7 @@ Example
 
 .. code-block:: python
 
-   # Calculationation de l'incertitude
+   # Calculationationation de l'incertitude
    se = model.standard_error
    ic_90 = 1.645 * se
    ic_95 = 1.96 * se
@@ -329,7 +329,7 @@ Modèle journalier
 
 .. code-block:: python
 
-   # Agréger par jour
+   # Agréger by jour
    df_daily = df.resample('D').sum()
    X_daily = df_daily[variables]
    y_daily = df_daily['consommation_kWh']
@@ -341,14 +341,14 @@ Modèle mensuel
 
 .. code-block:: python
 
-   # Agréger par mois
+   # Agréger by mois
    df_monthly = df.resample('M').sum()
    X_monthly = df_monthly[variables]
    y_monthly = df_monthly['consommation_kWh']
 
    model_monthly = Mathematical_Models(y_monthly, X_monthly, ...)
 
-**Recommandation** : Utiliser des données mensuelles pour la plupart des projets (équilibre précision/simplicité).
+**Recommandation** : Utiliser des données mensuelles for la plupart des projets (équilibre précision/simplicité).
 
 Cas particuliers
 ----------------
@@ -374,7 +374,7 @@ Pour les sites industriels :
 Bâtiments multi-usages
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Séparer par usage si possible, sinon utiliser un modèle composite :
+Séparer by usage si possible, sinon utiliser un modèle composite :
 
 .. code-block:: python
 
@@ -388,7 +388,7 @@ Export des résultats
 
 .. code-block:: python
 
-   # Exporter vers Excel
+   # Exporter to Excel
    with pd.ExcelWriter('rapport_IPMVP.xlsx') as writer:
        model.df_baseline.to_excel(writer, sheet_name='Baseline')
        model.df_reporting.to_excel(writer, sheet_name='Reporting')

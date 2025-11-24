@@ -1,12 +1,12 @@
 Contexte IPMVP
 ==============
 
-Le module implémente l'Option C de l'IPMVP (analyse de bâtiment/site entier avec modèle statistique).
+Le module implémente l'Option C de l'IPMVP (analyse de bâtiment/site entier with modèle statistique).
 
 Option C : Principe
 -------------------
 
-Utilise les compteurs généraux et construit un modèle de régression pour établir la baseline :
+Utilise les compteurs généraux et construit un modèle de régression for établir la baseline :
 
 .. math::
 

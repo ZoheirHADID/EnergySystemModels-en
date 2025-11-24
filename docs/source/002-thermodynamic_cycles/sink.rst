@@ -20,7 +20,7 @@ Sink
     SINK.Inlet.P = 101325
     SINK.Inlet.h = 420000
 
-    # Calculationationate SINK
+    # Calculationationationate SINK
     SINK.calculate()
 
     # Print result

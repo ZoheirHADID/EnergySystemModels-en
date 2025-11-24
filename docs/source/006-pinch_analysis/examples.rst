@@ -6,11 +6,11 @@ Pinch Analysis
    import pandas as pd
    from PinchAnalysis import PinchAnalysis
 
-   # Create un DataFrame avec les flux thermiques
+   # Create a DataFrame with heat flows
    # Ti/To : temperatures initiale/finale [°C]
    # mCp : flow rate de capacité thermique [kW/K]
-   # dTmin2 : ΔTmin/2 pour chaque flux [K]
-   # integration : inclure le flux dans l'analyse
+   # dTmin2: ΔTmin/2 for each flow [K]
+   # integration: include the flow in the analysis
    df = pd.DataFrame({
        'Ti': [200, 125, 50, 45],      # 2 flux chauds, 2 flux froids
        'To': [50, 45, 250, 195],      
@@ -28,7 +28,7 @@ Pinch Analysis
    print(f"Cold Utility minimale: {pinch.Qc_min} kW")
    
    # Result DataFrames
-   print(pinch.stream_list)                    # Flux avec temperatures décalées
+   print(pinch.stream_list)                    # Flows with shifted temperatures
    print(pinch.df_intervals)                   # Intervalles de temperature
    print(pinch.df_surplus_deficit)             # Bilan énergétique
    print(pinch.df_composite_curve)             # Données courbes composites
@@ -39,7 +39,7 @@ Pinch Analysis
    pinch.plot_GCC()                            # Grand Composite Curve
    pinch.plot_streams_and_temperature_intervals()  # Flux et intervalles
    pinch.graphical_hen_design()                # Heat Exchanger Network
-   print("\nHeat Exchanger Network de chaleur :")
+   print("\nHeat Exchanger Network:")
    print(hen.df_matches)
 
    # Visualisation graphique du HEN
@@ -48,11 +48,11 @@ Pinch Analysis
 
 Le réseau d'échangeurs optimal pourrait ressembler à :
 
-* **E1** : H1 (200°C → 120°C) échange avec C2 (120°C → 195°C) → 240 kW
-* **E2** : H2 (125°C → 45°C) échange avec C1 (50°C → 130°C) → 200 kW
-* **E3** : H1 (120°C → 50°C) échange avec C1 (130°C → 250°C) → 210 kW
-* **E4** : C2 (45°C → 120°C) chauffé par utilité chaude → 300 kW
-* **E5** : H1 refroidi par utilité froide → 50 kW
+* **E1** : H1 (200°C → 120°C) exchanges with C2 (120°C → 195°C) → 240 kW
+* **E2** : H2 (125°C → 45°C) exchanges with C1 (50°C → 130°C) → 200 kW
+* **E3** : H1 (120°C → 50°C) exchanges with C1 (130°C → 250°C) → 210 kW
+* **E4** : C2 (45°C → 120°C) heated by hot utility → 300 kW
+* **E5** : H1 cooled by cold utility → 50 kW
 
 Example 2 : Optimisation d'une unité de distillation
 -----------------------------------------------------
@@ -100,12 +100,12 @@ L'analyse Pinch révèle que :
 
 * Le flux d'hydrocarbure chaud (H2) peut préchauffer la charge (C2)
 * Le rebouilleur nécessite toujours une utilité chaude (vapeur)
-* Le condenseur peut récupérer une partie de sa chaleur
+* The condenser can recover part of its heat
 
 Optimisation proposée :
 
 1. **Échangeur E1** : Hydrocarbure (180°C → 90°C) préchauffe la Charge (30°C → 120°C) → 360 kW récupérés
-2. **Hot Utility** : Vapeur chauffe le Rebouilleur → 300 kW requis (au lieu de 360 kW sans intégration)
+2. **Hot Utility** : Steam heats the Reboiler → 300 kW requis (instead of 360 kW without integration)
 3. **Cold Utility** : Eau de refroidissement refroidit le Condenseur → 125 kW requis
 
 **Économie annuelle** (estimée) :
@@ -113,7 +113,7 @@ Optimisation proposée :
 * Réduction de vapeur : 60 kW × 8000 h/an × 0,03 €/kWh = **14 400 €/an**
 * Réduction d'eau de refroidissement : économie additionnelle
 
-Example 3 : Intégration avec sources d'énergie multiples
+Example 3 : Intégration with sources d'énergie multiples
 ---------------------------------------------------------
 
 Contexte
@@ -143,7 +143,7 @@ Optimisation via la GCC
 La GCC allows to déterminer :
 
 * Quelle vapeur utiliser à quel niveau de temperature
-* Les économies potentielles en remplaçant la vapeur HP par de la vapeur BP quand possible
+* Les économies potentielles en remplaçant la vapeur HP by de la vapeur BP quand possible
 
 Example 4 : Analyse de flexibilité
 -----------------------------------
@@ -196,7 +196,7 @@ Plus ΔTmin est faible :
 * ✅ Moins d'utilités consommées → coûts opérationnels réduits
 * ❌ Plus de surface d'échange → coûts d'investissement élevés
 
-Le ΔTmin optimal se trouve par optimisation technico-économique (analyse TAC).
+Le ΔTmin optimal se trouve by optimisation technico-économique (analyse TAC).
 
 Example 5 : Export des résultats
 ---------------------------------
@@ -206,7 +206,7 @@ Sauvegarde des données
 
 .. code-block:: python
 
-   # Exporter les résultats vers Excel
+   # Exporter les résultats to Excel
    with pd.ExcelWriter('resultats_pinch.xlsx') as writer:
        pinch.stream_list.to_excel(writer, sheet_name='Flux', index=False)
        pinch.df_intervals.to_excel(writer, sheet_name='Intervalles', index=False)
@@ -221,14 +221,14 @@ Sauvegarde des données
        })
        df_summary.to_excel(writer, sheet_name='Résumé', index=False)
 
-   print("Results exportés vers resultats_pinch.xlsx")
+   print("Results exportés to resultats_pinch.xlsx")
 
 Génération de rapport automatique
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
-   # Create un rapport PDF avec tous les graphiques
+   # Create un rapport PDF with tous les graphiques
    from matplotlib.backends.backend_pdf import PdfPages
 
    with PdfPages('rapport_pinch.pdf') as pdf:
@@ -265,7 +265,7 @@ Bonnes pratiques
    
    * Vérifier que tous les flux chauds ont Ti > To
    * Vérifier que tous les flux froids ont Ti < To
-   * S'assurer que mCp > 0 pour tous les flux
+   * S'assurer que mCp > 0 for tous les flux
 
 2. **Choix du ΔTmin**
    
@@ -282,8 +282,8 @@ Bonnes pratiques
 4. **Itération**
    
    * Tester plusieurs configurations
-   * Varier le ΔTmin pour trouver l'optimum économique
-   * Intégrer progressivement les échangeurs par ordre de priorité
+   * Varier le ΔTmin for trouver l'optimum économique
+   * Intégrer progressivement les échangeurs by ordre de priorité
 
 Ressources complémentaires
 ---------------------------

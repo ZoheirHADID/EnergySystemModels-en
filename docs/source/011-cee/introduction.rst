@@ -23,7 +23,7 @@ Example
 
 Examples de fiches :
 
-* **BAR-TH-104** : Pompe à chaleur de type air/eau ou eau/eau (résidentiel)
+* **BAR-TH-104**: Air/water or water/water heat pump (residential)
 * **BAR-TH-106** : Chaudière individuelle à haute performance énergétique (résidentiel)
 * **BAR-EN-101** : Isolation de combles ou de toitures
 * **IND-UT-102** : Moteur électrique à vitesse variable
@@ -35,7 +35,7 @@ Valorisation des CEE
 Prix du MWh cumac
 ~~~~~~~~~~~~~~~~~
 
-Le prix des CEE varie selon l'offre et la demande :
+The CEE price varies according to supply and demand :
 
 * 2015-2017 : 3-5 €/MWh cumac
 * 2018-2021 : 7-12 €/MWh cumac
