@@ -19,4 +19,4 @@ DJU Refroidissement (base 23°C) :
 Usage
 -----------
 
-Les DJU sont automatiquement calculés par le module MeteoCiel_histoScraping.
+Les DJU are automatically calculated par le module MeteoCiel_histoScraping.

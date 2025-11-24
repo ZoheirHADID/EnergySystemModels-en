@@ -1,4 +1,4 @@
-10.1.2.1. Exemple BT < 36 kVA – CU4
+10.1.2.1. Example BT < 36 kVA – CU4
 --------------------------------------------
 
 .. code-block:: python

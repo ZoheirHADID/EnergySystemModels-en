@@ -1,11 +1,11 @@
 .. _meteo:
 
-8. Données Météorologiques
+8. Meteorological Data
 ===========================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Données Météo:
+   :caption: Weather Data:
 
    meteociel
    openweathermap

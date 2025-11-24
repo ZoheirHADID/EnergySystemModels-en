@@ -7,5 +7,5 @@
    :maxdepth: 2
    :caption: Hydraulic Models:
 
-   perte_pression_lineaire
+   perte_pressure_lineaire
    TA_valve

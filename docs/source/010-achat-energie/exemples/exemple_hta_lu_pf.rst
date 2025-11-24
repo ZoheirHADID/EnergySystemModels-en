@@ -1,4 +1,4 @@
-10.1.2.5. Exemple HTA – LU_pf
+10.1.2.5. Example HTA – LU_pf
 --------------------------------------------
 
 .. code-block:: python

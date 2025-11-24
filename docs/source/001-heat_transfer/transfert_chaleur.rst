@@ -2,20 +2,20 @@
 ===================================================================================================
 
 
-L'image ci-dessous montre un exemple de transfert de chaleur confectif et radiatif à travers un échangeur de chaleur à plaques non isolé dont la température de la paroi est de 60°C et la température ambiante est de 25°C.:
+The image below shows un exemple de transfert de chaleur confectif et radiatif à travers un échangeur de chaleur à plaques non isolé dont la temperature de la paroi est de 60°C et la temperature ambiante est de 25°C.:
 
 .. image:: ../images/PlateHeatTransfer.png
    :alt: Plate Heat Transfer
    :width: 300px
    :align: center
 
-Les déperditions de chaleur à travers les parois de l'échangeur de chaleur à plaques peuvent être calculées en utilisant la classe PlateHeatTransfer. Cette classe permet de calculer les déperditions de chaleur à travers les parois horizontales et verticales de l'échangeur de chaleur à plaques. Les déperditions de chaleur à travers les parois horizontales et verticales peuvent être calculées en utilisant les paramètres suivants :
+Les déperditions de chaleur à travers les parois de l'échangeur de chaleur à plaques peuvent être calculées en utilisant la classe PlateHeatTransfer. Cette classe allows to calculer les déperditions de chaleur à travers les parois horizontales et verticales de l'échangeur de chaleur à plaques. Les déperditions de chaleur à travers les parois horizontales et verticales peuvent être calculées en utilisant les paramètres suivants :
 
 .. code-block:: python
 
   from HeatTransfer import ParallelepipedicBody
 
-  # Exemple 
+  # Example 
   print("\n### EXEMPLE ###")
   thermal_measurements = {
       'top': {'Tp': 60.0, 'isolated': False},
@@ -49,12 +49,12 @@ Les déperditions de chaleur à travers les parois de l'échangeur de chaleur à
   print(f"Face avec le plus grand transfert: {objet.df.iloc[:-1]['Heat Transfer (W)'].idxmax()}")
   print(f"Valeur max: {objet.df.iloc[:-1]['Heat Transfer (W)'].max():.2f} W")
 
-Résultat
+Result
 --------
 
 **Dimensions:** L=0.6m x W=0.8m x H=1.5m
 
-**Température ambiante:** 25°C
+**Temperature ambiante:** 25°C
 
 **Tableau des résultats de transfert de chaleur:**
 
@@ -104,14 +104,14 @@ Résultat
 - **Face avec le plus grand transfert:** front et back (450.11 W chacune)
 - **Transfert maximal par face:** 450.11 W
 
-Explication des équations utilisées
+Explanation of Equations Used
 -----------------------------------
 
-La classe `PlateHeatTransfer` utilise différentes équations pour calculer les déperditions de chaleur en fonction de l'orientation de la plaque (horizontale ou verticale). Voici les principales équations utilisées :
+La classe `PlateHeatTransfer` utilise différentes équations to calculate les déperditions de chaleur as a function of l'orientation de la plaque (horizontale ou verticale). Voici les principales équations utilisées :
 
 ### Paramètres calculés
 
-- **Température du film (Tf)** : Température moyenne entre la paroi et l'air ambiant.
+- **Temperature du film (Tf)** : Temperature moyenne entre la paroi et l'air ambiant.
 .. math::
 
   Tf = \frac{Tp + Ta}{2}
@@ -121,7 +121,7 @@ La classe `PlateHeatTransfer` utilise différentes équations pour calculer les 
 
   v = \frac{\mu}{\rho_{ref}}
 
-- **Densité à la température du film (ρ)** :
+- **Densité à la temperature du film (ρ)** :
 .. math::
 
   \rho = \rho_{ref} \left(1 - \beta (Tf - 20)\right)

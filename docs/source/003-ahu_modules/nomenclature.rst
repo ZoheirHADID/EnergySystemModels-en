@@ -11,11 +11,11 @@ Nomenclature
      - Description (English)
      - Unité
    * - F
-     - Débit massique d'air
+     - Flow rate massique d'air
      - Air Mass Flow Rate
      - kg/s
    * - F_dry
-     - Débit massique d'air sec
+     - Flow rate massique d'air sec
      - Dry Air Mass Flow Rate
      - kg/s
    * - h_in
@@ -35,19 +35,19 @@ Nomenclature
      - Outlet Air Port
      - -
    * - P
-     - Pression atmosphérique
+     - Pressure atmosphérique
      - Atmospheric Pressure
      - Pascal
    * - P_drop
-     - Perte de pression
+     - Perte de pressure
      - Pressure Drop
      - Pascal
    * - Pv
-     - Pression partielle de vapeur d'eau
+     - Pressure partielle de vapeur d'eau
      - Partial Water Vapor Pressure
      - Pascal
    * - Pv_sat
-     - Pression de vapeur saturée
+     - Pressure de vapeur saturée
      - Saturated Vapor Pressure
      - Pascal
    * - Qth
@@ -63,23 +63,23 @@ Nomenclature
      - Outlet Relative Humidity
      - %
    * - T
-     - Température
+     - Temperature
      - Temperature
      - °C
    * - T_db
-     - Température sèche
+     - Temperature sèche
      - Dry Bulb Temperature
      - °C
    * - To_target
-     - Température cible de sortie
+     - Temperature cible de sortie
      - Target Outlet Temperature
      - °C
    * - Td
-     - Température de rosée
+     - Temperature de rosée
      - Dew Point Temperature
      - °C
    * - Tk
-     - Température en Kelvin
+     - Temperature en Kelvin
      - Temperature in Kelvin
      - K
    * - w

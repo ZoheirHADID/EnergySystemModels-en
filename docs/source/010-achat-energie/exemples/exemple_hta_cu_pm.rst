@@ -1,4 +1,4 @@
-10.1.2.4. Exemple HTA – CU_pm
+10.1.2.4. Example HTA – CU_pm
 --------------------------------------------
 
 .. code-block:: python

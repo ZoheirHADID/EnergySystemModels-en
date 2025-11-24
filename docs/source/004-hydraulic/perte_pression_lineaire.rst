@@ -144,34 +144,34 @@ Nomenclature
      - Description
      - Unité
    * - Ti_degC
-     - Température d'entrée en degrés Celsius
+     - Temperature inlet in degrees Celsius
      - °C
    * - Pi_bar
-     - Pression d'entrée en bars
+     - Pressure inlet in bars
      - bar
    * - F_Sm3h
-     - Débit volumétrique standard en mètres cubes par heure
+     - Flow rate standard volumetric in cubic meters per hour
      - m³/h
    * - F_Nm3h
-     - Débit volumétrique normal en mètres cubes par heure
+     - Flow rate normal volumetric in cubic meters per hour
      - m³/h
    * - F_m3h
-     - Débit volumétrique en mètres cubes par heure
+     - Flow rate volumetric in cubic meters per hour
      - m³/h
    * - F_kgh
-     - Débit massique en kilogrammes par heure
+     - Flow rate mass in kilograms per hour
      - kg/h
    * - F_kgs
-     - Débit massique en kilogrammes par seconde
+     - Flow rate mass in kilograms per second
      - kg/s
    * - F_m3s
-     - Débit volumétrique en mètres cubes par seconde
+     - Flow rate volumétrique en mètres cubes par seconde
      - m³/s
    * - F_Sm3s
-     - Débit volumétrique standard en mètres cubes par seconde
+     - Flow rate volumétrique standard en mètres cubes par seconde
      - m³/s
    * - Inlet.F
-     - Débit massique à l'entrée en kilogrammes par seconde
+     - Flow rate massique à l'entrée en kilogrammes par seconde
      - kg/s
    * - Inlet.h
      - Enthalpie à l'entrée en joules par kilogramme
@@ -189,10 +189,10 @@ Nomenclature
      - Nombre de Reynolds
      - -
    * - delta_P
-     - Perte de pression en pascals
+     - Perte de pressure en pascals
      - Pa
    * - Inlet.P
-     - Pression à l'entrée en pascals
+     - Pressure à l'entrée en pascals
      - Pa
    * - H
      - Puissance en watts
@@ -201,16 +201,16 @@ Nomenclature
      - Qualité du fluide
      - -
    * - Q
-     - Débit thermique
+     - Flow rate thermique
      - -
    * - D
      - Densité en kilogrammes par mètre cube
      - kg/m³
    * - Ti
-     - Température d'entrée en Kelvin
+     - Temperature inlet in Kelvin
      - K
    * - To
-     - Température de sortie en Kelvin
+     - Temperature outlet in Kelvin
      - K
    * - roughness
      - Rugosité de la surface
@@ -231,7 +231,7 @@ Nomenclature
      - Hauteur du tuyau en mètres
      - m
    * - delta_H
-     - Perte de pression en mètres
+     - Perte de pressure en mètres
      - m
    * - eta
      - Viscosité dynamique du fluide
@@ -240,13 +240,13 @@ Nomenclature
      - Densité du fluide
      - kg/m³
    * - delta_P
-     - Perte de pression due aux frottements
+     - Perte de pressure due aux frottements
      - Pa
    * - diff_P
-     - Différence de pression entre l'entrée et la sortie
+     - Différence de pressure entre l'entrée et la sortie
      - Pa
    * - m_flow
-     - Débit massique en kilogrammes par seconde
+     - Flow rate mass in kilograms per second
      - kg/s
    * - perimeter
      - Périmètre

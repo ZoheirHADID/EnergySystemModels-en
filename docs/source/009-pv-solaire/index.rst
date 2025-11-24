@@ -5,6 +5,6 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: PV Solaire:
+   :caption: Solar PV:
 
    exemples

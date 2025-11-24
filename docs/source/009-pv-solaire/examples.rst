@@ -5,8 +5,8 @@ Production Photovoltaïque
 
    from PV.ProductionElectriquePV import SolarSystem
 
-   # Créer un système PV avec paramètres géographiques
-   # latitude/longitude : coordonnées GPS
+   # Create un système PV avec paramètres géographiques
+   # latitude/longitude : GPS coordinates
    # tilt : inclinaison des panneaux [degrés]
    # azimuth : orientation (180=Sud, 90=Est, 270=Ouest)
    # system_capacity : puissance crête [kWc]
@@ -20,16 +20,16 @@ Production Photovoltaïque
        system_capacity=6.0      # 6 kWc
    )
 
-   # Récupérer les données modules/onduleurs depuis PVGIS
+   # Retrieve les données modules/onduleurs depuis PVGIS
    system.retrieve_module_inverter_data()
    
-   # Récupérer les données météo annuelles
+   # Retrieve les données météo annuelles
    system.retrieve_weather_data()
    
-   # Calculate la production
+   # Calculationate the production
    system.calculate_solar_parameters()
 
-   # Accéder aux résultats
+   # Access results
    annual_prod = system.annual_production       # Production annuelle [kWh]
    specific_yield = annual_prod / 6.0           # Productible [kWh/kWc/an]
 
@@ -37,7 +37,7 @@ Production Photovoltaïque
    print(f"Productible spécifique : {specific_yield:.0f} kWh/kWc/an")
    print(system.df_results)  # DataFrame avec production horaire
 
-   # Calcul économique (exemple autoconsommation 40%)
+   # Calculation économique (exemple autoconsommation 40%)
    autoconso_rate = 0.40
    energy_selfconsumed = annual_prod * autoconso_rate      # Energy autoconsommée
    energy_injected = annual_prod * (1 - autoconso_rate)    # Energy injectée

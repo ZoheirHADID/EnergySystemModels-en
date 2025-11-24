@@ -1,6 +1,6 @@
 .. _exemple_ahu_frais:
 
-Exemple de AHU Frais
+Example de AHU Frais
 ====================
 
 .. code-block:: python
@@ -15,7 +15,7 @@ Exemple de AHU Frais
     from AHU import HeatingCoil
     #composant Humidificateur (vapeur ou adiabatique)
     from AHU.Humidification import Humidifier
-    # connexion entre les composants
+    # connection between components
     from AHU.Connect import Air_connect
 
     ##########Création des Objets
@@ -42,16 +42,16 @@ Exemple de AHU Frais
 
     #enregistrer les résultats du module d'air neuf
     print("Humidité Absolue de l'Air Frais  g/kg_as",round(AN.w,1))
-    print("Pression de Vapeur Saturée de l'Air Frais   Pa",round(AN.Pvsat,0))
-    print("Température de Bulbe Humide de l'Air Frais  °C",round(AN.T_hum,1))
+    print("Pressure de Vapeur Saturée de l'Air Frais   Pa",round(AN.Pvsat,0))
+    print("Temperature de Bulbe Humide de l'Air Frais  °C",round(AN.T_hum,1))
     print("Enthalpie Spécifique de l'Air Frais  KJ/Kg_as",round(AN.h,3))
 
     #enregistrer les résultats de la Batterie de préchauffage
     print("Enthalpie Spécifique de la Batterie de Chauffage KJ/Kg_as",round(BC.ho,1))
     print("Puissance Thermique de la Batterie de Chauffage  kW",round(BC.Qth,1))
     print("Humidité Relative de la Batterie de Chauffage %",round(BC.RH_out,1))
-    print("Débit Massique de Vapeur de l'Humidificateur Kg/s",round(HMD.F_water,3))  
-    print("Débit Massique d'Air Sec de l'Humidificateur Kg/s",round(HMD.F_dry,3)) 
+    print("Flow rate Massique de Vapeur de l'Humidificateur Kg/s",round(HMD.F_water,3))  
+    print("Flow rate Massique d'Air Sec de l'Humidificateur Kg/s",round(HMD.F_dry,3)) 
 
     # =============================================================================
     # Fin du Modèle AHU

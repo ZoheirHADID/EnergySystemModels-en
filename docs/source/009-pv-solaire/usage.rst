@@ -8,7 +8,7 @@ Example de base
 
    from PV.ProductionElectriquePV import SolarSystem
 
-   # Créer un système solaire
+   # Create un système solaire
    system = SolarSystem(
        latitude=48.8566,          # Latitude (Paris)
        longitude=2.3522,          # Longitude
@@ -19,13 +19,13 @@ Example de base
        system_capacity=48.9       # Power crête (kWp)
    )
 
-   # Récupérer les données de modules et onduleurs
+   # Retrieve les données de modules et onduleurs
    system.retrieve_module_inverter_data()
 
-   # Récupérer les données météorologiques
+   # Retrieve les données météorologiques
    system.retrieve_weather_data()
 
-   # Calculate la production
+   # Calculationate the production
    system.calculate_solar_parameters()
 
    # Visualize
@@ -64,7 +64,7 @@ Export Excel
 
    import pandas as pd
 
-   # Créer un DataFrame
+   # Create un DataFrame
    df_prod = pd.DataFrame({
        'Mois': ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin',
                 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'],

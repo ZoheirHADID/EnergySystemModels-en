@@ -7,4 +7,4 @@
    :maxdepth: 2
    :caption: Aeraulic Models:
 
-   perte_pression_lineaire
+   perte_pressure_lineaire

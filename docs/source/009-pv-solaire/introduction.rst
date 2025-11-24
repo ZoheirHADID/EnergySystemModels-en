@@ -1,7 +1,7 @@
 Introduction au Module PV
 =========================
 
-Le module PV permet de simuler la production photovoltaïque en utilisant pvlib.
+Le module PV allows to simuler the production photovoltaïque en utilisant pvlib.
 
 Example rapide
 --------------

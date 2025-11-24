@@ -4,7 +4,7 @@ Introduction au module IPMVP
 Objectif
 --------
 
-Le module IPMVP d'EnergySystemModels permet de quantifier les économies d'énergie selon le protocole IPMVP (Option C) en créant des modèles de baseline basés sur des régressions polynomiales.
+Le module IPMVP d'EnergySystemModels allows to quantifier les économies d'énergie selon le protocole IPMVP (Option C) en créant des modèles de baseline basés sur des régressions polynomiales.
 
 Principe
 --------

@@ -1,11 +1,11 @@
-10.1.2.3. Exemple HTA – CU_pf
+10.1.2.3. Example HTA – CU_pf
 --------------------------------------------
 
 .. code-block:: python
 
     from Facture.TURPE import input_Contrat, TurpeCalculator, input_Facture, input_Tarif
 
-    # Exemple cohérent : puissance souscrite typique pour un contrat HTA CU_pf (ex : 500 kW)
+    # Example cohérent : puissance souscrite typique pour un contrat HTA CU_pf (ex : 500 kW)
     contrat = input_Contrat(
         domaine_tension="HTA",
         PS_pointe=500,

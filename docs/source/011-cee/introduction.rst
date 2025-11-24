@@ -1,7 +1,7 @@
 Introduction au Module CEE
 ==========================
 
-Le module CEE permet de calculer les certificats d'économies d'énergie.
+Le module CEE allows to calculer les certificats d'économies d'énergie.
 
 Example
 -------
@@ -57,7 +57,7 @@ Example :
 Module CEE d'EnergySystemModels
 --------------------------------
 
-Le module CEE permet de :
+Le module CEE allows to :
 
 * Calculate les économies d'énergie
 * Estimer les kWh cumac éligibles

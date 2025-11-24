@@ -1,7 +1,7 @@
 Usage du module IPMVP
 ===========================
 
-Le module IPMVP d'EnergySystemModels permet de créer des modèles de baseline et de calculer les économies d'énergie selon l'Option C.
+Le module IPMVP d'EnergySystemModels allows to créer des modèles de baseline et de calculer les économies d'énergie selon l'Option C.
 
 Example de base
 ---------------
@@ -27,7 +27,7 @@ Example de base
    X = df[['DJU_chaud', 'DJU_froid']]  # Variables indépendantes
    y = df['consommation_kWh']  # Variable dépendante
 
-   # Créer le modèle IPMVP
+   # Create le modèle IPMVP
    model = Mathematical_Models(
        y, X,
        start_baseline, end_baseline,
@@ -131,7 +131,7 @@ Calcul avec pandas
    # Temperatures extérieures horaires
    df['T_ext'] = ...  # Données météo
 
-   # Calcul des DJU journaliers
+   # Calculation des DJU journaliers
    df_daily = df.resample('D').mean()
    
    # DJU chauffage base 18
@@ -257,7 +257,7 @@ Example de résultat
 
 .. code-block:: python
 
-   # Accéder aux résultats
+   # Access results
    print(f"Économies annuelles : {model.total_savings:.0f} kWh")
    print(f"Économies moyennes mensuelles : {model.monthly_avg_savings:.0f} kWh/mois")
    print(f"Réduction relative : {model.savings_percentage:.1f}%")
@@ -295,7 +295,7 @@ Example
 
 .. code-block:: python
 
-   # Calcul de l'incertitude
+   # Calculation de l'incertitude
    se = model.standard_error
    ic_90 = 1.645 * se
    ic_95 = 1.96 * se
@@ -305,7 +305,7 @@ Example
    print(f"Intervalle de confiance 95% : ± {ic_95:.0f} kWh")
 
    # Reporting
-   print(f"\nRésultat : {model.total_savings:.0f} ± {ic_95:.0f} kWh (IC 95%)")
+   print(f"\nResult : {model.total_savings:.0f} ± {ic_95:.0f} kWh (IC 95%)")
 
 Granularités temporelles
 -------------------------

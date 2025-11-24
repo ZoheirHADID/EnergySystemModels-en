@@ -16,8 +16,8 @@ Result DataFrames
 
 .. code-block:: python
 
-   pinch.stream_list                         # Flux avec températures décalées
-   pinch.df_intervals                        # Intervalles de température
+   pinch.stream_list                         # Flux avec temperatures décalées
+   pinch.df_intervals                        # Intervalles de temperature
    pinch.df_decomposition_flux               # Décomposition par intervalle
    pinch.df_surplus_deficit                  # Surplus/déficit énergétique
    pinch.df_composite_curve                  # Données courbes composites
@@ -35,10 +35,10 @@ Calculated Attributes
      - 50
      - 200
 
-Intervalles de température
+Intervalles de temperature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On crée une liste de tous les changements de température dans le système pour diviser le problème en intervalles.
+On crée une liste de tous les changements de temperature dans le système pour diviser le problème en intervalles.
 
 Étape 3 : Calcul du problème table (Problem Table)
 --------------------------------------------------
@@ -46,7 +46,7 @@ On crée une liste de tous les changements de température dans le système pour
 Bilan énergétique par intervalle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pour chaque intervalle de température, on calcule :
+Pour chaque intervalle de temperature, on calcule :
 
 * **Heat disponible** (flux chauds traversant l'intervalle)
 * **Heat requise** (flux froids traversant l'intervalle)
@@ -75,7 +75,7 @@ Courbe Composite Chaude (CCC)
 
 Construction :
 
-1. Tracer chaque flux chaud dans le diagramme H-T (enthalpie-température)
+1. Tracer chaque flux chaud dans le diagramme H-T (enthalpie-temperature)
 2. Décaler verticalement de -ΔTmin/2
 3. Sommer horizontalement tous les flux chauds
 
@@ -105,8 +105,8 @@ Le point Pinch est visible sur les courbes composites :
 
 La GCC se construit en :
 
-1. Calculant la différence entre CCC et CCF à chaque température
-2. Traçant cette différence en fonction de la température décalée
+1. Calculant la différence entre CCC et CCF à chaque temperature
+2. Traçant cette différence as a function of la temperature décalée
 
 Interprétation de la GCC
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,7 +120,7 @@ Interprétation de la GCC
 La GCC permet d'optimiser le positionnement des utilités :
 
 * Vapeur HP/MP/BP
-* Eau de refroidissement à différentes températures
+* Eau de refroidissement à différentes temperatures
 * Réfrigération
 
 Étape 6 : Conception du réseau d'échangeurs (HEN)
@@ -157,7 +157,7 @@ En pratique, on ajoute souvent des échangeurs supplémentaires pour :
 
 * Améliorer la flexibilité opérationnelle
 * Faciliter la maintenance
-* Respecter les contraintes de procédé (pression, encrassement, etc.)
+* Respecter les contraintes de procédé (pressure, encrassement, etc.)
 
 Optimisation coût-énergie
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -178,8 +178,8 @@ L'optimum économique se trouve en analysant le **coût total annualisé (TAC)**
 
 Il est important d'analyser la robustesse de la solution vis-à-vis de :
 
-* Variations de débits
-* Variations de températures
+* Variations de flow rates
+* Variations de temperatures
 * Disponibilité des flux (arrêts, maintenance)
 * Modes opératoires différents (démarrage, arrêt, régime partiel)
 

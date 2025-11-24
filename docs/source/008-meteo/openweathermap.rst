@@ -10,7 +10,7 @@ Configuration
 Usage
 -----------
 
-Par coordonnées GPS
+Par GPS coordinates
 ~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python

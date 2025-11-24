@@ -22,7 +22,7 @@ Example of heat transfer simulation in a composite wall:
     wall.add_layer(thickness=0.05, material='Polystyrène')  # Polystyrene
     wall.add_layer(thickness=0.02, material='Plâtre')  # Plaster
 
-    # Calculate heat transfer and temperatures at each layer interface
+    # Calculationate heat transfer and temperatures at each layer interface
     wall.calculate()
     wall.df
     print(f"df = {wall.df}")
@@ -173,8 +173,8 @@ The composite wall heat transfer model uses the following equations to calculate
    - The external wall temperature after convective resistance is calculated as follows:
      .. math::
        T_{\text{external wall}} = T_e + \frac{Q \cdot R_e}{A}
-   - Les températures aux interfaces des couches sont ensuite calculées en utilisant le flux thermique et les résistances thermiques :
+   - Les temperatures aux interfaces des couches sont ensuite calculées en utilisant le flux thermique et les résistances thermiques :
      .. math::
        T_{\text{interface}} = T_{\text{précédente}} + \frac{Q \cdot R_{\text{couche}}}{A}
 
-Ces équations permettent de déterminer la distribution de température à travers le mur composite et le flux thermique total traversant le mur.
+Ces équations allow to déterminer la distribution de temperature à travers le mur composite et le flux thermique total traversant le mur.

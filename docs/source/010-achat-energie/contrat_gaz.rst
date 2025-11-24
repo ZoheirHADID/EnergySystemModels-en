@@ -120,7 +120,7 @@ Cette partie regroupe les taxes et contributions obligatoires appliquées à la 
    * - **CTA**
      - Contribution Tarifaire d’Acheminement (part sociale sur l’acheminement)
 
-**Calcul de la CTA (Contribution Tarifaire d’Acheminement)**
+**Calcul of the AHU (Contribution Tarifaire d’Acheminement)**
 
 La CTA est une contribution sociale appliquée à la part fixe de l’acheminement (ATRD).  
 Elle est calculée selon la formule suivante :
@@ -172,9 +172,9 @@ La part fourniture correspond à la consommation de gaz facturée par le fournis
 4. Modèle de calcul et exemple Python
 ------------------------------------------------------------
 
-Cette section présente un exemple d’utilisation des fonctions Python pour calculer les différentes composantes d’une facture de gaz naturel.
+Cette section présente un exemple d’utilisation des fonctions Python to calculate les différentes composantes d’une facture de gaz naturel.
 
-**Exemple de calcul ATR (ATRD + ATRT) en Python :**
+**Example de calcul ATR (ATRD + ATRT) en Python :**
 
 .. note::
 
@@ -291,7 +291,7 @@ Les paramètres à renseigner dans `input_Contrat`, `input_Facture` et `input_Ta
 
 .. admonition:: Remarque
 
-   Les fonctions ATRD_calculation et ATRT_calculation permettent de distinguer le coût d’acheminement sur le réseau de distribution et sur le réseau de transport. Les résultats sont affichés séparément pour chaque composante.
+   Les fonctions ATRD_calculation et ATRT_calculation allow to distinguer le coût d’acheminement sur le réseau de distribution et sur le réseau de transport. Les résultats sont affichés séparément pour chaque composante.
 
 .. toctree::
    :maxdepth: 1

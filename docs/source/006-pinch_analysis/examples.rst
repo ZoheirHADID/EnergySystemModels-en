@@ -6,9 +6,9 @@ Pinch Analysis
    import pandas as pd
    from PinchAnalysis import PinchAnalysis
 
-   # Créer un DataFrame avec les flux thermiques
-   # Ti/To : températures initiale/finale [°C]
-   # mCp : débit de capacité thermique [kW/K]
+   # Create un DataFrame avec les flux thermiques
+   # Ti/To : temperatures initiale/finale [°C]
+   # mCp : flow rate de capacité thermique [kW/K]
    # dTmin2 : ΔTmin/2 pour chaque flux [K]
    # integration : inclure le flux dans l'analyse
    df = pd.DataFrame({
@@ -22,14 +22,14 @@ Pinch Analysis
    # Create the object d'analyse
    pinch = PinchAnalysis.Object(df)
    
-   # Accéder aux résultats
+   # Access results
    print(f"Pinch Point: {pinch.T_pinch}°C")
    print(f"Hot Utility minimale: {pinch.Qh_min} kW")
    print(f"Cold Utility minimale: {pinch.Qc_min} kW")
    
    # Result DataFrames
-   print(pinch.stream_list)                    # Flux avec températures décalées
-   print(pinch.df_intervals)                   # Intervalles de température
+   print(pinch.stream_list)                    # Flux avec temperatures décalées
+   print(pinch.df_intervals)                   # Intervalles de temperature
    print(pinch.df_surplus_deficit)             # Bilan énergétique
    print(pinch.df_composite_curve)             # Données courbes composites
    print(pinch.df_heat_exchange_combinations)  # Combinaisons d'échange
@@ -140,9 +140,9 @@ Optimisation via la GCC
    plt.legend()
    plt.show()
 
-La GCC permet de déterminer :
+La GCC allows to déterminer :
 
-* Quelle vapeur utiliser à quel niveau de température
+* Quelle vapeur utiliser à quel niveau de temperature
 * Les économies potentielles en remplaçant la vapeur HP par de la vapeur BP quand possible
 
 Example 4 : Analyse de flexibilité
@@ -228,7 +228,7 @@ Génération de rapport automatique
 
 .. code-block:: python
 
-   # Créer un rapport PDF avec tous les graphiques
+   # Create un rapport PDF avec tous les graphiques
    from matplotlib.backends.backend_pdf import PdfPages
 
    with PdfPages('rapport_pinch.pdf') as pdf:
@@ -246,7 +246,7 @@ Génération de rapport automatique
 
        # Page 3 : Flux et intervalles
        pinch.plot_streams_and_temperature_intervals()
-       plt.title('Flux de procédé et intervalles de température')
+       plt.title('Flux de procédé et intervalles de temperature')
        pdf.savefig()
        plt.close()
 
@@ -271,12 +271,12 @@ Bonnes pratiques
    
    * Procédés standards : 10-20°C
    * Procédés cryogéniques : 3-5°C
-   * Procédés haute température : 20-40°C
+   * Procédés haute temperature : 20-40°C
 
 3. **Interprétation des résultats**
    
    * Comparer les économies d'énergie au coût d'investissement
-   * Vérifier la faisabilité technique (contraintes de pression, encrassement)
+   * Vérifier la faisabilité technique (contraintes de pressure, encrassement)
    * Analyser la robustesse face aux variations de procédé
 
 4. **Itération**

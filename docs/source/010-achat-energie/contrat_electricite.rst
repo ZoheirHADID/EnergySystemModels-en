@@ -50,7 +50,7 @@ La formule générale du TURPE est donc :
 
 .. admonition:: Guide d'utilisation du calcul TURPE
 
-   Voici un exemple d'utilisation des fonctions pour calculer le TURPE :
+   Voici un exemple d'utilisation des fonctions to calculate le TURPE :
 
    .. code-block:: python
 
@@ -101,7 +101,7 @@ La formule générale du TURPE est donc :
       # Création du calculateur TURPE
       turpe_calculator = TurpeCalculator(contrat, tarif, facture)
 
-      # Calcul du TURPE
+      # Calculation du TURPE
       turpe_calculator.calculate_turpe()
 
       # Affichage des résultats
@@ -165,7 +165,7 @@ La formule générale du TURPE est donc :
    * - MU_DT
      - Multi-usage double tarif
    * - LU
-     - Longue Utilisation
+     - Longue Usage
    * - CU4_ac
      - Contrat Unique 4 périodes avec autoproduction collective et/ou alimentation de secours
    * - MU_ac
@@ -182,11 +182,11 @@ La formule générale du TURPE est donc :
    * - CU
      - Contrat Unique (tarification standard BT > 36 kVA)
    * - LU
-     - Longue Utilisation (tarification spécifique pour usages prolongés)
+     - Longue Usage (tarification spécifique pour usages prolongés)
    * - CU_ac
      - Contrat Unique avec autoproduction collective et/ou alimentation de secours
    * - LU_ac
-     - Longue Utilisation avec autoproduction collective et/ou alimentation de secours
+     - Longue Usage avec autoproduction collective et/ou alimentation de secours
 
 ***HTA***
 
@@ -201,9 +201,9 @@ La formule générale du TURPE est donc :
    * - CU_pm
      - Contrat CU (Contrat Unique) avec pointe mobile
    * - LU_pf
-     - Contrat LU (Longue Utilisation) avec pointe fixe
+     - Contrat LU (Longue Usage) avec pointe fixe
    * - LU_pm
-     - Contrat LU (Longue Utilisation) avec pointe mobile
+     - Contrat LU (Longue Usage) avec pointe mobile
 
 ***Déclarer vos tarifs***
 
@@ -290,7 +290,7 @@ La formule générale du TURPE est donc :
 
 .. toctree::
    :maxdepth: 1
-   :caption: Exemples TURPE
+   :caption: Examples TURPE
 
    exemples/exemple_hta_cu_pf
    exemples/exemple_hta_cu_pm
