@@ -1,12 +1,22 @@
 .. _quickstart:
 
+===================
 Quick Start Guide
-=================
+===================
 
-This guide allows you to start using EnergySystemModels in just a few minutes.
+This guide allows you to start using **EnergySystemModels** in just a few minutes.
+
+.. contents:: Table of Contents
+   :local:
+   :depth: 2
+
+----
 
 Installation
-------------
+============
+
+Standard Method
+---------------
 
 Install the library via pip:
 
@@ -14,28 +24,52 @@ Install the library via pip:
 
    pip install energysystemmodels
 
-Or in a virtual environment:
+Virtual Environment (Recommended)
+----------------------------------
 
 .. code-block:: console
 
-   (.venv) $ pip install energysystemmodels
+   # Create a virtual environment
+   python -m venv .venv
+   
+   # Activate the environment (Windows)
+   .venv\Scripts\activate
+   
+   # Activate the environment (Linux/Mac)
+   source .venv/bin/activate
+   
+   # Install the library
+   pip install energysystemmodels
+
+.. tip::
+   Using a virtual environment is recommended to avoid dependency conflicts.
+
+----
 
 Usage Principle
+===============
+
+EnergySystemModels follows a simple and consistent **object-oriented** programming model.
+
+4-Step Workflow
 ---------------
 
-EnergySystemModels follows a simple and consistent object-oriented programming model:
+.. admonition:: Standard Workflow
+   :class: note
 
-1. **Create an object** representing an energy component
-2. **Define input parameters** (temperatures, pressures, flow rates, etc.)
-3. **Call the calculate() method** to perform calculations
-4. **Access results** via object attributes or DataFrame
+   1. **Create an object** representing an energy component
+   2. **Define input parameters** (temperatures, pressures, flow rates, etc.)
+   3. **Call the calculate() method** to perform calculations
+   4. **Access results** via object attributes or DataFrame
 
 Simple Example
-~~~~~~~~~~~~~~
+--------------
 
 Here is a minimal example to illustrate the principle:
 
 .. code-block:: python
+   :linenos:
+   :emphasize-lines: 4,7-9,12,15-17
 
    from HeatTransfer import CompositeWall
 
@@ -55,90 +89,215 @@ Here is a minimal example to illustrate the principle:
    print(f"Heat flux: {wall.Q:.2f} W")
    print(wall.df)  # DataFrame with all results
 
+.. seealso::
+   For more examples, see :doc:`usage`
+
+----
+
 Available Modules
------------------
+=================
 
 The library is organized into thematic modules:
 
-**Heat Transfer**
-  Thermal calculations for walls, pipes, heat exchangers
+Heat Transfer
+-------------
 
-**Thermodynamic Cycles**
-  Modeling of refrigeration cycles, heat pumps, compressors
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
 
-**Air Handling Units (AHU)**
-  Complete AHU simulation with coils, humidification, heat recovery
+   * - **Heat Transfer**
+     - Thermal calculations for walls, pipes, heat exchangers
 
-**Hydraulics**
-  Pressure drop calculations, pump and valve sizing
-
-**Energy Analysis**
-  Pinch Analysis, IPMVP, thermal integration optimization
-
-**Weather Data**
-  Retrieval of real-time or historical climate data
-
-**Solar Production**
-  Photovoltaic production simulation
-
-**Billing**
-  TURPE calculation, energy savings certificates (CEE)
-
-Units and Conventions
+Thermodynamic Systems
 ---------------------
 
-Default units are:
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
 
-- **Temperature**: °C
-- **Pressure**: bar
-- **Mass flow rate**: kg/s
-- **Volumetric flow rate**: m³/h
-- **Power**: kW
-- **Energy**: kWh
+   * - **Thermodynamic Cycles**
+     - Modeling of refrigeration cycles, heat pumps, compressors
+
+HVAC Systems
+------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Air Handling Units (AHU)**
+     - Complete AHU simulation with coils, humidification, heat recovery
+   * - **Hydraulics**
+     - Pressure drop calculations, pump and valve sizing
+
+Energy Optimization
+-------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Energy Analysis**
+     - Pinch Analysis, IPMVP, thermal integration optimization
+
+Data and Production
+-------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Weather Data**
+     - Retrieval of real-time or historical climate data
+   * - **Solar Production**
+     - Photovoltaic production simulation
+
+Billing and Certificates
+-------------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Billing**
+     - TURPE calculation, energy savings certificates (CEE)
+
+----
+
+Units and Conventions
+=====================
+
+.. important::
+   All inputs and outputs use the International System (SI) with these default units:
+
+.. list-table::
+   :widths: 40 30 30
+   :header-rows: 1
+   :class: striped
+
+   * - Physical Quantity
+     - Unit
+     - Symbol
+   * - Temperature
+     - Degree Celsius
+     - °C
+   * - Pressure
+     - Bar
+     - bar
+   * - Mass Flow Rate
+     - Kilogram per second
+     - kg/s
+   * - Volumetric Flow Rate
+     - Cubic meter per hour
+     - m³/h
+   * - Power
+     - Kilowatt
+     - kW
+   * - Energy
+     - Kilowatt-hour
+     - kWh
+
+.. warning::
+   Do not mix units (e.g., °C and K, or bar and Pa) in calculations.
+
+----
 
 Results Structure
------------------
+=================
 
-Results are accessible in two ways:
+Results are accessible in **two ways**:
 
-**Via object attributes:**
+Method 1: Object Attributes
+----------------------------
+
+Direct access to calculated properties:
 
 .. code-block:: python
 
+   from ThermodynamicCycles.Source import Source
+   
    source = Source.Object()
    source.Pi_bar = 5.0
    source.fluid = "R134a"
    source.calculate()
    
-   print(source.h_outlet)  # Direct access to enthalpy
-   print(source.T_outlet)  # Direct access to temperature
+   # Direct access
+   print(source.h_outlet)  # Enthalpy
+   print(source.T_outlet)  # Temperature
 
-**Via a pandas DataFrame:**
+Method 2: Pandas DataFrame
+---------------------------
+
+Tabular access for analysis and export:
 
 .. code-block:: python
 
-   print(source.df)  # Complete results table
-   print(source.df['h[J/kg]'])  # Access to a specific column
+   # Complete results table
+   print(source.df)
+   
+   # Access to a specific column
+   print(source.df['h[J/kg]'])
+   
+   # Export to Excel
+   source.df.to_excel('results.xlsx', index=False)
+
+.. tip::
+   Pandas DataFrames allow easy manipulation and analysis of results.
+
+----
 
 Going Further
--------------
+=============
 
-Consult the detailed sections of the documentation:
+Detailed Documentation
+----------------------
 
-- :doc:`usage` - Complete user guide with examples
-- :doc:`api` - Detailed API reference for all modules
-- :doc:`001-heat_transfer/index` - Heat Transfer
-- :doc:`002-thermodynamic_cycles/index` - Thermodynamic Cycles
-- :doc:`003-ahu_modules/index` - Air Handling Units
-- :doc:`006-pinch_analysis/index` - Pinch Analysis
+Consult the specialized sections:
 
-Resources
----------
+.. hlist::
+   :columns: 2
 
-- **Online documentation**: https://energysystemmodels-en.readthedocs.io/
-- **Source code**: https://github.com/ZoheirHADID/EnergySystemModels
-- **PyPI**: https://pypi.org/project/energysystemmodels/
-- **Support**: https://github.com/ZoheirHADID/EnergySystemModels/issues
+   * :doc:`usage` - Complete user guide
+   * :doc:`api` - Detailed API reference
+   * :doc:`001-heat_transfer/index` - Heat Transfer
+   * :doc:`002-thermodynamic_cycles/index` - Thermodynamic Cycles
+   * :doc:`003-ahu_modules/index` - Air Handling Units
+   * :doc:`006-pinch_analysis/index` - Pinch Analysis
+
+----
+
+Resources and Support
+=====================
+
+Useful Links
+------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Resource
+     - Link
+   * - 📚 Online Documentation
+     - https://energysystemmodels-en.readthedocs.io/
+   * - 💻 Source Code
+     - https://github.com/ZoheirHADID/EnergySystemModels
+   * - 📦 PyPI
+     - https://pypi.org/project/energysystemmodels/
+   * - 🐛 Issues and Support
+     - https://github.com/ZoheirHADID/EnergySystemModels/issues
+
+Need Help?
+----------
+
+.. admonition:: How to Get Help
+   :class: tip
+
+   1. Consult the :doc:`api` for complete reference
+   2. Browse examples in :doc:`usage`
+   3. Check `GitHub Issues <https://github.com/ZoheirHADID/EnergySystemModels/issues>`_
+   4. Create a new issue with a minimal reproducible example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
