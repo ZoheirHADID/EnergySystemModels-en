@@ -8,14 +8,137 @@ This guide allows you to start using EnergySystemModels in just a few minutes.
 Installation
 ------------
 
+Install the library via pip:
+
 .. code-block:: console
 
    pip install energysystemmodels
 
-Getting Started
+Or in a virtual environment:
+
+.. code-block:: console
+
+   (.venv) $ pip install energysystemmodels
+
+Usage Principle
 ---------------
 
-Example 1: Calculate Thermal Losses
+EnergySystemModels follows a simple and consistent object-oriented programming model:
+
+1. **Create an object** representing an energy component
+2. **Define input parameters** (temperatures, pressures, flow rates, etc.)
+3. **Call the calculate() method** to perform calculations
+4. **Access results** via object attributes or DataFrame
+
+Simple Example
+~~~~~~~~~~~~~~
+
+Here is a minimal example to illustrate the principle:
+
+.. code-block:: python
+
+   from HeatTransfer import CompositeWall
+
+   # 1. Create the object
+   wall = CompositeWall.Object(he=23, hi=8, Ti=20, Te=-10, A=10)
+   
+   # 2. Define the structure (add layers)
+   wall.add_layer(thickness=0.20, material='Hollow blocks')
+   wall.add_layer(thickness=0.05, material='Polystyrene')
+   wall.add_layer(thickness=0.02, material='Plaster')
+   
+   # 3. Calculate
+   wall.calculate()
+   
+   # 4. Access results
+   print(f"Thermal resistance: {wall.R_total:.3f} m².K/W")
+   print(f"Heat flux: {wall.Q:.2f} W")
+   print(wall.df)  # DataFrame with all results
+
+Available Modules
+-----------------
+
+The library is organized into thematic modules:
+
+**Heat Transfer**
+  Thermal calculations for walls, pipes, heat exchangers
+
+**Thermodynamic Cycles**
+  Modeling of refrigeration cycles, heat pumps, compressors
+
+**Air Handling Units (AHU)**
+  Complete AHU simulation with coils, humidification, heat recovery
+
+**Hydraulics**
+  Pressure drop calculations, pump and valve sizing
+
+**Energy Analysis**
+  Pinch Analysis, IPMVP, thermal integration optimization
+
+**Weather Data**
+  Retrieval of real-time or historical climate data
+
+**Solar Production**
+  Photovoltaic production simulation
+
+**Billing**
+  TURPE calculation, energy savings certificates (CEE)
+
+Units and Conventions
+---------------------
+
+Default units are:
+
+- **Temperature**: °C
+- **Pressure**: bar
+- **Mass flow rate**: kg/s
+- **Volumetric flow rate**: m³/h
+- **Power**: kW
+- **Energy**: kWh
+
+Results Structure
+-----------------
+
+Results are accessible in two ways:
+
+**Via object attributes:**
+
+.. code-block:: python
+
+   source = Source.Object()
+   source.Pi_bar = 5.0
+   source.fluid = "R134a"
+   source.calculate()
+   
+   print(source.h_outlet)  # Direct access to enthalpy
+   print(source.T_outlet)  # Direct access to temperature
+
+**Via a pandas DataFrame:**
+
+.. code-block:: python
+
+   print(source.df)  # Complete results table
+   print(source.df['h[J/kg]'])  # Access to a specific column
+
+Going Further
+-------------
+
+Consult the detailed sections of the documentation:
+
+- :doc:`usage` - Complete user guide with examples
+- :doc:`api` - Detailed API reference for all modules
+- :doc:`001-heat_transfer/index` - Heat Transfer
+- :doc:`002-thermodynamic_cycles/index` - Thermodynamic Cycles
+- :doc:`003-ahu_modules/index` - Air Handling Units
+- :doc:`006-pinch_analysis/index` - Pinch Analysis
+
+Resources
+---------
+
+- **Online documentation**: https://energysystemmodels-en.readthedocs.io/
+- **Source code**: https://github.com/ZoheirHADID/EnergySystemModels
+- **PyPI**: https://pypi.org/project/energysystemmodels/
+- **Support**: https://github.com/ZoheirHADID/EnergySystemModels/issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
