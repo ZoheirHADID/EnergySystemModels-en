@@ -65,6 +65,11 @@ Heat losses through the walls of the plate heat exchanger can be calculated usin
     total = haut + bas + vertical1 + vertical2
     print(f"{round(total, 0)} W = {round(haut, 0)} W + {round(bas, 0)} W + {round(vertical1, 0)} W + {round(vertical2, 0)} W")
 
+    # Access results DataFrame (keep the reference)
+    plate = PlateHeatTransfer.Object(orientation='horizontal_up', Tp=Tp, Ta=Ta, W=W, L=L)
+    plate.calculate()
+    print(plate.df)
+
 Result: 
 1957.0 W = 191.0 W + 190.0 W + 900.0 W + 675.0 W
 
