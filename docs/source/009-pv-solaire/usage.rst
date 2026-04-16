@@ -1,78 +1,46 @@
-Usage du Module PV
-========================
+PV Module Usage
+================
 
-Example de base
----------------
+Complete Example
+----------------
 
 .. code-block:: python
 
    from PV.ProductionElectriquePV import SolarSystem
 
-   # Create un system solaire
-   system = SolarSystem(
-       latitude=48.8566,          # Latitude (Paris)
-       longitude=2.3522,          # Longitude
-       location_name='Paris',
-       tilt=34,                   # Inclinaison optimale for Paris
-       timezone='Etc/GMT-1',
-       azimuth=180.0,             # Plein sud
-       system_capacity=48.9       # Power crête (kWp)
+   pv = SolarSystem(
+       latitude=45.764, longitude=4.8357,
+       name='Lyon Factory', altitude=200,
+       timezone='Europe/Paris',
+       azimut=180, inclinaison=20
    )
 
-   # Retrieve les data de modules et onduleurs
-   system.retrieve_module_inverter_data()
+   pv.retrieve_module_inverter_data(
+       module_name='Canadian_Solar_CS5P_220M___2009_',
+       inverter_name='ABB__MICRO_0_25_I_OUTD_US_208__208V_',
+       temperature_model='open_rack_glass_glass'
+   )
 
-   # Retrieve les data météorologiques
-   system.retrieve_weather_data()
+   pv.calculate_solar_parameters()
+   print(pv.df)
 
-   # Calculationationationationate the production
-   system.calculate_solar_parameters()
-
-   # Display results
-   print(system.df)
-
-   # Visualize
-   system.plot_annual_energy()
-
-Paramètres
+Parameters
 ----------
 
-* **latitude/longitude** : Coordata GPS
-* **tilt** : Inclinaison (0°=horizontal, latitude-10° optimal)
-* **azimuth** : Orientation (180°=Sud, 90°=Est, 270°=Ouest)
-* **system_capacity** : Power crête (kWc)
-* **timezone** : Format 'Etc/GMT±X'
+* **latitude/longitude** : GPS coordinates
+* **altitude** : Meters above sea level
+* **azimut** : Panel orientation (0=North, 180=South)
+* **inclinaison** : Tilt angle from horizontal
+* **module_name** : PV module (Sandia database, 500+ modules)
+* **inverter_name** : Inverter (CEC database, 1000+ inverters)
+* **temperature_model** : Thermal model (open_rack_glass_glass, etc.)
 
-Results disponibles
----------------------
+Available Methods
+-----------------
 
-.. code-block:: python
-
-   # Production mensuelle
-   monthly_prod = system.monthly_production  # kWh/mois
-
-   # Production annuelle
-   annual_prod = system.annual_production  # kWh/an
-
-   # Production horaire
-   hourly_prod = system.hourly_production  # kWh/h
-
-   # Facteur de capacité
-   capacity_factor = system.capacity_factor  # %
-
-Export Excel
-------------
-
-.. code-block:: python
-
-   import pandas as pd
-
-   # Create un DataFrame
-   df_prod = pd.DataFrame({
-       'Mois': ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin',
-                'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'],
-       'Production_kWh': system.monthly_production
-   })
-
-   # Exporter
-   df_prod.to_excel('production_pv.xlsx', index=False)
+* ``pv.df`` — System summary (module, area, production, productivity)
+* ``pv.summary()`` — Technical + economic summary (Payback, ROI, IRR)
+* ``pv.plot(nb_modules)`` — Hourly production + monthly profile
+* ``pv.to_excel(filename, nb_modules)`` — Excel export (hourly, monthly, summary)
+* ``SolarSystem.orientation_study(...)`` — Compare orientations/tilts
+* ``SolarSystem.plot_orientation_study(df, df_monthly)`` — Monthly profiles chart
