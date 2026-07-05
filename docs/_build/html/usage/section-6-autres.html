@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 7 : Other &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Guide de Démarrage Rapide" href="../quickstart.html" />
+    <link rel="prev" title="Section 6 : Financing and subsidies" href="section-6-financement-subvention.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#installation">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../usage.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="section-1-achat-facturation.html">Section 1 : Achat et Facturation de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-2-donnees-production.html">Section 2 : Data et Production energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-transformation.html">Section 3 : Transformation de l’energy (Utilités)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-distribution.html">Section 4 : Distribution de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-usages-finaux.html">Section 5 : Usages finaux de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-financement-subvention.html">Section 6 : Financing and subsidies</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 7 : Other</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modules-detailles-reference-complete">7.1. Modules détaillés - Référence complète</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imports-et-dependances">7.2. Imports et dépendances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conclusion">7.3. Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../usage.html">Usage</a></li>
+      <li class="breadcrumb-item active">Section 7 : Other</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/usage/section-6-autres.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="section-7-other">
+<h1>Section 7 : Other<a class="headerlink" href="#section-7-other" title="Link to this heading"></a></h1>
+<section id="modules-detailles-reference-complete">
+<h2>7.1. Modules détaillés - Référence complète<a class="headerlink" href="#modules-detailles-reference-complete" title="Link to this heading"></a></h2>
+<p>Pour une documentation détaillée de chaque module, consultez les sections
+correspondantes du sommaire général :</p>
+<ul class="simple">
+<li><p><strong>TURPE / achat d’energy</strong> : <a class="reference internal" href="../010-achat-energie/index.html"><span class="doc">10. Achat d’energy</span></a></p></li>
+<li><p><strong>CEE</strong> : <a class="reference internal" href="../011-cee/index.html"><span class="doc">11. Certificats d’Économies d’Energy</span></a></p></li>
+<li><p><strong>Météorologie (OpenWeatherMap, MeteoCiel, DJU)</strong> : <a class="reference internal" href="../008-meteo/index.html"><span class="doc">8. Meteorological Data</span></a></p></li>
+<li><p><strong>Photovoltaïque</strong> : <a class="reference internal" href="../009-pv-solaire/index.html"><span class="doc">9. Production Photovoltaïque</span></a></p></li>
+<li><p><strong>Cycles thermodynamiques</strong> : <a class="reference internal" href="../002-thermodynamic_cycles/index.html"><span class="doc">2. Cycles thermodynamiques</span></a></p></li>
+<li><p><strong>Transfer de chaleur</strong> : <a class="reference internal" href="../001-heat_transfer/index.html"><span class="doc">1. Transfer de chaleur</span></a></p></li>
+<li><p><strong>Hydraulique</strong> : <a class="reference internal" href="../004-hydraulic/index.html"><span class="doc">4. Modèles Hydrauliques</span></a></p></li>
+<li><p><strong>Aéraulique</strong> : <a class="reference internal" href="../005-aeraulic/index.html"><span class="doc">5. Modèles Aerauliques</span></a></p></li>
+<li><p><strong>CTA / traitement d’air</strong> : <a class="reference internal" href="../003-ahu_modules/index.html"><span class="doc">3. Centrales de Traitement d’Air</span></a></p></li>
+<li><p><strong>Analyse Pinch</strong> : <a class="reference internal" href="../006-pinch_analysis/index.html"><span class="doc">6. Analyse de pincement</span></a></p></li>
+<li><p><strong>IPMVP</strong> : <a class="reference internal" href="../007-ipmvp/index.html"><span class="doc">7. IPMVP - Measurement and Verification</span></a></p></li>
+<li><p><strong>Waste Heat</strong> : <a class="reference internal" href="../012-chaleur-fatale/index.html"><span class="doc">12. Waste Heat et rejets</span></a></p></li>
+</ul>
+</section>
+<section id="imports-et-dependances">
+<h2>7.2. Imports et dépendances<a class="headerlink" href="#imports-et-dependances" title="Link to this heading"></a></h2>
+<section id="imports-essentiels">
+<h3>Imports essentiels<a class="headerlink" href="#imports-essentiels" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modules de base</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Modules EnergySystemModels par domaine</span>
+
+<span class="c1"># Facturation et finance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.Facture.TURPE</span><span class="w"> </span><span class="kn">import</span> <span class="n">TURPEProfil</span><span class="p">,</span> <span class="n">TURPECalculateur</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Données météorologiques</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.OpenWeatherMap</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenWeatherMapClient</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.MeteoCiel</span><span class="w"> </span><span class="kn">import</span> <span class="n">MeteoCielClient</span><span class="p">,</span> <span class="n">DJUCalculator</span>
+
+<span class="c1"># Production énergétique</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PV</span><span class="w"> </span><span class="kn">import</span> <span class="n">PVSystem</span><span class="p">,</span> <span class="n">ShadingProfile</span>
+
+<span class="c1"># Thermodynamique</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.ThermodynamicCycles</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">RefrigerationCycle</span><span class="p">,</span> <span class="n">HeatPump</span><span class="p">,</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span><span class="p">,</span>
+    <span class="n">Compressor</span><span class="p">,</span> <span class="n">Evaporator</span><span class="p">,</span> <span class="n">Condenser</span><span class="p">,</span> <span class="n">ExpansionValve</span>
+<span class="p">)</span>
+
+<span class="c1"># Transfert de chaleur</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CompositeWall</span><span class="p">,</span> <span class="n">Layer</span><span class="p">,</span> <span class="n">PlateHeatExchanger</span><span class="p">,</span> <span class="n">PipeInsulation</span>
+<span class="p">)</span>
+
+<span class="c1"># Hydraulique et aéraulique</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">StraightPipe</span><span class="p">,</span> <span class="n">TA_Valve</span><span class="p">,</span> <span class="n">AirDuct</span><span class="p">,</span> <span class="n">Singularity</span>
+<span class="p">)</span>
+
+<span class="c1"># CTA et traitement d&#39;air</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.AHU</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FreshAir</span><span class="p">,</span> <span class="n">HeatingCoil</span><span class="p">,</span> <span class="n">CoolingCoil</span><span class="p">,</span> <span class="n">Humidifier</span><span class="p">,</span> <span class="n">Fan</span>
+<span class="p">)</span>
+
+<span class="c1"># Analyse et optimisation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PinchAnalysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">PinchAnalysis</span><span class="p">,</span> <span class="n">Stream</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.IPMVP</span><span class="w"> </span><span class="kn">import</span> <span class="n">IPMVPModel</span><span class="p">,</span> <span class="n">IPMVPReport</span>
+
+<span class="c1"># Modélisation bâtiment</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.BuildingModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">RC_Model</span><span class="p">,</span> <span class="n">RC_Model_Advanced</span>
+
+<span class="c1"># Utilitaires</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">APIConnector</span><span class="p">,</span> <span class="n">ParallelCalculator</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnergyPlotter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">EnergySystemError</span><span class="p">,</span> <span class="n">ConfigurationError</span><span class="p">,</span>
+    <span class="n">CalculationError</span><span class="p">,</span> <span class="n">DataError</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="dependances-externes">
+<h3>Dépendances externes<a class="headerlink" href="#dependances-externes" title="Link to this heading"></a></h3>
+<p>Le package EnergySystemModels nécessite les dépendances suivantes :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>numpy&gt;=1.20.0
+pandas&gt;=1.3.0
+matplotlib&gt;=3.4.0
+scipy&gt;=1.7.0
+pvlib&gt;=0.9.0
+CoolProp&gt;=6.4.0
+requests&gt;=2.26.0
+psychrolib&gt;=2.5.0
+</pre></div>
+</div>
+<p>Installation complète with toutes les dépendances :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>EnergySystemModels<span class="o">[</span>all<span class="o">]</span>
+</pre></div>
+</div>
+<p>Installation minimale :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>EnergySystemModels
+</pre></div>
+</div>
+<p>Installation for des modules spécifiques :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>EnergySystemModels<span class="o">[</span>pv<span class="o">]</span><span class="w">        </span><span class="c1"># Photovoltaïque uniquement</span>
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>EnergySystemModels<span class="o">[</span>hvac<span class="o">]</span><span class="w">      </span><span class="c1"># CVC uniquement</span>
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>EnergySystemModels<span class="o">[</span>analysis<span class="o">]</span><span class="w">  </span><span class="c1"># Analyse uniquement</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h2>7.3. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>Cette documentation couvre l’ensemble des fonctionnalités d’EnergySystemModels according to la chaîne de valeur energy :</p>
+<ol class="arabic simple">
+<li><p><strong>Achat et Facturation</strong> : TURPE, CEE</p></li>
+<li><p><strong>Data et Production</strong> : Météo, PV</p></li>
+<li><p><strong>Transformation</strong> : Cycles thermodynamiques</p></li>
+<li><p><strong>Distribution</strong> : Transfer de chaleur, Hydraulique, Aéraulique</p></li>
+<li><p><strong>Usages finaux</strong> : CTA, Pinch, IPMVP, Modèle RC</p></li>
+</ol>
+<p>Pour plus d’informations, consultez :</p>
+<ul class="simple">
+<li><p>Documentation complète : <a class="reference external" href="https://energysystemmodels.readthedocs.io">https://energysystemmodels.readthedocs.io</a></p></li>
+<li><p>Code source : <a class="reference external" href="https://github.com/your-repo/EnergySystemModels">https://github.com/your-repo/EnergySystemModels</a></p></li>
+<li><p>Examples : <a class="reference external" href="https://github.com/your-repo/EnergySystemModels/tree/main/examples">https://github.com/your-repo/EnergySystemModels/tree/main/examples</a></p></li>
+<li><p>Issues : <a class="reference external" href="https://github.com/your-repo/EnergySystemModels/issues">https://github.com/your-repo/EnergySystemModels/issues</a></p></li>
+</ul>
+<section id="support-et-contribution">
+<h3>Support et contribution<a class="headerlink" href="#support-et-contribution" title="Link to this heading"></a></h3>
+<p>Pour toute question ou contribution :</p>
+<ul class="simple">
+<li><p>Email : <a class="reference external" href="mailto:support&#37;&#52;&#48;energysystemmodels&#46;com">support<span>&#64;</span>energysystemmodels<span>&#46;</span>com</a></p></li>
+<li><p>Forum : <a class="reference external" href="https://forum.energysystemmodels.com">https://forum.energysystemmodels.com</a></p></li>
+<li><p>Slack : <a class="reference external" href="https://energysystemmodels.slack.com">https://energysystemmodels.slack.com</a></p></li>
+</ul>
+</section>
+<section id="licence">
+<h3>Licence<a class="headerlink" href="#licence" title="Link to this heading"></a></h3>
+<p>EnergySystemModels est distribué under licence MIT.</p>
+<p>Copyright (c) 2024 EnergySystemModels Contributors</p>
+<p>Pour les détails complets de la licence, voir le fichier LICENSE in le dépôt source.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section-6-financement-subvention.html" class="btn btn-neutral float-left" title="Section 6 : Financing and subsidies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../quickstart.html" class="btn btn-neutral float-right" title="Guide de Démarrage Rapide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

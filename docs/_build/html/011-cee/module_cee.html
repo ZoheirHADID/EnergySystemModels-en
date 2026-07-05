@@ -1,0 +1,425 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificats d’Économies d’Energy &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Meteorological Data" href="../008-meteo/index.html" />
+    <link rel="prev" title="Introduction au Module CEE" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. Certificats d’Économies d’Energy</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction au Module CEE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Certificats d’Économies d’Energy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lister-les-fiches-disponibles">Lister les fiches disponibles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#secteur-industrie">Secteur Industrie</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ind-ut-103-recuperation-de-chaleur-on-un-compresseur-d-air">IND-UT-103 — Récupération de chaleur on un compresseur d’air</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ind-ut-130-condenseur-on-les-effluents-gazeux-d-une-chaudiere-vapeur">IND-UT-130 — Condenseur on les effluents gazeux d’une chaudière vapeur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ind-ut-131-isolation-thermique-de-parois-industrielles">IND-UT-131 — Isolation thermique de parois industrielles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ind-ut-134-systeme-de-mesurage-d-indicateurs-de-performance-energy">IND-UT-134 — Système de mesurage d’indicateurs de performance energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ind-ut-135-freecooling-by-eau-de-refroidissement-substitution-groupe-froid">IND-UT-135 — Freecooling by eau de refroidissement (substitution groupe froid)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#secteur-transport">Secteur Transport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tra-eq-101-unite-de-transport-intermodal-rail-route">TRA-EQ-101 — Unité de transport intermodal rail-route</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tra-eq-107-unite-de-transport-intermodal-fluvial-route">TRA-EQ-107 — Unité de transport intermodal fluvial-route</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#projet-multi-operations">Projet multi-opérations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fiches-obsoletes-non-eligibles">Fiches obsolètes (non éligibles)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conseils-d-usage">Conseils d’usage</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">11. Certificats d’Économies d’Energy</a></li>
+      <li class="breadcrumb-item active">Certificats d’Économies d’Energy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/011-cee/module_cee.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="certificats-d-economies-d-energy">
+<h1>Certificats d’Économies d’Energy<a class="headerlink" href="#certificats-d-economies-d-energy" title="Link to this heading"></a></h1>
+<p>Cette page présente un example by <strong>fiche d’opération standardisée</strong> réellement
+supportée by le module <code class="docutils literal notranslate"><span class="pre">CEE</span></code>, rangé by secteur. Seules les fiches <strong>en
+vigueur</strong> au catalogue officiel sont documentées (voir la note on les fiches
+obsolètes en fin de page).</p>
+<section id="lister-les-fiches-disponibles">
+<h2>Lister les fiches disponibles<a class="headerlink" href="#lister-les-fiches-disponibles" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_fiches</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_fiches</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Result réel :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;IND-UT-103&#39;, &#39;IND-UT-130&#39;, &#39;IND-UT-131&#39;, &#39;IND-UT-134&#39;,
+ &#39;IND-UT-135&#39;, &#39;TRA-EQ-101&#39;, &#39;TRA-EQ-107&#39;]
+</pre></div>
+</div>
+<p>Le prix interne du MWh cumac (<code class="docutils literal notranslate"><span class="pre">euro_MWhcumac</span></code>, <strong>5 €/MWh cumac</strong> by défaut) est
+utilisé for la valorisation ; il est modifiable (<code class="docutils literal notranslate"><span class="pre">CEE.euro_MWhcumac</span> <span class="pre">=</span> <span class="pre">9</span></code>).
+<code class="docutils literal notranslate"><span class="pre">calcul_CEE(...,</span> <span class="pre">return_details=True)</span></code> renvoie un dictionnaire
+(<code class="docutils literal notranslate"><span class="pre">kWh_cumac</span></code>, <code class="docutils literal notranslate"><span class="pre">MWh_cumac</span></code>, <code class="docutils literal notranslate"><span class="pre">euro</span></code>, <code class="docutils literal notranslate"><span class="pre">titre</span></code>).</p>
+</section>
+</section>
+<section id="secteur-industrie">
+<h1>Secteur Industrie<a class="headerlink" href="#secteur-industrie" title="Link to this heading"></a></h1>
+<section id="ind-ut-103-recuperation-de-chaleur-on-un-compresseur-d-air">
+<h2>IND-UT-103 — Récupération de chaleur on un compresseur d’air<a class="headerlink" href="#ind-ut-103-recuperation-de-chaleur-on-un-compresseur-d-air" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id1">
+<img alt="Récupération de chaleur sur compresseur d'air (IND-UT-103)" src="../_images/012_chaleur_fatale_compresseur_cee.svg" />
+<figcaption>
+<p><span class="caption-text">La chaleur du compresseur est récupérée for un usage (chauffage, ECS ou
+procédé) et valorisée en CEE.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span>
+    <span class="n">fiche</span><span class="o">=</span><span class="s2">&quot;IND-UT-103&quot;</span><span class="p">,</span>
+    <span class="n">return_details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span>
+    <span class="n">Department</span><span class="o">=</span><span class="mi">69</span><span class="p">,</span>                  <span class="c1"># zone climatique H1</span>
+    <span class="n">Heat_Use</span><span class="o">=</span><span class="s2">&quot;procédé industriel&quot;</span><span class="p">,</span>  <span class="c1"># ou &quot;chauffage de locaux&quot; / &quot;ECS&quot;</span>
+    <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>          <span class="c1"># kW</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MWh_cumac&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> MWh cumac — </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;euro&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> EUR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result réel : <strong>2 304 MWh cumac</strong> — 11 520 EUR (à 5 €/MWh cumac).</p>
+</section>
+<section id="ind-ut-130-condenseur-on-les-effluents-gazeux-d-une-chaudiere-vapeur">
+<h2>IND-UT-130 — Condenseur on les effluents gazeux d’une chaudière vapeur<a class="headerlink" href="#ind-ut-130-condenseur-on-les-effluents-gazeux-d-une-chaudiere-vapeur" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span>
+    <span class="n">fiche</span><span class="o">=</span><span class="s2">&quot;IND-UT-130&quot;</span><span class="p">,</span>
+    <span class="n">return_details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;3*8h_sansArrWE&quot;</span><span class="p">,</span>
+    <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span>        <span class="c1"># kW (&lt;= 20 000)</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MWh_cumac&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> MWh cumac — </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;euro&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> EUR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result réel : <strong>2 100 MWh cumac</strong> — 10 500 EUR.</p>
+</section>
+<section id="ind-ut-131-isolation-thermique-de-parois-industrielles">
+<h2>IND-UT-131 — Isolation thermique de parois industrielles<a class="headerlink" href="#ind-ut-131-isolation-thermique-de-parois-industrielles" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id2">
+<img alt="Isolation thermique de parois industrielles (IND-UT-131)" src="../_images/011_cee_isolation_industrielle.svg" />
+<figcaption>
+<p><span class="caption-text">La fiche s’applique à une paroi plane (surface <code class="docutils literal notranslate"><span class="pre">S</span></code>) ou cylindrique
+(diamètre <code class="docutils literal notranslate"><span class="pre">D</span></code>, longueur <code class="docutils literal notranslate"><span class="pre">L</span></code>) according to sa temperature de service.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span>
+    <span class="n">fiche</span><span class="o">=</span><span class="s2">&quot;IND-UT-131&quot;</span><span class="p">,</span>
+    <span class="n">return_details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;3*8h_sansArrWE&quot;</span><span class="p">,</span>
+    <span class="n">Temperature</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>     <span class="c1"># °C</span>
+    <span class="n">Geometry</span><span class="o">=</span><span class="s2">&quot;plan&quot;</span><span class="p">,</span>     <span class="c1"># &quot;plan&quot; (S) ou &quot;cylindre&quot; (D, L)</span>
+    <span class="n">S</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>               <span class="c1"># m²</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MWh_cumac&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> MWh cumac — </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;euro&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> EUR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result réel : <strong>246,96 MWh cumac</strong> — 1 234,80 EUR.</p>
+</section>
+<section id="ind-ut-134-systeme-de-mesurage-d-indicateurs-de-performance-energy">
+<h2>IND-UT-134 — Système de mesurage d’indicateurs de performance energy<a class="headerlink" href="#ind-ut-134-systeme-de-mesurage-d-indicateurs-de-performance-energy" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span>
+    <span class="n">fiche</span><span class="o">=</span><span class="s2">&quot;IND-UT-134&quot;</span><span class="p">,</span>
+    <span class="n">return_details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span>
+    <span class="n">duree_contrat</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>          <span class="c1"># années</span>
+    <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>     <span class="c1"># kW</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MWh_cumac&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> MWh cumac — </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;euro&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> EUR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result réel : <strong>149,54 MWh cumac</strong> — 747,70 EUR.</p>
+</section>
+<section id="ind-ut-135-freecooling-by-eau-de-refroidissement-substitution-groupe-froid">
+<h2>IND-UT-135 — Freecooling by eau de refroidissement (substitution groupe froid)<a class="headerlink" href="#ind-ut-135-freecooling-by-eau-de-refroidissement-substitution-groupe-froid" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span>
+    <span class="n">fiche</span><span class="o">=</span><span class="s2">&quot;IND-UT-135&quot;</span><span class="p">,</span>
+    <span class="n">return_details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span>
+    <span class="n">Department</span><span class="o">=</span><span class="mi">69</span><span class="p">,</span>              <span class="c1"># zone climatique H1</span>
+    <span class="n">Supply_Temperature</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>      <span class="c1"># °C (12 &lt;= T &lt;= 21)</span>
+    <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>     <span class="c1"># kW</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MWh_cumac&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> MWh cumac — </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;euro&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> EUR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result réel : <strong>4 356 MWh cumac</strong> — 21 780 EUR.</p>
+</section>
+</section>
+<section id="secteur-transport">
+<h1>Secteur Transport<a class="headerlink" href="#secteur-transport" title="Link to this heading"></a></h1>
+<section id="tra-eq-101-unite-de-transport-intermodal-rail-route">
+<h2>TRA-EQ-101 — Unité de transport intermodal rail-route<a class="headerlink" href="#tra-eq-101-unite-de-transport-intermodal-rail-route" title="Link to this heading"></a></h2>
+<figure class="align-center" id="id3">
+<img alt="Transport intermodal (TRA-EQ-101 / TRA-EQ-107)" src="../_images/011_cee_transport_intermodal.svg" />
+<figcaption>
+<p><span class="caption-text">Le volume CEE dépend du nombre d’unités de transport et de voyages annuels.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span>
+    <span class="n">fiche</span><span class="o">=</span><span class="s2">&quot;TRA-EQ-101&quot;</span><span class="p">,</span>
+    <span class="n">return_details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">longueur_uti</span><span class="o">=</span><span class="s2">&quot;UTIsup9&quot;</span><span class="p">,</span>     <span class="c1"># &quot;UTIinf9&quot; ou &quot;UTIsup9&quot;</span>
+    <span class="n">nb_voyage_an</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">nb_uti</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MWh_cumac&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> MWh cumac — </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;euro&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> EUR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result réel : <strong>37 000 MWh cumac</strong> — 185 000 EUR.</p>
+</section>
+<section id="tra-eq-107-unite-de-transport-intermodal-fluvial-route">
+<h2>TRA-EQ-107 — Unité de transport intermodal fluvial-route<a class="headerlink" href="#tra-eq-107-unite-de-transport-intermodal-fluvial-route" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span>
+    <span class="n">fiche</span><span class="o">=</span><span class="s2">&quot;TRA-EQ-107&quot;</span><span class="p">,</span>
+    <span class="n">return_details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">type_bateau</span><span class="o">=</span><span class="s2">&quot;Bateau Grand Rhénan (2 500 t)&quot;</span><span class="p">,</span>
+    <span class="n">bassin_navigation</span><span class="o">=</span><span class="s2">&quot;Rhin/Moselle&quot;</span><span class="p">,</span>
+    <span class="n">nb_voyage_uti</span><span class="o">=</span><span class="mi">220</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MWh_cumac&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> MWh cumac — </span><span class="si">{</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;euro&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> EUR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result réel : <strong>902 MWh cumac</strong> — 4 510 EUR.</p>
+</section>
+</section>
+<section id="projet-multi-operations">
+<h1>Projet multi-opérations<a class="headerlink" href="#projet-multi-operations" title="Link to this heading"></a></h1>
+<figure class="align-center" id="id4">
+<img alt="Projet CEE multi-opérations" src="../_images/011_cee_projet_multi_operations.svg" />
+<figcaption>
+<p><span class="caption-text">Chaque opération produit une ligne de result ; le rapport agrège ensuite
+les volumes et les primes.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;fiche&quot;</span><span class="p">:</span> <span class="s2">&quot;IND-UT-131&quot;</span><span class="p">,</span> <span class="s2">&quot;fonctionnement&quot;</span><span class="p">:</span> <span class="s2">&quot;3*8h_sansArrWE&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;Temperature&quot;</span><span class="p">:</span> <span class="mi">180</span><span class="p">,</span> <span class="s2">&quot;Geometry&quot;</span><span class="p">:</span> <span class="s2">&quot;plan&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;fiche&quot;</span><span class="p">:</span> <span class="s2">&quot;IND-UT-134&quot;</span><span class="p">,</span> <span class="s2">&quot;fonctionnement&quot;</span><span class="p">:</span> <span class="s2">&quot;2*8h&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;duree_contrat&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s2">&quot;puissance_nominale&quot;</span><span class="p">:</span> <span class="mi">800</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;fiche&quot;</span><span class="p">:</span> <span class="s2">&quot;IND-UT-130&quot;</span><span class="p">,</span> <span class="s2">&quot;fonctionnement&quot;</span><span class="p">:</span> <span class="s2">&quot;3*8h_sansArrWE&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;puissance_nominale&quot;</span><span class="p">:</span> <span class="mi">1500</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="n">prix_mwh</span> <span class="o">=</span> <span class="mf">9.0</span>                      <span class="c1"># hypothèse de prix externe</span>
+<span class="n">lignes</span><span class="p">,</span> <span class="n">total_kwh</span> <span class="o">=</span> <span class="p">[],</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">operations</span><span class="p">:</span>
+    <span class="n">kwh</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span><span class="o">**</span><span class="n">op</span><span class="p">)</span>          <span class="c1"># sans return_details -&gt; kWh cumac</span>
+    <span class="n">total_kwh</span> <span class="o">+=</span> <span class="n">kwh</span>
+    <span class="n">lignes</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;Fiche&quot;</span><span class="p">:</span> <span class="n">op</span><span class="p">[</span><span class="s2">&quot;fiche&quot;</span><span class="p">],</span> <span class="s2">&quot;kWh_cumac&quot;</span><span class="p">:</span> <span class="n">kwh</span><span class="p">,</span>
+                   <span class="s2">&quot;Prime_EUR&quot;</span><span class="p">:</span> <span class="n">kwh</span> <span class="o">*</span> <span class="n">prix_mwh</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">})</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lignes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total : </span><span class="si">{</span><span class="n">total_kwh</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh cumac — </span><span class="si">{</span><span class="n">total_kwh</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">prix_mwh</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> EUR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result réel (prime à 9 €/MWh cumac) :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29.4%" />
+<col style="width: 35.3%" />
+<col style="width: 35.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Fiche</p></th>
+<th class="head"><p>kWh cumac</p></th>
+<th class="head"><p>Prime à 9 €/MWh</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>IND-UT-131</p></td>
+<td><p>246 960</p></td>
+<td><p>2 222,64 EUR</p></td>
+</tr>
+<tr class="row-odd"><td><p>IND-UT-134</p></td>
+<td><p>149 540</p></td>
+<td><p>1 345,86 EUR</p></td>
+</tr>
+<tr class="row-even"><td><p>IND-UT-130</p></td>
+<td><p>2 100 000</p></td>
+<td><p>18 900,00 EUR</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total</strong></p></td>
+<td><p><strong>2 496 500</strong></p></td>
+<td><p><strong>22 468,50 EUR</strong></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fiches-obsoletes-non-eligibles">
+<h1>Fiches obsolètes (non éligibles)<a class="headerlink" href="#fiches-obsoletes-non-eligibles" title="Link to this heading"></a></h1>
+<p>Certaines fiches restent in le registre du code for l’historique mais sont
+<strong>exclues de</strong> <code class="docutils literal notranslate"><span class="pre">list_fiches()</span></code> et refusées by <code class="docutils literal notranslate"><span class="pre">calcul_CEE</span></code> (<code class="docutils literal notranslate"><span class="pre">ValueError</span></code>) :</p>
+<ul class="simple">
+<li><p><strong>IND-UT-136</strong> — Systèmes moto-régulés : <strong>abrogée</strong> by arrêté du 18/08/2025.</p></li>
+<li><p><strong>TRA-EQ-108</strong> — Wagon d’autoroute ferroviaire : opération <strong>close au 31/03/2020</strong>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_fiches</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_fiches</span><span class="p">(</span><span class="n">include_deprecated</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="c1"># {&#39;available&#39;: [... 7 fiches ...],</span>
+<span class="c1">#  &#39;deprecated&#39;: [&#39;IND-UT-136&#39;, &#39;TRA-EQ-108&#39;]}</span>
+</pre></div>
+</div>
+</section>
+<section id="conseils-d-usage">
+<h1>Conseils d’usage<a class="headerlink" href="#conseils-d-usage" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Utiliser les noms exacts des paramètres attendus by chaque fiche.</p></li>
+<li><p>Lancer <code class="docutils literal notranslate"><span class="pre">calcul_CEE(...,</span> <span class="pre">return_details=True)</span></code> for un dictionnaire
+exploitable in un rapport (<code class="docutils literal notranslate"><span class="pre">kWh_cumac</span></code>, <code class="docutils literal notranslate"><span class="pre">MWh_cumac</span></code>, <code class="docutils literal notranslate"><span class="pre">euro</span></code>, <code class="docutils literal notranslate"><span class="pre">titre</span></code>).</p></li>
+<li><p>Ajuster <code class="docutils literal notranslate"><span class="pre">CEE.euro_MWhcumac</span></code> (défaut 5) ou appliquer un prix externe.</p></li>
+<li><p>Vérifier l’éligibilité réglementaire on les fiches officielles before toute
+décision d’investissement (catalogue ADEME/ATEE).</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction au Module CEE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../008-meteo/index.html" class="btn btn-neutral float-right" title="8. Meteorological Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

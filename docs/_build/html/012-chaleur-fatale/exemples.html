@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples utilisateur &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Certificats d’Économies d’Energy" href="../011-cee/index.html" />
+    <link rel="prev" title="Method d’analyse" href="methode.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">12. Waste Heat et rejets</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#objectifs-du-chapitre">Objectifs du chapitre</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="methode.html">Method d’analyse</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Examples utilisateur</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1-recuperation-on-eau-de-refroidissement">Example 1 : récupération on eau de refroidissement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2-comparer-recuperation-directe-et-pompe-a-chaleur">Example 2 : comparer récupération directe et pompe à chaleur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-3-preparer-une-analyse-pinch">Example 3 : préparer une analyse Pinch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">12. Waste Heat et rejets</a></li>
+      <li class="breadcrumb-item active">Examples utilisateur</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/012-chaleur-fatale/exemples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples-utilisateur">
+<h1>Examples utilisateur<a class="headerlink" href="#examples-utilisateur" title="Link to this heading"></a></h1>
+<section id="example-1-recuperation-on-eau-de-refroidissement">
+<h2>Example 1 : récupération on eau de refroidissement<a class="headerlink" href="#example-1-recuperation-on-eau-de-refroidissement" title="Link to this heading"></a></h2>
+<p>Une boucle d’eau sort d’un procédé à <code class="docutils literal notranslate"><span class="pre">38</span> <span class="pre">degC</span></code> et peut être refroidie jusqu’à
+<code class="docutils literal notranslate"><span class="pre">28</span> <span class="pre">degC</span></code> before retour. Le flow rate est de <code class="docutils literal notranslate"><span class="pre">22</span> <span class="pre">m3/h</span></code> et le site fonctionne
+<code class="docutils literal notranslate"><span class="pre">6</span> <span class="pre">500</span> <span class="pre">h/an</span></code>.</p>
+<figure class="align-center" id="id1">
+<img alt="Schéma de récupération sur eau de refroidissement" src="../_images/012_chaleur_fatale_eau_refroidissement.svg" />
+<figcaption>
+<p><span class="caption-text">La source basse temperature est séparée de l’usage by un échangeur.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">debit_m3_h</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">cp</span> <span class="o">=</span> <span class="mf">4.18</span>
+<span class="n">t_source</span> <span class="o">=</span> <span class="mi">38</span>
+<span class="n">t_retour</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">heures</span> <span class="o">=</span> <span class="mi">6500</span>
+
+<span class="n">debit_kg_s</span> <span class="o">=</span> <span class="n">debit_m3_h</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">/</span> <span class="mi">3600</span>
+<span class="n">puissance_kw</span> <span class="o">=</span> <span class="n">debit_kg_s</span> <span class="o">*</span> <span class="n">cp</span> <span class="o">*</span> <span class="p">(</span><span class="n">t_source</span> <span class="o">-</span> <span class="n">t_retour</span><span class="p">)</span>
+<span class="n">energie_mwh</span> <span class="o">=</span> <span class="n">puissance_kw</span> <span class="o">*</span> <span class="n">heures</span> <span class="o">/</span> <span class="mi">1000</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance récupérable : </span><span class="si">{</span><span class="n">puissance_kw</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energie annuelle : </span><span class="si">{</span><span class="n">energie_mwh</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> MWh/an&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result attendu :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45.0%" />
+<col style="width: 30.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Indicateur</p></th>
+<th class="head"><p>Valeur</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Power récupérable</p></td>
+<td><p>255,4</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-odd"><td><p>Energy annuelle récupérable</p></td>
+<td><p>1 660</p></td>
+<td><p>MWh/an</p></td>
+</tr>
+</tbody>
+</table>
+<p>Lecture for l’utilisateur :</p>
+<ul class="simple">
+<li><p>le gisement est basse temperature ;</p></li>
+<li><p>il peut alimenter un préchauffage ou l’évaporateur d’une pompe à chaleur ;</p></li>
+<li><p>la valeur dépend fortement de la simultanéité with le besoin.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Valorisation en CEE</strong></p>
+<p>La heat recovery on un compresseur d’air (ou tout autre rejet
+thermique) peut être valorisée en Certificats d’Économies d’Energy via la
+fiche <code class="docutils literal notranslate"><span class="pre">IND-UT-103</span></code>. Le calcul CEE est traité in le chapitre dédié :
+voir <a class="reference internal" href="../011-cee/module_cee.html"><span class="doc">Certificats d’Économies d’Energy</span></a> (« Example 3 : heat recovery sur
+compresseur d’air »).</p>
+</div>
+</section>
+<section id="example-2-comparer-recuperation-directe-et-pompe-a-chaleur">
+<h2>Example 2 : comparer récupération directe et pompe à chaleur<a class="headerlink" href="#example-2-comparer-recuperation-directe-et-pompe-a-chaleur" title="Link to this heading"></a></h2>
+<p>Une source à <code class="docutils literal notranslate"><span class="pre">35</span> <span class="pre">degC</span></code> ne peut pas alimenter directement un usage à
+<code class="docutils literal notranslate"><span class="pre">60</span> <span class="pre">degC</span></code>. On compare alors la récupération directe utilisable à basse
+temperature with une pompe à chaleur.</p>
+<figure class="align-center" id="id2">
+<img alt="Schéma de valorisation par pompe à chaleur" src="../_images/012_chaleur_fatale_pac.svg" />
+<figcaption>
+<p><span class="caption-text">La pompe à chaleur relève le niveau de temperature au prix d’une
+consommation électrique.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">puissance_source_kw</span> <span class="o">=</span> <span class="mi">180</span>
+<span class="n">heures</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">cop_pac</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="n">prix_elec_eur_mwh</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="n">prix_gaz_eur_mwh</span> <span class="o">=</span> <span class="mi">55</span>
+
+<span class="n">chaleur_livree_mwh</span> <span class="o">=</span> <span class="n">puissance_source_kw</span> <span class="o">*</span> <span class="n">heures</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="n">electricite_pac_mwh</span> <span class="o">=</span> <span class="n">chaleur_livree_mwh</span> <span class="o">/</span> <span class="n">cop_pac</span>
+<span class="n">gaz_evite_mwh</span> <span class="o">=</span> <span class="n">chaleur_livree_mwh</span>
+
+<span class="n">cout_pac</span> <span class="o">=</span> <span class="n">electricite_pac_mwh</span> <span class="o">*</span> <span class="n">prix_elec_eur_mwh</span>
+<span class="n">gain_gaz</span> <span class="o">=</span> <span class="n">gaz_evite_mwh</span> <span class="o">*</span> <span class="n">prix_gaz_eur_mwh</span>
+<span class="n">gain_net</span> <span class="o">=</span> <span class="n">gain_gaz</span> <span class="o">-</span> <span class="n">cout_pac</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Chaleur livrée : </span><span class="si">{</span><span class="n">chaleur_livree_mwh</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> MWh/an&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electricité PAC : </span><span class="si">{</span><span class="n">electricite_pac_mwh</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> MWh/an&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gain net énergie : </span><span class="si">{</span><span class="n">gain_net</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> EUR/an&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result attendu :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 45.0%" />
+<col style="width: 30.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Indicateur</p></th>
+<th class="head"><p>Valeur</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Chaleur livrée</p></td>
+<td><p>900</p></td>
+<td><p>MWh/an</p></td>
+</tr>
+<tr class="row-odd"><td><p>Électricité PAC</p></td>
+<td><p>225</p></td>
+<td><p>MWh/an</p></td>
+</tr>
+<tr class="row-even"><td><p>Coût électrique</p></td>
+<td><p>27 000</p></td>
+<td><p>EUR/an</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gaz évité</p></td>
+<td><p>49 500</p></td>
+<td><p>EUR/an</p></td>
+</tr>
+<tr class="row-even"><td><p>Gain net energy</p></td>
+<td><p>22 500</p></td>
+<td><p>EUR/an</p></td>
+</tr>
+</tbody>
+</table>
+<p>Interprétation :</p>
+<ul class="simple">
+<li><p>si le gain net est négatif, la pompe à chaleur n’est pas pertinente with ces
+hypothèses de prix ;</p></li>
+<li><p>si le gaz évité est cher ou carboné, l’intérêt augmente ;</p></li>
+<li><p>le COP réel doit être recalculé with les temperatures source et usage.</p></li>
+</ul>
+</section>
+<section id="example-3-preparer-une-analyse-pinch">
+<h2>Example 3 : préparer une analyse Pinch<a class="headerlink" href="#example-3-preparer-une-analyse-pinch" title="Link to this heading"></a></h2>
+<p>Lorsque plusieurs hot and cold streams existent, l’analyse Pinch permet
+d’identifier la récupération maximale théorique before de dessiner les
+échangeurs.</p>
+<figure class="align-center" id="id3">
+<img alt="Schéma de préparation d'une analyse Pinch" src="../_images/012_chaleur_fatale_pinch.svg" />
+<figcaption>
+<p><span class="caption-text">Les hot and cold streams alimentent l’analyse, qui fournit les utilités
+minimales et les appariements d’échange.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PinchAnalysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">PinchAnalysis</span>
+
+<span class="c1"># Les colonnes &#39;id&#39; et &#39;name&#39; sont requises par PinchAnalysis.Object</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;H1&quot;</span><span class="p">,</span> <span class="s2">&quot;H2&quot;</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Ti&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">180</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span>
+    <span class="s2">&quot;To&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">140</span><span class="p">],</span>
+    <span class="s2">&quot;mCp&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.4</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">],</span>
+    <span class="s2">&quot;dTmin2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s2">&quot;integration&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+<span class="p">})</span>
+
+<span class="n">pinch</span> <span class="o">=</span> <span class="n">PinchAnalysis</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pincement : </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">Pinch_Temperature</span><span class="si">}</span><span class="s2"> degC&quot;</span><span class="p">)</span>       <span class="c1"># 175</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Utilité chaude minimale : </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">Heating_duty</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>  <span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Utilité froide minimale : </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">Cooling_duty</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>  <span class="c1"># 58.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Chaleur récupérée : </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">heat_recovery</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>      <span class="c1"># 361.0</span>
+
+<span class="n">pinch</span><span class="o">.</span><span class="n">plot_composites_curves</span><span class="p">()</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">plot_GCC</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Results réels :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Indicateur</p></th>
+<th class="head"><p>Attribut (valeur)</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Point de pincement</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch.Pinch_Temperature</span></code> (= 175)</p></td>
+<td><p>degC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Utilité chaude minimale</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch.Heating_duty</span></code> (= 0)</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-even"><td><p>Utilité froide minimale</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch.Cooling_duty</span></code> (= 58,0)</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chaleur récupérée</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch.heat_recovery</span></code> (= 361,0)</p></td>
+<td><p>kW</p></td>
+</tr>
+</tbody>
+</table>
+<p>Ici l’utilité chaude minimale est <strong>nulle</strong> : les flux chauds fournissent, par
+intégration, la totalité du besoin de chauffe ; seule une utilité froide de
+58 kW reste nécessaire, for 361 kW récupérés.</p>
+<p>Plots générés by l’example (outputs réelles) :</p>
+<figure class="align-center" id="id4">
+<img alt="Courbes composites réelles (chaleur fatale)" src="../_images/012_chaleur_fatale_pinch_composites.svg" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">pinch.plot_composites_curves()</span></code> : composites chaude et froide en
+temperatures décalées ; le recouvrement = 361 kW récupérables.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<img alt="Grande courbe composite réelle (chaleur fatale)" src="../_images/012_chaleur_fatale_pinch_gcc.svg" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">pinch.plot_GCC()</span></code> : la grande courbe composite touche l’axe au pincement
+(175 °C) et montre l’utilité froide résiduelle (58 kW) en bas.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Ce cas est à utiliser quand l’utilisateur veut passer d’un simple inventaire à
+une stratégie d’intégration thermique complète.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="methode.html" class="btn btn-neutral float-left" title="Method d’analyse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../011-cee/index.html" class="btn btn-neutral float-right" title="11. Certificats d’Économies d’Energy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

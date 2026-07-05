@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 2 : Data et Production energy &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Section 3 : Transformation de l’energy (Utilités)" href="section-3-transformation.html" />
+    <link rel="prev" title="Section 1 : Achat et Facturation de l’energy" href="section-1-achat-facturation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#installation">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../usage.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="section-1-achat-facturation.html">Section 1 : Achat et Facturation de l’energy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 2 : Data et Production energy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-meteorologiques">2.1. Data météorologiques</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#production-solaire-photovoltaique">2.2. Production solaire photovoltaïque</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-transformation.html">Section 3 : Transformation de l’energy (Utilités)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-distribution.html">Section 4 : Distribution de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-usages-finaux.html">Section 5 : Usages finaux de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-financement-subvention.html">Section 6 : Financing and subsidies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-autres.html">Section 7 : Other</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../usage.html">Usage</a></li>
+      <li class="breadcrumb-item active">Section 2 : Data et Production energy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/usage/section-2-donnees-production.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="section-2-data-et-production-energy">
+<h1>Section 2 : Data et Production energy<a class="headerlink" href="#section-2-data-et-production-energy" title="Link to this heading"></a></h1>
+<section id="data-meteorologiques">
+<h2>2.1. Data météorologiques<a class="headerlink" href="#data-meteorologiques" title="Link to this heading"></a></h2>
+<section id="openweathermap-data-meteo-en-temps-reel">
+<h3>2.1.1. OpenWeatherMap - Data météo en temps réel<a class="headerlink" href="#openweathermap-data-meteo-en-temps-reel" title="Link to this heading"></a></h3>
+<p>Le module OpenWeatherMap permet d’accéder aux data météorologiques actuelles et prévisionnelles.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.OpenWeatherMap</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenWeatherMapClient</span>
+
+<span class="c1"># Initialiser le client</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;votre_clé_api&quot;</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenWeatherMapClient</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span>
+
+<span class="c1"># Données météo actuelles</span>
+<span class="n">meteo_actuelle</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_current_weather</span><span class="p">(</span>
+    <span class="n">city</span><span class="o">=</span><span class="s2">&quot;Paris&quot;</span><span class="p">,</span>
+    <span class="n">country</span><span class="o">=</span><span class="s2">&quot;FR&quot;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température : </span><span class="si">{</span><span class="n">meteo_actuelle</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Humidité : </span><span class="si">{</span><span class="n">meteo_actuelle</span><span class="p">[</span><span class="s1">&#39;humidity&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vitesse du vent : </span><span class="si">{</span><span class="n">meteo_actuelle</span><span class="p">[</span><span class="s1">&#39;wind_speed&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+
+<span class="c1"># Prévisions sur 5 jours</span>
+<span class="n">previsions</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span>
+    <span class="n">city</span><span class="o">=</span><span class="s2">&quot;Paris&quot;</span><span class="p">,</span>
+    <span class="n">country</span><span class="o">=</span><span class="s2">&quot;FR&quot;</span><span class="p">,</span>
+    <span class="n">days</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">jour</span> <span class="ow">in</span> <span class="n">previsions</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">jour</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">jour</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">°C, </span><span class="si">{</span><span class="n">jour</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-analyse-des-data-meteo-horaires">
+<h3>Example : Analyse des data météo horaires<a class="headerlink" href="#example-analyse-des-data-meteo-horaires" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.OpenWeatherMap</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenWeatherMapClient</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenWeatherMapClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;votre_clé&quot;</span><span class="p">)</span>
+
+<span class="c1"># Récupérer les prévisions horaires</span>
+<span class="n">forecast</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_hourly_forecast</span><span class="p">(</span>
+    <span class="n">lat</span><span class="o">=</span><span class="mf">48.8566</span><span class="p">,</span>
+    <span class="n">lon</span><span class="o">=</span><span class="mf">2.3522</span><span class="p">,</span>
+    <span class="n">hours</span><span class="o">=</span><span class="mi">48</span>
+<span class="p">)</span>
+
+<span class="c1"># Convertir en DataFrame</span>
+<span class="n">df_meteo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">forecast</span><span class="p">)</span>
+<span class="n">df_meteo</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_meteo</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+
+<span class="c1"># Analyses</span>
+<span class="n">temp_moyenne</span> <span class="o">=</span> <span class="n">df_meteo</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">temp_min</span> <span class="o">=</span> <span class="n">df_meteo</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">temp_max</span> <span class="o">=</span> <span class="n">df_meteo</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température moyenne : </span><span class="si">{</span><span class="n">temp_moyenne</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température minimale : </span><span class="si">{</span><span class="n">temp_min</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température maximale : </span><span class="si">{</span><span class="n">temp_max</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="meteociel-data-historiques-et-dju">
+<h3>2.1.2. MeteoCiel - Data historiques et DJU<a class="headerlink" href="#meteociel-data-historiques-et-dju" title="Link to this heading"></a></h3>
+<p>Le module MeteoCiel permet d’accéder aux data historiques et de calculer les Degrés-Jours Unifiés (DJU).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.MeteoCiel</span><span class="w"> </span><span class="kn">import</span> <span class="n">MeteoCielClient</span>
+
+<span class="c1"># Initialiser le client</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">MeteoCielClient</span><span class="p">()</span>
+
+<span class="c1"># Données historiques</span>
+<span class="n">historique</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_historical_data</span><span class="p">(</span>
+    <span class="n">station</span><span class="o">=</span><span class="s2">&quot;Paris-Montsouris&quot;</span><span class="p">,</span>
+    <span class="n">date_debut</span><span class="o">=</span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span>
+    <span class="n">date_fin</span><span class="o">=</span><span class="s2">&quot;2024-12-31&quot;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nombre de jours : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">historique</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="calcul-des-degres-jours-unifies-dju">
+<h3>Calcul des Degrés-Jours Unifiés (DJU)<a class="headerlink" href="#calcul-des-degres-jours-unifies-dju" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.MeteoCiel</span><span class="w"> </span><span class="kn">import</span> <span class="n">DJUCalculator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Données de température</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2024-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2024-12-31&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+<span class="n">temperatures</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span> <span class="o">*</span> <span class="mi">36</span><span class="p">,</span>
+                        <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">[:</span><span class="mi">360</span><span class="p">])</span>
+
+<span class="c1"># Calculer les DJU</span>
+<span class="n">calculator</span> <span class="o">=</span> <span class="n">DJUCalculator</span><span class="p">(</span><span class="n">temperature_reference</span><span class="o">=</span><span class="mf">18.0</span><span class="p">)</span>
+
+<span class="c1"># DJU Chauffage (DJU18)</span>
+<span class="n">dju_chauffage</span> <span class="o">=</span> <span class="n">calculator</span><span class="o">.</span><span class="n">calculer_dju_chauffage</span><span class="p">(</span><span class="n">temperatures</span><span class="p">)</span>
+
+<span class="c1"># DJU Refroidissement (DJU21)</span>
+<span class="n">calculator_clim</span> <span class="o">=</span> <span class="n">DJUCalculator</span><span class="p">(</span><span class="n">temperature_reference</span><span class="o">=</span><span class="mf">21.0</span><span class="p">)</span>
+<span class="n">dju_refroidissement</span> <span class="o">=</span> <span class="n">calculator_clim</span><span class="o">.</span><span class="n">calculer_dju_refroidissement</span><span class="p">(</span><span class="n">temperatures</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DJU Chauffage annuel : </span><span class="si">{</span><span class="n">dju_chauffage</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DJU Refroidissement annuel : </span><span class="si">{</span><span class="n">dju_refroidissement</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-analyse-mensuelle-des-dju">
+<h3>Example : Analyse mensuelle des DJU<a class="headerlink" href="#example-analyse-mensuelle-des-dju" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.MeteoCiel</span><span class="w"> </span><span class="kn">import</span> <span class="n">DJUCalculator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Simuler des températures moyennes mensuelles</span>
+<span class="n">temperatures_mensuelles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2024-01-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">calculator</span> <span class="o">=</span> <span class="n">DJUCalculator</span><span class="p">(</span><span class="n">temperature_reference</span><span class="o">=</span><span class="mf">18.0</span><span class="p">)</span>
+
+<span class="c1"># Calculer DJU mensuels</span>
+<span class="n">dju_mensuels</span> <span class="o">=</span> <span class="n">calculator</span><span class="o">.</span><span class="n">calculer_dju_chauffage_mensuel</span><span class="p">(</span><span class="n">temperatures_mensuelles</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DJU Chauffage par mois :&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">mois</span><span class="p">,</span> <span class="n">dju</span> <span class="ow">in</span> <span class="n">dju_mensuels</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">mois</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">dju</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DJU annuel : </span><span class="si">{</span><span class="n">dju_mensuels</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-issu-des-tests-scraping-meteociel">
+<h3>Example issu des tests : Scraping MeteoCiel<a class="headerlink" href="#example-issu-des-tests-scraping-meteociel" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeteoCiel.MeteoCiel_Scraping</span><span class="w"> </span><span class="kn">import</span> <span class="n">MeteoCiel_histoScraping</span>
+
+<span class="n">code2</span> <span class="o">=</span> <span class="mi">480</span>  <span class="c1"># station météo</span>
+<span class="n">date_debut</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">date_fin</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+<span class="n">df_histo</span><span class="p">,</span> <span class="n">df_day</span><span class="p">,</span> <span class="n">df_month</span><span class="p">,</span> <span class="n">df_year</span> <span class="o">=</span> <span class="n">MeteoCiel_histoScraping</span><span class="p">(</span>
+    <span class="n">code2</span><span class="p">,</span> <span class="n">date_debut</span><span class="p">,</span> <span class="n">date_fin</span><span class="p">,</span> <span class="n">base_chauffage</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">base_refroidissement</span><span class="o">=</span><span class="mi">23</span>
+<span class="p">)</span>
+
+<span class="n">df_month</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span>
+    <span class="s2">&quot;month_Meteociel.fr_station_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">date_debut</span><span class="o">.</span><span class="n">date</span><span class="p">())</span> <span class="o">+</span>
+    <span class="s2">&quot;_to_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">date_fin</span><span class="o">.</span><span class="n">date</span><span class="p">())</span> <span class="o">+</span> <span class="s2">&quot;.xlsx&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="production-solaire-photovoltaique">
+<h2>2.2. Production solaire photovoltaïque<a class="headerlink" href="#production-solaire-photovoltaique" title="Link to this heading"></a></h2>
+<p>Le module PV utilise pvlib for simuler the production photovoltaïque with une grande précision.</p>
+<section id="configuration-d-un-system-pv">
+<h3>Configuration d’un system PV<a class="headerlink" href="#configuration-d-un-system-pv" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PV</span><span class="w"> </span><span class="kn">import</span> <span class="n">PVSystem</span>
+
+<span class="c1"># Définir le système PV</span>
+<span class="n">pv_system</span> <span class="o">=</span> <span class="n">PVSystem</span><span class="p">(</span>
+    <span class="n">latitude</span><span class="o">=</span><span class="mf">48.8566</span><span class="p">,</span>
+    <span class="n">longitude</span><span class="o">=</span><span class="mf">2.3522</span><span class="p">,</span>
+    <span class="n">surface_m2</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">puissance_crete_kWc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>  <span class="c1"># Plein sud</span>
+    <span class="n">inclinaison</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>   <span class="c1"># degrés</span>
+    <span class="n">rendement</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span>
+    <span class="n">pertes_systeme</span><span class="o">=</span><span class="mf">0.14</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer la production annuelle</span>
+<span class="n">production_annuelle</span> <span class="o">=</span> <span class="n">pv_system</span><span class="o">.</span><span class="n">calculer_production_annuelle</span><span class="p">(</span><span class="n">annee</span><span class="o">=</span><span class="mi">2024</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Production annuelle : </span><span class="si">{</span><span class="n">production_annuelle</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-simulation-horaire-de-production-pv">
+<h3>Example : Simulation horaire de production PV<a class="headerlink" href="#example-simulation-horaire-de-production-pv" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PV</span><span class="w"> </span><span class="kn">import</span> <span class="n">PVSystem</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Système PV</span>
+<span class="n">pv</span> <span class="o">=</span> <span class="n">PVSystem</span><span class="p">(</span>
+    <span class="n">latitude</span><span class="o">=</span><span class="mf">43.6047</span><span class="p">,</span>  <span class="c1"># Toulouse</span>
+    <span class="n">longitude</span><span class="o">=</span><span class="mf">1.4442</span><span class="p">,</span>
+    <span class="n">surface_m2</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">puissance_crete_kWc</span><span class="o">=</span><span class="mf">6.5</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+    <span class="n">inclinaison</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span>
+    <span class="n">rendement</span><span class="o">=</span><span class="mf">0.19</span><span class="p">,</span>
+    <span class="n">pertes_systeme</span><span class="o">=</span><span class="mf">0.12</span>
+<span class="p">)</span>
+
+<span class="c1"># Production horaire sur une année</span>
+<span class="n">production_horaire</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">calculer_production_horaire</span><span class="p">(</span>
+    <span class="n">date_debut</span><span class="o">=</span><span class="s1">&#39;2024-01-01&#39;</span><span class="p">,</span>
+    <span class="n">date_fin</span><span class="o">=</span><span class="s1">&#39;2024-12-31&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Convertir en DataFrame</span>
+<span class="n">df_prod</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="n">production_horaire</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="s1">&#39;production_kW&#39;</span><span class="p">:</span> <span class="n">production_horaire</span><span class="o">.</span><span class="n">values</span>
+<span class="p">})</span>
+
+<span class="c1"># Statistiques</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Production totale : </span><span class="si">{</span><span class="n">df_prod</span><span class="p">[</span><span class="s1">&#39;production_kW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Production moyenne : </span><span class="si">{</span><span class="n">df_prod</span><span class="p">[</span><span class="s1">&#39;production_kW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance maximale : </span><span class="si">{</span><span class="n">df_prod</span><span class="p">[</span><span class="s1">&#39;production_kW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualisation</span>
+<span class="n">df_prod_janvier</span> <span class="o">=</span> <span class="n">df_prod</span><span class="p">[</span><span class="n">df_prod</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_prod_janvier</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">df_prod_janvier</span><span class="p">[</span><span class="s1">&#39;production_kW&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Production PV - Janvier 2024&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Puissance (kW)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="example-optimisation-de-l-orientation">
+<h3>Example : Optimisation de l’orientation<a class="headerlink" href="#example-optimisation-de-l-orientation" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PV</span><span class="w"> </span><span class="kn">import</span> <span class="n">PVSystem</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Paramètres fixes</span>
+<span class="n">config_base</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="mf">48.8566</span><span class="p">,</span>
+    <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="mf">2.3522</span><span class="p">,</span>
+    <span class="s1">&#39;surface_m2&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s1">&#39;puissance_crete_kWc&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s1">&#39;rendement&#39;</span><span class="p">:</span> <span class="mf">0.18</span><span class="p">,</span>
+    <span class="s1">&#39;pertes_systeme&#39;</span><span class="p">:</span> <span class="mf">0.14</span>
+<span class="p">}</span>
+
+<span class="c1"># Tester différentes orientations et inclinaisons</span>
+<span class="n">orientations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># Est à Ouest</span>
+<span class="n">inclinaisons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">resultats_optimisation</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">orient</span> <span class="ow">in</span> <span class="n">orientations</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">inclin</span> <span class="ow">in</span> <span class="n">inclinaisons</span><span class="p">:</span>
+        <span class="n">pv</span> <span class="o">=</span> <span class="n">PVSystem</span><span class="p">(</span>
+            <span class="n">orientation</span><span class="o">=</span><span class="n">orient</span><span class="p">,</span>
+            <span class="n">inclinaison</span><span class="o">=</span><span class="n">inclin</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">config_base</span>
+        <span class="p">)</span>
+        <span class="n">production</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">calculer_production_annuelle</span><span class="p">(</span><span class="mi">2024</span><span class="p">)</span>
+
+        <span class="n">resultats_optimisation</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;orientation&#39;</span><span class="p">:</span> <span class="n">orient</span><span class="p">,</span>
+            <span class="s1">&#39;inclinaison&#39;</span><span class="p">:</span> <span class="n">inclin</span><span class="p">,</span>
+            <span class="s1">&#39;production_kWh&#39;</span><span class="p">:</span> <span class="n">production</span>
+        <span class="p">})</span>
+
+<span class="c1"># Trouver l&#39;optimum</span>
+<span class="n">df_optim</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">resultats_optimisation</span><span class="p">)</span>
+<span class="n">optimum</span> <span class="o">=</span> <span class="n">df_optim</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_optim</span><span class="p">[</span><span class="s1">&#39;production_kWh&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Configuration optimale :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Orientation : </span><span class="si">{</span><span class="n">optimum</span><span class="p">[</span><span class="s1">&#39;orientation&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Inclinaison : </span><span class="si">{</span><span class="n">optimum</span><span class="p">[</span><span class="s1">&#39;inclinaison&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Production : </span><span class="si">{</span><span class="n">optimum</span><span class="p">[</span><span class="s1">&#39;production_kWh&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh/an&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-production-pv-with-ombrage">
+<h3>Example : Production PV with ombrage<a class="headerlink" href="#example-production-pv-with-ombrage" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PV</span><span class="w"> </span><span class="kn">import</span> <span class="n">PVSystem</span><span class="p">,</span> <span class="n">ShadingProfile</span>
+
+<span class="c1"># Définir le profil d&#39;ombrage</span>
+<span class="n">ombrage</span> <span class="o">=</span> <span class="n">ShadingProfile</span><span class="p">()</span>
+<span class="n">ombrage</span><span class="o">.</span><span class="n">add_obstacle</span><span class="p">(</span>
+    <span class="n">azimuth</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>      <span class="c1"># Direction de l&#39;obstacle</span>
+    <span class="n">elevation</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>     <span class="c1"># Hauteur angulaire</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">45</span>          <span class="c1"># Largeur angulaire</span>
+<span class="p">)</span>
+
+<span class="c1"># Système PV avec ombrage</span>
+<span class="n">pv</span> <span class="o">=</span> <span class="n">PVSystem</span><span class="p">(</span>
+    <span class="n">latitude</span><span class="o">=</span><span class="mf">48.8566</span><span class="p">,</span>
+    <span class="n">longitude</span><span class="o">=</span><span class="mf">2.3522</span><span class="p">,</span>
+    <span class="n">surface_m2</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">puissance_crete_kWc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+    <span class="n">inclinaison</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">rendement</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span>
+    <span class="n">pertes_systeme</span><span class="o">=</span><span class="mf">0.14</span><span class="p">,</span>
+    <span class="n">shading_profile</span><span class="o">=</span><span class="n">ombrage</span>
+<span class="p">)</span>
+
+<span class="c1"># Comparer avec et sans ombrage</span>
+<span class="n">prod_avec_ombrage</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">calculer_production_annuelle</span><span class="p">(</span><span class="mi">2024</span><span class="p">)</span>
+
+<span class="n">pv_sans_ombrage</span> <span class="o">=</span> <span class="n">PVSystem</span><span class="p">(</span>
+    <span class="n">latitude</span><span class="o">=</span><span class="mf">48.8566</span><span class="p">,</span>
+    <span class="n">longitude</span><span class="o">=</span><span class="mf">2.3522</span><span class="p">,</span>
+    <span class="n">surface_m2</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">puissance_crete_kWc</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+    <span class="n">inclinaison</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">rendement</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span>
+    <span class="n">pertes_systeme</span><span class="o">=</span><span class="mf">0.14</span>
+<span class="p">)</span>
+<span class="n">prod_sans_ombrage</span> <span class="o">=</span> <span class="n">pv_sans_ombrage</span><span class="o">.</span><span class="n">calculer_production_annuelle</span><span class="p">(</span><span class="mi">2024</span><span class="p">)</span>
+
+<span class="n">perte_ombrage</span> <span class="o">=</span> <span class="p">(</span><span class="n">prod_sans_ombrage</span> <span class="o">-</span> <span class="n">prod_avec_ombrage</span><span class="p">)</span> <span class="o">/</span> <span class="n">prod_sans_ombrage</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Production sans ombrage : </span><span class="si">{</span><span class="n">prod_sans_ombrage</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Production avec ombrage : </span><span class="si">{</span><span class="n">prod_avec_ombrage</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perte due à l&#39;ombrage : </span><span class="si">{</span><span class="n">perte_ombrage</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-dimensionnement-d-une-installation-pv">
+<h3>Example : Dimensionnement d’une installation PV<a class="headerlink" href="#example-dimensionnement-d-une-installation-pv" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PV</span><span class="w"> </span><span class="kn">import</span> <span class="n">PVSystem</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Objectif de production</span>
+<span class="n">consommation_annuelle</span> <span class="o">=</span> <span class="mi">5000</span>  <span class="c1"># kWh</span>
+<span class="n">taux_autoconsommation_vise</span> <span class="o">=</span> <span class="mf">0.70</span>
+
+<span class="c1"># Localisation</span>
+<span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="o">=</span> <span class="mf">45.7640</span><span class="p">,</span> <span class="mf">4.8357</span>  <span class="c1"># Lyon</span>
+
+<span class="c1"># Tester différentes puissances</span>
+<span class="n">puissances_test</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>  <span class="c1"># kWc</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Consommation annuelle : </span><span class="si">{</span><span class="n">consommation_annuelle</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Taux d&#39;autoconsommation visé : </span><span class="si">{</span><span class="n">taux_autoconsommation_vise</span><span class="o">*</span><span class="mi">100</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dimensionnement :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">puissance</span> <span class="ow">in</span> <span class="n">puissances_test</span><span class="p">:</span>
+    <span class="n">surface</span> <span class="o">=</span> <span class="n">puissance</span> <span class="o">/</span> <span class="mf">0.18</span>  <span class="c1"># Rendement 18%</span>
+
+    <span class="n">pv</span> <span class="o">=</span> <span class="n">PVSystem</span><span class="p">(</span>
+        <span class="n">latitude</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span>
+        <span class="n">longitude</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span>
+        <span class="n">surface_m2</span><span class="o">=</span><span class="n">surface</span><span class="p">,</span>
+        <span class="n">puissance_crete_kWc</span><span class="o">=</span><span class="n">puissance</span><span class="p">,</span>
+        <span class="n">orientation</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+        <span class="n">inclinaison</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span>
+        <span class="n">rendement</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span>
+        <span class="n">pertes_systeme</span><span class="o">=</span><span class="mf">0.14</span>
+    <span class="p">)</span>
+
+    <span class="n">production</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">calculer_production_annuelle</span><span class="p">(</span><span class="mi">2024</span><span class="p">)</span>
+    <span class="n">taux_couverture</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">production</span> <span class="o">/</span> <span class="n">consommation_annuelle</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">puissance</span><span class="si">}</span><span class="s2"> kWc (</span><span class="si">{</span><span class="n">surface</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m²) -&gt; &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;Production: </span><span class="si">{</span><span class="n">production</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh/an, &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;Couverture: </span><span class="si">{</span><span class="n">taux_couverture</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="examples-issus-des-tests-pv">
+<h3>Examples issus des tests PV<a class="headerlink" href="#examples-issus-des-tests-pv" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PV.ProductionElectriquePV</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolarSystem</span>
+
+<span class="n">system</span> <span class="o">=</span> <span class="n">SolarSystem</span><span class="p">(</span><span class="mf">48.8566</span><span class="p">,</span> <span class="mf">2.3522</span><span class="p">,</span> <span class="s1">&#39;Paris&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="s1">&#39;Etc/GMT-1&#39;</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">38</span><span class="p">)</span>
+<span class="n">system</span><span class="o">.</span><span class="n">retrieve_module_inverter_data</span><span class="p">()</span>
+<span class="n">system</span><span class="o">.</span><span class="n">retrieve_weather_data</span><span class="p">()</span>
+<span class="n">system</span><span class="o">.</span><span class="n">calculate_solar_parameters</span><span class="p">()</span>
+<span class="n">system</span><span class="o">.</span><span class="n">plot_annual_energy</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PV.ProductionElectriquePV</span><span class="w"> </span><span class="kn">import</span> <span class="n">SolarSystem</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">objective</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">altitude</span><span class="p">,</span> <span class="n">timezone</span><span class="p">):</span>
+    <span class="n">azimut</span><span class="p">,</span> <span class="n">inclinaison</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">system</span> <span class="o">=</span> <span class="n">SolarSystem</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="s1">&#39;Optimized&#39;</span><span class="p">,</span> <span class="n">altitude</span><span class="p">,</span> <span class="n">timezone</span><span class="p">,</span> <span class="n">azimut</span><span class="p">,</span> <span class="n">inclinaison</span><span class="p">)</span>
+    <span class="n">system</span><span class="o">.</span><span class="n">retrieve_module_inverter_data</span><span class="p">()</span>
+    <span class="n">system</span><span class="o">.</span><span class="n">retrieve_weather_data</span><span class="p">()</span>
+    <span class="n">system</span><span class="o">.</span><span class="n">calculate_solar_parameters</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">system</span><span class="o">.</span><span class="n">annual_energy</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">169.10944664521642</span><span class="p">,</span> <span class="mf">38.12087673517409</span><span class="p">])</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">)]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span>
+    <span class="n">objective</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mf">48.8566</span><span class="p">,</span> <span class="mf">2.3522</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="s1">&#39;Etc/GMT-1&#39;</span><span class="p">),</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;trust-constr&#39;</span><span class="p">,</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;maxiter&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;xtol&#39;</span><span class="p">:</span> <span class="mf">1e-0</span><span class="p">,</span> <span class="s1">&#39;gtol&#39;</span><span class="p">:</span> <span class="mf">1e-0</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+    <span class="n">optimized_azimut</span><span class="p">,</span> <span class="n">optimized_inclinaison</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimal orientation:&quot;</span><span class="p">,</span> <span class="n">optimized_azimut</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimal inclination:&quot;</span><span class="p">,</span> <span class="n">optimized_inclinaison</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maximal annual energy:&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section-1-achat-facturation.html" class="btn btn-neutral float-left" title="Section 1 : Achat et Facturation de l’energy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section-3-transformation.html" class="btn btn-neutral float-right" title="Section 3 : Transformation de l’energy (Utilités)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

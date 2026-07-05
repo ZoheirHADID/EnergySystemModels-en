@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 3 : Transformation de l’energy (Utilités) &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Section 4 : Distribution de l’energy" href="section-4-distribution.html" />
+    <link rel="prev" title="Section 2 : Data et Production energy" href="section-2-donnees-production.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#installation">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../usage.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="section-1-achat-facturation.html">Section 1 : Achat et Facturation de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-2-donnees-production.html">Section 2 : Data et Production energy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 3 : Transformation de l’energy (Utilités)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cycles-thermodynamiques">3.1. Cycles Thermodynamiques</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-distribution.html">Section 4 : Distribution de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-usages-finaux.html">Section 5 : Usages finaux de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-financement-subvention.html">Section 6 : Financing and subsidies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-autres.html">Section 7 : Other</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../usage.html">Usage</a></li>
+      <li class="breadcrumb-item active">Section 3 : Transformation de l’energy (Utilités)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/usage/section-3-transformation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="section-3-transformation-de-l-energy-utilites">
+<h1>Section 3 : Transformation de l’energy (Utilités)<a class="headerlink" href="#section-3-transformation-de-l-energy-utilites" title="Link to this heading"></a></h1>
+<section id="cycles-thermodynamiques">
+<h2>3.1. Cycles Thermodynamiques<a class="headerlink" href="#cycles-thermodynamiques" title="Link to this heading"></a></h2>
+<p>Le module ThermodynamicCycles allows modéliser les systems frigorifiques, pompes à chaleur et cycles thermodynamiques.</p>
+<section id="composants-de-base">
+<h3>Composants de base<a class="headerlink" href="#composants-de-base" title="Link to this heading"></a></h3>
+<p><strong>Source et Sink (Sources chaude et froide)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.ThermodynamicCycles</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span>
+
+<span class="c1"># Source froide (évaporateur)</span>
+<span class="n">source_froide</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span>
+    <span class="n">temperature_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span>  <span class="c1"># 5°C</span>
+    <span class="n">debit_massique_kg_s</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+
+<span class="c1"># Source chaude (condenseur)</span>
+<span class="n">source_chaude</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span>
+    <span class="n">temperature_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">45</span><span class="p">,</span>  <span class="c1"># 45°C</span>
+    <span class="n">debit_massique_kg_s</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Compresseur</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.ThermodynamicCycles</span><span class="w"> </span><span class="kn">import</span> <span class="n">Compressor</span>
+
+<span class="n">compresseur</span> <span class="o">=</span> <span class="n">Compressor</span><span class="p">(</span>
+    <span class="n">rendement_isentropique</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+    <span class="n">rendement_volumetrique</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span>
+    <span class="n">puissance_nominale_kW</span><span class="o">=</span><span class="mf">10.0</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Évaporateur et Condenseur</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.ThermodynamicCycles</span><span class="w"> </span><span class="kn">import</span> <span class="n">Evaporator</span><span class="p">,</span> <span class="n">Condenser</span>
+
+<span class="n">evaporateur</span> <span class="o">=</span> <span class="n">Evaporator</span><span class="p">(</span>
+    <span class="n">surface_echange_m2</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">coefficient_echange_W_m2K</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">temperature_evaporation_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="p">)</span>
+
+<span class="n">condenseur</span> <span class="o">=</span> <span class="n">Condenser</span><span class="p">(</span>
+    <span class="n">surface_echange_m2</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span>
+    <span class="n">coefficient_echange_W_m2K</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span>
+    <span class="n">temperature_condensation_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">45</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Détendeur</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.ThermodynamicCycles</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExpansionValve</span>
+
+<span class="n">detendeur</span> <span class="o">=</span> <span class="n">ExpansionValve</span><span class="p">(</span>
+    <span class="n">type_valve</span><span class="o">=</span><span class="s2">&quot;thermostatique&quot;</span><span class="p">,</span>
+    <span class="n">coefficient_ouverture</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-complet-cycle-frigorifique-a-compressure">
+<h3>Example complet : Cycle frigorifique à compressure<a class="headerlink" href="#example-complet-cycle-frigorifique-a-compressure" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.ThermodynamicCycles</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">RefrigerationCycle</span><span class="p">,</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Sink</span><span class="p">,</span> <span class="n">Compressor</span><span class="p">,</span>
+    <span class="n">Evaporator</span><span class="p">,</span> <span class="n">Condenser</span><span class="p">,</span> <span class="n">ExpansionValve</span>
+<span class="p">)</span>
+
+<span class="c1"># Définir les composants</span>
+<span class="n">source_froide</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">temperature_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span> <span class="n">debit_massique_kg_s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">source_chaude</span> <span class="o">=</span> <span class="n">Sink</span><span class="p">(</span><span class="n">temperature_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">40</span><span class="p">,</span> <span class="n">debit_massique_kg_s</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">compresseur</span> <span class="o">=</span> <span class="n">Compressor</span><span class="p">(</span>
+    <span class="n">rendement_isentropique</span><span class="o">=</span><span class="mf">0.70</span><span class="p">,</span>
+    <span class="n">rendement_volumetrique</span><span class="o">=</span><span class="mf">0.80</span><span class="p">,</span>
+    <span class="n">puissance_nominale_kW</span><span class="o">=</span><span class="mf">5.0</span>
+<span class="p">)</span>
+
+<span class="n">evaporateur</span> <span class="o">=</span> <span class="n">Evaporator</span><span class="p">(</span>
+    <span class="n">surface_echange_m2</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+    <span class="n">coefficient_echange_W_m2K</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+    <span class="n">temperature_evaporation_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="p">)</span>
+
+<span class="n">condenseur</span> <span class="o">=</span> <span class="n">Condenser</span><span class="p">(</span>
+    <span class="n">surface_echange_m2</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">coefficient_echange_W_m2K</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">temperature_condensation_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="n">detendeur</span> <span class="o">=</span> <span class="n">ExpansionValve</span><span class="p">(</span>
+    <span class="n">type_valve</span><span class="o">=</span><span class="s2">&quot;thermostatique&quot;</span><span class="p">,</span>
+    <span class="n">coefficient_ouverture</span><span class="o">=</span><span class="mf">0.75</span>
+<span class="p">)</span>
+
+<span class="c1"># Créer le cycle</span>
+<span class="n">cycle</span> <span class="o">=</span> <span class="n">RefrigerationCycle</span><span class="p">(</span>
+    <span class="n">source</span><span class="o">=</span><span class="n">source_froide</span><span class="p">,</span>
+    <span class="n">sink</span><span class="o">=</span><span class="n">source_chaude</span><span class="p">,</span>
+    <span class="n">compressor</span><span class="o">=</span><span class="n">compresseur</span><span class="p">,</span>
+    <span class="n">evaporator</span><span class="o">=</span><span class="n">evaporateur</span><span class="p">,</span>
+    <span class="n">condenser</span><span class="o">=</span><span class="n">condenseur</span><span class="p">,</span>
+    <span class="n">expansion_valve</span><span class="o">=</span><span class="n">detendeur</span><span class="p">,</span>
+    <span class="n">refrigerant</span><span class="o">=</span><span class="s2">&quot;R410A&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer les performances</span>
+<span class="n">resultats</span> <span class="o">=</span> <span class="n">cycle</span><span class="o">.</span><span class="n">calculate_performance</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance frigorifique : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;cooling_capacity_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance absorbée : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;power_input_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;COP : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;COP&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;EER : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;EER&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-pompe-a-chaleur-air-eau">
+<h3>Example : Pompe à chaleur air-eau<a class="headerlink" href="#example-pompe-a-chaleur-air-eau" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.ThermodynamicCycles</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatPump</span>
+
+<span class="c1"># Configuration pompe à chaleur</span>
+<span class="n">pac</span> <span class="o">=</span> <span class="n">HeatPump</span><span class="p">(</span>
+    <span class="n">type_source</span><span class="o">=</span><span class="s2">&quot;air&quot;</span><span class="p">,</span>
+    <span class="n">type_sink</span><span class="o">=</span><span class="s2">&quot;eau&quot;</span><span class="p">,</span>
+    <span class="n">puissance_thermique_nominale_kW</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+    <span class="n">temperature_source_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">temperature_sink_K</span><span class="o">=</span><span class="mf">273.15</span> <span class="o">+</span> <span class="mi">35</span><span class="p">,</span>
+    <span class="n">refrigerant</span><span class="o">=</span><span class="s2">&quot;R32&quot;</span><span class="p">,</span>
+    <span class="n">rendement_compresseur</span><span class="o">=</span><span class="mf">0.75</span>
+<span class="p">)</span>
+
+<span class="c1"># Performances nominales</span>
+<span class="n">perf_nominale</span> <span class="o">=</span> <span class="n">pac</span><span class="o">.</span><span class="n">calculate_performance</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance thermique : </span><span class="si">{</span><span class="n">perf_nominale</span><span class="p">[</span><span class="s1">&#39;heating_capacity_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance électrique : </span><span class="si">{</span><span class="n">perf_nominale</span><span class="p">[</span><span class="s1">&#39;power_input_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;COP : </span><span class="si">{</span><span class="n">perf_nominale</span><span class="p">[</span><span class="s1">&#39;COP&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Performances en fonction de la température extérieure</span>
+<span class="n">temperatures_ext</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Performances selon température extérieure :&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t_ext</span> <span class="ow">in</span> <span class="n">temperatures_ext</span><span class="p">:</span>
+    <span class="n">pac</span><span class="o">.</span><span class="n">set_source_temperature</span><span class="p">(</span><span class="mf">273.15</span> <span class="o">+</span> <span class="n">t_ext</span><span class="p">)</span>
+    <span class="n">perf</span> <span class="o">=</span> <span class="n">pac</span><span class="o">.</span><span class="n">calculate_performance</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">t_ext</span><span class="si">:</span><span class="s2">3.0f</span><span class="si">}</span><span class="s2">°C : COP = </span><span class="si">{</span><span class="n">perf</span><span class="p">[</span><span class="s1">&#39;COP&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;Puissance = </span><span class="si">{</span><span class="n">perf</span><span class="p">[</span><span class="s1">&#39;heating_capacity_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-issu-des-tests-chiller-complet">
+<h3>Example issu des tests : Chiller complet<a class="headerlink" href="#example-issu-des-tests-chiller-complet" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">CoolProp.CoolProp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">CP</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Evaporator</span><span class="w"> </span><span class="kn">import</span> <span class="n">Evaporator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Compressor</span><span class="w"> </span><span class="kn">import</span> <span class="n">Compressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Desuperheater</span><span class="w"> </span><span class="kn">import</span> <span class="n">Desuperheater</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Expansion_Valve</span><span class="w"> </span><span class="kn">import</span> <span class="n">Expansion_Valve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Condenser</span><span class="w"> </span><span class="kn">import</span> <span class="n">Condenser</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Connect</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fluid_connect</span>
+
+<span class="n">EVAP</span> <span class="o">=</span> <span class="n">Evaporator</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">COMP</span> <span class="o">=</span> <span class="n">Compressor</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">DESURCH</span> <span class="o">=</span> <span class="n">Desuperheater</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">COND</span> <span class="o">=</span> <span class="n">Condenser</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">DET</span> <span class="o">=</span> <span class="n">Expansion_Valve</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+
+<span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;R134a&quot;</span>
+<span class="n">EVAP</span><span class="o">.</span><span class="n">fluid</span> <span class="o">=</span> <span class="n">fluid</span>
+<span class="n">EVAP</span><span class="o">.</span><span class="n">Inlet</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">EVAP</span><span class="o">.</span><span class="n">LP_bar</span> <span class="o">=</span> <span class="mf">2.930154</span>
+<span class="n">EVAP</span><span class="o">.</span><span class="n">surchauff</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">EVAP</span><span class="o">.</span><span class="n">Inlet</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">CP</span><span class="o">.</span><span class="n">PropsSI</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="mi">1</span> <span class="o">*</span> <span class="mf">1e5</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="mi">40</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">fluid</span><span class="p">)</span>
+
+<span class="n">COMP</span><span class="o">.</span><span class="n">Tcond_degC</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">COMP</span><span class="o">.</span><span class="n">eta_is</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">COMP</span><span class="o">.</span><span class="n">Tdischarge_target</span> <span class="o">=</span> <span class="mi">80</span>
+
+<span class="n">COND</span><span class="o">.</span><span class="n">subcooling</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">EVAP</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">COMP</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">EVAP</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">COMP</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">DESURCH</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">COMP</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">DESURCH</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">COND</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">DESURCH</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">COND</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">DET</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">COND</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">DET</span><span class="o">.</span><span class="n">Outlet</span><span class="p">,</span> <span class="n">EVAP</span><span class="o">.</span><span class="n">Inlet</span><span class="p">)</span>
+<span class="n">DET</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">EVAP</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">DET</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">EVAP</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="n">EER</span> <span class="o">=</span> <span class="n">EVAP</span><span class="o">.</span><span class="n">Q_evap</span> <span class="o">/</span> <span class="n">COMP</span><span class="o">.</span><span class="n">Q_comp</span>
+<span class="n">Q_condTot</span> <span class="o">=</span> <span class="n">COND</span><span class="o">.</span><span class="n">Q_cond</span> <span class="o">+</span> <span class="n">DESURCH</span><span class="o">.</span><span class="n">Qdesurch</span>
+<span class="n">COP</span> <span class="o">=</span> <span class="n">Q_condTot</span> <span class="o">/</span> <span class="n">COMP</span><span class="o">.</span><span class="n">Q_comp</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EER=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">EER</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q_condTot=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">Q_condTot</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;COP=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">COP</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section-2-donnees-production.html" class="btn btn-neutral float-left" title="Section 2 : Data et Production energy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section-4-distribution.html" class="btn btn-neutral float-right" title="Section 4 : Distribution de l’energy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mur composite &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Isolation des tuyaux" href="pipe_insulation_analysis.html" />
+    <link rel="prev" title="Corps parallélépipédique" href="corps_parallelepipedique.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">1. Transfer de chaleur</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="corps_parallelepipedique.html">Corps parallélépipédique</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mur composite</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametres-possibles">Paramètres possibles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explication-du-model">Explication du model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipe_insulation_analysis.html">Isolation des tuyaux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">1. Transfer de chaleur</a></li>
+      <li class="breadcrumb-item active">Mur composite</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/001-heat_transfer/composite_wall_heat_transfer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mur-composite">
+<h1>Mur composite<a class="headerlink" href="#mur-composite" title="Link to this heading"></a></h1>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/001_heat_transfer_composite_wall.png"><img alt="Composite Wall" class="align-center" src="../_images/001_heat_transfer_composite_wall.png" style="width: 500px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompositeWall</span>
+
+<span class="c1"># Créer un mur composite</span>
+<span class="n">wall</span> <span class="o">=</span> <span class="n">CompositeWall</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">he</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">hi</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Ti</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">Te</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Ajouter des couches (de l&#39;extérieur vers l&#39;intérieur)</span>
+<span class="n">wall</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Parpaings creux&#39;</span><span class="p">)</span>
+<span class="n">wall</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Polystyrène&#39;</span><span class="p">)</span>
+<span class="n">wall</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Plâtre&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculer le transfert</span>
+<span class="n">wall</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Afficher les résultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Résistance totale: </span><span class="si">{</span><span class="n">wall</span><span class="o">.</span><span class="n">R_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m².K/W&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flux thermique: </span><span class="si">{</span><span class="n">wall</span><span class="o">.</span><span class="n">Q</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wall</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Results</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Résistance totale: 2.018 m².K/W
+Flux thermique: 148.66 W
+   Épaisseur (m)         Matériau  Conductivité (W/m.°C)  Résistance (m².°C/W)  Temperature input (°C)  Temperature output (°C)       Q (W)  A (m²)
+0            NaN    Air extérieur                    NaN              0.043478               -10.000000                -9.353644  148.661889      10
+1           0.20  Parpaings creux                   1.40              0.142857                -9.353644                -7.229903  148.661889      10
+2           0.05      Polystyrène                   0.03              1.666667                -7.229903                17.547079  148.661889      10
+3           0.02           Plâtre                   0.50              0.040000                17.547079                18.141726  148.661889      10
+4            NaN    Air intérieur                    NaN              0.125000                18.141726                20.000000  148.661889      10
+</pre></div>
+</div>
+<p>Le calcul retourne :</p>
+<ul class="simple">
+<li><p><strong>Résistance thermique totale</strong> (<code class="docutils literal notranslate"><span class="pre">R_total</span></code>) [m²·K/W]</p></li>
+<li><p><strong>Flux thermique</strong> (<code class="docutils literal notranslate"><span class="pre">Q</span></code>) [W]</p></li>
+<li><p><strong>DataFrame détaillé</strong> : Pour chaque couche</p>
+<ul>
+<li><p>Épaisseur [m]</p></li>
+<li><p>Matériau</p></li>
+<li><p>Conductivité thermique [W/m·K]</p></li>
+<li><p>Résistance thermique [m²·K/W]</p></li>
+<li><p>Temperature input [°C]</p></li>
+<li><p>Temperature output [°C]</p></li>
+<li><p>Flux thermique [W]</p></li>
+<li><p>Surface [m²]</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="parametres-possibles">
+<h2>Paramètres possibles<a class="headerlink" href="#parametres-possibles" title="Link to this heading"></a></h2>
+<p><strong>Matériaux disponibles</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'Glass</span> <span class="pre">wool'</span></code> (λ = 0.034 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Liège</span> <span class="pre">expansé</span> <span class="pre">aggloméré</span> <span class="pre">au</span> <span class="pre">brai'</span></code> (λ = 0.048 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Liège</span> <span class="pre">expansé</span> <span class="pre">pur'</span></code> (λ = 0.043 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Parpaings</span> <span class="pre">creux'</span></code> (λ = 1.4 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Pierre</span> <span class="pre">calcaire</span> <span class="pre">dure</span> <span class="pre">(marbre)'</span></code> (λ = 2.9 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Pierre</span> <span class="pre">calcaire</span> <span class="pre">tendre'</span></code> (λ = 0.95 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Pierre</span> <span class="pre">granit'</span></code> (λ = 3.5 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Polystyrène</span> <span class="pre">expansé'</span></code> (λ = 0.047 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Polystyrène'</span></code> (λ = 0.03 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Polystyrène</span> <span class="pre">extrudé'</span></code> (λ = 0.035 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Polyurethane</span> <span class="pre">foam'</span></code> (λ = 0.03 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Plâtre'</span></code> (λ = 0.5 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Verre'</span></code> (λ = 1.0 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Air'</span></code> (Lame d’air with résistance according to épaisseur)</p></li>
+</ul>
+<p><strong>Épaisseurs lame d’air et résistances associées</strong> :</p>
+<ul class="simple">
+<li><p>5-7 mm : R = 0.11 m²·K/W</p></li>
+<li><p>7-9 mm : R = 0.13 m²·K/W</p></li>
+<li><p>9-11 mm : R = 0.14 m²·K/W</p></li>
+<li><p>&gt;11 mm : R = 0.16 m²·K/W</p></li>
+</ul>
+</section>
+<section id="explication-du-model">
+<h2>Explication du model<a class="headerlink" href="#explication-du-model" title="Link to this heading"></a></h2>
+<p>Ce model calcule le transfert thermique à travers un mur multicouche.</p>
+<p>Le calcul se base on :</p>
+<ol class="arabic simple">
+<li><p><strong>Résistances en série</strong> : Les résistances thermiques de chaque couche s’additionnent</p></li>
+<li><p><strong>Convection aux surfaces</strong> : Résistances convectives intérieure et extérieure</p></li>
+<li><p><strong>Conduction in les matériaux</strong> : Résistance fonction de l’épaisseur et de la conductivité</p></li>
+</ol>
+<p>Le model allows :</p>
+<ul class="simple">
+<li><p>Calculer la thermal resistance totale</p></li>
+<li><p>Déterminer le flux thermique traversant le mur</p></li>
+<li><p>Obtenir le profil de temperature à travers les couches</p></li>
+<li><p>Analyser la contribution de chaque couche</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="corps_parallelepipedique.html" class="btn btn-neutral float-left" title="Corps parallélépipédique" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pipe_insulation_analysis.html" class="btn btn-neutral float-right" title="Isolation des tuyaux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

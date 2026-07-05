@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10.1. Electricity Grid Cost Calculation &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10.1.2.3. Example HTA – CU_pf" href="exemples/exemple_hta_cu_pf.html" />
+    <link rel="prev" title="10. Achat d’energy" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">10. Achat d’energy</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#facture-denergy-gaz-et-electricite-principes-communs">Facture d’energy (gaz et électricité) : principes communs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#principe-universel">Principe universel</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.1. Electricity Grid Cost Calculation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#turpe">10.1.1. TURPE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="contrat_gaz.html">10.2. Approvisionnement en Gaz Naturel - France</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guide_audit_facture.html">10.3. Guide pratique : Auditer une facture d’energie with Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">10. Achat d’energy</a></li>
+      <li class="breadcrumb-item active">10.1. Electricity Grid Cost Calculation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/010-achat-energie/contrat_electricite.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="electricity-grid-cost-calculation">
+<span id="calcul-turpe"></span><h1>10.1. Electricity Grid Cost Calculation<a class="headerlink" href="#electricity-grid-cost-calculation" title="Link to this heading"></a></h1>
+<section id="turpe">
+<h2>10.1.1. TURPE<a class="headerlink" href="#turpe" title="Link to this heading"></a></h2>
+<p>Le prix payé annuellement for l’usage des réseaux publics de distribution (RPD) est la somme des composantes suivantes :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 90.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Abréviation</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CG</strong></p></td>
+<td><p>Annual management component</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CC</strong></p></td>
+<td><p>Annual metering component</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CS</strong></p></td>
+<td><p>Annual withdrawal component</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CMDPS</strong></p></td>
+<td><p>Monthly component for exceeding subscribed power</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CACS</strong></p></td>
+<td><p>Annual component for supplementary and backup supplies</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CR</strong></p></td>
+<td><p>Grouping component</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CER</strong></p></td>
+<td><p>Composante annuelle de l’energy réactive</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CI</strong></p></td>
+<td><p>Annual injection component</p></td>
+</tr>
+</tbody>
+</table>
+<p>The general TURPE formula is therefore :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>TURPE = CG + CC + CS + CMDPS + CACS + CR + CER + CI
+</pre></div>
+</div>
+<p><strong>Component Details :</strong></p>
+<ul class="simple">
+<li><p><strong>CG</strong> : Fixed contract management fees.</p></li>
+<li><p><strong>CC</strong> : Fees related to meter provision and reading.</p></li>
+<li><p><strong>CS</strong> : Frais liés à la quantité d’energy soutirée du réseau.</p></li>
+<li><p><strong>CMDPS</strong> : Penalties for exceeding subscribed power.</p></li>
+<li><p><strong>CACS</strong> : Fees for supplementary or backup supplies.</p></li>
+<li><p><strong>CR</strong> : Fees for grouping multiple sites.</p></li>
+<li><p><strong>CER</strong> : Frais liés à l’energy réactive consommée.</p></li>
+<li><p><strong>CI</strong> : Frais for l’injection d’energy on le réseau.</p></li>
+</ul>
+<div class="admonition-guide-d-utilisation-du-calcul-turpe admonition">
+<p class="admonition-title">Guide d’utilisation du calcul TURPE</p>
+<p>Voici un example d’usage des fonctions to calculate le TURPE :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Facture.TURPE</span><span class="w"> </span><span class="kn">import</span> <span class="n">input_Contrat</span><span class="p">,</span> <span class="n">TurpeCalculator</span><span class="p">,</span> <span class="n">input_Facture</span><span class="p">,</span> <span class="n">input_Tarif</span>
+
+<span class="c1"># 1. Définition du contrat (caractéristiques de raccordement)</span>
+<span class="n">contrat</span> <span class="o">=</span> <span class="n">input_Contrat</span><span class="p">(</span>
+    <span class="n">domaine_tension</span><span class="o">=</span><span class="s2">&quot;BT &lt; 36 kVA&quot;</span><span class="p">,</span>
+    <span class="n">PS_pointe</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">PS_HPH</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">PS_HCH</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">PS_HPB</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">PS_HCB</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">version_utilisation</span><span class="o">=</span><span class="s2">&quot;CU4&quot;</span><span class="p">,</span>
+    <span class="n">pourcentage_ENR</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. Définition des tarifs unitaires (en €/kWh ou selon composante)</span>
+<span class="n">tarif</span> <span class="o">=</span> <span class="n">input_Tarif</span><span class="p">(</span>
+    <span class="n">c_euro_kWh_pointe</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HPB</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HCB</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HPH</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HCH</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">c_euro_kwh_CSPE_TICFE</span><span class="o">=</span><span class="mf">0.02250</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_certif_capacite_pointe</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_certif_capacite_HPH</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_certif_capacite_HCH</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_certif_capacite_HPB</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_certif_capacite_HCB</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_ENR</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_ARENH</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. Création de la facture (consommations et dépassements)</span>
+<span class="n">facture</span> <span class="o">=</span> <span class="n">input_Facture</span><span class="p">(</span>
+    <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2025-02-01&quot;</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2025-02-28&quot;</span><span class="p">,</span>
+    <span class="n">heures_depassement</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">depassement_PS_HPB</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">kWh_pointe</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">kWh_HPH</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">kWh_HCH</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">kWh_HPB</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">kWh_HCB</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+
+<span class="c1"># Création du calculateur TURPE</span>
+<span class="n">turpe_calculator</span> <span class="o">=</span> <span class="n">TurpeCalculator</span><span class="p">(</span><span class="n">contrat</span><span class="p">,</span> <span class="n">tarif</span><span class="p">,</span> <span class="n">facture</span><span class="p">)</span>
+
+<span class="c1"># Calcul du TURPE</span>
+<span class="n">turpe_calculator</span><span class="o">.</span><span class="n">calculate_turpe</span><span class="p">()</span>
+
+<span class="c1"># Affichage des résultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">turpe_calculator</span><span class="o">.</span><span class="n">df_totaux</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output réelle (<code class="docutils literal notranslate"><span class="pre">df_totaux</span></code>, for ce contrat BT &lt; 36 kVA / CU4 et 40 kWh
+consommés en février 2025) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                      Ligne  Résultat Annuel
+                 Fourniture             0.00
+       Acheminement (TURPE)            12.27
+     Taxes et contributions             2.43
+               = Total HTVA            15.58
+                    TVA 20%             3.12
+                = Total TTC            18.70
+        Coût HTVA (EUR/MWh)           389.50
+Coût distribution (EUR/MWh)           306.75
+       Coût taxes (EUR/MWh)            60.75
+</pre></div>
+</div>
+<p>The parameters to fill in <cite>input_Contrat</cite>, <cite>input_Tarif</cite> and <cite>input_Facture</cite> are detailed in the tables below. Adapt them according to your consumption profile, your contract and the current tariffs.</p>
+</div>
+<p><strong>Table of Input Parameters for TURPE Calculation</strong></p>
+<p><strong>*Declare a Contract*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Paramètre</p></th>
+<th class="head"><p>Valeurs possibles / Plage</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>domaine_tension</p></td>
+<td><p>“BT &lt; 36 kVA”, “BT &gt; 36 kVA”, “HTA”</p></td>
+<td><p>Connection voltage domain</p></td>
+</tr>
+<tr class="row-odd"><td><p>PS_pointe</p></td>
+<td><p>0 to 36 (kW) for LV &lt; 36 kVA; &gt;36 to ~250 (kW) for LV &gt; 36 kVA; generally &gt;250 kW for MV</p></td>
+<td><p>Subscribed power during peak period (according to voltage domain)</p></td>
+</tr>
+<tr class="row-even"><td><p>PS_HPH</p></td>
+<td><p>0 to 36 (kW) for LV &lt; 36 kVA; &gt;36 to ~250 (kW) for LV &gt; 36 kVA; generally &gt;250 kW for MV</p></td>
+<td><p>Subscribed power during winter peak hours</p></td>
+</tr>
+<tr class="row-odd"><td><p>PS_HCH</p></td>
+<td><p>0 to 36 (kW) for LV &lt; 36 kVA; &gt;36 to ~250 (kW) for LV &gt; 36 kVA; generally &gt;250 kW for MV</p></td>
+<td><p>Subscribed power during winter off-peak hours</p></td>
+</tr>
+<tr class="row-even"><td><p>PS_HPB</p></td>
+<td><p>0 to 36 (kW) for LV &lt; 36 kVA; &gt;36 to ~250 (kW) for LV &gt; 36 kVA; generally &gt;250 kW for MV</p></td>
+<td><p>Subscribed power during summer peak hours</p></td>
+</tr>
+<tr class="row-odd"><td><p>PS_HCB</p></td>
+<td><p>0 to 36 (kW) for LV &lt; 36 kVA; &gt;36 to ~250 (kW) for LV &gt; 36 kVA; generally &gt;250 kW for MV</p></td>
+<td><p>Subscribed power during summer off-peak hours</p></td>
+</tr>
+<tr class="row-even"><td><p>version_usage</p></td>
+<td><p>Voir tableau dédié ci-dessous</p></td>
+<td><p>Tariff option according to voltage domain</p></td>
+</tr>
+<tr class="row-odd"><td><p>pourcentage_ENR</p></td>
+<td><p>0 à 100 (%)</p></td>
+<td><p>Percentage of renewable energy injected or self-consumed</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage Versions by Voltage Domain</strong></p>
+<p><strong>*BT &lt; 36 kVA*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Version d’usage</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CU4</p></td>
+<td><p>Contrat Unique 4 périodes (pointe, HPH, HCH, HPB, HCB)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CU</p></td>
+<td><p>Contrat Unique (tarification standard BT &lt; 36 kVA)</p></td>
+</tr>
+<tr class="row-even"><td><p>MU4</p></td>
+<td><p>Multi-usage 4 périodes</p></td>
+</tr>
+<tr class="row-odd"><td><p>MU_DT</p></td>
+<td><p>Multi-usage double tarif</p></td>
+</tr>
+<tr class="row-even"><td><p>LU</p></td>
+<td><p>Longue Usage</p></td>
+</tr>
+<tr class="row-odd"><td><p>CU4_ac</p></td>
+<td><p>Single Contract 4 periods with collective self-production and/or backup supply</p></td>
+</tr>
+<tr class="row-even"><td><p>MU_ac</p></td>
+<td><p>Multi-use with collective self-production and/or backup supply</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*BT &gt; 36 kVA*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Version d’usage</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CU</p></td>
+<td><p>Contrat Unique (tarification standard BT &gt; 36 kVA)</p></td>
+</tr>
+<tr class="row-odd"><td><p>LU</p></td>
+<td><p>Longue Usage (tarification spécifique for usages prolongés)</p></td>
+</tr>
+<tr class="row-even"><td><p>CU_ac</p></td>
+<td><p>Single Contract with collective self-production and/or backup supply</p></td>
+</tr>
+<tr class="row-odd"><td><p>LU_ac</p></td>
+<td><p>Longue Usage with autoproduction collective et/ou alimentation de secours</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*HTA*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Version d’usage</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CU_pf</p></td>
+<td><p>SC Contract (Single Contract) with fixed peak</p></td>
+</tr>
+<tr class="row-odd"><td><p>CU_pm</p></td>
+<td><p>SC Contract (Single Contract) with mobile peak</p></td>
+</tr>
+<tr class="row-even"><td><p>LU_pf</p></td>
+<td><p>Contrat LU (Longue Usage) with pointe fixe</p></td>
+</tr>
+<tr class="row-odd"><td><p>LU_pm</p></td>
+<td><p>Contrat LU (Longue Usage) with pointe mobile</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Déclarer vos tarifs*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Paramètre</p></th>
+<th class="head"><p>Valeurs possibles / Plage</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>c_euro_kWh_pointe</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Unit price peak period</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_euro_kWh_HPB</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Tarif unitaire heures pleines été</p></td>
+</tr>
+<tr class="row-even"><td><p>c_euro_kWh_HCB</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Tarif unitaire heures creuses été</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_euro_kWh_HPH</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Tarif unitaire heures pleines hiver</p></td>
+</tr>
+<tr class="row-even"><td><p>c_euro_kWh_HCH</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Tarif unitaire heures creuses hiver</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_euro_kwh_CSPE_TICFE</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Accise on l’électricité (ex-CSPE / TICFE)</p></td>
+</tr>
+<tr class="row-even"><td><p>c_euro_kWh_certif_capacite_pointe</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Peak period capacity certificate</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_euro_kWh_certif_capacite_HPH</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Certificat capacité heures pleines hiver</p></td>
+</tr>
+<tr class="row-even"><td><p>c_euro_kWh_certif_capacite_HCH</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Certificat capacité heures creuses hiver</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_euro_kWh_certif_capacite_HPB</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Certificat capacité heures pleines été</p></td>
+</tr>
+<tr class="row-even"><td><p>c_euro_kWh_certif_capacite_HCB</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Certificat capacité heures creuses été</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_euro_kWh_ENR</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Tarif ENR (energy renouvelable)</p></td>
+</tr>
+<tr class="row-even"><td><p>c_euro_kWh_ARENH</p></td>
+<td><p>≥ 0 (€/kWh)</p></td>
+<td><p>Tarif ARENH (Accès régulé à l’électricité nucléaire historique)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>*Declare an Invoice*</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Paramètre</p></th>
+<th class="head"><p>Valeurs possibles / Plage</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>start, end</p></td>
+<td><p>Date (YYYY-MM-DD)</p></td>
+<td><p>Start and end of billing period</p></td>
+</tr>
+<tr class="row-odd"><td><p>heures_depassement</p></td>
+<td><p>Entier ≥ 0</p></td>
+<td><p>Number of hours exceeding subscribed power</p></td>
+</tr>
+<tr class="row-even"><td><p>depassement_PS_HPB</p></td>
+<td><p>≥ 0 (kW ou kVA)</p></td>
+<td><p>Dépassement de power souscrite en HPB</p></td>
+</tr>
+<tr class="row-odd"><td><p>kWh_pointe</p></td>
+<td><p>≥ 0</p></td>
+<td><p>Consommation en période de pointe (kWh)</p></td>
+</tr>
+<tr class="row-even"><td><p>kWh_HPH</p></td>
+<td><p>≥ 0</p></td>
+<td><p>Consommation en heures pleines hiver (kWh)</p></td>
+</tr>
+<tr class="row-odd"><td><p>kWh_HCH</p></td>
+<td><p>≥ 0</p></td>
+<td><p>Consommation en heures creuses hiver (kWh)</p></td>
+</tr>
+<tr class="row-even"><td><p>kWh_HPB</p></td>
+<td><p>≥ 0</p></td>
+<td><p>Consommation en heures pleines été (kWh)</p></td>
+</tr>
+<tr class="row-odd"><td><p>kWh_HCB</p></td>
+<td><p>≥ 0</p></td>
+<td><p>Consommation en heures creuses été (kWh)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Exemples TURPE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="exemples/exemple_hta_cu_pf.html">10.1.2.3. Example HTA – CU_pf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples/exemple_hta_cu_pm.html">10.1.2.4. Example HTA – CU_pm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples/exemple_hta_lu_pf.html">10.1.2.5. Example HTA – LU_pf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples/exemple_hta_lu_pm.html">10.1.2.6. Example HTA – LU_pm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples/exemple_bt_m36_cu4.html">10.1.2.1. Example BT &lt; 36 kVA – CU4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exemples/exemple_bt_p36_cu.html">10.1.2.2. Example BT &gt; 36 kVA – CU</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="10. Achat d’energy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="exemples/exemple_hta_cu_pf.html" class="btn btn-neutral float-right" title="10.1.2.3. Example HTA – CU_pf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

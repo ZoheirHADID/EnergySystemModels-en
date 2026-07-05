@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenWeatherMap API &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Degrés-Jours Unifiés (DJU)" href="degres_jours.html" />
+    <link rel="prev" title="MeteoCiel — Data historiques" href="meteociel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. Meteorological Data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="meteociel.html">MeteoCiel — Data historiques</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OpenWeatherMap API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-par-gps-coordinates">Usage (par GPS coordinates)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-acquisition-periodique">Example : acquisition périodique</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limites">Limites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="degres_jours.html">Degrés-Jours Unifiés (DJU)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">8. Meteorological Data</a></li>
+      <li class="breadcrumb-item active">OpenWeatherMap API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/008-meteo/openweathermap.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="openweathermap-api">
+<h1>OpenWeatherMap API<a class="headerlink" href="#openweathermap-api" title="Link to this heading"></a></h1>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Create an account on <a class="reference external" href="https://openweathermap.org">https://openweathermap.org</a></p></li>
+<li><p>Récupérer la clé API (plan gratuit : 1000 appels/jour)</p></li>
+<li><p>Renseigner la clé in le fichier <code class="docutils literal notranslate"><span class="pre">config.ini</span></code> lu by le module
+(fonction <code class="docutils literal notranslate"><span class="pre">get_weather.get_api_key()</span></code>).</p></li>
+</ol>
+</section>
+<section id="usage-par-gps-coordinates">
+<h2>Usage (par GPS coordinates)<a class="headerlink" href="#usage-par-gps-coordinates" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">OpenWeatherMap</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenWeatherMap_call_location</span>
+
+<span class="c1"># Paris (Tour Eiffel) — latitude et longitude en chaînes de caractères</span>
+<span class="n">latitude</span> <span class="o">=</span> <span class="s2">&quot;48.858370&quot;</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="s2">&quot;2.294481&quot;</span>
+
+<span class="c1"># Appel API : renvoie un DataFrame d&#39;une ligne</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">OpenWeatherMap_call_location</span><span class="o">.</span><span class="n">API_call_location</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>DataFrame retourné (colonnes) :</p>
+<ul class="simple">
+<li><p><strong>Timestamp</strong> : date/heure de la mesure ;</p></li>
+<li><p><strong>T(°C)</strong> : temperature ;</p></li>
+<li><p><strong>RH(%)</strong> : humidité relative.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">API_call_location</span></code> effectue un appel réseau to l’API OpenWeatherMap et
+nécessite une clé valide in <code class="docutils literal notranslate"><span class="pre">config.ini</span></code>. Le module n’expose <strong>que</strong>
+l’appel by coordata (il n’existe pas d’appel by nom de ville).</p>
+</div>
+</section>
+<section id="example-acquisition-periodique">
+<h2>Example : acquisition périodique<a class="headerlink" href="#example-acquisition-periodique" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">OpenWeatherMap</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenWeatherMap_call_location</span>
+
+<span class="n">data_history</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Boucle d&#39;acquisition toutes les heures</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">OpenWeatherMap_call_location</span><span class="o">.</span><span class="n">API_call_location</span><span class="p">(</span><span class="s2">&quot;48.858370&quot;</span><span class="p">,</span> <span class="s2">&quot;2.294481&quot;</span><span class="p">)</span>
+        <span class="n">data_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">}</span><span class="s2">] T = </span><span class="si">{</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;T(°C)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> °C&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Sauvegarder toutes les 24 mesures</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_history</span><span class="p">)</span> <span class="o">%</span> <span class="mi">24</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">data_history</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span>
+                <span class="s1">&#39;historique_meteo.xlsx&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3600</span><span class="p">)</span>   <span class="c1"># 1 heure</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erreur : </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="limites">
+<h2>Limites<a class="headerlink" href="#limites" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>1000 appels/jour</strong> (plan gratuit) ;</p></li>
+<li><p>ne pas interroger plus d’une fois toutes les 10-15 minutes ;</p></li>
+<li><p>for les data historiques, utiliser <a class="reference internal" href="meteociel.html"><span class="doc">MeteoCiel — Data historiques</span></a>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="meteociel.html" class="btn btn-neutral float-left" title="MeteoCiel — Data historiques" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="degres_jours.html" class="btn btn-neutral float-right" title="Degrés-Jours Unifiés (DJU)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction au Module CEE &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Certificats d’Économies d’Energy" href="module_cee.html" />
+    <link rel="prev" title="11. Certificats d’Économies d’Energy" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">11. Certificats d’Économies d’Energy</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction au Module CEE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-rapide-isolation-industrielle">Example rapide : isolation industrielle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demander-le-detail-du-calcul">Demander le détail du calcul</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valorisation-des-cee">Valorisation des CEE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bonnes-pratiques">Bonnes pratiques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">Références</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="module_cee.html">Certificats d’Économies d’Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_cee.html#secteur-industrie">Secteur Industrie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_cee.html#secteur-transport">Secteur Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_cee.html#projet-multi-operations">Projet multi-opérations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_cee.html#fiches-obsoletes-non-eligibles">Fiches obsolètes (non éligibles)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_cee.html#conseils-d-usage">Conseils d’usage</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">11. Certificats d’Économies d’Energy</a></li>
+      <li class="breadcrumb-item active">Introduction au Module CEE</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/011-cee/introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-au-module-cee">
+<h1>Introduction au Module CEE<a class="headerlink" href="#introduction-au-module-cee" title="Link to this heading"></a></h1>
+<p>Le module <code class="docutils literal notranslate"><span class="pre">CEE</span></code> d’EnergySystemModels aide à estimer rapidement les
+certificats d’économies d’energy associés à certaines opérations
+standardisées. Il est particulièrement utile en phase d’avant-projet :
+l’utilisateur peut comparer plusieurs actions, convertir les results en
+MWh cumac et obtenir un ordre de grandeur de prime.</p>
+<p>Le module expose une fonction principale :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span><span class="p">,</span> <span class="n">list_fiches</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_fiches</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Les fiches <strong>en vigueur</strong> pilotées by le dispatcher (un example chacune dans
+<a class="reference internal" href="module_cee.html"><span class="doc">Certificats d’Économies d’Energy</span></a>), rangées by secteur :</p>
+<p><strong>Industrie</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">IND-UT-103</span></code> : heat recovery on compresseur d’air.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IND-UT-130</span></code> : condenseur on effluents gazeux de chaudière vapeur.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IND-UT-131</span></code> : isolation de parois planes ou cylindriques industrielles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IND-UT-134</span></code> : system de mesurage d’indicateurs de performance energy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IND-UT-135</span></code> : freecooling by eau de refroidissement.</p></li>
+</ul>
+<p><strong>Transport</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TRA-EQ-101</span></code> : unité de transport intermodal rail-route.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRA-EQ-107</span></code> : unité de transport intermodal fluvial-route.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Les fiches <code class="docutils literal notranslate"><span class="pre">IND-UT-136</span></code> (systems moto-régulés, <strong>abrogée</strong> le 18/08/2025)
+et <code class="docutils literal notranslate"><span class="pre">TRA-EQ-108</span></code> (wagon d’autoroute ferroviaire, opération <strong>close</strong> au
+31/03/2020) sont supprimées : elles n’apparaissent plus in <code class="docutils literal notranslate"><span class="pre">list_fiches()</span></code>
+et <code class="docutils literal notranslate"><span class="pre">calcul_CEE</span></code> les refuse (<code class="docutils literal notranslate"><span class="pre">ValueError</span></code>).</p>
+</div>
+<section id="example-rapide-isolation-industrielle">
+<h2>Example rapide : isolation industrielle<a class="headerlink" href="#example-rapide-isolation-industrielle" title="Link to this heading"></a></h2>
+<p>L’example suivant calcule les kWh cumac for l’isolation d’une paroi plane
+industrielle fonctionnant en continu hors arrêt week-end.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="n">kwh_cumac</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span>
+    <span class="n">fiche</span><span class="o">=</span><span class="s2">&quot;IND-UT-131&quot;</span><span class="p">,</span>
+    <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;3*8h_sansArrWE&quot;</span><span class="p">,</span>
+    <span class="n">Temperature</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+    <span class="n">Geometry</span><span class="o">=</span><span class="s2">&quot;plan&quot;</span><span class="p">,</span>
+    <span class="n">S</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>  <span class="c1"># surface isolée [m2]</span>
+<span class="p">)</span>
+
+<span class="n">prix_mwh_cumac</span> <span class="o">=</span> <span class="mf">9.0</span>
+<span class="n">prime_eur</span> <span class="o">=</span> <span class="n">kwh_cumac</span> <span class="o">*</span> <span class="n">prix_mwh_cumac</span> <span class="o">/</span> <span class="mi">1000</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Volume CEE : </span><span class="si">{</span><span class="n">kwh_cumac</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> kWh cumac&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prime estimée : </span><span class="si">{</span><span class="n">prime_eur</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> EUR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="demander-le-detail-du-calcul">
+<h2>Demander le détail du calcul<a class="headerlink" href="#demander-le-detail-du-calcul" title="Link to this heading"></a></h2>
+<p>Pour construire un rapport utilisateur, il est préférable de demander les
+détails. Le module retourne alors un dictionnaire with la fiche, le titre, les
+MWh cumac, les kWh cumac et la valorisation interne.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">details</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span>
+    <span class="n">fiche</span><span class="o">=</span><span class="s2">&quot;IND-UT-135&quot;</span><span class="p">,</span>
+    <span class="n">return_details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span>
+    <span class="n">Department</span><span class="o">=</span><span class="mi">69</span><span class="p">,</span>
+    <span class="n">Supply_Temperature</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">cle</span><span class="p">,</span> <span class="n">valeur</span> <span class="ow">in</span> <span class="n">details</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cle</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">valeur</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="valorisation-des-cee">
+<h2>Valorisation des CEE<a class="headerlink" href="#valorisation-des-cee" title="Link to this heading"></a></h2>
+<p>Le prix du MWh cumac dépend du marché, du type d’opération, du calendrier de
+dépôt et des conditions contractuelles. Pour une première estimation, utilisez
+une hypothèse explicite et conservez-la in le rapport.</p>
+<div class="math notranslate nohighlight">
+\[\text{Prime CEE} = \text{kWh cumac} \times \frac{\text{Prix du MWh cumac}}{1000}\]</div>
+<p>Example de lecture :</p>
+<ul class="simple">
+<li><p>volume obtenu : <code class="docutils literal notranslate"><span class="pre">250</span> <span class="pre">000</span> <span class="pre">kWh</span> <span class="pre">cumac</span></code> ;</p></li>
+<li><p>hypothèse de prix : <code class="docutils literal notranslate"><span class="pre">9</span> <span class="pre">EUR/MWh</span> <span class="pre">cumac</span></code> ;</p></li>
+<li><p>prime estimée : <code class="docutils literal notranslate"><span class="pre">250</span> <span class="pre">000</span> <span class="pre">x</span> <span class="pre">9</span> <span class="pre">/</span> <span class="pre">1000</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">250</span> <span class="pre">EUR</span></code>.</p></li>
+</ul>
+</section>
+<section id="bonnes-pratiques">
+<h2>Bonnes pratiques<a class="headerlink" href="#bonnes-pratiques" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Vérifier que la fiche existe with <code class="docutils literal notranslate"><span class="pre">list_fiches()</span></code> before d’automatiser une
+étude multi-sites.</p></li>
+<li><p>Garder les mêmes unités que le module : power en kW, surface en m2,
+temperature en degC, durée according to les chaînes attendues by la fiche.</p></li>
+<li><p>Demander <code class="docutils literal notranslate"><span class="pre">return_details=True</span></code> for tracer les results in un audit.</p></li>
+<li><p>Toujours valider l’éligibilité réglementaire et les pièces justificatives
+avec les fiches officielles before dépôt.</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Site officiel : <a class="reference external" href="https://www.ecologie.gouv.fr">https://www.ecologie.gouv.fr</a></p></li>
+<li><p>Registre des CEE : <a class="reference external" href="https://www.emmy.fr">https://www.emmy.fr</a></p></li>
+<li><p>Fiches CEE : <a class="reference external" href="https://www.ecologie.gouv.fr/operations-standardisees-deconomies-denergie">https://www.ecologie.gouv.fr/operations-standardisees-deconomies-denergie</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="11. Certificats d’Économies d’Energy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="module_cee.html" class="btn btn-neutral float-right" title="Certificats d’Économies d’Energy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

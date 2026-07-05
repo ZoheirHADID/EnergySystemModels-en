@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenericAHU - Simulation Complète de CTA &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nomenclature" href="nomenclature.html" />
+    <link rel="prev" title="CTA d’air neuf" href="cta_air_neuf.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Centrales de Traitement d’Air</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="air_humide.html">Air Humide - Guide d’usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cta_air_neuf.html">CTA d’air neuf</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GenericAHU - Simulation Complète de CTA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-et-prerequisites">Installation et Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demarrage-rapide">Démarrage Rapide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#etape-1-creer-le-template-excel">Étape 1 : Créer le template Excel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etape-2-configurer-les-parametres">Étape 2 : Configurer les paramètres</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etape-3-lancer-la-simulation">Étape 3 : Lancer la simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modes-de-fonctionnement">Modes de Fonctionnement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mode-recycling-air-recycle">Mode Recycling (Air Recyclé)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mode-recovery-recuperation">Mode Recovery (Récupération)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#parametres-de-configuration">Paramètres de Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parametres-generaux">Paramètres généraux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#consignes-de-fonctionnement">Consignes de fonctionnement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-temporelles-inputs">Data temporelles (inputs)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#results-de-simulation">Results de Simulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#results-globaux">Results globaux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results-by-composant">Results by composant</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#examples-d-usage">Examples d’Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1-dimensionnement-hiver">Example 1 : Dimensionnement hiver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2-comparaison-avec-sans-recuperation">Example 2 : Comparaison avec/sans récupération</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-3-analyse-annuelle">Example 3 : Analyse annuelle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-4-optimisation-du-taux-de-recyclage">Example 4 : Optimisation du taux de recyclage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conseils-et-bonnes-pratiques">Conseils et Bonnes Pratiques</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#performance">Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validation-des-results">Validation des results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gestion-des-erreurs-courantes">Gestion des erreurs courantes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tests-unitaires">Tests Unitaires</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">Références</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nomenclature.html">Nomenclature</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">3. Centrales de Traitement d’Air</a></li>
+      <li class="breadcrumb-item active">GenericAHU - Simulation Complète de CTA</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/003-ahu_modules/generic_ahu.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="genericahu-simulation-complete-de-cta">
+<span id="generic-ahu"></span><h1>GenericAHU - Simulation Complète de CTA<a class="headerlink" href="#genericahu-simulation-complete-de-cta" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p><strong>GenericAHU</strong> est une classe Python puissante qui allows simuler des Centrales de Traitement d’Air (CTA)
+paramétrables à partir d’un fichier Excel de configuration. Elle supporte deux modes principaux :</p>
+<ul class="simple">
+<li><p><strong>Mode Recycling</strong> : CTA with mélange d’air neuf et d’air recyclé</p></li>
+<li><p><strong>Mode Recovery</strong> : CTA with récupération d’energy on l’air extrait</p></li>
+</ul>
+<p>Cette approche allows réaliser des simulations temporelles complètes without modifier le code Python.</p>
+</section>
+<section id="installation-et-prerequisites">
+<h2>Installation et Prerequisites<a class="headerlink" href="#installation-et-prerequisites" title="Link to this heading"></a></h2>
+<p>GenericAHU est inclus in le package EnergySystemModels :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install energysystemmodels</span>
+</pre></div>
+</div>
+<p><strong>Dépendances requises :</strong></p>
+<ul class="simple">
+<li><p>pandas</p></li>
+<li><p>numpy</p></li>
+<li><p>openpyxl (pour la lecture/écriture Excel)</p></li>
+<li><p>CoolProp (pour les propriétés psychrométriques)</p></li>
+</ul>
+</section>
+<section id="demarrage-rapide">
+<h2>Démarrage Rapide<a class="headerlink" href="#demarrage-rapide" title="Link to this heading"></a></h2>
+<section id="etape-1-creer-le-template-excel">
+<h3>Étape 1 : Créer le template Excel<a class="headerlink" href="#etape-1-creer-le-template-excel" title="Link to this heading"></a></h3>
+<p>Utilisez le script fourni for générer un fichier Excel template :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">AHU.GenericAHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">GenericAHU</span>
+
+<span class="c1"># Créer le template</span>
+<span class="n">GenericAHU</span><span class="o">.</span><span class="n">create_template</span><span class="p">(</span><span class="s1">&#39;Mon_Template_CTA.xlsx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Ou exécutez from la ligne de commande :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python test/AHU/create_template_GenericAHU.py</span>
+</pre></div>
+</div>
+<p>Cela génère un fichier Excel with :</p>
+<ul class="simple">
+<li><p><strong>Feuille 1</strong> : Configuration Mode Recycling</p></li>
+<li><p><strong>Feuille 2</strong> : Configuration Mode Recovery</p></li>
+<li><p><strong>Feuille 3</strong> : Documentation des paramètres</p></li>
+</ul>
+</section>
+<section id="etape-2-configurer-les-parametres">
+<h3>Étape 2 : Configurer les paramètres<a class="headerlink" href="#etape-2-configurer-les-parametres" title="Link to this heading"></a></h3>
+<p>Ouvrez le fichier Excel généré et modifiez :</p>
+<p><strong>Configuration générale (lignes 7-8) :</strong></p>
+<ul class="simple">
+<li><p>Mode de fonctionnement</p></li>
+<li><p>Consignes de temperature et humidité</p></li>
+<li><p>Activation/désactivation des composants</p></li>
+<li><p>Paramètres des équipements</p></li>
+</ul>
+<p><strong>Data temporelles (ligne 10+) :</strong></p>
+<ul class="simple">
+<li><p>Temperature extérieure</p></li>
+<li><p>Humidité relative extérieure</p></li>
+<li><p>Flow rate d’air</p></li>
+<li><p>Temperature d’air extrait (mode Recovery)</p></li>
+<li><p>Etc.</p></li>
+</ul>
+</section>
+<section id="etape-3-lancer-la-simulation">
+<h3>Étape 3 : Lancer la simulation<a class="headerlink" href="#etape-3-lancer-la-simulation" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">AHU.GenericAHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">GenericAHU</span>
+
+<span class="c1"># Instancier</span>
+<span class="n">ahu</span> <span class="o">=</span> <span class="n">GenericAHU</span><span class="p">()</span>
+
+<span class="c1"># Lancer la simulation</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">ahu</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s1">&#39;Mon_Template_CTA.xlsx&#39;</span><span class="p">,</span>
+    <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;1. Air Recycling AHU Input&#39;</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="o">=</span><span class="s1">&#39;Resultats_CTA.xlsx&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Afficher les résultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Nombre de pas de temps simulés : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="modes-de-fonctionnement">
+<h2>Modes de Fonctionnement<a class="headerlink" href="#modes-de-fonctionnement" title="Link to this heading"></a></h2>
+<section id="mode-recycling-air-recycle">
+<h3>Mode Recycling (Air Recyclé)<a class="headerlink" href="#mode-recycling-air-recycle" title="Link to this heading"></a></h3>
+<p>Diagram de principe :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Air Neuf ──┐
+           ├─→ Mélange → [Dégivrage] → [Chauffage] → [Refroidissement]
+Air Recyclé┘                                                ↓
+                                                 [Humidification] → [Post-chauffage] → Air Soufflé
+</pre></div>
+</div>
+<p>Composants disponibles :</p>
+<ol class="arabic simple">
+<li><p><strong>Mélange</strong> : Combinaison air neuf + air recyclé</p></li>
+<li><p><strong>Dégivrage</strong> : Protection antigel de la batterie de refroidissement</p></li>
+<li><p><strong>Batterie de chauffage</strong> : Préchauffage de l’air</p></li>
+<li><p><strong>Batterie de refroidissement</strong> : Refroidissement et déshumidification</p></li>
+<li><p><strong>Humidification</strong> : Vapeur ou adiabatique</p></li>
+<li><p><strong>Post-chauffage</strong> : Ajustement final de la temperature</p></li>
+</ol>
+<p>Configuration Excel :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Ligne 7 : PARAMETRES_GENERAUX
+- recycling_ratio : 0.7 (70% d&#39;air recyclé)
+- defrost_enabled : TRUE
+- heating_enabled : TRUE
+- cooling_enabled : TRUE
+- humidification_enabled : TRUE
+- postheating_enabled : TRUE
+
+Ligne 8 : CONSIGNES
+- T_supply_setpoint : 18 [°C]
+- RH_supply_setpoint : 0.45 [%]
+- T_recycled : 22 [°C]
+- RH_recycled : 0.40
+</pre></div>
+</div>
+</section>
+<section id="mode-recovery-recuperation">
+<h3>Mode Recovery (Récupération)<a class="headerlink" href="#mode-recovery-recuperation" title="Link to this heading"></a></h3>
+<p>Diagram de principe :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Air Neuf ──→ [Échangeur] ←── Air Extrait
+                 ↓
+          [Dégivrage] → [Chauffage] → [Refroidissement] → [Humidification] → [Post-chauffage] → Air Soufflé
+</pre></div>
+</div>
+<p>Composants disponibles :</p>
+<ol class="arabic simple">
+<li><p><strong>Échangeur rotatif ou à plaques</strong> : Récupération de chaleur (et humidité according to type)</p></li>
+<li><p><strong>Dégivrage</strong> : Protection antigel</p></li>
+<li><p><strong>Batterie de chauffage</strong></p></li>
+<li><p><strong>Batterie de refroidissement</strong></p></li>
+<li><p><strong>Humidification</strong></p></li>
+<li><p><strong>Post-chauffage</strong></p></li>
+</ol>
+<p>Configuration Excel :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Ligne 7 : PARAMETRES_GENERAUX
+- heat_recovery_enabled : TRUE
+- heat_recovery_efficiency : 0.75
+- heat_recovery_type : &quot;rotary&quot; ou &quot;plate&quot;
+- moisture_recovery : TRUE (si rotatif)
+- defrost_enabled : TRUE
+- heating_enabled : TRUE
+...
+</pre></div>
+</div>
+</section>
+</section>
+<section id="parametres-de-configuration">
+<h2>Paramètres de Configuration<a class="headerlink" href="#parametres-de-configuration" title="Link to this heading"></a></h2>
+<section id="parametres-generaux">
+<h3>Paramètres généraux<a class="headerlink" href="#parametres-generaux" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 15.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Paramètre</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">recycling_ratio</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Taux d’air recyclé [0-1] (mode Recycling uniquement)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">heat_recovery_efficiency</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Efficacité de récupération [0-1] (mode Recovery)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heat_recovery_type</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Type d’échangeur : “rotary” ou “plate”</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">moisture_recovery</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Récupération d’humidité (rotatif uniquement)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">defrost_enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Activation du dégivrage</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">defrost_threshold_T</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Temperature seuil de dégivrage [°C]</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heating_enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Activation batterie de chauffage</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cooling_enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Activation batterie de refroidissement</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">humidification_enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Activation humidification</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">humidification_type</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Type : “steam” ou “adiabatic”</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">postheating_enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Activation post-chauffage</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="consignes-de-fonctionnement">
+<h3>Consignes de fonctionnement<a class="headerlink" href="#consignes-de-fonctionnement" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 15.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Consigne</p></th>
+<th class="head"><p>Unité</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T_supply_setpoint</span></code></p></td>
+<td><p>°C</p></td>
+<td><p>Temperature de consigne air soufflé</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RH_supply_setpoint</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Humidité relative de consigne [0-1]</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T_recycled</span></code></p></td>
+<td><p>°C</p></td>
+<td><p>Temperature air recyclé (mode Recycling)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RH_recycled</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Humidité relative air recyclé [0-1]</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T_extract</span></code></p></td>
+<td><p>°C</p></td>
+<td><p>Temperature air extrait (mode Recovery)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RH_extract</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Humidité relative air extrait [0-1]</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-temporelles-inputs">
+<h3>Data temporelles (inputs)<a class="headerlink" href="#data-temporelles-inputs" title="Link to this heading"></a></h3>
+<p>Pour chaque time step, fournir :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Colonne</p></th>
+<th class="head"><p>Unité</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timestamp</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Horodatage (format ISO ou Excel)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OA_T</span></code></p></td>
+<td><p>°C</p></td>
+<td><p>Temperature de l’air extérieur</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OA_RH</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Humidité relative extérieure [0-1]</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OA_F_dry</span></code> ou <code class="docutils literal notranslate"><span class="pre">OA_F_m3h</span></code></p></td>
+<td><p>kg/s ou m³/h</p></td>
+<td><p>Flow rate d’air sec ou volumique</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RA_T</span></code></p></td>
+<td><p>°C</p></td>
+<td><p>Temperature air recyclé (Recycling) ou extrait (Recovery)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RA_RH</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Humidité relative recyclé/extrait</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="results-de-simulation">
+<h2>Results de Simulation<a class="headerlink" href="#results-de-simulation" title="Link to this heading"></a></h2>
+<p>Le fichier Excel de output contient environ <strong>70 colonnes</strong> with les results détaillés.</p>
+<section id="results-globaux">
+<h3>Results globaux<a class="headerlink" href="#results-globaux" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 15.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Colonne</p></th>
+<th class="head"><p>Unité</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SA_T[°C]</span></code></p></td>
+<td><p>°C</p></td>
+<td><p>Temperature air soufflé finale</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SA_RH[%]</span></code></p></td>
+<td><p>%</p></td>
+<td><p>Humidité relative air soufflé</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SA_F_dry[kgas/s]</span></code></p></td>
+<td><p>kg/s</p></td>
+<td><p>Flow rate d’air sec soufflé</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SA_h[kJ/kg]</span></code></p></td>
+<td><p>kJ/kg</p></td>
+<td><p>Enthalpy air soufflé</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SA_w[kg/kg]</span></code></p></td>
+<td><p>kg/kg</p></td>
+<td><p>Humidité absolue</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="results-by-composant">
+<h3>Results by composant<a class="headerlink" href="#results-by-composant" title="Link to this heading"></a></h3>
+<p><strong>Mélange (MXA) :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MXA_Outlet_T[°C]</span></code> : Temperature after mélange</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MXA_Outlet_RH[%]</span></code> : Humidité relative after mélange</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MXA_Outlet_h[kJ/kg]</span></code> : Enthalpy after mélange</p></li>
+</ul>
+<p><strong>Dégivrage (DEFROST) :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFROST_Active</span></code> : État activation (0 ou 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFROST_Q_th[kW]</span></code> : Power de dégivrage</p></li>
+</ul>
+<p><strong>Chauffage (HC) :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HC_Q_th[kW]</span></code> : Power thermique batterie</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HC_Outlet_T[°C]</span></code> : Temperature output batterie</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HC_Outlet_RH[%]</span></code> : Humidité relative output</p></li>
+</ul>
+<p><strong>Refroidissement (CC) :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CC_Q_th[kW]</span></code> : Power frigorifique</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CC_Outlet_T[°C]</span></code> : Temperature output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CC_Condensate[kg/h]</span></code> : Flow rate de condensats</p></li>
+</ul>
+<p><strong>Humidification (HMD) :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HMD_F_water[kg/h]</span></code> : Flow rate d’eau ajouté</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HMD_Q_th[kW]</span></code> : Power thermique (si vapeur)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HMD_Outlet_T[°C]</span></code> : Temperature output</p></li>
+</ul>
+<p><strong>Post-chauffage (POSTHC) :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POSTHC_Q_th[kW]</span></code> : Power thermique</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POSTHC_Outlet_T[°C]</span></code> : Temperature finale air soufflé</p></li>
+</ul>
+<p>Échangeur de récupération (REC) :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">REC_Q_recovered[kW]</span></code> : Power récupérée</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REC_Efficiency_actual</span></code> : Efficacité réelle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REC_OA_Outlet_T[°C]</span></code> : Temperature air neuf after échangeur</p></li>
+</ul>
+</section>
+</section>
+<section id="examples-d-usage">
+<h2>Examples d’Usage<a class="headerlink" href="#examples-d-usage" title="Link to this heading"></a></h2>
+<section id="example-1-dimensionnement-hiver">
+<h3>Example 1 : Dimensionnement hiver<a class="headerlink" href="#example-1-dimensionnement-hiver" title="Link to this heading"></a></h3>
+<p>Créer un fichier Excel with des conditions hivernales extrêmes :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">AHU.GenericAHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">GenericAHU</span>
+
+<span class="c1"># Créer des données de dimensionnement hiver</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2024-01-15 00:00&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;OA_T&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span><span class="p">],</span>
+    <span class="s1">&#39;OA_RH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.85</span><span class="p">]</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s1">&#39;OA_F_m3h&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5000</span><span class="p">]</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s1">&#39;RA_T&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">22</span><span class="p">]</span> <span class="o">*</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="s1">&#39;RA_RH&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.40</span><span class="p">]</span> <span class="o">*</span> <span class="mi">24</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Écrire dans Excel (avec configuration en lignes 7-8)</span>
+<span class="c1"># ... (voir template pour structure complète)</span>
+
+<span class="c1"># Simuler</span>
+<span class="n">ahu</span> <span class="o">=</span> <span class="n">GenericAHU</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">ahu</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="s1">&#39;dimensionnement_hiver.xlsx&#39;</span><span class="p">,</span>
+                              <span class="s1">&#39;1. Air Recycling AHU Input&#39;</span><span class="p">)</span>
+
+<span class="c1"># Analyser</span>
+<span class="n">puissance_max</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;HC_Q_th[kW]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">energie_jour</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;HC_Q_th[kW]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance de chauffage à prévoir : </span><span class="si">{</span><span class="n">puissance_max</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Consommation sur 24h : </span><span class="si">{</span><span class="n">energie_jour</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-2-comparaison-avec-sans-recuperation">
+<h3>Example 2 : Comparaison avec/sans récupération<a class="headerlink" href="#example-2-comparaison-avec-sans-recuperation" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">AHU.GenericAHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">GenericAHU</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Simulation SANS récupération</span>
+<span class="n">ahu_sans</span> <span class="o">=</span> <span class="n">GenericAHU</span><span class="p">()</span>
+<span class="n">results_sans</span> <span class="o">=</span> <span class="n">ahu_sans</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="s1">&#39;config_sans_recup.xlsx&#39;</span><span class="p">,</span>
+                                        <span class="s1">&#39;1. Air Recycling AHU Input&#39;</span><span class="p">)</span>
+
+<span class="c1"># Simulation AVEC récupération</span>
+<span class="n">ahu_avec</span> <span class="o">=</span> <span class="n">GenericAHU</span><span class="p">()</span>
+<span class="n">results_avec</span> <span class="o">=</span> <span class="n">ahu_avec</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="s1">&#39;config_avec_recup.xlsx&#39;</span><span class="p">,</span>
+                                        <span class="s1">&#39;2. Air Recovery AHU Input&#39;</span><span class="p">)</span>
+
+<span class="c1"># Comparer</span>
+<span class="n">conso_sans</span> <span class="o">=</span> <span class="n">results_sans</span><span class="p">[</span><span class="s1">&#39;HC_Q_th[kW]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">conso_avec</span> <span class="o">=</span> <span class="n">results_avec</span><span class="p">[</span><span class="s1">&#39;HC_Q_th[kW]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">economie</span> <span class="o">=</span> <span class="n">conso_sans</span> <span class="o">-</span> <span class="n">conso_avec</span>
+<span class="n">gain_pct</span> <span class="o">=</span> <span class="p">(</span><span class="n">economie</span> <span class="o">/</span> <span class="n">conso_sans</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Consommation SANS récupération : </span><span class="si">{</span><span class="n">conso_sans</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Consommation AVEC récupération : </span><span class="si">{</span><span class="n">conso_avec</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Économie : </span><span class="si">{</span><span class="n">economie</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kWh (</span><span class="si">{</span><span class="n">gain_pct</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-3-analyse-annuelle">
+<h3>Example 3 : Analyse annuelle<a class="headerlink" href="#example-3-analyse-annuelle" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">AHU.GenericAHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">GenericAHU</span>
+
+<span class="c1"># Charger des données météo annuelles</span>
+<span class="c1"># (ex: depuis OpenWeatherMap ou fichier TRY)</span>
+
+<span class="n">ahu</span> <span class="o">=</span> <span class="n">GenericAHU</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">ahu</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="s1">&#39;simulation_annuelle.xlsx&#39;</span><span class="p">,</span>
+                              <span class="s1">&#39;1. Air Recycling AHU Input&#39;</span><span class="p">,</span>
+                              <span class="s1">&#39;resultats_annuels.xlsx&#39;</span><span class="p">)</span>
+
+<span class="c1"># Statistiques annuelles</span>
+<span class="n">conso_chauffage</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;HC_Q_th[kW]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">conso_refroidissement</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;CC_Q_th[kW]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">eau_humidification</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;HMD_F_water[kg/h]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Consommation annuelle chauffage : </span><span class="si">{</span><span class="n">conso_chauffage</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Consommation annuelle froid : </span><span class="si">{</span><span class="n">conso_refroidissement</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eau d&#39;humidification totale : </span><span class="si">{</span><span class="n">eau_humidification</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualisation</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Puissances</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;HC_Q_th[kW]&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Chauffage&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;CC_Q_th[kW]&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Refroidissement&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Puissance [kW]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Températures</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;OA_T[°C]&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;T ext&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;SA_T[°C]&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;T soufflage&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Température [°C]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Humidité</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;SA_RH[%]&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;HR soufflage&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Humidité relative [%]&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temps&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;analyse_annuelle_cta.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="example-4-optimisation-du-taux-de-recyclage">
+<h3>Example 4 : Optimisation du taux de recyclage<a class="headerlink" href="#example-4-optimisation-du-taux-de-recyclage" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">AHU.GenericAHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">GenericAHU</span>
+
+<span class="c1"># Tester différents taux de recyclage</span>
+<span class="n">recycling_ratios</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">results_optimisation</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">ratio</span> <span class="ow">in</span> <span class="n">recycling_ratios</span><span class="p">:</span>
+    <span class="c1"># Modifier le fichier Excel avec le nouveau ratio</span>
+    <span class="c1"># (ou utiliser une fonction helper pour modifier dynamiquement)</span>
+
+    <span class="n">ahu</span> <span class="o">=</span> <span class="n">GenericAHU</span><span class="p">()</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">ahu</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;config_recycle_</span><span class="si">{</span><span class="n">ratio</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">.xlsx&#39;</span><span class="p">,</span>
+                                  <span class="s1">&#39;1. Air Recycling AHU Input&#39;</span><span class="p">)</span>
+
+    <span class="n">conso_totale</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;HC_Q_th[kW]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span>
+                    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;CC_Q_th[kW]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+    <span class="n">results_optimisation</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;recycling_ratio&#39;</span><span class="p">:</span> <span class="n">ratio</span><span class="p">,</span>
+        <span class="s1">&#39;consommation_totale&#39;</span><span class="p">:</span> <span class="n">conso_totale</span>
+    <span class="p">})</span>
+
+<span class="c1"># Trouver l&#39;optimum</span>
+<span class="n">df_optim</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results_optimisation</span><span class="p">)</span>
+<span class="n">ratio_optimal</span> <span class="o">=</span> <span class="n">df_optim</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_optim</span><span class="p">[</span><span class="s1">&#39;consommation_totale&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(),</span>
+                               <span class="s1">&#39;recycling_ratio&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Taux de recyclage optimal : </span><span class="si">{</span><span class="n">ratio_optimal</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualiser</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_optim</span><span class="p">[</span><span class="s1">&#39;recycling_ratio&#39;</span><span class="p">],</span> <span class="n">df_optim</span><span class="p">[</span><span class="s1">&#39;consommation_totale&#39;</span><span class="p">],</span> <span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">ratio_optimal</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Optimum: </span><span class="si">{</span><span class="n">ratio_optimal</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Taux de recyclage&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Consommation totale [kWh]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Optimisation du taux de recyclage&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conseils-et-bonnes-pratiques">
+<h2>Conseils et Bonnes Pratiques<a class="headerlink" href="#conseils-et-bonnes-pratiques" title="Link to this heading"></a></h2>
+<section id="performance">
+<h3>Performance<a class="headerlink" href="#performance" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Pour des simulations longues (&gt;8760 time step), désactivez les outputs intermédiaires</p></li>
+<li><p>Utilisez des time step adaptés : horaire for le dimensionnement annuel, 5-15 min for l’analyse fine</p></li>
+<li><p>Fermez le fichier Excel before de lancer la simulation</p></li>
+</ul>
+</section>
+<section id="validation-des-results">
+<h3>Validation des results<a class="headerlink" href="#validation-des-results" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Vérifiez les bilans energy : <code class="docutils literal notranslate"><span class="pre">sum(Q_in)</span> <span class="pre">=</span> <span class="pre">sum(Q_out)</span></code></p></li>
+<li><p>Contrôlez les temperatures : pas de valeurs aberrantes</p></li>
+<li><p>Validez les humidités relatives : toujours between 0 et 1</p></li>
+</ul>
+</section>
+<section id="gestion-des-erreurs-courantes">
+<h3>Gestion des erreurs courantes<a class="headerlink" href="#gestion-des-erreurs-courantes" title="Link to this heading"></a></h3>
+<p><strong>Erreur : “Temperature out of range”</strong></p>
+<p>→ Les conditions d’input dépassent les limites de CoolProp. Vérifiez les temperatures et humidités.</p>
+<p><strong>Erreur : “Convergence failed”</strong></p>
+<p>→ Les consignes sont incompatibles (ex: T_setpoint &lt; T_extérieure en hiver without chauffage).</p>
+<p><strong>Avertissement : “Defrost activated”</strong></p>
+<p>→ Normal si T &lt; 0°C. Vérifiez que le dégivrage est bien paramétré.</p>
+</section>
+</section>
+<section id="tests-unitaires">
+<h2>Tests Unitaires<a class="headerlink" href="#tests-unitaires" title="Link to this heading"></a></h2>
+<p>Pour vérifier l’installation :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python test/AHU/test_GenericAHU.py</span>
+</pre></div>
+</div>
+<p>Result attendu :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>✅ Test 1 (Recycling mode): OK
+✅ Test 2 (Recovery mode): OK
+✅ Test 3 (Manual configuration): OK
+🎉 Tous les tests ont réussi!
+</pre></div>
+</div>
+</section>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>CoolProp : <a class="reference external" href="http://www.coolprop.org/">http://www.coolprop.org/</a></p></li>
+<li><p>ASHRAE Handbook - HVAC Systems and Equipment</p></li>
+<li><p>EN 308 : Échangeurs de chaleur - Procédures d’essai</p></li>
+<li><p>EN 13053 : Centrales de traitement d’air</p></li>
+</ul>
+</section>
+<section id="support">
+<h2>Support<a class="headerlink" href="#support" title="Link to this heading"></a></h2>
+<p>Pour toute question ou problème :</p>
+<ul class="simple">
+<li><p>Documentation complète : <a class="reference external" href="https://energysystemmodels-fr.readthedocs.io/">https://energysystemmodels-fr.readthedocs.io/</a></p></li>
+<li><p>Issues GitHub : <a class="reference external" href="https://github.com/ZoheirHADID/EnergySystemModels/issues">https://github.com/ZoheirHADID/EnergySystemModels/issues</a></p></li>
+<li><p>Email : <a class="reference external" href="mailto:contact&#37;&#52;&#48;energysystemmodels&#46;com">contact<span>&#64;</span>energysystemmodels<span>&#46;</span>com</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cta_air_neuf.html" class="btn btn-neutral float-left" title="CTA d’air neuf" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nomenclature.html" class="btn btn-neutral float-right" title="Nomenclature" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

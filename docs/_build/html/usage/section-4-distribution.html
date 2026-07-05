@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 4 : Distribution de l’energy &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Section 5 : Usages finaux de l’energy" href="section-5-usages-finaux.html" />
+    <link rel="prev" title="Section 3 : Transformation de l’energy (Utilités)" href="section-3-transformation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#installation">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../usage.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="section-1-achat-facturation.html">Section 1 : Achat et Facturation de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-2-donnees-production.html">Section 2 : Data et Production energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-transformation.html">Section 3 : Transformation de l’energy (Utilités)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 4 : Distribution de l’energy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#transfer-de-chaleur">4.1. Transfer de chaleur</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hydraulique">4.2. Hydraulique</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reseaux-aerauliques">4.3. Réseaux aérauliques</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="section-5-usages-finaux.html">Section 5 : Usages finaux de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-financement-subvention.html">Section 6 : Financing and subsidies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-autres.html">Section 7 : Other</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../usage.html">Usage</a></li>
+      <li class="breadcrumb-item active">Section 4 : Distribution de l’energy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/usage/section-4-distribution.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="section-4-distribution-de-l-energy">
+<h1>Section 4 : Distribution de l’energy<a class="headerlink" href="#section-4-distribution-de-l-energy" title="Link to this heading"></a></h1>
+<section id="transfer-de-chaleur">
+<h2>4.1. Transfer de chaleur<a class="headerlink" href="#transfer-de-chaleur" title="Link to this heading"></a></h2>
+<section id="compositewall-paroi-multicouche">
+<h3>4.1.1. CompositeWall - Paroi multicouche<a class="headerlink" href="#compositewall-paroi-multicouche" title="Link to this heading"></a></h3>
+<p>Le module CompositeWall allows calculer les transferts thermiques à travers des parois multicouches.</p>
+<a class="reference internal image-reference" href="../_images/001_heat_transfer_composite_wall.png"><img alt="Schéma d'une paroi composite" class="align-center" src="../_images/001_heat_transfer_composite_wall.png" style="width: 600px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompositeWall</span><span class="p">,</span> <span class="n">Layer</span>
+
+<span class="c1"># Définir les couches de la paroi</span>
+<span class="n">couche_interieure</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span>
+    <span class="n">nom</span><span class="o">=</span><span class="s2">&quot;Plâtre&quot;</span><span class="p">,</span>
+    <span class="n">epaisseur_m</span><span class="o">=</span><span class="mf">0.013</span><span class="p">,</span>
+    <span class="n">conductivite_W_mK</span><span class="o">=</span><span class="mf">0.35</span>
+<span class="p">)</span>
+
+<span class="n">couche_isolation</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span>
+    <span class="n">nom</span><span class="o">=</span><span class="s2">&quot;Laine de verre&quot;</span><span class="p">,</span>
+    <span class="n">epaisseur_m</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span>
+    <span class="n">conductivite_W_mK</span><span class="o">=</span><span class="mf">0.04</span>
+<span class="p">)</span>
+
+<span class="n">couche_exterieure</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span>
+    <span class="n">nom</span><span class="o">=</span><span class="s2">&quot;Brique&quot;</span><span class="p">,</span>
+    <span class="n">epaisseur_m</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+    <span class="n">conductivite_W_mK</span><span class="o">=</span><span class="mf">0.80</span>
+<span class="p">)</span>
+
+<span class="c1"># Créer la paroi composite</span>
+<span class="n">paroi</span> <span class="o">=</span> <span class="n">CompositeWall</span><span class="p">(</span>
+    <span class="n">surface_m2</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span>
+    <span class="n">layers</span><span class="o">=</span><span class="p">[</span><span class="n">couche_interieure</span><span class="p">,</span> <span class="n">couche_isolation</span><span class="p">,</span> <span class="n">couche_exterieure</span><span class="p">],</span>
+    <span class="n">h_int</span><span class="o">=</span><span class="mf">7.7</span><span class="p">,</span>  <span class="c1"># Coefficient d&#39;échange intérieur W/m²K</span>
+    <span class="n">h_ext</span><span class="o">=</span><span class="mf">25.0</span>  <span class="c1"># Coefficient d&#39;échange extérieur W/m²K</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer la résistance thermique</span>
+<span class="n">R_totale</span> <span class="o">=</span> <span class="n">paroi</span><span class="o">.</span><span class="n">resistance_thermique_totale</span><span class="p">()</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">paroi</span><span class="o">.</span><span class="n">coefficient_transmission_thermique</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Résistance thermique totale : </span><span class="si">{</span><span class="n">R_totale</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m².K/W&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coefficient U : </span><span class="si">{</span><span class="n">U</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> W/m².K&quot;</span><span class="p">)</span>
+
+<span class="c1"># Flux thermique pour une différence de température</span>
+<span class="n">T_int</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># °C</span>
+<span class="n">T_ext</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>  <span class="c1"># °C</span>
+<span class="n">flux_thermique</span> <span class="o">=</span> <span class="n">paroi</span><span class="o">.</span><span class="n">calculer_flux_thermique</span><span class="p">(</span><span class="n">T_int</span><span class="p">,</span> <span class="n">T_ext</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flux thermique : </span><span class="si">{</span><span class="n">flux_thermique</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Déperditions : </span><span class="si">{</span><span class="n">flux_thermique</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-issu-des-tests-compositewall">
+<h3>Example issu des tests : CompositeWall<a class="headerlink" href="#example-issu-des-tests-compositewall" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompositeWall</span>
+
+<span class="n">wall</span> <span class="o">=</span> <span class="n">CompositeWall</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">he</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">hi</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Ti</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">Te</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">wall</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Parpaings creux&#39;</span><span class="p">)</span>
+<span class="n">wall</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Polystyrène&#39;</span><span class="p">)</span>
+<span class="n">wall</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Plâtre&#39;</span><span class="p">)</span>
+<span class="n">wall</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Résistance totale: </span><span class="si">{</span><span class="n">wall</span><span class="o">.</span><span class="n">R_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m².K/W&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flux thermique: </span><span class="si">{</span><span class="n">wall</span><span class="o">.</span><span class="n">Q</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wall</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="plateheattransfer-echangeur-a-plaques">
+<h3>4.1.2. PlateHeatTransfer - Échangeur à plaques<a class="headerlink" href="#plateheattransfer-echangeur-a-plaques" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/PlateHeatTransfer.png"><img alt="Échangeur à plaques" class="align-center" src="../_images/PlateHeatTransfer.png" style="width: 500px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">PlateHeatExchanger</span>
+
+<span class="c1"># Échangeur à plaques</span>
+<span class="n">echangeur</span> <span class="o">=</span> <span class="n">PlateHeatExchanger</span><span class="p">(</span>
+    <span class="n">nombre_plaques</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">surface_echange_par_plaque_m2</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span>
+    <span class="n">epaisseur_plaque_mm</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">espacement_plaques_mm</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">materiau</span><span class="o">=</span><span class="s2">&quot;acier_inox&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Conditions d&#39;entrée</span>
+<span class="c1"># Circuit chaud</span>
+<span class="n">T_chaud_entree</span> <span class="o">=</span> <span class="mi">80</span>  <span class="c1"># °C</span>
+<span class="n">debit_chaud</span> <span class="o">=</span> <span class="mf">2.0</span>    <span class="c1"># kg/s</span>
+
+<span class="c1"># Circuit froid</span>
+<span class="n">T_froid_entree</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># °C</span>
+<span class="n">debit_froid</span> <span class="o">=</span> <span class="mf">1.8</span>    <span class="c1"># kg/s</span>
+
+<span class="c1"># Calculer l&#39;efficacité et les températures de sortie</span>
+<span class="n">resultats</span> <span class="o">=</span> <span class="n">echangeur</span><span class="o">.</span><span class="n">calculate_performance</span><span class="p">(</span>
+    <span class="n">T_hot_in</span><span class="o">=</span><span class="n">T_chaud_entree</span><span class="p">,</span>
+    <span class="n">T_cold_in</span><span class="o">=</span><span class="n">T_froid_entree</span><span class="p">,</span>
+    <span class="n">m_dot_hot</span><span class="o">=</span><span class="n">debit_chaud</span><span class="p">,</span>
+    <span class="n">m_dot_cold</span><span class="o">=</span><span class="n">debit_froid</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Efficacité : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;efficacite&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température sortie circuit chaud : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;T_hot_out&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température sortie circuit froid : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;T_cold_out&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance échangée : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;puissance_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes de charge circuit chaud : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;delta_P_hot_Pa&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes de charge circuit froid : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;delta_P_cold_Pa&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-issu-des-tests-plateheattransfer">
+<h3>Example issu des tests : PlateHeatTransfer<a class="headerlink" href="#example-issu-des-tests-plateheattransfer" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">PlateHeatTransfer</span>
+
+<span class="n">plate1</span> <span class="o">=</span> <span class="n">PlateHeatTransfer</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal_down&#39;</span><span class="p">,</span>
+    <span class="n">Tp</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+    <span class="n">Ta</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">W</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">L</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+<span class="n">heat_transfer1</span> <span class="o">=</span> <span class="n">plate1</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Heat transfer for horizontal plate facing down: </span><span class="si">{</span><span class="n">heat_transfer1</span><span class="si">}</span><span class="s2"> W&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="pipeinsulation-isolation-de-tuyauteries">
+<h3>4.1.3. PipeInsulation - Isolation de tuyauteries<a class="headerlink" href="#pipeinsulation-isolation-de-tuyauteries" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipeInsulation</span>
+
+<span class="c1"># Tuyauterie isolée</span>
+<span class="n">tuyau</span> <span class="o">=</span> <span class="n">PipeInsulation</span><span class="p">(</span>
+    <span class="n">diametre_interieur_mm</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">diametre_exterieur_mm</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+    <span class="n">epaisseur_isolation_mm</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">longueur_m</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">conductivite_tuyau_W_mK</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>      <span class="c1"># Acier</span>
+    <span class="n">conductivite_isolation_W_mK</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="c1"># Laine minérale</span>
+    <span class="n">temperature_fluide_C</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+    <span class="n">temperature_ambiante_C</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer les pertes thermiques</span>
+<span class="n">pertes</span> <span class="o">=</span> <span class="n">tuyau</span><span class="o">.</span><span class="n">calculer_pertes_thermiques</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes thermiques linéiques : </span><span class="si">{</span><span class="n">pertes</span><span class="p">[</span><span class="s1">&#39;pertes_lineiques_W_m&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W/m&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes thermiques totales : </span><span class="si">{</span><span class="n">pertes</span><span class="p">[</span><span class="s1">&#39;pertes_totales_W&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes thermiques totales : </span><span class="si">{</span><span class="n">pertes</span><span class="p">[</span><span class="s1">&#39;pertes_totales_W&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+
+<span class="c1"># Température de surface extérieure</span>
+<span class="n">T_surface</span> <span class="o">=</span> <span class="n">tuyau</span><span class="o">.</span><span class="n">temperature_surface_exterieure</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température surface extérieure : </span><span class="si">{</span><span class="n">T_surface</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-issu-des-tests-pipeinsulationanalysis">
+<h3>Example issu des tests : PipeInsulationAnalysis<a class="headerlink" href="#example-issu-des-tests-pipeinsulationanalysis" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipeInsulationAnalysis</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">PipeInsulationAnalysis</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span>
+    <span class="n">fluid</span><span class="o">=</span><span class="s1">&#39;water&#39;</span><span class="p">,</span> <span class="n">T_fluid</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">F_m3h</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">DN</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">L_tube</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Acier&#39;</span><span class="p">,</span> <span class="n">insulation</span><span class="o">=</span><span class="s1">&#39;laine minérale&#39;</span><span class="p">,</span>
+    <span class="n">insulation_thickness</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">Tamb</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+<span class="n">pipe</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-optimisation-de-l-epaisseur-d-isolation">
+<h3>Example : Optimisation de l’épaisseur d’isolation<a class="headerlink" href="#example-optimisation-de-l-epaisseur-d-isolation" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipeInsulation</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Paramètres fixes</span>
+<span class="n">diametre_tuyau</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># mm</span>
+<span class="n">longueur</span> <span class="o">=</span> <span class="mi">100</span>        <span class="c1"># m</span>
+<span class="n">T_fluide</span> <span class="o">=</span> <span class="mi">90</span>         <span class="c1"># °C</span>
+<span class="n">T_ambient</span> <span class="o">=</span> <span class="mi">20</span>        <span class="c1"># °C</span>
+<span class="n">heures_fonctionnement</span> <span class="o">=</span> <span class="mi">6000</span>  <span class="c1"># h/an</span>
+<span class="n">cout_energie</span> <span class="o">=</span> <span class="mf">0.10</span>   <span class="c1"># €/kWh</span>
+
+<span class="c1"># Tester différentes épaisseurs d&#39;isolation</span>
+<span class="n">epaisseurs_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># mm</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimisation de l&#39;épaisseur d&#39;isolation :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Épaisseur (mm)&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Pertes (kW)&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Coût annuel (€)&#39;</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">epaisseur</span> <span class="ow">in</span> <span class="n">epaisseurs_test</span><span class="p">:</span>
+    <span class="n">tuyau</span> <span class="o">=</span> <span class="n">PipeInsulation</span><span class="p">(</span>
+        <span class="n">diametre_interieur_mm</span><span class="o">=</span><span class="n">diametre_tuyau</span><span class="p">,</span>
+        <span class="n">diametre_exterieur_mm</span><span class="o">=</span><span class="n">diametre_tuyau</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">epaisseur_isolation_mm</span><span class="o">=</span><span class="n">epaisseur</span><span class="p">,</span>
+        <span class="n">longueur_m</span><span class="o">=</span><span class="n">longueur</span><span class="p">,</span>
+        <span class="n">conductivite_tuyau_W_mK</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">conductivite_isolation_W_mK</span><span class="o">=</span><span class="mf">0.035</span><span class="p">,</span>
+        <span class="n">temperature_fluide_C</span><span class="o">=</span><span class="n">T_fluide</span><span class="p">,</span>
+        <span class="n">temperature_ambiante_C</span><span class="o">=</span><span class="n">T_ambient</span>
+    <span class="p">)</span>
+
+    <span class="n">pertes</span> <span class="o">=</span> <span class="n">tuyau</span><span class="o">.</span><span class="n">calculer_pertes_thermiques</span><span class="p">()</span>
+    <span class="n">pertes_kW</span> <span class="o">=</span> <span class="n">pertes</span><span class="p">[</span><span class="s1">&#39;pertes_totales_W&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
+    <span class="n">energie_annuelle_kWh</span> <span class="o">=</span> <span class="n">pertes_kW</span> <span class="o">*</span> <span class="n">heures_fonctionnement</span>
+    <span class="n">cout_annuel</span> <span class="o">=</span> <span class="n">energie_annuelle_kWh</span> <span class="o">*</span> <span class="n">cout_energie</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">epaisseur</span><span class="si">:</span><span class="s2">&lt;15.0f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">pertes_kW</span><span class="si">:</span><span class="s2">&lt;15.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">cout_annuel</span><span class="si">:</span><span class="s2">&lt;20.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="hydraulique">
+<h2>4.2. Hydraulique<a class="headerlink" href="#hydraulique" title="Link to this heading"></a></h2>
+<section id="straightpipe-tuyauterie-droite-et-pertes-de-charge">
+<h3>4.2.1. StraightPipe - Tuyauterie droite et pertes de charge<a class="headerlink" href="#straightpipe-tuyauterie-droite-et-pertes-de-charge" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/004_hydraulic_straight_pipe.png"><img alt="Schéma tuyauterie droite" class="align-center" src="../_images/004_hydraulic_straight_pipe.png" style="width: 500px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="n">StraightPipe</span>
+
+<span class="c1"># Définir la tuyauterie</span>
+<span class="n">tuyau</span> <span class="o">=</span> <span class="n">StraightPipe</span><span class="p">(</span>
+    <span class="n">longueur_m</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">diametre_mm</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">rugosite_mm</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>  <span class="c1"># Acier neuf</span>
+    <span class="n">materiau</span><span class="o">=</span><span class="s2">&quot;acier&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Fluide : eau à 20°C</span>
+<span class="n">debit_m3_h</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="c1"># Calculer les pertes de charge</span>
+<span class="n">resultats</span> <span class="o">=</span> <span class="n">tuyau</span><span class="o">.</span><span class="n">calculer_pertes_charge</span><span class="p">(</span>
+    <span class="n">debit_m3_h</span><span class="o">=</span><span class="n">debit_m3_h</span><span class="p">,</span>
+    <span class="n">temperature_C</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Débit : </span><span class="si">{</span><span class="n">debit_m3_h</span><span class="si">}</span><span class="s2"> m³/h&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vitesse : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;vitesse_m_s&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nombre de Reynolds : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;reynolds&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Régime : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;regime&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes de charge linéaires : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;pertes_lineaires_Pa&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes de charge linéaires : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;pertes_lineaires_Pa&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mCE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-issu-des-tests-straightpipe-reseau-hydraulique">
+<h3>Example issu des tests : StraightPipe (réseau hydraulique)<a class="headerlink" href="#example-issu-des-tests-straightpipe-reseau-hydraulique" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="n">StraightPipe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Source</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Sink</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sink</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Connect</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fluid_connect</span>
+
+<span class="n">SOURCE</span> <span class="o">=</span> <span class="n">Source</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;water&quot;</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">Ti_degC</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">Pi_bar</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">F_m3h</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="n">STRAIGHT_PIPE</span> <span class="o">=</span> <span class="n">StraightPipe</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">d_hyd</span> <span class="o">=</span> <span class="mf">0.050</span>
+<span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">K</span> <span class="o">=</span> <span class="mf">0.00002</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">SOURCE</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="n">SINK</span> <span class="o">=</span> <span class="n">Sink</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">SINK</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">SINK</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">SOURCE</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SINK</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="courbe-de-reseau">
+<h3>Courbe de réseau<a class="headerlink" href="#courbe-de-reseau" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/004_hydraulic_straight_pipe_courbe_reseau.png"><img alt="Courbe de réseau hydraulique" class="align-center" src="../_images/004_hydraulic_straight_pipe_courbe_reseau.png" style="width: 600px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="n">StraightPipe</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">tuyau</span> <span class="o">=</span> <span class="n">StraightPipe</span><span class="p">(</span>
+    <span class="n">longueur_m</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+    <span class="n">diametre_mm</span><span class="o">=</span><span class="mi">65</span><span class="p">,</span>
+    <span class="n">rugosite_mm</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">materiau</span><span class="o">=</span><span class="s2">&quot;acier&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer la courbe de réseau</span>
+<span class="n">debits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>  <span class="c1"># m³/h</span>
+<span class="n">pertes</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">debit</span> <span class="ow">in</span> <span class="n">debits</span><span class="p">:</span>
+    <span class="n">resultats</span> <span class="o">=</span> <span class="n">tuyau</span><span class="o">.</span><span class="n">calculer_pertes_charge</span><span class="p">(</span><span class="n">debit</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">pertes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;pertes_lineaires_Pa&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># Convertir en mCE</span>
+
+<span class="c1"># Tracer la courbe</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">debits</span><span class="p">,</span> <span class="n">pertes</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Débit (m³/h)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Perte de charge (mCE)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Courbe de réseau hydraulique&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="ta-valve-vanne-d-equilibrage-hydraulique">
+<h3>4.2.2. TA_Valve - Vanne d’équilibrage hydraulique<a class="headerlink" href="#ta-valve-vanne-d-equilibrage-hydraulique" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/004_TA_valve.png"><img alt="Vanne TA" class="align-center" src="../_images/004_TA_valve.png" style="width: 400px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="n">TA_Valve</span>
+
+<span class="c1"># Vanne TA DN50</span>
+<span class="n">vanne</span> <span class="o">=</span> <span class="n">TA_Valve</span><span class="p">(</span>
+    <span class="n">dn</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">kvs</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span>  <span class="c1"># Coefficient Kvs</span>
+    <span class="n">position</span><span class="o">=</span><span class="mi">3</span>  <span class="c1"># Position de réglage (1-7)</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer le Kv à cette position</span>
+<span class="n">kv</span> <span class="o">=</span> <span class="n">vanne</span><span class="o">.</span><span class="n">get_kv_at_position</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kv à la position 3 : </span><span class="si">{</span><span class="n">kv</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Débit souhaité</span>
+<span class="n">debit_souhaite</span> <span class="o">=</span> <span class="mf">5.0</span>  <span class="c1"># m³/h</span>
+
+<span class="c1"># Calculer la perte de charge</span>
+<span class="n">delta_P</span> <span class="o">=</span> <span class="n">vanne</span><span class="o">.</span><span class="n">calculer_perte_charge</span><span class="p">(</span><span class="n">debit_m3_h</span><span class="o">=</span><span class="n">debit_souhaite</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perte de charge pour </span><span class="si">{</span><span class="n">debit_souhaite</span><span class="si">}</span><span class="s2"> m³/h : </span><span class="si">{</span><span class="n">delta_P</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Perte de charge : </span><span class="si">{</span><span class="n">delta_P</span><span class="o">/</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mCE&quot;</span><span class="p">)</span>
+
+<span class="c1"># Trouver la position pour un débit et une perte de charge donnés</span>
+<span class="n">delta_P_disponible</span> <span class="o">=</span> <span class="mi">5000</span>  <span class="c1"># Pa</span>
+<span class="n">position_requise</span> <span class="o">=</span> <span class="n">vanne</span><span class="o">.</span><span class="n">trouver_position_pour_debit</span><span class="p">(</span>
+    <span class="n">debit_m3_h</span><span class="o">=</span><span class="n">debit_souhaite</span><span class="p">,</span>
+    <span class="n">delta_P_Pa</span><span class="o">=</span><span class="n">delta_P_disponible</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Position recommandée : </span><span class="si">{</span><span class="n">position_requise</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="courbe-caracteristique-de-la-vanne">
+<h3>Courbe caractéristique de la vanne<a class="headerlink" href="#courbe-caracteristique-de-la-vanne" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/004_TA_valve-courbe-reseau.png"><img alt="Courbe caractéristique vanne TA" class="align-center" src="../_images/004_TA_valve-courbe-reseau.png" style="width: 600px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="n">TA_Valve</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">vanne</span> <span class="o">=</span> <span class="n">TA_Valve</span><span class="p">(</span><span class="n">dn</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">kvs</span><span class="o">=</span><span class="mf">25.0</span><span class="p">)</span>
+
+<span class="c1"># Tracer les courbes pour différentes positions</span>
+<span class="n">debits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="n">pertes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">vanne</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span>
+
+    <span class="k">for</span> <span class="n">debit</span> <span class="ow">in</span> <span class="n">debits</span><span class="p">:</span>
+        <span class="n">delta_P</span> <span class="o">=</span> <span class="n">vanne</span><span class="o">.</span><span class="n">calculer_perte_charge</span><span class="p">(</span><span class="n">debit</span><span class="p">)</span>
+        <span class="n">pertes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">delta_P</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># En mCE</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">debits</span><span class="p">,</span> <span class="n">pertes</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Position </span><span class="si">{</span><span class="n">position</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Débit (m³/h)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Perte de charge (mCE)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Courbes caractéristiques - Vanne TA DN50&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="reseaux-aerauliques">
+<h2>4.3. Réseaux aérauliques<a class="headerlink" href="#reseaux-aerauliques" title="Link to this heading"></a></h2>
+<section id="airduct-conduits-d-air-et-pertes-de-charge-aerauliques">
+<h3>4.3.1. AirDuct - Conduits d’air et pertes de charge aérauliques<a class="headerlink" href="#airduct-conduits-d-air-et-pertes-de-charge-aerauliques" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="n">AirDuct</span>
+
+<span class="c1"># Gaine rectangulaire</span>
+<span class="n">gaine</span> <span class="o">=</span> <span class="n">AirDuct</span><span class="p">(</span>
+    <span class="n">type_section</span><span class="o">=</span><span class="s2">&quot;rectangulaire&quot;</span><span class="p">,</span>
+    <span class="n">largeur_mm</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+    <span class="n">hauteur_mm</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">longueur_m</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">rugosite_mm</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># Acier galvanisé</span>
+    <span class="n">materiau</span><span class="o">=</span><span class="s2">&quot;acier_galvanise&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Débit d&#39;air</span>
+<span class="n">debit_air</span> <span class="o">=</span> <span class="mi">3000</span>  <span class="c1"># m³/h</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="mi">20</span>   <span class="c1"># °C</span>
+
+<span class="c1"># Calculer les pertes de charge</span>
+<span class="n">resultats</span> <span class="o">=</span> <span class="n">gaine</span><span class="o">.</span><span class="n">calculer_pertes_charge</span><span class="p">(</span>
+    <span class="n">debit_m3_h</span><span class="o">=</span><span class="n">debit_air</span><span class="p">,</span>
+    <span class="n">temperature_C</span><span class="o">=</span><span class="n">temperature</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Débit : </span><span class="si">{</span><span class="n">debit_air</span><span class="si">}</span><span class="s2"> m³/h&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vitesse : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;vitesse_m_s&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Diamètre hydraulique : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;diametre_hydraulique_mm&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mm&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes de charge linéaires : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;pertes_lineaires_Pa&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes de charge totales : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;pertes_totales_Pa&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="gaine-circulaire">
+<h3>Gaine circulaire<a class="headerlink" href="#gaine-circulaire" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="n">AirDuct</span>
+
+<span class="c1"># Gaine circulaire</span>
+<span class="n">gaine_circ</span> <span class="o">=</span> <span class="n">AirDuct</span><span class="p">(</span>
+    <span class="n">type_section</span><span class="o">=</span><span class="s2">&quot;circulaire&quot;</span><span class="p">,</span>
+    <span class="n">diametre_mm</span><span class="o">=</span><span class="mi">315</span><span class="p">,</span>
+    <span class="n">longueur_m</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">rugosite_mm</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">materiau</span><span class="o">=</span><span class="s2">&quot;acier_galvanise&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer pour différents débits</span>
+<span class="n">debits_test</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Performances gaine circulaire Ø315 mm :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Débit (m³/h)&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Vitesse (m/s)&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;ΔP (Pa)&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">debit</span> <span class="ow">in</span> <span class="n">debits_test</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">gaine_circ</span><span class="o">.</span><span class="n">calculer_pertes_charge</span><span class="p">(</span><span class="n">debit</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">debit</span><span class="si">:</span><span class="s2">&lt;15.0f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;vitesse_m_s&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;15.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;pertes_lineaires_Pa&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;15.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="singularites-aerauliques">
+<h3>Singularités aérauliques<a class="headerlink" href="#singularites-aerauliques" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="n">AirDuct</span><span class="p">,</span> <span class="n">Singularity</span>
+
+<span class="n">gaine</span> <span class="o">=</span> <span class="n">AirDuct</span><span class="p">(</span>
+    <span class="n">type_section</span><span class="o">=</span><span class="s2">&quot;circulaire&quot;</span><span class="p">,</span>
+    <span class="n">diametre_mm</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+    <span class="n">longueur_m</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">materiau</span><span class="o">=</span><span class="s2">&quot;acier_galvanise&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Ajouter des singularités</span>
+<span class="n">coude_90</span> <span class="o">=</span> <span class="n">Singularity</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;coude_90&quot;</span><span class="p">,</span> <span class="n">coefficient_perte</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">te_divergent</span> <span class="o">=</span> <span class="n">Singularity</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;te_divergent&quot;</span><span class="p">,</span> <span class="n">coefficient_perte</span><span class="o">=</span><span class="mf">1.3</span><span class="p">)</span>
+<span class="n">registre</span> <span class="o">=</span> <span class="n">Singularity</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;registre&quot;</span><span class="p">,</span> <span class="n">coefficient_perte</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">gaine</span><span class="o">.</span><span class="n">add_singularity</span><span class="p">(</span><span class="n">coude_90</span><span class="p">)</span>
+<span class="n">gaine</span><span class="o">.</span><span class="n">add_singularity</span><span class="p">(</span><span class="n">te_divergent</span><span class="p">)</span>
+<span class="n">gaine</span><span class="o">.</span><span class="n">add_singularity</span><span class="p">(</span><span class="n">registre</span><span class="p">)</span>
+
+<span class="c1"># Calculer les pertes totales</span>
+<span class="n">debit</span> <span class="o">=</span> <span class="mi">2500</span>  <span class="c1"># m³/h</span>
+<span class="n">resultats</span> <span class="o">=</span> <span class="n">gaine</span><span class="o">.</span><span class="n">calculer_pertes_charge_totales</span><span class="p">(</span><span class="n">debit</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes linéaires : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;pertes_lineaires_Pa&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes singulières : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;pertes_singulieres_Pa&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pertes totales : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;pertes_totales_Pa&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section-3-transformation.html" class="btn btn-neutral float-left" title="Section 3 : Transformation de l’energy (Utilités)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section-5-usages-finaux.html" class="btn btn-neutral float-right" title="Section 5 : Usages finaux de l’energy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

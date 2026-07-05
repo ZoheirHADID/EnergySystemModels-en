@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analyse Pinch &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12. Waste Heat et rejets" href="../012-chaleur-fatale/index.html" />
+    <link rel="prev" title="Methods disponibles" href="methode.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Analyse de pincement</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Analyse Pinch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="methode.html">Methods disponibles</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Analyse Pinch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-2-optimisation-d-une-unite-de-distillation">Example 2 : Optimisation d’une unité de distillation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#contexte-industriel">Contexte industriel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data">Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpretation">Interprétation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example-3-integration-with-sources-d-energy-multiples">Example 3 : Intégration with sources d’energy multiples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#contexte">Contexte</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimisation-via-la-gcc">Optimisation via la GCC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example-4-analyse-de-flexibilite">Example 4 : Analyse de flexibilité</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#etude-de-sensibilite-au-tmin">Étude de sensibilité au ΔTmin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpretation-economique">Interprétation économique</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example-5-export-des-results">Example 5 : Export des results</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-backup">Data Backup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generation-de-rapport-automatique">Génération de rapport automatique</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bonnes-pratiques">Bonnes pratiques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ressources-complementaires">Ressources complémentaires</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#documentation-du-module">Documentation du module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#references-bibliographiques">Références bibliographiques</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">6. Analyse de pincement</a></li>
+      <li class="breadcrumb-item active">Analyse Pinch</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/006-pinch_analysis/exemples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="analyse-pinch">
+<h1>Analyse Pinch<a class="headerlink" href="#analyse-pinch" title="Link to this heading"></a></h1>
+<figure class="align-center" id="id1">
+<img alt="Schéma d'une analyse Pinch de base" src="../_images/006_pinch_base.svg" />
+<figcaption>
+<p><span class="caption-text">Les hot and cold streams sont structurés in un DataFrame, puis
+l’analyse produit les courbes, les utilités minimales et les appariements
+d’échange.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PinchAnalysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">PinchAnalysis</span>
+
+<span class="c1"># Créer un DataFrame avec les flux thermiques</span>
+<span class="c1"># Ti/To : températures initiale/finale [°C]</span>
+<span class="c1"># mCp : débit de capacité thermique [kW/K]</span>
+<span class="c1"># dTmin2 : ΔTmin/2 pour chaque flux [K]</span>
+<span class="c1"># integration : inclure le flux dans l&#39;analyse</span>
+<span class="c1"># Les colonnes &#39;id&#39; et &#39;name&#39; sont requises par PinchAnalysis.Object</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">],</span>  <span class="c1"># 2 flux chauds, 2 flux froids</span>
+    <span class="s1">&#39;Ti&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span>
+    <span class="s1">&#39;To&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+    <span class="s1">&#39;mCp&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+    <span class="s1">&#39;dTmin2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s1">&#39;integration&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Créer l&#39;objet d&#39;analyse</span>
+<span class="n">pinch</span> <span class="o">=</span> <span class="n">PinchAnalysis</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Accéder aux résultats (valeurs réelles pour ce jeu de flux)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température de pincement : </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">Pinch_Temperature</span><span class="si">}</span><span class="s2"> °C&quot;</span><span class="p">)</span>  <span class="c1"># 55</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Utilité chaude minimale : </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">Heating_duty</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>        <span class="c1"># 397.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Utilité froide minimale : </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">Cooling_duty</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>        <span class="c1"># 47.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Chaleur récupérée : </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">heat_recovery</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>            <span class="c1"># 602.5</span>
+
+<span class="c1"># DataFrames de résultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pinch</span><span class="o">.</span><span class="n">stream_list</span><span class="p">)</span>                    <span class="c1"># Flux avec températures décalées</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pinch</span><span class="o">.</span><span class="n">df_intervals</span><span class="p">)</span>                   <span class="c1"># Intervalles de température</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pinch</span><span class="o">.</span><span class="n">df_surplus_deficit</span><span class="p">)</span>             <span class="c1"># Bilan énergétique</span>
+
+<span class="c1"># Générer les visualisations</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">plot_composites_curves</span><span class="p">()</span>              <span class="c1"># Courbes composites</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">plot_GCC</span><span class="p">()</span>                            <span class="c1"># Grande courbe composite</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">plot_streams_and_temperature_intervals</span><span class="p">()</span>  <span class="c1"># Flux et intervalles</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">graphical_hen_design</span><span class="p">()</span>                <span class="c1"># Réseau d&#39;échangeurs</span>
+</pre></div>
+</div>
+<p>Results à afficher :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 45.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Result</p></th>
+<th class="head"><p>Objet ou attribut</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Temperature de pincement</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch.Pinch_Temperature</span></code> (= 55)</p></td>
+<td><p>degC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Utilité chaude minimale</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch.Heating_duty</span></code> (= 397,5)</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-even"><td><p>Utilité froide minimale</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch.Cooling_duty</span></code> (= 47,5)</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chaleur récupérée</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch.heat_recovery</span></code> (= 602,5)</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-even"><td><p>Intervalles de temperature</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch.df_intervals</span></code></p></td>
+<td><p>tableau</p></td>
+</tr>
+</tbody>
+</table>
+<p>Plots prévus by l’example :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pinch.plot_composites_curves()</span></code> : courbes composites chaude et froide.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinch.plot_GCC()</span></code> : grande courbe composite.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinch.plot_streams_and_temperature_intervals()</span></code> : flux et intervalles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pinch.graphical_hen_design()</span></code> : réseau d’échangeurs proposé.</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<img alt="Courbes composites réelles du cycle Pinch" src="../_images/006_pinch_plot_composites.svg" />
+<figcaption>
+<p><span class="caption-text">Output réelle de <code class="docutils literal notranslate"><span class="pre">pinch.plot_composites_curves()</span></code> for les flux ci-dessus
+(générée en exécutant la bibliothèque) : composite chaude (bleu) et froide
+(orange) en temperatures décalées ; le recouvrement horizontal correspond à
+la chaleur récupérable (602,5 kW), le décalage vertical au pincement (55 °C).</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Le réseau d’échangeurs optimal pourrait ressembler à :</p>
+<ul class="simple">
+<li><p><strong>E1</strong> : H1 (200°C → 120°C) exchanges with C2 (120°C → 195°C) → 240 kW</p></li>
+<li><p><strong>E2</strong> : H2 (125°C → 45°C) exchanges with C1 (50°C → 130°C) → 200 kW</p></li>
+<li><p><strong>E3</strong> : H1 (120°C → 50°C) exchanges with C1 (130°C → 250°C) → 210 kW</p></li>
+<li><p><strong>E4</strong> : C2 (45°C → 120°C) heated by hot utility → 300 kW</p></li>
+<li><p><strong>E5</strong> : H1 cooled by cold utility → 50 kW</p></li>
+</ul>
+<section id="example-2-optimisation-d-une-unite-de-distillation">
+<h2>Example 2 : Optimisation d’une unité de distillation<a class="headerlink" href="#example-2-optimisation-d-une-unite-de-distillation" title="Link to this heading"></a></h2>
+<section id="contexte-industriel">
+<h3>Contexte industriel<a class="headerlink" href="#contexte-industriel" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id3">
+<img alt="Schéma Pinch pour une unité de distillation" src="../_images/006_pinch_distillation.svg" />
+<figcaption>
+<p><span class="caption-text">Les flux de condenseur, rebouilleur et procédé sont réunis in la même
+analyse for identifier les échanges récupérables.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Une unité de distillation comporte :</p>
+<ul class="simple">
+<li><p><strong>Rebouilleur</strong> (flux froid C1) : chauffe le pied de colonne de 90°C à 140°C</p></li>
+<li><p><strong>Condenseur</strong> (flux chaud H1) : refroidit la tête de colonne de 65°C à 40°C</p></li>
+<li><p><strong>Flux de procédé chaud H2</strong> : hydrocarbure de 180°C à 70°C</p></li>
+<li><p><strong>Flux de procédé froid C2</strong> : charge à préchauffer de 30°C à 120°C</p></li>
+</ul>
+</section>
+<section id="data">
+<h3>Data<a class="headerlink" href="#data" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_distillation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Condenseur&#39;</span><span class="p">,</span> <span class="s1">&#39;Rebouilleur&#39;</span><span class="p">,</span> <span class="s1">&#39;Hydrocarbure&#39;</span><span class="p">,</span> <span class="s1">&#39;Charge&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Ti&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="s1">&#39;To&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">120</span><span class="p">],</span>
+    <span class="s1">&#39;mCp&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+    <span class="s1">&#39;dTmin2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s1">&#39;integration&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Analyse Pinch</span>
+<span class="n">pinch_dist</span> <span class="o">=</span> <span class="n">PinchAnalysis</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">df_distillation</span><span class="p">)</span>
+
+<span class="c1"># Résultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Utilité chaude minimale : </span><span class="si">{</span><span class="n">pinch_dist</span><span class="o">.</span><span class="n">Heating_duty</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Utilité froide minimale : </span><span class="si">{</span><span class="n">pinch_dist</span><span class="o">.</span><span class="n">Cooling_duty</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualisation</span>
+<span class="n">pinch_dist</span><span class="o">.</span><span class="n">plot_composites_curves</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Results à afficher :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Indicateur</p></th>
+<th class="head"><p>Attribut</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Utilité chaude minimale</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch_dist.Heating_duty</span></code></p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-odd"><td><p>Utilité froide minimale</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch_dist.Cooling_duty</span></code></p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-even"><td><p>Flux compatibles</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pinch_dist.df_combined</span></code></p></td>
+<td><p>tableau</p></td>
+</tr>
+</tbody>
+</table>
+<p>Plot prévu by l’example :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pinch_dist.plot_composites_curves()</span></code> affiche le potentiel de récupération
+entre les flux de l’unité.</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<img alt="Aperçu des courbes composites pour distillation" src="../_images/006_pinch_plot_composites.svg" />
+<figcaption>
+<p><span class="caption-text">Même type de plot, appliqué cette fois aux flux de distillation.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="interpretation">
+<h3>Interprétation<a class="headerlink" href="#interpretation" title="Link to this heading"></a></h3>
+<p>L’analyse Pinch révèle que :</p>
+<ul class="simple">
+<li><p>Le flux d’hydrocarbure chaud (H2) peut préchauffer la charge (C2)</p></li>
+<li><p>Le rebouilleur nécessite toujours une utilité chaude (vapeur)</p></li>
+<li><p>The condenser can recover part of its heat</p></li>
+</ul>
+<p>Optimisation proposée :</p>
+<ol class="arabic simple">
+<li><p><strong>Échangeur E1</strong> : Hydrocarbure (180°C → 90°C) préchauffe la Charge (30°C → 120°C) → 360 kW récupérés</p></li>
+<li><p><strong>Utilité chaude</strong> : Steam heats the Reboiler → 300 kW requis (instead of 360 kW without integration)</p></li>
+<li><p><strong>Utilité froide</strong> : Eau de refroidissement refroidit le Condenseur → 125 kW requis</p></li>
+</ol>
+<p><strong>Économie annuelle</strong> (estimée) :</p>
+<ul class="simple">
+<li><p>Réduction de vapeur : 60 kW × 8000 h/an × 0,03 €/kWh = <strong>14 400 €/an</strong></p></li>
+<li><p>Réduction d’eau de refroidissement : économie additionnelle</p></li>
+</ul>
+</section>
+</section>
+<section id="example-3-integration-with-sources-d-energy-multiples">
+<h2>Example 3 : Intégration with sources d’energy multiples<a class="headerlink" href="#example-3-integration-with-sources-d-energy-multiples" title="Link to this heading"></a></h2>
+<section id="contexte">
+<h3>Contexte<a class="headerlink" href="#contexte" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id5">
+<img alt="Schéma d'intégration Pinch avec utilités multiples" src="../_images/006_pinch_base.svg" />
+<figcaption>
+<p><span class="caption-text">La grande courbe composite sert à positionner les niveaux de vapeur et de
+refroidissement.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In a complex process, there are several utility levels :</p>
+<ul class="simple">
+<li><p><strong>Vapeur HP</strong> : 250°C, coût élevé</p></li>
+<li><p><strong>Vapeur MP</strong> : 150°C, coût moyen</p></li>
+<li><p><strong>Vapeur BP</strong> : 120°C, coût faible</p></li>
+<li><p><strong>Eau de refroidissement</strong> : 15-25°C</p></li>
+</ul>
+</section>
+<section id="optimisation-via-la-gcc">
+<h3>Optimisation via la GCC<a class="headerlink" href="#optimisation-via-la-gcc" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Après avoir créé l&#39;objet PinchAnalysis</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">plot_GCC</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Vapeur HP (250°C)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Vapeur MP (150°C)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Vapeur BP (120°C)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Eau refroidissement (20°C)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>La GCC allows déterminer :</p>
+<ul class="simple">
+<li><p>Quelle vapeur utiliser à quel niveau de temperature</p></li>
+<li><p>Les économies potentielles en remplaçant la vapeur HP by de la vapeur BP quand possible</p></li>
+<li><p>Le plot prévu est <code class="docutils literal notranslate"><span class="pre">pinch.plot_GCC()</span></code> enrichi by les lignes horizontales
+des utilités disponibles.</p></li>
+</ul>
+</section>
+</section>
+<section id="example-4-analyse-de-flexibilite">
+<h2>Example 4 : Analyse de flexibilité<a class="headerlink" href="#example-4-analyse-de-flexibilite" title="Link to this heading"></a></h2>
+<section id="etude-de-sensibilite-au-tmin">
+<h3>Étude de sensibilité au ΔTmin<a class="headerlink" href="#etude-de-sensibilite-au-tmin" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id6">
+<img alt="Schéma d'analyse de sensibilité au ΔTmin" src="../_images/006_pinch_sensibilite.svg" />
+<figcaption>
+<p><span class="caption-text">Le même jeu de flux est recalculé for plusieurs valeurs de <code class="docutils literal notranslate"><span class="pre">ΔTmin</span></code>.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Balayage du ΔTmin</span>
+<span class="n">dTmin_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="n">Qh_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Qc_values</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">df_base</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Ti&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span>
+    <span class="s1">&#39;To&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">195</span><span class="p">],</span>
+    <span class="s1">&#39;mCp&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span>
+    <span class="s1">&#39;integration&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="k">for</span> <span class="n">dTmin</span> <span class="ow">in</span> <span class="n">dTmin_values</span><span class="p">:</span>
+    <span class="n">df_test</span> <span class="o">=</span> <span class="n">df_base</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;dTmin2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dTmin</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="n">pinch_test</span> <span class="o">=</span> <span class="n">PinchAnalysis</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span>
+    <span class="n">Qh_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pinch_test</span><span class="o">.</span><span class="n">Heating_duty</span><span class="p">)</span>
+    <span class="n">Qc_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pinch_test</span><span class="o">.</span><span class="n">Cooling_duty</span><span class="p">)</span>
+
+<span class="c1"># Tracer l&#39;évolution</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dTmin_values</span><span class="p">,</span> <span class="n">Qh_values</span><span class="p">,</span> <span class="s1">&#39;ro-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Utilité chaude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dTmin_values</span><span class="p">,</span> <span class="n">Qc_values</span><span class="p">,</span> <span class="s1">&#39;bo-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Utilité froide&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;ΔTmin [°C]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Utilités [kW]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sensibilité au ΔTmin&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Results à afficher :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 35.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dTmin_values</span></code></p></td>
+<td><p>valeurs testées de <code class="docutils literal notranslate"><span class="pre">ΔTmin</span></code></p></td>
+<td><p>abscisse du plot</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Qh_values</span></code></p></td>
+<td><p>utilité chaude minimale</p></td>
+<td><p>courbe rouge</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Qc_values</span></code></p></td>
+<td><p>utilité froide minimale</p></td>
+<td><p>courbe bleue</p></td>
+</tr>
+</tbody>
+</table>
+<p>Plot prévu by l’example :</p>
+<ul class="simple">
+<li><p>le graphique Matplotlib compare l’évolution des utilités with <code class="docutils literal notranslate"><span class="pre">ΔTmin</span></code>.</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<img alt="Plot réel de sensibilité Pinch au ΔTmin" src="../_images/006_pinch_plot_sensibilite.svg" />
+<figcaption>
+<p><span class="caption-text">Output réelle du balayage (générée en exécutant la bibliothèque) : de
+<code class="docutils literal notranslate"><span class="pre">ΔTmin</span></code> = 5 °C à 27,5 °C, l’utilité chaude passe de 370 à 494 kW et
+l’utilité froide de 20 à 144 kW — les deux croissent linéairement avec
+<code class="docutils literal notranslate"><span class="pre">ΔTmin</span></code> (à <code class="docutils literal notranslate"><span class="pre">ΔTmin</span></code> = 10 °C : 397,5 et 47,5 kW).</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="interpretation-economique">
+<h3>Interprétation économique<a class="headerlink" href="#interpretation-economique" title="Link to this heading"></a></h3>
+<p>Plus ΔTmin est faible :</p>
+<ul class="simple">
+<li><p>✅ Moins d’utilités consommées → coûts opérationnels réduits</p></li>
+<li><p>❌ Plus de surface d’échange → coûts d’investissement élevés</p></li>
+</ul>
+<p>Le ΔTmin optimal se trouve by optimisation technico-économique (analyse TAC).</p>
+</section>
+</section>
+<section id="example-5-export-des-results">
+<h2>Example 5 : Export des results<a class="headerlink" href="#example-5-export-des-results" title="Link to this heading"></a></h2>
+<section id="data-backup">
+<h3>Data Backup<a class="headerlink" href="#data-backup" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exporter les résultats vers Excel</span>
+<span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s1">&#39;resultats_pinch.xlsx&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+    <span class="n">pinch</span><span class="o">.</span><span class="n">stream_list</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pinch</span><span class="o">.</span><span class="n">df_intervals</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Intervalles&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">pinch</span><span class="o">.</span><span class="n">df_surplus_deficit</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Surplus_Deficit&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Résumé</span>
+    <span class="n">df_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;Paramètre&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;T Pinch&#39;</span><span class="p">,</span> <span class="s1">&#39;Qh min&#39;</span><span class="p">,</span> <span class="s1">&#39;Qc min&#39;</span><span class="p">,</span> <span class="s1">&#39;Q récupéré&#39;</span><span class="p">,</span> <span class="s1">&#39;ΔTmin&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;Valeur&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">pinch</span><span class="o">.</span><span class="n">Pinch_Temperature</span><span class="p">,</span> <span class="n">pinch</span><span class="o">.</span><span class="n">Heating_duty</span><span class="p">,</span> <span class="n">pinch</span><span class="o">.</span><span class="n">Cooling_duty</span><span class="p">,</span>
+                   <span class="n">pinch</span><span class="o">.</span><span class="n">heat_recovery</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dTmin2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">],</span>
+        <span class="s1">&#39;Unité&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;°C&#39;</span><span class="p">,</span> <span class="s1">&#39;kW&#39;</span><span class="p">,</span> <span class="s1">&#39;kW&#39;</span><span class="p">,</span> <span class="s1">&#39;kW&#39;</span><span class="p">,</span> <span class="s1">&#39;°C&#39;</span><span class="p">]</span>
+    <span class="p">})</span>
+    <span class="n">df_summary</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Résumé&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Résultats exportés vers resultats_pinch.xlsx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="generation-de-rapport-automatique">
+<h3>Génération de rapport automatique<a class="headerlink" href="#generation-de-rapport-automatique" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Créer un rapport PDF avec tous les graphiques</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.backends.backend_pdf</span><span class="w"> </span><span class="kn">import</span> <span class="n">PdfPages</span>
+
+<span class="k">with</span> <span class="n">PdfPages</span><span class="p">(</span><span class="s1">&#39;rapport_pinch.pdf&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pdf</span><span class="p">:</span>
+    <span class="c1"># Page 1 : Courbes composites</span>
+    <span class="n">pinch</span><span class="o">.</span><span class="n">plot_composites_curves</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Courbes Composites du Procédé&#39;</span><span class="p">)</span>
+    <span class="n">pdf</span><span class="o">.</span><span class="n">savefig</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># Page 2 : GCC</span>
+    <span class="n">pinch</span><span class="o">.</span><span class="n">plot_GCC</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Grande Courbe Composite&#39;</span><span class="p">)</span>
+    <span class="n">pdf</span><span class="o">.</span><span class="n">savefig</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># Page 3 : Flux et intervalles</span>
+    <span class="n">pinch</span><span class="o">.</span><span class="n">plot_streams_and_temperature_intervals</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Flux de procédé et intervalles de température&#39;</span><span class="p">)</span>
+    <span class="n">pdf</span><span class="o">.</span><span class="n">savefig</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="c1"># Page 4 : Réseau d&#39;échangeurs</span>
+    <span class="n">pinch</span><span class="o">.</span><span class="n">graphical_hen_design</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Réseau d&#39;</span><span class="n">échangeurs</span> <span class="n">de</span> <span class="n">chaleur</span><span class="s1">&#39;)</span>
+    <span class="n">pdf</span><span class="o">.</span><span class="n">savefig</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rapport PDF généré : rapport_pinch.pdf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="bonnes-pratiques">
+<h2>Bonnes pratiques<a class="headerlink" href="#bonnes-pratiques" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Data Validation</strong></p>
+<ul class="simple">
+<li><p>Vérifier que tous les flux chauds ont Ti &gt; To</p></li>
+<li><p>Vérifier que tous les flux froids ont Ti &lt; To</p></li>
+<li><p>S’assurer que mCp &gt; 0 for tous les flux</p></li>
+</ul>
+</li>
+<li><p><strong>Choix du ΔTmin</strong></p>
+<ul class="simple">
+<li><p>Procédés standards : 10-20°C</p></li>
+<li><p>Procédés cryogéniques : 3-5°C</p></li>
+<li><p>Procédés haute temperature : 20-40°C</p></li>
+</ul>
+</li>
+<li><p><strong>Interprétation des results</strong></p>
+<ul class="simple">
+<li><p>Comparer les économies d’energy au coût d’investissement</p></li>
+<li><p>Vérifier la faisabilité technique (contraintes de pressure, encrassement)</p></li>
+<li><p>Analyser la robustesse face aux variations de procédé</p></li>
+</ul>
+</li>
+<li><p><strong>Itération</strong></p>
+<ul class="simple">
+<li><p>Tester plusieurs configurations</p></li>
+<li><p>Varier le ΔTmin for trouver l’optimum économique</p></li>
+<li><p>Intégrer progressivement les échangeurs by ordre de priorité</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="ressources-complementaires">
+<h2>Ressources complémentaires<a class="headerlink" href="#ressources-complementaires" title="Link to this heading"></a></h2>
+<section id="documentation-du-module">
+<h3>Documentation du module<a class="headerlink" href="#documentation-du-module" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Fonctions de calcul : <code class="docutils literal notranslate"><span class="pre">PinchAnalysis.functions</span></code></p></li>
+<li><p>Visualisation : <code class="docutils literal notranslate"><span class="pre">plot_composites_curves()</span></code>, <code class="docutils literal notranslate"><span class="pre">plot_GCC()</span></code></p></li>
+<li><p>Conception HEN : <code class="docutils literal notranslate"><span class="pre">HeatExchangerNetwork()</span></code></p></li>
+</ul>
+</section>
+<section id="references-bibliographiques">
+<h3>Références bibliographiques<a class="headerlink" href="#references-bibliographiques" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Kemp, I. C. (2007). <em>Pinch Analysis and Process Integration</em></p></li>
+<li><p>Smith, R. (2005). <em>Chemical Process Design and Integration</em></p></li>
+<li><p>Seider et al. (2016). <em>Product and Process Design Principles</em></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="methode.html" class="btn btn-neutral float-left" title="Methods disponibles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../012-chaleur-fatale/index.html" class="btn btn-neutral float-right" title="12. Waste Heat et rejets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

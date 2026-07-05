@@ -1,0 +1,51 @@
+{
+  "title": "Noeud multiple outputs : Splitter",
+  "description": "Example de routage d'une entree fluid to deux outputs distinctes.",
+  "nodes": [
+    {
+      "id": "source",
+      "label": "Source",
+      "subtitle": "[fluid, F, P, h]",
+      "kind": "source",
+      "column": 0
+    },
+    {
+      "id": "splitter",
+      "label": "Splitter",
+      "subtitle": "Ratio to output 1",
+      "kind": "process",
+      "column": 1
+    },
+    {
+      "id": "out1",
+      "label": "Output 1",
+      "subtitle": "F_b = Ratio x F",
+      "kind": "sink",
+      "column": 2
+    },
+    {
+      "id": "out2",
+      "label": "Output 2",
+      "subtitle": "F_c = (1-Ratio) x F",
+      "kind": "sink",
+      "column": 2
+    }
+  ],
+  "edges": [
+    {
+      "from": "source",
+      "to": "splitter",
+      "label": "entree"
+    },
+    {
+      "from": "splitter",
+      "to": "out1",
+      "label": "output 1"
+    },
+    {
+      "from": "splitter",
+      "to": "out2",
+      "label": "output 2"
+    }
+  ]
+}

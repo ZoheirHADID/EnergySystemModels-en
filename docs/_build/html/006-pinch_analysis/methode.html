@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methods disponibles &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analyse Pinch" href="exemples.html" />
+    <link rel="prev" title="Analyse Pinch" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Analyse de pincement</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Analyse Pinch</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Methods disponibles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#visualisations">Visualisations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataframes-de-results">DataFrames de results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attributs-calcules">Attributs calculés</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#intervalles-de-temperature">Intervalles de temperature</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#etape-3-calcul-du-probleme-table-problem-table">Étape 3 : Calcul du problème table (Problem Table)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bilan-energy-by-intervalle">Bilan energy by intervalle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theoreme-du-pinch">Théorème du Pinch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#etape-4-construction-des-courbes-composites">Étape 4 : Construction des courbes composites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#courbe-composite-chaude-ccc">Courbe Composite Chaude (CCC)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#courbe-composite-froide-ccf">Courbe Composite Froide (CCF)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#identification-du-pinch">Identification du Pinch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#etape-5-construction-de-la-grande-courbe-composite-gcc">Étape 5 : Construction de la Grande Courbe Composite (GCC)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interpretation-de-la-gcc">Interprétation de la GCC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#etape-6-conception-du-reseau-d-echangeurs-hen">Étape 6 : Conception du réseau d’échangeurs (HEN)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#regles-de-conception">Règles de conception</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#number-minimum-d-echangeurs">Number minimum d’échangeurs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimisation-cout-energy">Optimisation coût-energy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#etape-7-analyse-de-sensibilite">Étape 7 : Analyse de sensibilité</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logiciels-disponibles">Logiciels disponibles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references-methodologiques">Références méthodologiques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="exemples.html">Analyse Pinch</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">6. Analyse de pincement</a></li>
+      <li class="breadcrumb-item active">Methods disponibles</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/006-pinch_analysis/methode.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="methods-disponibles">
+<h1>Methods disponibles<a class="headerlink" href="#methods-disponibles" title="Link to this heading"></a></h1>
+<section id="visualisations">
+<h2>Visualisations<a class="headerlink" href="#visualisations" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pinch</span><span class="o">.</span><span class="n">plot_composites_curves</span><span class="p">()</span>           <span class="c1"># Courbes composites</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">plot_GCC</span><span class="p">()</span>                          <span class="c1"># Grande courbe composite</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">plot_streams_and_temperature_intervals</span><span class="p">()</span>  <span class="c1"># Flux et intervalles</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">graphical_hen_design</span><span class="p">()</span>              <span class="c1"># Réseau d&#39;échangeurs</span>
+</pre></div>
+</div>
+</section>
+<section id="dataframes-de-results">
+<h2>DataFrames de results<a class="headerlink" href="#dataframes-de-results" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pinch</span><span class="o">.</span><span class="n">stream_list</span>                         <span class="c1"># Flux avec températures décalées</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">df_intervals</span>                        <span class="c1"># Intervalles de température</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">df_surplus_deficit</span>                  <span class="c1"># Surplus/déficit énergétique</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">df_hcc</span>                              <span class="c1"># Courbe composite chaude (hot)</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">df_ccc</span>                              <span class="c1"># Courbe composite froide (cold)</span>
+<span class="n">pinch</span><span class="o">.</span><span class="n">df_combined</span>                         <span class="c1"># Combinaisons d&#39;échange possibles</span>
+</pre></div>
+</div>
+</section>
+<section id="attributs-calcules">
+<h2>Attributs calculés<a class="headerlink" href="#attributs-calcules" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Point Pinch: </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">Pinch_Temperature</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Utilité chaude min: </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">Heating_duty</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Utilité froide min: </span><span class="si">{</span><span class="n">pinch</span><span class="o">.</span><span class="n">Cooling_duty</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+  <span class="o">-</span> <span class="mi">195</span>
+  <span class="o">-</span> <span class="mi">50</span>
+  <span class="o">-</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<section id="intervalles-de-temperature">
+<h3>Intervalles de temperature<a class="headerlink" href="#intervalles-de-temperature" title="Link to this heading"></a></h3>
+<p>On crée une liste de tous les changements de temperature in le system for diviser le problème en intervalles.</p>
+</section>
+</section>
+<section id="etape-3-calcul-du-probleme-table-problem-table">
+<h2>Étape 3 : Calcul du problème table (Problem Table)<a class="headerlink" href="#etape-3-calcul-du-probleme-table-problem-table" title="Link to this heading"></a></h2>
+<section id="bilan-energy-by-intervalle">
+<h3>Bilan energy by intervalle<a class="headerlink" href="#bilan-energy-by-intervalle" title="Link to this heading"></a></h3>
+<p>Pour chaque intervalle de temperature, on calcule :</p>
+<ul class="simple">
+<li><p><strong>Chaleur disponible</strong> (flux chauds traversant l’intervalle)</p></li>
+<li><p><strong>Chaleur requise</strong> (flux froids traversant l’intervalle)</p></li>
+<li><p><strong>Surplus ou déficit</strong> energy</p></li>
+</ul>
+<p>Le bilan cumulé permet d’identifier :</p>
+<ul class="simple">
+<li><p><strong>Point Pinch</strong> : où le cascade energy atteint son minimum</p></li>
+<li><p><strong>Utilité chaude minimale</strong> (Qh,min)</p></li>
+<li><p><strong>Utilité froide minimale</strong> (Qc,min)</p></li>
+</ul>
+</section>
+<section id="theoreme-du-pinch">
+<h3>Théorème du Pinch<a class="headerlink" href="#theoreme-du-pinch" title="Link to this heading"></a></h3>
+<p>Le théorème du Pinch énonce :</p>
+<ol class="arabic simple">
+<li><p>Aucun transfert de chaleur ne doit traverser le point Pinch</p></li>
+<li><p>Au-dessus du Pinch : pas de refroidissement externe</p></li>
+<li><p>En-dessous du Pinch : pas de chauffage externe</p></li>
+</ol>
+</section>
+</section>
+<section id="etape-4-construction-des-courbes-composites">
+<h2>Étape 4 : Construction des courbes composites<a class="headerlink" href="#etape-4-construction-des-courbes-composites" title="Link to this heading"></a></h2>
+<section id="courbe-composite-chaude-ccc">
+<h3>Courbe Composite Chaude (CCC)<a class="headerlink" href="#courbe-composite-chaude-ccc" title="Link to this heading"></a></h3>
+<p>Construction :</p>
+<ol class="arabic simple">
+<li><p>Tracer chaque flux chaud in le diagramme H-T (enthalpy-temperature)</p></li>
+<li><p>Décaler verticalement de -ΔTmin/2</p></li>
+<li><p>Sommer horizontalement tous les flux chauds</p></li>
+</ol>
+<p>La CCC représente le profil de refroidissement total du procédé.</p>
+</section>
+<section id="courbe-composite-froide-ccf">
+<h3>Courbe Composite Froide (CCF)<a class="headerlink" href="#courbe-composite-froide-ccf" title="Link to this heading"></a></h3>
+<p>Construction :</p>
+<ol class="arabic simple">
+<li><p>Tracer chaque flux froid in le diagramme H-T</p></li>
+<li><p>Décaler verticalement de +ΔTmin/2</p></li>
+<li><p>Sommer horizontalement tous les flux froids</p></li>
+</ol>
+<p>La CCF représente le profil de chauffage total du procédé.</p>
+</section>
+<section id="identification-du-pinch">
+<h3>Identification du Pinch<a class="headerlink" href="#identification-du-pinch" title="Link to this heading"></a></h3>
+<p>Le point Pinch est visible on les courbes composites :</p>
+<ul class="simple">
+<li><p>C’est le point où l’écart vertical between CCC et CCF est minimal (= ΔTmin)</p></li>
+<li><p>Il divise le system en deux régions thermiquement indépendantes</p></li>
+</ul>
+</section>
+</section>
+<section id="etape-5-construction-de-la-grande-courbe-composite-gcc">
+<h2>Étape 5 : Construction de la Grande Courbe Composite (GCC)<a class="headerlink" href="#etape-5-construction-de-la-grande-courbe-composite-gcc" title="Link to this heading"></a></h2>
+<p>La GCC se construit en :</p>
+<ol class="arabic simple">
+<li><p>Calculant la différence between CCC et CCF à chaque temperature</p></li>
+<li><p>Traçant cette différence as a function of la temperature décalée</p></li>
+</ol>
+<section id="interpretation-de-la-gcc">
+<h3>Interprétation de la GCC<a class="headerlink" href="#interpretation-de-la-gcc" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Zone à droite de l’axe</strong> : surplus de chaleur → besoin de refroidissement</p></li>
+<li><p><strong>Zone à gauche de l’axe</strong> : déficit de chaleur → besoin de chauffage</p></li>
+<li><p><strong>Point le plus à gauche</strong> : point Pinch</p></li>
+<li><p><strong>Extrémité haute</strong> : utilité chaude minimale</p></li>
+<li><p><strong>Extrémité basse</strong> : utilité froide minimale</p></li>
+</ul>
+<p>La GCC permet d’optimiser le positionnement des utilités :</p>
+<ul class="simple">
+<li><p>Vapeur HP/MP/BP</p></li>
+<li><p>Eau de refroidissement à différentes temperatures</p></li>
+<li><p>Réfrigération</p></li>
+</ul>
+</section>
+</section>
+<section id="etape-6-conception-du-reseau-d-echangeurs-hen">
+<h2>Étape 6 : Conception du réseau d’échangeurs (HEN)<a class="headerlink" href="#etape-6-conception-du-reseau-d-echangeurs-hen" title="Link to this heading"></a></h2>
+<section id="regles-de-conception">
+<h3>Règles de conception<a class="headerlink" href="#regles-de-conception" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Ne pas traverser le Pinch</strong> : aucun échangeur ne doit transférer de la chaleur à travers le point Pinch</p></li>
+<li><p><strong>Zone au-dessus du Pinch</strong> :</p>
+<ul class="simple">
+<li><p>Respecter CPchaud ≥ CPfroid for chaque échangeur</p></li>
+<li><p>Utiliser uniquement des utilités chaudes</p></li>
+</ul>
+</li>
+<li><p><strong>Zone en-dessous du Pinch</strong> :</p>
+<ul class="simple">
+<li><p>Respecter CPchaud ≤ CPfroid for chaque échangeur</p></li>
+<li><p>Utiliser uniquement des utilités froides</p></li>
+</ul>
+</li>
+<li><p><strong>Règle du tick-off</strong> : apparier les flux en priorité for satisfaire les objectifs de récupération</p></li>
+</ol>
+</section>
+<section id="number-minimum-d-echangeurs">
+<h3>Number minimum d’échangeurs<a class="headerlink" href="#number-minimum-d-echangeurs" title="Link to this heading"></a></h3>
+<p>Le nombre minimum théorique d’unités (MER - Minimum Energy Recovery) se calcule by :</p>
+<div class="math notranslate nohighlight">
+\[N_{min} = N_{streams} - 1\]</div>
+<p>où N_streams est le nombre total de flux (chauds + froids + utilités).</p>
+<p>En pratique, on ajoute souvent des échangeurs supplémentaires for :</p>
+<ul class="simple">
+<li><p>Améliorer la flexibilité opérationnelle</p></li>
+<li><p>Faciliter la maintenance</p></li>
+<li><p>Respecter les contraintes de procédé (pressure, encrassement, etc.)</p></li>
+</ul>
+</section>
+<section id="optimisation-cout-energy">
+<h3>Optimisation coût-energy<a class="headerlink" href="#optimisation-cout-energy" title="Link to this heading"></a></h3>
+<p>Le choix du ΔTmin est un compromis between :</p>
+<ul class="simple">
+<li><p><strong>ΔTmin faible</strong> : moins d’utilités mais plus de surface d’échange (coût capital)</p></li>
+<li><p><strong>ΔTmin élevé</strong> : moins de surface mais plus d’utilités (coût opérationnel)</p></li>
+</ul>
+<p>L’optimum économique se trouve en analysant le <strong>coût total annualisé (TAC)</strong> :</p>
+<div class="math notranslate nohighlight">
+\[TAC = \text{Coût capital annualisé} + \text{Coût opérationnel}\]</div>
+</section>
+</section>
+<section id="etape-7-analyse-de-sensibilite">
+<h2>Étape 7 : Analyse de sensibilité<a class="headerlink" href="#etape-7-analyse-de-sensibilite" title="Link to this heading"></a></h2>
+<p>Il est important d’analyser la robustesse de la solution vis-à-vis de :</p>
+<ul class="simple">
+<li><p>Variations de flow rates</p></li>
+<li><p>Variations de temperatures</p></li>
+<li><p>Disponibilité des flux (arrêts, maintenance)</p></li>
+<li><p>Modes opératoires différents (démarrage, arrêt, régime partiel)</p></li>
+</ul>
+<p>Outils for l’analyse de sensibilité :</p>
+<ul class="simple">
+<li><p><strong>Grid diagram</strong> : visualisation de la flexibilité du réseau</p></li>
+<li><p><strong>Plus-Minus principle</strong> : calcul des marges de sécurité</p></li>
+<li><p><strong>Driving force plots</strong> : analyse des forces motrices d’échange</p></li>
+</ul>
+</section>
+<section id="logiciels-disponibles">
+<h2>Logiciels disponibles<a class="headerlink" href="#logiciels-disponibles" title="Link to this heading"></a></h2>
+<p>Plusieurs logiciels commerciaux et open-source existent for l’analyse Pinch :</p>
+<ul class="simple">
+<li><p><strong>Aspen Energy Analyzer</strong> (Aspen Technology)</p></li>
+<li><p><strong>SPRINT</strong> (Centre for Process Integration, Université de Manchester)</p></li>
+<li><p><strong>PinCH</strong> (IChemE)</p></li>
+<li><p><strong>SuperTarget</strong> (Linnhoff March)</p></li>
+<li><p><strong>EnergySystemModels</strong> (open-source Python) ← Ce package !</p></li>
+</ul>
+</section>
+<section id="references-methodologiques">
+<h2>Références méthodologiques<a class="headerlink" href="#references-methodologiques" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Linnhoff, B., &amp; Flower, J. R. (1978). “Synthesis of heat exchanger networks”. <em>AIChE Journal</em>, 24(4), 633-642.</p></li>
+<li><p>Hohmann, E. C. (1971). “Optimum networks for heat exchange”. PhD Thesis, University of Southern California.</p></li>
+<li><p>Cerda, J., &amp; Westerberg, A. W. (1983). “Synthesizing heat exchanger networks having restricted stream/stream matches”. <em>Chemical Engineering Science</em>, 38(10), 1723-1740.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Analyse Pinch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="exemples.html" class="btn btn-neutral float-right" title="Analyse Pinch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

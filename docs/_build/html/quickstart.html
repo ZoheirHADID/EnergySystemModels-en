@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guide de Démarrage Rapide &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=116ee311"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="10. Achat d’energy" href="010-achat-energie/index.html" />
+    <link rel="prev" title="Section 7 : Other" href="usage/section-6-autres.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Guide de Démarrage Rapide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method-standard">Method standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environnement-virtuel-recommande">Environnement virtuel (recommandé)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#principe-d-usage">Principe d’usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-en-4-etapes">Workflow en 4 étapes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-simple">Example simple</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modules-disponibles">Modules disponibles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transfer-thermique">Transfer thermique</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systemes-thermodynamiques">Systèmes thermodynamiques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#systemes-hvac">Systèmes HVAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimisation-energy">Optimisation energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-et-production">Data et production</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#facturation-et-certificats">Facturation et certificats</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#unites-et-conventions">Unités et conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structure-des-results">Structure des results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#method-1-attributs-de-l-objet">Method 1 : Attributs de l’objet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-2-dataframe-pandas">Method 2 : DataFrame pandas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pour-aller-plus-loin">Pour aller plus loin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#documentation-detaillee">Documentation détaillée</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ressources-et-support">Ressources et support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#liens-utiles">Liens utiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#besoin-d-aide">Besoin d’aide ?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Guide de Démarrage Rapide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quickstart.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="guide-de-demarrage-rapide">
+<span id="quickstart"></span><h1>Guide de Démarrage Rapide<a class="headerlink" href="#guide-de-demarrage-rapide" title="Link to this heading"></a></h1>
+<p>Ce guide vous allows commencer à utiliser <strong>EnergySystemModels</strong> en quelques minutes.</p>
+<nav class="contents local" id="sommaire">
+<p class="topic-title">Sommaire</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#installation" id="id1">Installation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#method-standard" id="id2">Method standard</a></p></li>
+<li><p><a class="reference internal" href="#environnement-virtuel-recommande" id="id3">Environnement virtuel (recommandé)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#principe-d-usage" id="id4">Principe d’usage</a></p>
+<ul>
+<li><p><a class="reference internal" href="#workflow-en-4-etapes" id="id5">Workflow en 4 étapes</a></p></li>
+<li><p><a class="reference internal" href="#example-simple" id="id6">Example simple</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#modules-disponibles" id="id7">Modules disponibles</a></p>
+<ul>
+<li><p><a class="reference internal" href="#transfer-thermique" id="id8">Transfer thermique</a></p></li>
+<li><p><a class="reference internal" href="#systemes-thermodynamiques" id="id9">Systèmes thermodynamiques</a></p></li>
+<li><p><a class="reference internal" href="#systemes-hvac" id="id10">Systèmes HVAC</a></p></li>
+<li><p><a class="reference internal" href="#optimisation-energy" id="id11">Optimisation energy</a></p></li>
+<li><p><a class="reference internal" href="#data-et-production" id="id12">Data et production</a></p></li>
+<li><p><a class="reference internal" href="#facturation-et-certificats" id="id13">Facturation et certificats</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#unites-et-conventions" id="id14">Unités et conventions</a></p></li>
+<li><p><a class="reference internal" href="#structure-des-results" id="id15">Structure des results</a></p>
+<ul>
+<li><p><a class="reference internal" href="#method-1-attributs-de-l-objet" id="id16">Method 1 : Attributs de l’objet</a></p></li>
+<li><p><a class="reference internal" href="#method-2-dataframe-pandas" id="id17">Method 2 : DataFrame pandas</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#pour-aller-plus-loin" id="id18">Pour aller plus loin</a></p>
+<ul>
+<li><p><a class="reference internal" href="#documentation-detaillee" id="id19">Documentation détaillée</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#ressources-et-support" id="id20">Ressources et support</a></p>
+<ul>
+<li><p><a class="reference internal" href="#liens-utiles" id="id21">Liens utiles</a></p></li>
+<li><p><a class="reference internal" href="#besoin-d-aide" id="id22">Besoin d’aide ?</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<hr class="docutils" />
+<section id="installation">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Installation</a><a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<section id="method-standard">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Method standard</a><a class="headerlink" href="#method-standard" title="Link to this heading"></a></h3>
+<p>Installez la bibliothèque via pip :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install energysystemmodels</span>
+</pre></div>
+</div>
+</section>
+<section id="environnement-virtuel-recommande">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Environnement virtuel (recommandé)</a><a class="headerlink" href="#environnement-virtuel-recommande" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Créer un environnement virtuel</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+
+<span class="c1"># Activer l&#39;environnement (Windows)</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+
+<span class="c1"># Activer l&#39;environnement (Linux/Mac)</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+
+<span class="c1"># Installer la bibliothèque</span>
+pip<span class="w"> </span>install<span class="w"> </span>energysystemmodels
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>L’usage d’un environnement virtuel est recommandée for éviter les conflits de dépendances.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="principe-d-usage">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Principe d’usage</a><a class="headerlink" href="#principe-d-usage" title="Link to this heading"></a></h2>
+<p>EnergySystemModels suit un model de programmation <strong>orienté objet</strong> simple et cohérent.</p>
+<section id="workflow-en-4-etapes">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Workflow en 4 étapes</a><a class="headerlink" href="#workflow-en-4-etapes" title="Link to this heading"></a></h3>
+<div class="note admonition">
+<p class="admonition-title">Workflow standard</p>
+<ol class="arabic simple">
+<li><p><strong>Créer un objet</strong> représentant un composant energy</p></li>
+<li><p><strong>Définir les paramètres d’input</strong> (temperatures, pressures, flow rates, etc.)</p></li>
+<li><p><strong>Appeler la method calculate()</strong> for effectuer les calculs</p></li>
+<li><p><strong>Accéder aux results</strong> via les attributs de l’objet ou le DataFrame</p></li>
+</ol>
+</div>
+</section>
+<section id="example-simple">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Example simple</a><a class="headerlink" href="#example-simple" title="Link to this heading"></a></h3>
+<p>Voici un example minimal for illustrer le principe :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span><span class="w"> </span><span class="nn">HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompositeWall</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1"># 1. Créer l&#39;objet</span>
+<span class="hll"><span class="linenos"> 4</span><span class="n">wall</span> <span class="o">=</span> <span class="n">CompositeWall</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">he</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">hi</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Ti</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">Te</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># 2. Définir la structure (ajouter des couches)</span>
+<span class="hll"><span class="linenos"> 7</span><span class="n">wall</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Parpaings creux&#39;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 8</span><span class="n">wall</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Polystyrène&#39;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos"> 9</span><span class="n">wall</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Plâtre&#39;</span><span class="p">)</span>
+</span><span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1"># 3. Calculer</span>
+<span class="hll"><span class="linenos">12</span><span class="n">wall</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+</span><span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1"># 4. Accéder aux résultats</span>
+<span class="hll"><span class="linenos">15</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Résistance thermique : </span><span class="si">{</span><span class="n">wall</span><span class="o">.</span><span class="n">R_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m².K/W&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">16</span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Flux thermique : </span><span class="si">{</span><span class="n">wall</span><span class="o">.</span><span class="n">Q</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">17</span><span class="nb">print</span><span class="p">(</span><span class="n">wall</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># DataFrame avec tous les résultats</span>
+</span></pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Pour plus d’examples, consultez <a class="reference internal" href="usage.html"><span class="doc">Usage</span></a></p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modules-disponibles">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Modules disponibles</a><a class="headerlink" href="#modules-disponibles" title="Link to this heading"></a></h2>
+<p>La bibliothèque est organisée en modules thématiques :</p>
+<section id="transfer-thermique">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Transfer thermique</a><a class="headerlink" href="#transfer-thermique" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Transfer de chaleur</strong></p></td>
+<td><p>Calculs thermiques for murs, tuyauteries, échangeurs</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="systemes-thermodynamiques">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Systèmes thermodynamiques</a><a class="headerlink" href="#systemes-thermodynamiques" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Cycles thermodynamiques</strong></p></td>
+<td><p>Modélisation de cycles frigorifiques, pompes à chaleur, compresseurs</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="systemes-hvac">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Systèmes HVAC</a><a class="headerlink" href="#systemes-hvac" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Centrales de traitement d’air (CTA)</strong></p></td>
+<td><p>Simulation complète de CTA with batteries, humidification, récupération</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hydraulique</strong></p></td>
+<td><p>Calculs de pertes de charge, dimensionnement de pompes et vannes</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="optimisation-energy">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Optimisation energy</a><a class="headerlink" href="#optimisation-energy" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Analyse energy</strong></p></td>
+<td><p>Analyse Pinch, IPMVP, optimisation d’intégration thermique</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="data-et-production">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Data et production</a><a class="headerlink" href="#data-et-production" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Data météo</strong></p></td>
+<td><p>Récupération de data climatiques en temps réel ou historiques</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Production solaire</strong></p></td>
+<td><p>Simulation de production photovoltaïque</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="facturation-et-certificats">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Facturation et certificats</a><a class="headerlink" href="#facturation-et-certificats" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Facturation</strong></p></td>
+<td><p>Calcul du TURPE, certificats d’économies d’energy (CEE)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="unites-et-conventions">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Unités et conventions</a><a class="headerlink" href="#unites-et-conventions" title="Link to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Toutes les inputs et outputs utilisent le Système International (SI) with ces unités by défaut :</p>
+</div>
+<table class="striped docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Grandeur physique</p></th>
+<th class="head"><p>Unité</p></th>
+<th class="head"><p>Symbole</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Temperature</p></td>
+<td><p>Degré Celsius</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pressure</p></td>
+<td><p>Bar</p></td>
+<td><p>bar</p></td>
+</tr>
+<tr class="row-even"><td><p>Flow rate massique</p></td>
+<td><p>Kilogramme by seconde</p></td>
+<td><p>kg/s</p></td>
+</tr>
+<tr class="row-odd"><td><p>Flow rate volumique</p></td>
+<td><p>Mètre cube by heure</p></td>
+<td><p>m³/h</p></td>
+</tr>
+<tr class="row-even"><td><p>Power</p></td>
+<td><p>Kilowatt</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-odd"><td><p>Energy</p></td>
+<td><p>Kilowatt-heure</p></td>
+<td><p>kWh</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ne mélangez pas les unités (par example °C et K, ou bar et Pa) in les calculs.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="structure-des-results">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">Structure des results</a><a class="headerlink" href="#structure-des-results" title="Link to this heading"></a></h2>
+<p>Les results sont accessibles de <strong>deux manières</strong> :</p>
+<section id="method-1-attributs-de-l-objet">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Method 1 : Attributs de l’objet</a><a class="headerlink" href="#method-1-attributs-de-l-objet" title="Link to this heading"></a></h3>
+<p>Accès direct aux propriétés calculées :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Source</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">Source</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">source</span><span class="o">.</span><span class="n">Pi_bar</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">source</span><span class="o">.</span><span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;R134a&quot;</span>
+<span class="n">source</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Accès direct</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">h_outlet</span><span class="p">)</span>  <span class="c1"># Enthalpie</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">T_outlet</span><span class="p">)</span>  <span class="c1"># Température</span>
+</pre></div>
+</div>
+</section>
+<section id="method-2-dataframe-pandas">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Method 2 : DataFrame pandas</a><a class="headerlink" href="#method-2-dataframe-pandas" title="Link to this heading"></a></h3>
+<p>Accès tabulaire for analyse et export :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tableau complet des résultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Accès à une colonne spécifique</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;h[J/kg]&#39;</span><span class="p">])</span>
+
+<span class="c1"># Export vers Excel</span>
+<span class="n">source</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;resultats.xlsx&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Les DataFrames pandas permettent une manipulation et analyse facile des results.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pour-aller-plus-loin">
+<h2><a class="toc-backref" href="#id18" role="doc-backlink">Pour aller plus loin</a><a class="headerlink" href="#pour-aller-plus-loin" title="Link to this heading"></a></h2>
+<section id="documentation-detaillee">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Documentation détaillée</a><a class="headerlink" href="#documentation-detaillee" title="Link to this heading"></a></h3>
+<p>Consultez les sections spécialisées :</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="usage.html"><span class="doc">Usage</span></a> - Guide d’usage complet</p></li>
+<li><p><a class="reference internal" href="api.html"><span class="doc">API Reference</span></a> - Référence API détaillée</p></li>
+<li><p><a class="reference internal" href="001-heat_transfer/index.html"><span class="doc">1. Transfer de chaleur</span></a> - Transfer de chaleur</p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="002-thermodynamic_cycles/index.html"><span class="doc">2. Cycles thermodynamiques</span></a> - Cycles thermodynamiques</p></li>
+<li><p><a class="reference internal" href="003-ahu_modules/index.html"><span class="doc">3. Centrales de Traitement d’Air</span></a> - Centrales de traitement d’air</p></li>
+<li><p><a class="reference internal" href="006-pinch_analysis/index.html"><span class="doc">6. Analyse de pincement</span></a> - Analyse Pinch</p></li>
+</ul>
+</td></tr></table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ressources-et-support">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Ressources et support</a><a class="headerlink" href="#ressources-et-support" title="Link to this heading"></a></h2>
+<section id="liens-utiles">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Liens utiles</a><a class="headerlink" href="#liens-utiles" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ressource</p></th>
+<th class="head"><p>Lien</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>📚 Documentation en ligne</p></td>
+<td><p><a class="reference external" href="https://energysystemmodels-fr.readthedocs.io/">https://energysystemmodels-fr.readthedocs.io/</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>💻 Code source</p></td>
+<td><p><a class="reference external" href="https://github.com/ZoheirHADID/EnergySystemModels">https://github.com/ZoheirHADID/EnergySystemModels</a></p></td>
+</tr>
+<tr class="row-even"><td><p>📦 PyPI</p></td>
+<td><p><a class="reference external" href="https://pypi.org/project/energysystemmodels/">https://pypi.org/project/energysystemmodels/</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>🐛 Issues et support</p></td>
+<td><p><a class="reference external" href="https://github.com/ZoheirHADID/EnergySystemModels/issues">https://github.com/ZoheirHADID/EnergySystemModels/issues</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="besoin-d-aide">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Besoin d’aide ?</a><a class="headerlink" href="#besoin-d-aide" title="Link to this heading"></a></h3>
+<div class="tip admonition">
+<p class="admonition-title">Comment obtenir de l’aide</p>
+<ol class="arabic simple">
+<li><p>Consultez la <a class="reference internal" href="api.html"><span class="doc">API Reference</span></a> for la référence complète</p></li>
+<li><p>Parcourez les examples in <a class="reference internal" href="usage.html"><span class="doc">Usage</span></a></p></li>
+<li><p>Vérifiez les <a class="reference external" href="https://github.com/ZoheirHADID/EnergySystemModels/issues">Issues GitHub</a></p></li>
+<li><p>Créez une nouvelle issue with un example minimal reproductible</p></li>
+</ol>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage/section-6-autres.html" class="btn btn-neutral float-left" title="Section 7 : Other" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="010-achat-energie/index.html" class="btn btn-neutral float-right" title="10. Achat d’energy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

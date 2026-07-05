@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Centrales de Traitement d’Air &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Air Humide - Guide d’usage" href="air_humide.html" />
+    <link rel="prev" title="5.1. Calcul de la linear pressure drop d’une gaine d’air" href="../005-aeraulic/perte_pression_lineaire.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Centrales de Traitement d’Air</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="air_humide.html">Air Humide - Guide d’usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cta_air_neuf.html">CTA d’air neuf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html">GenericAHU - Simulation Complète de CTA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nomenclature.html">Nomenclature</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">3. Centrales de Traitement d’Air</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/003-ahu_modules/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="centrales-de-traitement-d-air">
+<span id="ahu-modules"></span><h1>3. Centrales de Traitement d’Air<a class="headerlink" href="#centrales-de-traitement-d-air" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Centrales de Traitement d'Air:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="air_humide.html">Air Humide - Guide d’usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="air_humide.html#import-du-module">Import du module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="air_humide.html#equations-ashrae-utilisees">Équations ASHRAE utilisées</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#equation-de-la-pressure-de-vapeur-saturee-hyland-et-wexler-1983">Équation de la pressure de vapeur saturée (Hyland et Wexler, 1983)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#other-equations-fondamentales">Other équations fondamentales</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="air_humide.html#fonctions-disponibles">Fonctions disponibles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-pv-sat-pressure-de-vapeur-saturee">1. Air_Pv_sat - Pressure de vapeur saturée</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-w-humidite-absolue">2. Air_w - Humidité absolue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-rh-humidite-relative">3. Air_RH - Humidité relative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-h-enthalpy-de-l-air-humide">4. Air_h - Enthalpy de l’air humide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-t-db-temperature-de-bulbe-sec">5. Air_T_db - Temperature de bulbe sec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-t-wb-temperature-de-bulbe-humide">6. Air_T_wb - Temperature de bulbe humide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-t-dp-temperature-de-rosee">7. Air_T_dp - Temperature de rosée</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-rho-hum-masse-volumique-de-l-air-humide">8. Air_rho_hum - Masse volumique de l’air humide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-v-hum-volume-specifique-de-l-air-humide">9. Air_v_hum - Volume spécifique de l’air humide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-rho-dry-masse-volumique-de-l-air-sec">10. Air_rho_dry - Masse volumique de l’air sec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-v-dry-volume-specifique-de-l-air-sec">11. Air_v_dry - Volume spécifique de l’air sec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-xh2o-fraction-molaire-de-l-eau">12. Air_xH2O - Fraction molaire de l’eau</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#air-t-wb-roland-stull-temperature-de-bulbe-humide-method-stull">13. Air_T_wb_ROLAND_STULL - Temperature de bulbe humide (method Stull)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#t-sat-temperature-de-saturation">14. T_sat - Temperature de saturation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="air_humide.html#examples-d-application-complete">Examples d’application complète</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#example-1-analyse-d-une-centrale-de-traitement-d-air-cta">Example 1 : Analyse d’une centrale de traitement d’air (CTA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#example-2-refroidissement-evaporatif">Example 2 : Refroidissement évaporatif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#example-3-melange-de-deux-flux-d-air">Example 3 : Mélange de deux flux d’air</a></li>
+<li class="toctree-l3"><a class="reference internal" href="air_humide.html#example-4-dimensionnement-d-une-batterie-froide">Example 4 : Dimensionnement d’une batterie froide</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="air_humide.html#notes-importantes">Notes importantes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="air_humide.html#voir-aussi">Voir aussi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cta_air_neuf.html">CTA d’air neuf</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cta_air_neuf.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cta_air_neuf.html#parametres-possibles">Paramètres possibles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cta_air_neuf.html#explication-du-model">Explication du model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generic_ahu.html">GenericAHU - Simulation Complète de CTA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#installation-et-prerequisites">Installation et Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#demarrage-rapide">Démarrage Rapide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#etape-1-creer-le-template-excel">Étape 1 : Créer le template Excel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#etape-2-configurer-les-parametres">Étape 2 : Configurer les paramètres</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#etape-3-lancer-la-simulation">Étape 3 : Lancer la simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#modes-de-fonctionnement">Modes de Fonctionnement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#mode-recycling-air-recycle">Mode Recycling (Air Recyclé)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#mode-recovery-recuperation">Mode Recovery (Récupération)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#parametres-de-configuration">Paramètres de Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#parametres-generaux">Paramètres généraux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#consignes-de-fonctionnement">Consignes de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#data-temporelles-inputs">Data temporelles (inputs)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#results-de-simulation">Results de Simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#results-globaux">Results globaux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#results-by-composant">Results by composant</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#examples-d-usage">Examples d’Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#example-1-dimensionnement-hiver">Example 1 : Dimensionnement hiver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#example-2-comparaison-avec-sans-recuperation">Example 2 : Comparaison avec/sans récupération</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#example-3-analyse-annuelle">Example 3 : Analyse annuelle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#example-4-optimisation-du-taux-de-recyclage">Example 4 : Optimisation du taux de recyclage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#conseils-et-bonnes-pratiques">Conseils et Bonnes Pratiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#performance">Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#validation-des-results">Validation des results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generic_ahu.html#gestion-des-erreurs-courantes">Gestion des erreurs courantes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#tests-unitaires">Tests Unitaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#references">Références</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html#support">Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nomenclature.html">Nomenclature</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../005-aeraulic/perte_pression_lineaire.html" class="btn btn-neutral float-left" title="5.1. Calcul de la linear pressure drop d’une gaine d’air" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="air_humide.html" class="btn btn-neutral float-right" title="Air Humide - Guide d’usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

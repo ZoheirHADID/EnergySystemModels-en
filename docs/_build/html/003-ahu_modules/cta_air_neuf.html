@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTA d’air neuf &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GenericAHU - Simulation Complète de CTA" href="generic_ahu.html" />
+    <link rel="prev" title="Air Humide - Guide d’usage" href="air_humide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Centrales de Traitement d’Air</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="air_humide.html">Air Humide - Guide d’usage</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CTA d’air neuf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametres-possibles">Paramètres possibles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explication-du-model">Explication du model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html">GenericAHU - Simulation Complète de CTA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nomenclature.html">Nomenclature</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">3. Centrales de Traitement d’Air</a></li>
+      <li class="breadcrumb-item active">CTA d’air neuf</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/003-ahu_modules/cta_air_neuf.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cta-d-air-neuf">
+<span id="cta-air-neuf"></span><h1>CTA d’air neuf<a class="headerlink" href="#cta-d-air-neuf" title="Link to this heading"></a></h1>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/003_ahu_fresh_air.png"><img alt="AHU Fresh Air" class="align-center" src="../_images/003_ahu_fresh_air.png" style="width: 600px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">AHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">FreshAir</span><span class="p">,</span> <span class="n">HeatingCoil</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">AHU.Humidification</span><span class="w"> </span><span class="kn">import</span> <span class="n">Humidifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">AHU.Connect</span><span class="w"> </span><span class="kn">import</span> <span class="n">Air_connect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">AHU.air_humide</span><span class="w"> </span><span class="kn">import</span> <span class="n">PsychrometricChart</span>
+
+<span class="c1"># Air neuf</span>
+<span class="n">AN</span> <span class="o">=</span> <span class="n">FreshAir</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">AN</span><span class="o">.</span><span class="n">F_m3h</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">AN</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">AN</span><span class="o">.</span><span class="n">RH</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">AN</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Batterie de chauffage</span>
+<span class="n">BC</span> <span class="o">=</span> <span class="n">HeatingCoil</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">BC</span><span class="o">.</span><span class="n">To_target</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">Air_connect</span><span class="p">(</span><span class="n">BC</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">AN</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">BC</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Humidificateur</span>
+<span class="n">HMD</span> <span class="o">=</span> <span class="n">Humidifier</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">HMD</span><span class="o">.</span><span class="n">wo_target</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Air_connect</span><span class="p">(</span><span class="n">HMD</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">BC</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">HMD</span><span class="o">.</span><span class="n">HumidType</span> <span class="o">=</span> <span class="s2">&quot;vapeur&quot;</span>
+<span class="n">HMD</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Diagramme psychrométrique</span>
+<span class="n">chart</span> <span class="o">=</span> <span class="n">PsychrometricChart</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CTA batterie chaude &amp; Humidificateur vapeur&#39;</span><span class="p">)</span>
+
+<span class="n">custom_points</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="n">BC</span><span class="o">.</span><span class="n">Inlet</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">BC</span><span class="o">.</span><span class="n">Inlet</span><span class="o">.</span><span class="n">w</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="n">BC</span><span class="o">.</span><span class="n">Outlet</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">BC</span><span class="o">.</span><span class="n">Outlet</span><span class="o">.</span><span class="n">w</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="n">HMD</span><span class="o">.</span><span class="n">Outlet</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">:</span> <span class="n">HMD</span><span class="o">.</span><span class="n">Outlet</span><span class="o">.</span><span class="n">w</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">add_points</span><span class="p">(</span><span class="n">custom_points</span><span class="p">)</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">draw_arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Diagramme psychrométrique</strong> :</p>
+<a class="reference internal image-reference" href="../_images/003_ahu_fresh_air_figure1.png"><img alt="Diagramme psychrométrique" class="align-center" src="../_images/003_ahu_fresh_air_figure1.png" style="width: 600px;" />
+</a>
+<p><strong>Results numériques</strong> :</p>
+<ul class="simple">
+<li><p><strong>Air neuf (AN)</strong> : T=5°C, RH=80%, F=1.053 kg/s, w=4.314 g/kg_sec, h=15.8 kJ/kg</p></li>
+<li><p><strong>Batterie chauffage (BC)</strong> : T_output=20°C, RH=29.8%, Q_th=15.9 kW</p></li>
+<li><p><strong>Humidificateur (HMD)</strong> : T_output=20.6°C, RH=53.1%, w_output=8 g/kg_sec, F_eau=0.0039 kg/s</p></li>
+</ul>
+<p>Chaque composant retourne un DataFrame (<code class="docutils literal notranslate"><span class="pre">df</span></code>) with les détails complets.</p>
+</section>
+<section id="parametres-possibles">
+<h2>Paramètres possibles<a class="headerlink" href="#parametres-possibles" title="Link to this heading"></a></h2>
+<p><strong>FreshAir (Air neuf)</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">F_m3h</span></code> : Flow rate volumique [m³/h]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">T</span></code> : Temperature [°C]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RH</span></code> : Humidité relative [%]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P</span></code> : Pressure atmosphérique [Pa] (défaut: 101325)</p></li>
+</ul>
+<p><strong>HeatingCoil (Batterie de chauffage)</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">To_target</span></code> : Temperature de output cible [°C]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inlet</span></code> : Connecté via <code class="docutils literal notranslate"><span class="pre">Air_connect()</span></code></p></li>
+<li><p>Calcule automatiquement <code class="docutils literal notranslate"><span class="pre">Q_th</span></code> (power thermique) [kW]</p></li>
+</ul>
+<p><strong>Humidifier</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wo_target</span></code> : Humidité absolue de output cible [g/kg_air_sec]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HumidType</span></code> : Type d’humidification</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;adiabatique&quot;</span></code> (défaut) : Humidification by évaporation d’eau</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;vapeur&quot;</span></code> : Injection de vapeur</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inlet</span></code> : Connecté via <code class="docutils literal notranslate"><span class="pre">Air_connect()</span></code></p></li>
+<li><p>Calcule automatiquement <code class="docutils literal notranslate"><span class="pre">F_water</span></code> (flow rate d’eau) [kg/s] et <code class="docutils literal notranslate"><span class="pre">Q_th</span></code> [kW]</p></li>
+</ul>
+<p><strong>PsychrometricChart</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">figsize</span></code> : Dimensions du graphique (largeur, hauteur)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_title()</span></code> : Définir le titre du diagramme</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_points()</span></code> : Liste de points with coordata <code class="docutils literal notranslate"><span class="pre">{'h':</span> <span class="pre">enthalpy,</span> <span class="pre">'w':</span> <span class="pre">humidité}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show(draw_arrows=True)</span></code> : Afficher with flèches de transformation</p></li>
+</ul>
+</section>
+<section id="explication-du-model">
+<h2>Explication du model<a class="headerlink" href="#explication-du-model" title="Link to this heading"></a></h2>
+<p>Ce model simule une Centrale de Traitement d’Air (CTA) simple composée de trois éléments en série :</p>
+<ol class="arabic simple">
+<li><p><strong>Prise d’air neuf</strong> : Introduction d’air extérieur with conditions définies (T, RH, flow rate)</p></li>
+<li><p><strong>Batterie de chauffage</strong> : Réchauffage de l’air à temperature constante d’humidité absolue</p></li>
+<li><p><strong>Humidificateur</strong> : Ajout d’humidité by injection de vapeur ou évaporation adiabatique</p></li>
+</ol>
+<p>Le module utilise les propriétés de l’air humide to calculate :</p>
+<ul class="simple">
+<li><p>Les transformations on le diagramme psychrométrique (h, w)</p></li>
+<li><p>Les powers thermiques nécessaires</p></li>
+<li><p>Les flow rates de fluids (air sec, air humide, eau d’humidification)</p></li>
+</ul>
+<p>La fonction <code class="docutils literal notranslate"><span class="pre">Air_connect()</span></code> allows chaîner les composants en connectant la output d’un composant à l’input du suivant.</p>
+<p><strong>Transformations psychrométriques</strong> :</p>
+<ul class="simple">
+<li><p><strong>Chauffage</strong> : Ligne horizontale (w constant) to la droite (T augmente)</p></li>
+<li><p><strong>Humidification vapeur</strong> : Ligne quasi-horizontale (T légèrement augmente)</p></li>
+<li><p><strong>Humidification adiabatique</strong> : Ligne isoenthalpique (h constant)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="air_humide.html" class="btn btn-neutral float-left" title="Air Humide - Guide d’usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generic_ahu.html" class="btn btn-neutral float-right" title="GenericAHU - Simulation Complète de CTA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

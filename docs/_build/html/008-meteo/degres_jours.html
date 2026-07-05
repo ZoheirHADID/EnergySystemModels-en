@@ -1,0 +1,204 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Degrés-Jours Unifiés (DJU) &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Graphical Interfaces and Visual Tools" href="../gui_tools.html" />
+    <link rel="prev" title="OpenWeatherMap API" href="openweathermap.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">8. Meteorological Data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="meteociel.html">MeteoCiel — Data historiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openweathermap.html">OpenWeatherMap API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Degrés-Jours Unifiés (DJU)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#formules-method-costic">Formules (method COSTIC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">8. Meteorological Data</a></li>
+      <li class="breadcrumb-item active">Degrés-Jours Unifiés (DJU)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/008-meteo/degres_jours.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="degres-jours-unifies-dju">
+<h1>Degrés-Jours Unifiés (DJU)<a class="headerlink" href="#degres-jours-unifies-dju" title="Link to this heading"></a></h1>
+<p>Le module calcule les DJU by la <strong>method COSTIC</strong> (fonction
+<code class="docutils literal notranslate"><span class="pre">MeteoCiel.DJU_costic.DJU_costic</span></code>), à partir des temperatures <strong>minimale et
+maximale</strong> du jour — et non d’une simple moyenne. Trois cas se présentent selon
+la position de <code class="docutils literal notranslate"><span class="pre">Tmin</span></code>/<code class="docutils literal notranslate"><span class="pre">Tmax</span></code> by rapport aux bases.</p>
+<section id="formules-method-costic">
+<h2>Formules (method COSTIC)<a class="headerlink" href="#formules-method-costic" title="Link to this heading"></a></h2>
+<p>Avec <code class="docutils literal notranslate"><span class="pre">base_chauffage</span></code> = 18 °C et <code class="docutils literal notranslate"><span class="pre">base_refroidissement</span></code> = 23 °C by défaut,
+en notant <span class="math notranslate nohighlight">\(T_m = (T_{min}+T_{max})/2\)</span> :</p>
+<p><strong>1. Journée froide</strong> (<span class="math notranslate nohighlight">\(T_{max} \le\)</span> base chauffage) :</p>
+<div class="math notranslate nohighlight">
+\[DJU_{chauffage} = \text{base}_{chauffage} - T_m\]</div>
+<p><strong>2. Journée chaude</strong> (<span class="math notranslate nohighlight">\(T_{min} \ge\)</span> base refroidissement) :</p>
+<div class="math notranslate nohighlight">
+\[DJU_{raf} = T_m - \text{base}_{raf}\]</div>
+<p><strong>3. Journée mixte</strong> (la temperature traverse une base) — pondération COSTIC.
+Pour le chauffage, with <span class="math notranslate nohighlight">\(a = T_{max}-T_{min}\)</span> et
+<span class="math notranslate nohighlight">\(b = (\text{base}_{chauffage}-T_{min})/a\)</span> :</p>
+<div class="math notranslate nohighlight">
+\[DJU_{chauffage} = a \cdot b \cdot (0.08 + 0.42\, b)\]</div>
+<p>(formule analogue for le rafraîchissement avec
+<span class="math notranslate nohighlight">\(a = T_{max}-\text{base}_{raf}\)</span> et <span class="math notranslate nohighlight">\(b = a/(T_{max}-T_{min})\)</span>).</p>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MeteoCiel.DJU_costic</span><span class="w"> </span><span class="kn">import</span> <span class="n">DJU_costic</span>
+
+<span class="c1"># DJU_costic(Tmin, Tmax, base_chauffage=18, base_refroidissement=23)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DJU_costic</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>    <span class="c1"># journée froide</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DJU_costic</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>    <span class="c1"># journée mixte</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DJU_costic</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>   <span class="c1"># journée chaude</span>
+</pre></div>
+</div>
+<p>Output réelle (<code class="docutils literal notranslate"><span class="pre">(DJU_chauffage,</span> <span class="pre">DJU_rafraichissement)</span></code>) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(12.0, 0)
+(4.588..., 0.0244...)
+(0, 4.0)
+</pre></div>
+</div>
+<p>On note qu’une même journée mixte peut produire <strong>à la fois</strong> un peu de DJU de
+chauffage et de rafraîchissement (cas <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">25)</span></code>), ce qu’une formule en
+moyenne simple ne restitue pas.</p>
+<p>Dans le flux <code class="docutils literal notranslate"><span class="pre">MeteoCiel_histoScraping</span></code> (voir <a class="reference internal" href="meteociel.html"><span class="doc">MeteoCiel — Data historiques</span></a>), <code class="docutils literal notranslate"><span class="pre">DJU_costic</span></code>
+est appliqué à chaque jour ; les colonnes <code class="docutils literal notranslate"><span class="pre">DJU_Chauffage</span></code> et
+<code class="docutils literal notranslate"><span class="pre">DJU_Rafraichissement</span></code> sont ensuite sommées by mois (<code class="docutils literal notranslate"><span class="pre">df_month</span></code>) et par
+année (<code class="docutils literal notranslate"><span class="pre">df_year</span></code>).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="openweathermap.html" class="btn btn-neutral float-left" title="OpenWeatherMap API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../gui_tools.html" class="btn btn-neutral float-right" title="Graphical Interfaces and Visual Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

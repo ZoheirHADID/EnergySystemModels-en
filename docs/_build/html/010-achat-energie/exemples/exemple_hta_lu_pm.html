@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10.1.2.6. Example HTA – LU_pm &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="10.1.2.1. Example BT &lt; 36 kVA – CU4" href="exemple_bt_m36_cu4.html" />
+    <link rel="prev" title="10.1.2.5. Example HTA – LU_pf" href="exemple_hta_lu_pf.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">10. Achat d’energy</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#facture-denergy-gaz-et-electricite-principes-communs">Facture d’energy (gaz et électricité) : principes communs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#principe-universel">Principe universel</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../contrat_electricite.html">10.1. Electricity Grid Cost Calculation</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../contrat_electricite.html#turpe">10.1.1. TURPE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../contrat_gaz.html">10.2. Approvisionnement en Gaz Naturel - France</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guide_audit_facture.html">10.3. Guide pratique : Auditer une facture d’energie with Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../007-ipmvp/index.html">7. IPMVP - Measurement and Verification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">10. Achat d’energy</a></li>
+          <li class="breadcrumb-item"><a href="../contrat_electricite.html">10.1. Electricity Grid Cost Calculation</a></li>
+      <li class="breadcrumb-item active">10.1.2.6. Example HTA – LU_pm</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/010-achat-energie/exemples/exemple_hta_lu_pm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-hta-lu-pm">
+<h1>10.1.2.6. Example HTA – LU_pm<a class="headerlink" href="#example-hta-lu-pm" title="Link to this heading"></a></h1>
+<p><strong>Contexte</strong> : Une usine chimique raccordee en HTA (20 kV), option Longue
+Usage pointe mobile. Fonctionnement continu 24h/24, power souscrite
+500 kW. Facturation de fevrier 2025.</p>
+<p>La version LU (Longue Usage) est adaptee aux sites qui fonctionnent
+plus de 3 000 heures by an a power significative. Les coefficients b
+(part power) sont plus eleves, mais les coefficients c (part energie)
+sont plus faibles que la version CU.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Facture.TURPE</span><span class="w"> </span><span class="kn">import</span> <span class="n">input_Contrat</span><span class="p">,</span> <span class="n">TurpeCalculator</span><span class="p">,</span> <span class="n">input_Facture</span><span class="p">,</span> <span class="n">input_Tarif</span>
+
+<span class="c1"># Contrat HTA LU_pm — usine chimique 500 kW, fonctionnement continu</span>
+<span class="n">contrat</span> <span class="o">=</span> <span class="n">input_Contrat</span><span class="p">(</span>
+    <span class="n">domaine_tension</span><span class="o">=</span><span class="s2">&quot;HTA&quot;</span><span class="p">,</span>
+    <span class="n">PS_pointe</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">PS_HPH</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">PS_HCH</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">PS_HPB</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">PS_HCB</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">version_utilisation</span><span class="o">=</span><span class="s2">&quot;LU_pm&quot;</span><span class="p">,</span>
+    <span class="n">pourcentage_ENR</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">tarif</span> <span class="o">=</span> <span class="n">input_Tarif</span><span class="p">(</span>
+    <span class="n">c_euro_kWh_pointe</span><span class="o">=</span><span class="mf">0.13</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HPH</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HCH</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HPB</span><span class="o">=</span><span class="mf">0.11</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HCB</span><span class="o">=</span><span class="mf">0.09</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_ARENH</span><span class="o">=</span><span class="mf">0.042</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Consommation elevee (fonctionnement continu ~350 MWh/mois)</span>
+<span class="n">facture</span> <span class="o">=</span> <span class="n">input_Facture</span><span class="p">(</span>
+    <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2025-02-01&quot;</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2025-02-28&quot;</span><span class="p">,</span>
+    <span class="n">kWh_pointe</span><span class="o">=</span><span class="mi">40000</span><span class="p">,</span>     <span class="c1"># Forte consommation en pointe</span>
+    <span class="n">kWh_HPH</span><span class="o">=</span><span class="mi">80000</span><span class="p">,</span>        <span class="c1"># Heures pleines hiver</span>
+    <span class="n">kWh_HCH</span><span class="o">=</span><span class="mi">70000</span><span class="p">,</span>        <span class="c1"># Heures creuses hiver</span>
+    <span class="n">kWh_HPB</span><span class="o">=</span><span class="mi">85000</span><span class="p">,</span>        <span class="c1"># Heures pleines ete</span>
+    <span class="n">kWh_HCB</span><span class="o">=</span><span class="mi">75000</span><span class="p">,</span>        <span class="c1"># Heures creuses ete</span>
+<span class="p">)</span>
+
+<span class="n">calc</span> <span class="o">=</span> <span class="n">TurpeCalculator</span><span class="p">(</span><span class="n">contrat</span><span class="p">,</span> <span class="n">tarif</span><span class="p">,</span> <span class="n">facture</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">calculate_turpe</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_totaux</span><span class="p">)</span>
+
+<span class="n">calc</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">plot_detail</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Output réelle (df_totaux)</strong> :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                      Ligne                    Formule  Entrée(s) Coefficient  Résultat
+                 Fourniture                                                    52600.00
+       Acheminement (TURPE)                                                     6989.96
+     Taxes et contributions                                                      505.25
+               = Total HTVA Fourniture + TURPE + Taxes                         60095.21
+                    TVA 20%           Total_HTVA x 20%                         12019.04
+                = Total TTC                 HTVA + TVA                         72114.25
+        Coût HTVA (EUR/MWh)           Total_HTVA / MWh 350.00 MWh                171.70
+  Coût fourniture (EUR/MWh)           Fourniture / MWh                           150.29
+Coût distribution (EUR/MWh)                TURPE / MWh                            19.97
+       Coût taxes (EUR/MWh)                Taxes / MWh                             1.44
+</pre></div>
+</div>
+<section id="plots-generes-by-l-example">
+<h2>Plots générés by l’example<a class="headerlink" href="#plots-generes-by-l-example" title="Link to this heading"></a></h2>
+<p>Les figures ci-dessous sont les outputs réelles de <code class="docutils literal notranslate"><span class="pre">calc.plot()</span></code> et
+<code class="docutils literal notranslate"><span class="pre">calc.plot_detail()</span></code> for les data de l’example.</p>
+<figure class="align-center" id="id1">
+<img alt="Répartition Fourniture TURPE Taxes pour l'exemple HTA LU pointe mobile" src="../../_images/010_turpe_hta_lu_pm_plot.svg" />
+<figcaption>
+<p><span class="caption-text">Répartition HTVA between fourniture, acheminement TURPE et taxes.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
+<img alt="Détail des composantes de facture pour l'exemple HTA LU pointe mobile" src="../../_images/010_turpe_hta_lu_pm_plot_detail.svg" />
+<figcaption>
+<p><span class="caption-text">Cascades détaillées by composante de fourniture, distribution et taxes.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="exemple_hta_lu_pf.html" class="btn btn-neutral float-left" title="10.1.2.5. Example HTA – LU_pf" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="exemple_bt_m36_cu4.html" class="btn btn-neutral float-right" title="10.1.2.1. Example BT &lt; 36 kVA – CU4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPMVP - Measurement and Verification &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Analyse de pincement" href="../006-pinch_analysis/index.html" />
+    <link rel="prev" title="Usage du module IPMVP" href="modeles_mathematiques.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire général:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Usages énergétiques</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">7. IPMVP - Measurement and Verification</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction au module IPMVP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocole.html">Contexte IPMVP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeles_mathematiques.html">Usage du module IPMVP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">IPMVP - Measurement and Verification</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../012-chaleur-fatale/index.html">12. Waste Heat et rejets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">7. IPMVP - Measurement and Verification</a></li>
+      <li class="breadcrumb-item active">IPMVP - Measurement and Verification</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/007-ipmvp/exemples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ipmvp-measurement-and-verification">
+<h1>IPMVP - Measurement and Verification<a class="headerlink" href="#ipmvp-measurement-and-verification" title="Link to this heading"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPMVP.IPMVP</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mathematical_Models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MeteoCiel.MeteoCiel_Scraping</span><span class="w"> </span><span class="kn">import</span> <span class="n">MeteoCiel_histoScraping</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="c1"># 1. Récupérer les données météo historiques</span>
+<span class="c1"># 10637 : code station MeteoCiel</span>
+<span class="c1"># Retourne DJU chauffage et refroidissement</span>
+<span class="n">df_histo</span><span class="p">,</span> <span class="n">df_day</span><span class="p">,</span> <span class="n">df_month</span><span class="p">,</span> <span class="n">df_year</span> <span class="o">=</span> <span class="n">MeteoCiel_histoScraping</span><span class="p">(</span>
+    <span class="mi">10637</span><span class="p">,</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>
+    <span class="n">base_chauffage</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>           <span class="c1"># Base de calcul DJU chauffage</span>
+    <span class="n">base_refroidissement</span><span class="o">=</span><span class="mi">23</span>      <span class="c1"># Base de calcul DJU refroidissement</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. Fusionner avec vos données de consommation</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df_month</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;consommation_kWh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12500</span><span class="p">,</span> <span class="mi">11800</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>  <span class="c1"># Vos factures mensuelles</span>
+
+<span class="c1"># 3. Définir les variables explicatives et la consommation</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;DJU_chaud&#39;</span><span class="p">,</span> <span class="s1">&#39;DJU_froid&#39;</span><span class="p">]]</span>  <span class="c1"># Variables indépendantes</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;consommation_kWh&#39;</span><span class="p">]</span>          <span class="c1"># Variable dépendante</span>
+
+<span class="c1"># 4. Créer le modèle IPMVP Option C</span>
+<span class="c1"># Période de référence (baseline) : 2020-2021</span>
+<span class="c1"># Période de reporting (post-travaux) : 2022-2023</span>
+<span class="c1"># degree=2 : modèle polynomial de degré 2</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Mathematical_Models</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>  <span class="c1"># Baseline</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>  <span class="c1"># Reporting</span>
+    <span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">print_report</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Afficher le rapport détaillé</span>
+<span class="p">)</span>
+
+<span class="c1"># 5. Accéder aux résultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² (qualité du modèle): </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">r2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CV(RMSE): </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">cv_rmse</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Économies totales: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">total_savings</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Réduction: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">savings_percentage</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="c1"># DataFrames de résultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">df_baseline</span><span class="p">)</span>           <span class="c1"># Données période baseline</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">df_reporting</span><span class="p">)</span>          <span class="c1"># Données période reporting</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">baseline_adjusted</span><span class="p">)</span>     <span class="c1"># Baseline ajustée au climat</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">consumption_measured</span><span class="p">)</span>  <span class="c1"># Consommation mesurée</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">monthly_savings</span><span class="p">)</span>       <span class="c1"># Économies mensuelles</span>
+
+<span class="c1"># 6. Générer les graphiques</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot_baseline_fit</span><span class="p">()</span>          <span class="c1"># Ajustement du modèle baseline</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot_monthly_comparison</span><span class="p">()</span>    <span class="c1"># Comparaison mensuelle</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot_cumulative_savings</span><span class="p">()</span>    <span class="c1"># Économies cumulées</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modeles_mathematiques.html" class="btn btn-neutral float-left" title="Usage du module IPMVP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../006-pinch_analysis/index.html" class="btn btn-neutral float-right" title="6. Analyse de pincement" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
