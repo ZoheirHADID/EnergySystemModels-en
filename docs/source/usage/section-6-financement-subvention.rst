@@ -2,7 +2,7 @@
 Section 6 : Financing and subsidies
 ================================================================================
 
-6.1. Certificats d'Économies d'Energy (CEE)
+6.1. Energy Savings Certificates (CEE)
 --------------------------------------------
 
 Le module CEE allows calculer les économies d'energy et les volumes de certificats générés according to les fiches d'opérations standardisées.

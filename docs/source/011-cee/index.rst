@@ -1,6 +1,6 @@
 .. _cee:
 
-11. Certificats d'Économies d'Energy
+11. Energy Savings Certificates
 ======================================
 
 .. toctree::

@@ -3,7 +3,7 @@
 GenericAHU — Simulation de CTA paramétrable
 ===========================================
 
-Le sous-paquet ``AHU.GenericAHU`` simule une Centrale de Traitement d'Air (CTA)
+Le subpackage ``AHU.GenericAHU`` simule une Centrale de Traitement d'Air (CTA)
 sur une série chronologique. Il expose **deux classes** according to le mode :
 
 * ``AirRecyclingAHU`` — CTA with **recyclage** d'air (mélange air neuf + air repris) ;
@@ -11,7 +11,7 @@ sur une série chronologique. Il expose **deux classes** according to le mode :
   (échangeur air/air).
 
 Chaque classe s'instancie with ``Object(config: dict, data: pandas.DataFrame)``,
-puis ``calculate()`` remplit le DataFrame de results ``ahu.df`` (une ligne par
+then ``calculate()`` remplit le DataFrame de results ``ahu.df`` (une ligne par
 time step).
 
 .. note::

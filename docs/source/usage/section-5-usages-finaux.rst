@@ -283,12 +283,12 @@ Example issu des tests : GenericAHU (Recycling)
    print("Colonnes de sortie:", results.shape[1])
    print("Puissance Chauffage moyenne:", results['HC_Q_th[kW]'].mean())
 
-5.2. Module PinchAnalysis - Analyse Pinch
+5.2. Module PinchAnalysis - Pinch Analysis
 ------------------------------------------
 
 L'analyse Pinch permet d'optimiser les réseaux d'échangeurs de chaleur et de minimiser la consommation energy.
 
-Example : Analyse Pinch simple
+Example : Pinch Analysis simple
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python

@@ -20,10 +20,10 @@ EnergySystemModels est une bibliothèque Python complète for la modélisation e
 Cette documentation est organisée according to la **chaîne de valeur energy**, du fournisseur jusqu'à l'usage final :
 
 1. **Achat et Facturation** : TURPE, CEE
-2. **Data et Production** : Météorologie, Photovoltaïque
-3. **Transformation** : Cycles thermodynamiques
-4. **Distribution** : Transfer de chaleur, Hydraulique, Aéraulique
-5. **Usages finaux** : CTA, Analyse Pinch, IPMVP, Modèle RC
+2. **Data et Production** : Meteorology, Photovoltaics
+3. **Transformation** : Thermodynamic Cycles
+4. **Distribution** : Heat Transfer, Hydraulique, Aéraulique
+5. **Usages finaux** : CTA, Pinch Analysis, IPMVP, Modèle RC
 
 .. toctree::
    :maxdepth: 2

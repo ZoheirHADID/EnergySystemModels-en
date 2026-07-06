@@ -68,7 +68,7 @@ Les valeurs dépendent de la grille TURPE en vigueur for la période facturée.
 Plots générés by l'example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Les figures ci-dessous sont les outputs réelles de ``calc.plot()`` et
+Les figures ci-dessous sont les real outputs are shown de ``calc.plot()`` et
 ``calc.plot_detail()`` for les data de l'example.
 
 .. figure:: ../../images/010_turpe_bt_m36_cu4_plot.svg

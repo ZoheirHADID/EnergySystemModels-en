@@ -72,7 +72,7 @@ consommation hivernale typique. Facturation de fevrier 2025.
 Plots générés by l'example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Les figures ci-dessous sont les outputs réelles de ``calc.plot()`` et
+Les figures ci-dessous sont les real outputs are shown de ``calc.plot()`` et
 ``calc.plot_detail()`` for les data de l'example.
 
 .. figure:: ../../images/010_turpe_hta_cu_pf_plot.svg

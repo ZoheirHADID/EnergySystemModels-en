@@ -1,11 +1,11 @@
-Analyse Pinch
-=============
+Pinch Analysis
+==============
 
 .. figure:: ../images/006_pinch_base.svg
    :alt: Schéma d'une analyse Pinch de base
    :align: center
 
-   Les hot and cold streams sont structurés in un DataFrame, puis
+   Les hot and cold streams sont structurés in un DataFrame, then
    l'analyse produit les courbes, les utilités minimales et les appariements
    d'échange.
 

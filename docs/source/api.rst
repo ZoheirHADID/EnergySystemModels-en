@@ -1,17 +1,17 @@
 API Reference
 =============
 
-Cette page récapitule les **points d'input réels** de la bibliothèque
-(chemins d'import valides with ``PYTHONPATH=src``) et renvoie to le chapitre
-détaillé de chaque module, où figurent des examples exécutables with leurs
-outputs réelles.
+This page summarizes the library's **real entry points**
+(valid import paths with ``PYTHONPATH=src``) and links to the chapter
+dedicated to each module, where executable examples with their
+real outputs are shown.
 
 .. note::
-   En local (dépôt), les modules s'importent **sans** préfixe
-   ``energysystemmodels.`` : le nom d'import est celui du sous-paquet, par
+   Locally, in the repository, modules are imported **without** the prefix
+   ``energysystemmodels.`` : the import name is the subpackage name, par
    example ``from ThermodynamicCycles.Compressor import Compressor``.
 
-Transfer de chaleur — ``HeatTransfer``
+Heat Transfer — ``HeatTransfer``
 ---------------------------------------
 
 .. code-block:: python
@@ -19,11 +19,11 @@ Transfer de chaleur — ``HeatTransfer``
    from HeatTransfer import CompositeWall, ParallelepipedicBody
    from HeatTransfer import PipeInsulationAnalysis, PlateHeatTransfer
 
-Chaque composant s'instancie via ``.Object(...)`` puis ``.calculate()`` ;
-results in ``.df`` (et attributs comme ``R_total``, ``Q``, ``q_total``).
-Détails : :doc:`001-heat_transfer/index` et :doc:`transfert_chaleur`.
+Each component is instantiated with ``.Object(...)`` then ``.calculate()`` ;
+results in ``.df`` (and attributes such as ``R_total``, ``Q``, ``q_total``).
+Details : :doc:`001-heat_transfer/index` et :doc:`transfert_chaleur`.
 
-Cycles thermodynamiques — ``ThermodynamicCycles``
+Thermodynamic Cycles — ``ThermodynamicCycles``
 -------------------------------------------------
 
 .. code-block:: python
@@ -37,10 +37,10 @@ Cycles thermodynamiques — ``ThermodynamicCycles``
    from ThermodynamicCycles.Combustion import NG_Heating_Value
    from ThermodynamicCycles.Connect import Fluid_connect
 
-Les composants s'assemblent by ``Fluid_connect(aval.Inlet, amont.Outlet)``.
-Détails : :doc:`002-thermodynamic_cycles/index`.
+Components are assembled with ``Fluid_connect(aval.Inlet, amont.Outlet)``.
+Details : :doc:`002-thermodynamic_cycles/index`.
 
-Hydraulique et aéraulique
+Hydraulics and Aeraulics
 -------------------------
 
 .. code-block:: python
@@ -49,9 +49,9 @@ Hydraulique et aéraulique
    from ThermodynamicCycles.Hydraulic.TA_Valve import TA_Valve
    from ThermodynamicCycles.Aeraulic import StraightPipe as AirDuct
 
-Détails : :doc:`004-hydraulic/index` et :doc:`005-aeraulic/index`.
+Details : :doc:`004-hydraulic/index` et :doc:`005-aeraulic/index`.
 
-Traitement d'air — ``AHU``
+Air Handling — ``AHU``
 --------------------------
 
 .. code-block:: python
@@ -63,10 +63,10 @@ Traitement d'air — ``AHU``
    from AHU.GenericAHU.AirRecyclingAHU import Object as AirRecyclingAHU
    from AHU.GenericAHU.AirRecoveryAHU import Object as AirRecoveryAHU
 
-Détails : :doc:`003-ahu_modules/index`.
+Details : :doc:`003-ahu_modules/index`.
 
-Analyse Pinch — ``PinchAnalysis``
----------------------------------
+Pinch Analysis — ``PinchAnalysis``
+----------------------------------
 
 .. code-block:: python
 
@@ -76,18 +76,18 @@ Analyse Pinch — ``PinchAnalysis``
    pinch.Pinch_Temperature            # attributs réels : Heating_duty, Cooling_duty,
                                       # heat_recovery, df_hcc, df_ccc, df_combined
 
-Détails : :doc:`006-pinch_analysis/index`.
+Details : :doc:`006-pinch_analysis/index`.
 
-Mesure & Vérification — ``IPMVP``
----------------------------------
+Measurement & Verification — ``IPMVP``
+--------------------------------------
 
 .. code-block:: python
 
    from IPMVP.IPMVP import Mathematical_Models   # retourne un tuple de 9 éléments
 
-Détails : :doc:`007-ipmvp/index`.
+Details : :doc:`007-ipmvp/index`.
 
-Météorologie
+Meteorology
 ------------
 
 .. code-block:: python
@@ -96,19 +96,19 @@ Météorologie
    from MeteoCiel.DJU_costic import DJU_costic
    from OpenWeatherMap import OpenWeatherMap_call_location
 
-Détails : :doc:`008-meteo/index`.
+Details : :doc:`008-meteo/index`.
 
-Photovoltaïque — ``PV``
+Photovoltaics — ``PV``
 -----------------------
 
 .. code-block:: python
 
    from PV.ProductionElectriquePV import SolarSystem
 
-Détails : :doc:`009-pv-solaire/index`.
+Details : :doc:`009-pv-solaire/index`.
 
-Achat d'energy — ``Facture``
------------------------------
+Energy Purchasing — ``Facture``
+-------------------------------
 
 .. code-block:: python
 
@@ -117,13 +117,13 @@ Achat d'energy — ``Facture``
    from Facture.SONALGAZ_gaz import Sonalgaz_Gaz
    from Facture.ATR_Transport_Distribution import ATR_calculation
 
-Détails : :doc:`010-achat-energie/index`.
+Details : :doc:`010-achat-energie/index`.
 
-Certificats d'Économies d'Energy — ``CEE``
+Energy Savings Certificates — ``CEE``
 -------------------------------------------
 
 .. code-block:: python
 
    from CEE.CEE import calcul_CEE, list_fiches   # module de fonctions (pas de classe CEE)
 
-Détails : :doc:`011-cee/index`.
+Details : :doc:`011-cee/index`.

@@ -1,6 +1,6 @@
 .. _achat-energie:
 
-10. Achat d'energy
+10. Energy Purchasing
 ======================
 
 Facture d’energy (gaz et électricité) : principes communs
@@ -11,7 +11,7 @@ Quelle que soit l’energy (gaz ou électricité) et quel que soit le pays, une 
 1. Energy mesurée et facturée
    * Mesure réalisée by un compteur
    * Électricité : energy mesurée en kWh
-   * Gaz : volume mesuré puis exprimé in une unité energy définie by la réglementation nationale (ex. thermie, kWh, unité équivalente)
+   * Gaz : volume mesuré then exprimé in une unité energy définie by la réglementation nationale (ex. thermie, kWh, unité équivalente)
    * Facturation basée on : quantité mesurée × tarif unitaire
 
 2. Accès au réseau

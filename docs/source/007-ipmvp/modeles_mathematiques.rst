@@ -3,7 +3,7 @@ Usage du module IPMVP
 
 Le module ``IPMVP`` construit un model de **baseline** (régression) et calcule
 les économies d'energy according to l'**Option C** (mesure au niveau du site). La
-fonction principale ``Mathematical_Models`` **retourne un tuple de 9 éléments** ;
+fonction principale ``Mathematical_Models`` **returns a 9-item tuple** ;
 il n'existe pas d'objet ``model`` with des attributs ``.r2`` ou des methods
 ``plot_*`` (voir :doc:`exemples` for un example exécutable complet).
 

@@ -13,7 +13,7 @@ Overview
 --------------
 
 Le simulateur graphique principal est ``PyqtSimulator``. Il s'appuie on le
-moteur ``NodeEditor`` for manipuler des nodes et des connexions, puis appelle
+moteur ``NodeEditor`` for manipuler des nodes et des connexions, then appelle
 les models physiques de la bibliothèque : compresseur, échangeur, pompe,
 batterie, humidificateur, réchauffeur, etc.
 
@@ -22,7 +22,7 @@ batterie, humidificateur, réchauffeur, etc.
    :align: center
 
    Architecture générale : la fenêtre PyQt héberge une scène NodeEditor, les
-   nodes enregistrés appellent les models EnergySystemModels, puis les valeurs
+   nodes enregistrés appellent les models EnergySystemModels, then les valeurs
    sont affichées ou sauvegardées.
 
 Le principe d'usage est toujours le même :
@@ -47,7 +47,7 @@ au ``PYTHONPATH``.
    pip install -e .
    pip install PyQt5
 
-Depuis le dépôt source :
+Dethen le dépôt source :
 
 .. code-block:: powershell
 
@@ -55,7 +55,7 @@ Depuis le dépôt source :
    $env:PYTHONPATH = "$PWD\src"
    python -m PyqtSimulator.main
 
-Le script crée une ``QApplication``, applique le style ``Fusion`` puis ouvre
+Le script crée une ``QApplication``, applique le style ``Fusion`` then ouvre
 ``CalculatorWindow``. La fenêtre contient une zone MDI et une palette de nodes.
 Chaque élément de la palette vient du registre ``CALC_NODES``.
 
@@ -126,7 +126,7 @@ Pour un graphe simple ``Source -> Heater -> Output`` :
    :align: center
 
    Le node source fournit le fluid. Le réchauffeur convertit la liste d'input
-   en ``FluidPort``, appelle le model ``Heater.Object`` puis renvoie une liste
+   en ``FluidPort``, appelle le model ``Heater.Object`` then renvoie une liste
    de output compatible with ``Output``.
 
 Example d'usage :
@@ -137,7 +137,7 @@ Example d'usage :
 4. Ajouter un node ``Heater``.
 5. Renseigner ``Power nominale`` et ``Taux de charge``.
 6. Ajouter un node ``Output``.
-7. Relier ``Source`` to ``Heater``, puis ``Heater`` vers
+7. Relier ``Source`` to ``Heater``, then ``Heater`` vers
    ``Output``.
 8. Évaluer ``Output``.
 
@@ -202,7 +202,7 @@ l'ambiance.
    :alt: Exemple de ballon de stockage dans PyqtSimulator
    :align: center
 
-   Le node reçoit un flux entrant, calcule l'état du ballon after ``dt`` puis
+   Le node reçoit un flux entrant, calcule l'état du ballon after ``dt`` then
    renvoie un flux de output dont l'enthalpy correspond à la temperature du
    ballon.
 
@@ -263,7 +263,7 @@ Evaluation Cycle
 
 Lorsqu'un paramètre est modifié, le node est marqué comme sale et ses
 descendants doivent être recalculés. L'évaluation d'un node de output remonte
-le graphe jusqu'aux sources, puis propage les valeurs to l'aval.
+le graphe jusqu'aux sources, then propage les valeurs to l'aval.
 
 .. figure:: images/gui_evaluation_flow.svg
    :alt: Cycle d'évaluation d'un graphe
@@ -379,7 +379,7 @@ Le node ``Heater`` illustre la structure recommandée.
            return self.value
 
 Ce model donne une règle générale : les champs affichés en kW ou en bar sont
-convertis in les unités attendues by le model, puis reconvertis for les
+convertis in les unités attendues by le model, then reconvertis for les
 ports ou les labels utilisateur.
 
 Registering the Node in the Palette
@@ -458,7 +458,7 @@ Workflow recommandé for une page d'example :
 Generating Diagrams and Plots
 -----------------------------
 
-Depuis le dépôt ``EnergySystemModels-fr`` :
+Dethen le dépôt ``EnergySystemModels-fr`` :
 
 .. code-block:: powershell
 

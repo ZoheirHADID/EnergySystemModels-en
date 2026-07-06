@@ -2,8 +2,8 @@ IPMVP — Example de Mesure et Vérification (Option C)
 ====================================================
 
 La fonction ``Mathematical_Models`` ajuste un model de régression on une
-**période de référence** (baseline) puis quantifie les économies on une
-**période de suivi** (reporting). Elle **retourne un tuple de 9 éléments**
+**période de référence** (baseline) then quantifie les économies on une
+**période de suivi** (reporting). Elle **returns a 9-item tuple**
 (il n'existe pas d'objet ``model`` with des attributs ``.r2`` / ``.plot_*``).
 
 Signature et valeurs de retour

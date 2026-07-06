@@ -55,7 +55,7 @@ Lecture for l'utilisateur :
 .. note:: **Valorisation en CEE**
 
    La heat recovery on un compresseur d'air (ou tout autre rejet
-   thermique) peut être valorisée en Certificats d'Économies d'Energy via la
+   thermique) peut être valorisée en Energy Savings Certificates via la
    fiche ``IND-UT-103``. Le calcul CEE est traité in le chapitre dédié :
    voir :doc:`../011-cee/module_cee` (« Example 3 : heat recovery sur
    compresseur d'air »).
@@ -192,7 +192,7 @@ Ici l'utilité chaude minimale est **nulle** : les flux chauds fournissent, par
 intégration, la totalité du besoin de chauffe ; seule une utilité froide de
 58 kW reste nécessaire, for 361 kW récupérés.
 
-Plots générés by l'example (outputs réelles) :
+Plots générés by l'example (real outputs are shown) :
 
 .. figure:: ../images/012_chaleur_fatale_pinch_composites.svg
    :alt: Courbes composites réelles (chaleur fatale)

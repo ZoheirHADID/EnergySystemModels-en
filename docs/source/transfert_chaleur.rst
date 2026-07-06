@@ -171,14 +171,14 @@ Transfer convective heat transfer (q_conv)
 
   q_{conv} = h \cdot W \cdot L \cdot (Tp - Ta)
 
-Transfer radiative heat transfer (q_rad)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Heat Transfer radiatif (q_rad)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. math::
 
   q_{rad} = \sigma \cdot W \cdot L \cdot e \cdot \left((Tp + 273.15)^4 - (Ta + 273.15)^4\right)
 
-Transfer de chaleur total (q_total)
+Heat Transfer total (q_total)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. math::

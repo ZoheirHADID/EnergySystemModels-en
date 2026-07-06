@@ -1,6 +1,6 @@
 .. _heat_transfer:
 
-1. Transfer de chaleur
+1. Heat Transfer
 ========================
 
 .. toctree::

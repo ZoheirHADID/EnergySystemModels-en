@@ -49,6 +49,43 @@ GLOSSARY: dict[str, str] = {
     "Récupération de chaleur et chaleur fatale": "Heat recovery and waste heat",
     "Financement et subvention": "Financing and subsidies",
     "Autres": "Other",
+    # API reference
+    "Cette page récapitule les **points d'entrée réels** de la bibliothèque": "This page summarizes the library's **real entry points**",
+    "chemins d'import valides": "valid import paths",
+    "et renvoie vers le chapitre": "and links to the chapter",
+    "détaillé de chaque module": "dedicated to each module",
+    "où figurent des exemples exécutables avec leurs": "where executable examples with their",
+    "sorties réelles": "real outputs are shown",
+    "par exemple": "for example",
+    "par example": "for example",
+    " et :doc:": " and :doc:",
+    "En local (dépôt), les modules s'importent **sans** préfixe": "Locally, in the repository, modules are imported **without** the prefix",
+    "le nom d'import est celui du sous-paquet": "the import name is the subpackage name",
+    "Transfert de chaleur": "Heat Transfer",
+    "Chaque composant s'instancie via": "Each component is instantiated with",
+    "puis": "then",
+    "résultats dans": "results in",
+    "et attributs comme": "and attributes such as",
+    "Détails": "Details",
+    "Cycles thermodynamiques": "Thermodynamic Cycles",
+    "Les composants s'assemblent par": "Components are assembled with",
+    "Hydraulique et aéraulique": "Hydraulics and Aeraulics",
+    "Traitement d'air": "Air Handling",
+    "Analyse Pinch": "Pinch Analysis",
+    "avec colonnes": "with columns",
+    "attributs réels": "real attributes",
+    "Mesure & Vérification": "Measurement & Verification",
+    "retourne un tuple de 9 éléments": "returns a 9-item tuple",
+    "Météorologie": "Meteorology",
+    "Photovoltaïque": "Photovoltaics",
+    "Achat d'énergie": "Energy Purchasing",
+    "Certificats d'Économies d'Énergie": "Energy Savings Certificates",
+    "module de fonctions": "function module",
+    "pas de classe": "no class",
+    "points d'entrée": "entry points",
+    "chemins d'import": "import paths",
+    "chapitre détaillé": "detailed chapter",
+    "sous-paquet": "subpackage",
     # GUI guide
     "Interfaces graphiques et outils visuels": "Graphical Interfaces and Visual Tools",
     "Vue d'ensemble": "Overview",
@@ -347,9 +384,4 @@ def main() -> None:
     print(f"Created: {len(created)}")
     print(f"Updated: {len(updated)}")
     print(f"Unchanged: {len(unchanged)}")
-    print(f"Removed obsolete files: {len(removed)}")
-    print(f"Report: {REPORT}")
-
-
-if __name__ == "__main__":
-    main()
+    print(f"Removed obsol

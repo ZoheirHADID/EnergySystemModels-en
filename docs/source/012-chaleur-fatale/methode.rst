@@ -2,7 +2,7 @@ Method d'analyse
 =================
 
 L'analyse d'un gisement de waste heat se déroule en quatre étapes :
-inventaire, quantification, compatibilité with les usages, puis valorisation
+inventaire, quantification, compatibilité with les usages, then valorisation
 économique.
 
 1. Inventorier les sources

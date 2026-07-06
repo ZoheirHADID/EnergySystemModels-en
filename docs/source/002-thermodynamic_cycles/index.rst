@@ -1,6 +1,6 @@
 .. _thermodynamic_cycles:
 
-2. Cycles thermodynamiques
+2. Thermodynamic Cycles
 ===========================
 
 .. toctree::

@@ -106,7 +106,7 @@ Transfer thermique
    :widths: 30 70
    :header-rows: 0
 
-   * - **Transfer de chaleur**
+   * - **Heat Transfer**
      - Calculs thermiques for murs, tuyauteries, échangeurs
 
 Systèmes thermodynamiques
@@ -116,7 +116,7 @@ Systèmes thermodynamiques
    :widths: 30 70
    :header-rows: 0
 
-   * - **Cycles thermodynamiques**
+   * - **Thermodynamic Cycles**
      - Modélisation de cycles frigorifiques, pompes à chaleur, compresseurs
 
 Systèmes HVAC
@@ -139,7 +139,7 @@ Optimisation energy
    :header-rows: 0
 
    * - **Analyse energy**
-     - Analyse Pinch, IPMVP, optimisation d'intégration thermique
+     - Pinch Analysis, IPMVP, optimisation d'intégration thermique
 
 Data et production
 ----------------------
@@ -260,10 +260,10 @@ Consultez les sections spécialisées :
 
    * :doc:`usage` - Guide d'usage complet
    * :doc:`api` - Référence API détaillée
-   * :doc:`001-heat_transfer/index` - Transfer de chaleur
-   * :doc:`002-thermodynamic_cycles/index` - Cycles thermodynamiques
+   * :doc:`001-heat_transfer/index` - Heat Transfer
+   * :doc:`002-thermodynamic_cycles/index` - Thermodynamic Cycles
    * :doc:`003-ahu_modules/index` - Centrales de traitement d'air
-   * :doc:`006-pinch_analysis/index` - Analyse Pinch
+   * :doc:`006-pinch_analysis/index` - Pinch Analysis
 
 ----
 

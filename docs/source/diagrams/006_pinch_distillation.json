@@ -25,7 +25,7 @@
     },
     {
       "id": "pinch",
-      "label": "Analyse Pinch",
+      "label": "Pinch Analysis",
       "subtitle": "Qh_min / Qc_min",
       "kind": "process",
       "column": 2

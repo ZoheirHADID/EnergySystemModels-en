@@ -1,4 +1,4 @@
-Production Photovoltaïque — Examples
+Production Photovoltaics — Examples
 ======================================
 
 Example 1 : Simulation site industriel
@@ -8,7 +8,7 @@ Example 1 : Simulation site industriel
    :alt: Schéma de simulation photovoltaïque d'un site industriel
    :align: center
 
-   Le site fournit la localisation, PVGIS fournit la météo, puis pvlib calcule
+   Le site fournit la localisation, PVGIS fournit la météo, then pvlib calcule
    the production horaire et la synthèse économique.
 
 .. code-block:: python
@@ -77,7 +77,7 @@ Plots prévus by l'example :
    :align: center
 
    Aperçu de la forme attendue : power AC nulle la nuit, maximum autour du
-   milieu de journée, puis cumul mensuel in le plot généré by ``pv.plot``.
+   milieu de journée, then cumul mensuel in le plot généré by ``pv.plot``.
 
 Example 2 : Étude paramétrique d'orientation
 ----------------------------------------------
@@ -86,7 +86,7 @@ Example 2 : Étude paramétrique d'orientation
    :alt: Schéma d'étude paramétrique d'orientation photovoltaïque
    :align: center
 
-   Chaque scénario d'orientation est simulé, puis comparé in un tableau
+   Chaque scénario d'orientation est simulé, then comparé in un tableau
    annuel et un graphe mensuel.
 
 .. code-block:: python

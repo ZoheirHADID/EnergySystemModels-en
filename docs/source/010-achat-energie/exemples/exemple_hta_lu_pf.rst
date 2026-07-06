@@ -62,7 +62,7 @@
 Plots générés by l'example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Les figures ci-dessous sont les outputs réelles de ``turpe_calculator.plot()``
+Les figures ci-dessous sont les real outputs are shown de ``turpe_calculator.plot()``
 et ``turpe_calculator.plot_detail()`` for les data de l'example.
 
 .. figure:: ../../images/010_turpe_hta_lu_pf_plot.svg

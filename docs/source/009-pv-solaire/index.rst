@@ -1,6 +1,6 @@
 .. _pv_solaire:
 
-9. Production Photovoltaïque
+9. Production Photovoltaics
 =============================
 
 .. toctree::

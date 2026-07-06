@@ -2,7 +2,7 @@
 Section 4 : Distribution de l'energy
 ================================================================================
 
-4.1. Transfer de chaleur
+4.1. Heat Transfer
 --------------------------
 
 4.1.1. CompositeWall - Paroi multicouche

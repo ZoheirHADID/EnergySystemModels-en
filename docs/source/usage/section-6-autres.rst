@@ -10,14 +10,14 @@ correspondantes du sommaire général :
 
 - **TURPE / achat d'energy** : :doc:`../010-achat-energie/index`
 - **CEE** : :doc:`../011-cee/index`
-- **Météorologie (OpenWeatherMap, MeteoCiel, DJU)** : :doc:`../008-meteo/index`
-- **Photovoltaïque** : :doc:`../009-pv-solaire/index`
-- **Cycles thermodynamiques** : :doc:`../002-thermodynamic_cycles/index`
-- **Transfer de chaleur** : :doc:`../001-heat_transfer/index`
+- **Meteorology (OpenWeatherMap, MeteoCiel, DJU)** : :doc:`../008-meteo/index`
+- **Photovoltaics** : :doc:`../009-pv-solaire/index`
+- **Thermodynamic Cycles** : :doc:`../002-thermodynamic_cycles/index`
+- **Heat Transfer** : :doc:`../001-heat_transfer/index`
 - **Hydraulique** : :doc:`../004-hydraulic/index`
 - **Aéraulique** : :doc:`../005-aeraulic/index`
 - **CTA / traitement d'air** : :doc:`../003-ahu_modules/index`
-- **Analyse Pinch** : :doc:`../006-pinch_analysis/index`
+- **Pinch Analysis** : :doc:`../006-pinch_analysis/index`
 - **IPMVP** : :doc:`../007-ipmvp/index`
 - **Waste Heat** : :doc:`../012-chaleur-fatale/index`
 
@@ -128,8 +128,8 @@ Cette documentation couvre l'ensemble des fonctionnalités d'EnergySystemModels 
 
 1. **Achat et Facturation** : TURPE, CEE
 2. **Data et Production** : Météo, PV
-3. **Transformation** : Cycles thermodynamiques
-4. **Distribution** : Transfer de chaleur, Hydraulique, Aéraulique
+3. **Transformation** : Thermodynamic Cycles
+4. **Distribution** : Heat Transfer, Hydraulique, Aéraulique
 5. **Usages finaux** : CTA, Pinch, IPMVP, Modèle RC
 
 Pour plus d'informations, consultez :

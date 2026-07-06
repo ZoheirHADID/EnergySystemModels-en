@@ -167,7 +167,7 @@ Matériaux et isolation
      - Épaisseur d'isolant
      - m
 
-Cycles thermodynamiques
+Thermodynamic Cycles
 -----------------------
 
 Fluids et frigorigènes
@@ -277,7 +277,7 @@ Properties thermodynamiques
      - Pa·s
      - StraightPipe
 
-Traitement d'air (AHU)
+Air Handling (AHU)
 ----------------------
 
 État de l'air
