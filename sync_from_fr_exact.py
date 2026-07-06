@@ -203,7 +203,28 @@ def translate_rst(content: str) -> str:
             output.append(line)
             continue
 
-        output.append(" " * indent + translate_plain_text(raw.lstrip()) + newline)
+        translated = translate_plain_text(raw.lstrip())
+        # Keep Sphinx document targets stable. The English tree intentionally
+        # mirrors French file names, so :doc:`exemple_...` must not become
+        # :doc:`example_...`.
+        doc_target_map = {
+            "examples": "exemples",
+            "example_": "exemple_",
+            "method": "methode",
+            "protocol": "protocole",
+            "mathematical_models": "modeles_mathematiques",
+            "cee_module": "module_cee",
+        }
+
+        def restore_doc_target(match: re.Match[str]) -> str:
+            value = match.group(0)
+            for english, french in doc_target_map.items():
+                value = value.replace(english, french)
+            value = value.replace("009-pv-solaire/usage", "009-pv-solaire/utilisation")
+            return value
+
+        translated = re.sub(r":doc:`([^`]+)`", restore_doc_target, translated)
+        output.append(" " * indent + translated + newline)
 
     return normalize_rst_underlines("".join(output))
 

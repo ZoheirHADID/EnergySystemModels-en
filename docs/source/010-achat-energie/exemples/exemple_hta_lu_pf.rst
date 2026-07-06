@@ -57,7 +57,7 @@
    Les consommations de cet example sont volontairement minimes (10 kWh par
    poste) : la part fixe (abonnement/TURPE) domine, d'où un coût unitaire
    ``EUR/MWh`` très élevé. Pour un site HTA réaliste, utiliser des consommations
-   de l'ordre de plusieurs dizaines de MWh/mois (cf. :doc:`example_hta_lu_pm`).
+   de l'ordre de plusieurs dizaines de MWh/mois (cf. :doc:`exemple_hta_lu_pm`).
 
 Plots générés by l'example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
