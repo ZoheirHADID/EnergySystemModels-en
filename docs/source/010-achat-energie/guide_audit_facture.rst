@@ -1,20 +1,20 @@
 .. _guide_audit_facture:
 
-10.3. Guide pratique : Auditer une facture d'energie with Python
+10.3. Guide pratique : Auditer une facture d'energy with Python
 =================================================================
 
-Ce guide explique comment utiliser les modeles ``Facture`` de la bibliotheque
-EnergySystemModels for **verifier et auditer** une facture d'electricite ou
-de gaz, que ce soit en France (TURPE, ATR) ou en Algerie (Sonalgaz).
+This guide explains how to use the models ``Facture`` from the library
+EnergySystemModels for **verifier et auditer** an electricity bill ou
+gas, whether in France (TURPE, ATR) or in Algeria (Sonalgaz).
 
 .. admonition:: Nouveaute v20260408001
 
-   Chaque calculateur produit desormais des **DataFrames auditables** (Option B)
-   qui detaillent chaque ligne de calcul with : la formule utilisee, les entrees,
-   les coefficients et le resultat. L'objectif est de pouvoir controler chaque
+   Each calculateur produit now des **DataFrames auditables** (Option B)
+   which detail each calculation row with: the formula used, the inputs,
+   the coefficients and the result. The goal is to be able to check chaque
    composante d'une facture.
 
-Structure universelle d'une facture d'energie
+Universal Structure of an Energy Bill
 -----------------------------------------------
 
 .. code-block:: text
@@ -63,7 +63,7 @@ Conversion d'unites
      - Standard international
    * - 1 m3(n) gaz
      - x PCS (~11,5 kWh/m3) = kWh
-     - Conversion volume → energie (France)
+     - Conversion volume → energy (France)
    * - cDA/kWh
      - = centimes de Dinar by kWh
      - Tarif Sonalgaz (diviser by 100 for DA/kWh)
@@ -83,7 +83,7 @@ Each calculator produces several DataFrames per section :
    * - ``df_contrat``
      - Parametres contractuels : tension, tarif, powers souscrites, periode
    * - ``df_fourniture_detail``
-     - Detail de la fourniture d'energie : kWh x prix by poste horaire, capacite, ARENH
+     - Detail de la fourniture d'energy : kWh x prix by poste horaire, capacite, ARENH
    * - ``df_acheminement``
      - Detail du TURPE (France elec) : CG, CC, CS fixe/variable, CMDPS, CACS
    * - ``df_transport``
@@ -117,7 +117,7 @@ Colonnes standard de chaque DataFrame :
      - Projection annuelle (si applicable)
 
 
-10.3.1. Auditer une facture d'electricite en France (TURPE)
+10.3.1. Auditer an electricity bill en France (TURPE)
 -------------------------------------------------------------
 
 .. code-block:: python
@@ -211,7 +211,7 @@ Colonnes standard de chaque DataFrame :
 Each row of the ``df_acheminement`` montre :
 
 - Les coefficients **b** (part power) with la version TURPE utilisee
-- Les coefficients **c** (part energie) by poste horaire
+- Les coefficients **c** (part energy) by poste horaire
 - La formule exacte : ``b0 x PS_Pointe``, ``c_HPH x kWh_HPH``, etc.
 - Les sous-totaux CS fixe et CS variable
 
@@ -220,7 +220,7 @@ montants de votre facture ENEDIS. Les coefficients b et c doivent correspondre
 a la grille TURPE en vigueur (publiee by la CRE).
 
 
-10.3.2. Auditer une facture de gaz en France (ATR)
+10.3.2. Auditer une facture gas en France (ATR)
 -----------------------------------------------------
 
 .. code-block:: python
@@ -281,7 +281,7 @@ a la grille TURPE en vigueur (publiee by la CRE).
 - **TVA** : 5,5% on fixe+CTA, 20% on variable+molecule+accise
 
 
-10.3.3. Auditer une facture d'electricite en Algerie (Sonalgaz)
+10.3.3. Auditer an electricity bill en Algerie (Sonalgaz)
 -----------------------------------------------------------------
 
 .. code-block:: python
@@ -350,11 +350,11 @@ a la grille TURPE en vigueur (publiee by la CRE).
      - BT
      - Basse Tension non-mesure
 
-**Energie reactive :** Un seuil de 50% de l'energie active est gratuit.
+**Energie reactive :** Un seuil de 50% de l'energy active est gratuit.
 Au-dela, un malus s'applique. En-dessous, un bonus est accorde.
 
 
-10.3.4. Auditer une facture de gaz en Algerie (Sonalgaz Gaz)
+10.3.4. Auditer une facture gas en Algerie (Sonalgaz Gaz)
 --------------------------------------------------------------
 
 .. code-block:: python
@@ -404,13 +404,13 @@ Au-dela, un malus s'applique. En-dessous, un bonus est accorde.
      - Description
    * - 11
      - HP
-     - Haute Pressure : fixe + DMD + DMA + energie lineaire
+     - Haute Pressure : fixe + DMD + DMA + energy lineaire
    * - 21T
      - HP
      - Haute Pressure Transport
    * - 21
      - MP
-     - Moyenne Pressure : fixe + DMD + DMA + energie lineaire
+     - Moyenne Pressure : fixe + DMD + DMA + energy lineaire
    * - 22
      - MP
      - Moyenne Pressure tarif reduit

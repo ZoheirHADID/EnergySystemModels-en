@@ -46,7 +46,7 @@ Example de tableau d'inventaire :
 2. Quantifier la power disponible
 -------------------------------------
 
-Pour un fluid monophasique, l'ordre de grandeur s'obtient with :
+Pour un fluid monophasique, l'ordre de grandeur s'obtient with:
 
 .. math::
 

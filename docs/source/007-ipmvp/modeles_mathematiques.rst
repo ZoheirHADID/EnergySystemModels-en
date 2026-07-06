@@ -83,7 +83,7 @@ Le module utilise la method du **z-score** :
 
    z_i = \frac{y_i - \bar{y}}{\sigma_y}
 
-Les points with :math:`|z|` > ``seuil_z_scores`` (**défaut 8**) sont exclus.
+Les points with:math:`|z|` > ``seuil_z_scores`` (**défaut 8**) sont exclus.
 
 Variables explicatives (X)
 --------------------------

@@ -115,4 +115,4 @@ Références
 
 * Site officiel : https://www.ecologie.gouv.fr
 * Registre des CEE : https://www.emmy.fr
-* Fiches CEE : https://www.ecologie.gouv.fr/operations-standardisees-deconomies-denergie
+* Fiches CEE : https://www.ecologie.gouv.fr/operations-standardisees-deconomies-denergy

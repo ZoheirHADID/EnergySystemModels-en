@@ -110,7 +110,7 @@ Output :
 Example 2 : Consigne temperature eau
 -------------------------------------
 
-La chaudière adapte automatiquement le flow rate de gaz for chauffer l'eau de 60°C à 90°C :
+La chaudière adapte automatiquement le flow rate gas for chauffer l'eau de 60°C à 90°C :
 
 .. code-block:: python
 

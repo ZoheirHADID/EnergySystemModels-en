@@ -9,7 +9,7 @@
 1.1 Consommation Annuelle de Reference (CAR)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La **CAR** represente une estimation de la consommation annuelle de gaz naturel for un
+La **CAR** represente une estimation de la consommation annuelle gas naturel for un
 **Point de Comptage et d'Estimation (PCE)**. Elle est fournie in le contrat et exprimee en MWh/an.
 
 1.2 Le Tarif d'Acheminement
@@ -67,7 +67,7 @@ Si la CJA n'est pas fournie, le modele recalcule la capacite via ``CAR x Zi x A`
 1.4 Capacite Journaliere Normalisee (CJN)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La **CJN** est la capacite journaliere **calculee** a partir des parametres climatiques et reseau :
+La **CJN** est la capacite journaliere **calculee** a partir des parameters climatiques et reseau :
 
 .. code-block:: text
 
@@ -82,10 +82,10 @@ Ou :
 
 ------------------------------------------------------------
 
-2. Composantes d'une facture de gaz naturel
+2. Composantes d'une facture gas naturel
 ------------------------------------------------------------
 
-La facture de gaz naturel se compose de trois grandes parties :
+La facture gas naturel se compose de trois grandes parties :
 
 - **La part acheminement** : transport (ATRT) + distribution (ATRD)
 - **La part taxes et contributions** : Accise gaz (ex-TICGN) + CTA
@@ -748,7 +748,7 @@ Voir :ref:`calcul de la modulation <calcul-modulation>` for le detail du calcul 
    * - ATRT7
      - 04/2023 -- 03/2024
      - 186,70
-     - +34,3% (crise energetique, tensions stockage)
+     - +34,3% (crise energy, tensions stockage)
    * - ATRT8
      - 04/2024 -- 03/2025
      - 139,07
@@ -963,7 +963,7 @@ Evolution historique des taux de l'accise gaz (ex-TICGN) :
    La TICGN a ete renommee **accise on les gaz naturels** from 2022.
    Le taux a presque double between 2023 (8,37 EUR/MWh) et 2024 (16,37 EUR/MWh),
    suite a la fin du bouclier tarifaire. Les taux sont integres in le fichier
-   ``coefficients_gaz_TICGN.json`` de la bibliotheque EnergySystemModels et
+   ``coefficients_gaz_TICGN.json`` from the library EnergySystemModels et
    selectionnes automatiquement as a function of la periode de facturation.
 
 2.4 TVA applicable
@@ -1015,7 +1015,7 @@ La TVA on le gaz naturel en France comporte historiquement **deux taux distincts
 .. note::
 
    Dethen le **1er aout 2025**, le taux reduit de 5,5% on l'abonnement est supprime.
-   La TVA est desormais de **20% on l'ensemble de la facture**. This change
+   La TVA est now de **20% on l'ensemble de la facture**. This change
    fait suite a une directive europeenne interdisant l'application de taux differents
    sur des elements indissociables d'un meme service.
 
@@ -1026,7 +1026,7 @@ La TVA on le gaz naturel en France comporte historiquement **deux taux distincts
 2.5 Fourniture
 ^^^^^^^^^^^^^^^
 
-La part fourniture correspond a la consommation de gaz facturee by le fournisseur.
+La part fourniture correspond a la consommation gas facturee by le fournisseur.
 
 .. code-block:: text
 

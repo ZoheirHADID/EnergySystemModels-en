@@ -7,7 +7,7 @@ Usage mobile peak. Fonctionnement continu 24h/24, power souscrite
 
 La version LU (Longue Usage) est adaptee aux sites qui fonctionnent
 plus de 3 000 heures by an a power significative. Les coefficients b
-(part power) sont plus eleves, mais les coefficients c (part energie)
+(part power) sont plus eleves, mais les coefficients c (part energy)
 sont plus faibles que la version CU.
 
 .. code-block:: python

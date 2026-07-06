@@ -5,7 +5,7 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: Cycles thermodynamiques:
+   :caption: Thermodynamic Cycles:
 
    nomenclature
    fluid_source

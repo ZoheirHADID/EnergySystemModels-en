@@ -5,7 +5,7 @@
 
 .. toctree::
    :maxdepth: 2
-   :caption: Transfert de chaleur:
+   :caption: Heat Transfer:
 
    corps_parallelepipedique
    composite_wall_heat_transfer

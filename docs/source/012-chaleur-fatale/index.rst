@@ -3,7 +3,7 @@
 
 This section helps the user qualify, quantify and value
 rejets energy d'un site industriel ou tertiaire. Elle complète les
-chapitres on le transfert thermique, l'analyse Pinch, les cycles
+chapters on le transfert thermique, l'analyse Pinch, les cycles
 thermodynamiques et les CEE.
 
 Chapter Objectives
@@ -20,7 +20,7 @@ Chapter Objectives
 
 .. toctree::
    :maxdepth: 2
-   :caption: Chaleur fatale:
+   :caption: Waste Heat:
 
    methode
    exemples

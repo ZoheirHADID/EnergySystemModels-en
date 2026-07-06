@@ -24,27 +24,27 @@ Table of Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: Sommaire général:
+   :caption: General contents:
 
    usage
    quickstart
 
 .. toctree::
    :maxdepth: 2
-   :caption: 1. Achat et fourniture d'énergie
+   :caption: 1. Energy purchase and supply
 
    010-achat-energie/index
 
 .. toctree::
    :maxdepth: 2
-   :caption: 2. Production d'utilités et d'énergie
+   :caption: 2. Utilities and energy production
 
    002-thermodynamic_cycles/index
    009-pv-solaire/index
 
 .. toctree::
    :maxdepth: 2
-   :caption: 3. Transport des utilités
+   :caption: 3. Utility transport
 
    001-heat_transfer/index
    transfert_chaleur
@@ -53,27 +53,27 @@ Table of Contents
 
 .. toctree::
    :maxdepth: 2
-   :caption: 4. Usages énergétiques
+   :caption: 4. Energy uses
 
    003-ahu_modules/index
    007-ipmvp/index
 
 .. toctree::
    :maxdepth: 2
-   :caption: 5. Récupération de chaleur et chaleur fatale
+   :caption: 5. Heat recovery and waste heat
 
    006-pinch_analysis/index
    012-chaleur-fatale/index
 
 .. toctree::
    :maxdepth: 2
-   :caption: 6. Financement et subvention
+   :caption: 6. Financing and subsidies
 
    011-cee/index
 
 .. toctree::
    :maxdepth: 2
-   :caption: 7. Autres
+   :caption: 7. Other
 
    008-meteo/index
    gui_tools

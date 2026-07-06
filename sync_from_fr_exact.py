@@ -265,6 +265,34 @@ GLOSSARY: dict[str, str] = {
     "Photovoltaïque uniquement": "Photovoltaics only",
     "Certificats de capacité": "Capacity certificates",
     "Certificats de capacite": "Capacity certificates",
+    "Guide pratique : Auditer une facture d'energie with Python": "Practical Guide: Auditing an Energy Bill with Python",
+    "Ce guide explique comment utiliser les modeles": "This guide explains how to use the models",
+    "de la bibliotheque": "from the library",
+    "for **verifier et auditer**": "to **check and audit**",
+    "une facture d'electricite": "an electricity bill",
+    "de gaz": "gas",
+    "que ce soit en France": "whether in France",
+    "ou en Algerie": "or in Algeria",
+    "Nouveaute": "New in",
+    "desormais": "now",
+    "qui detaillent": "which detail",
+    "chaque ligne de calcul": "each calculation row",
+    "with :": "with:",
+    "la formule utilisee": "the formula used",
+    "les entrees": "the inputs",
+    "les coefficients et le resultat": "the coefficients and the result",
+    "L'objectif est de pouvoir controler": "The goal is to be able to check",
+    "chaque composante d'une facture": "each component of a bill",
+    "Structure universelle d'une facture d'energie": "Universal Structure of an Energy Bill",
+    "Cette": "This",
+    "Chaque": "Each",
+    "bibliotheque": "library",
+    "parametres": "parameters",
+    "chapitre": "chapter",
+    "exemple": "example",
+    "energie": "energy",
+    "energetique": "energy",
+    "energetiques": "energy",
 }
 
 
@@ -333,7 +361,12 @@ def translate_rst(content: str) -> str:
             if stripped and indent <= protect_toctree:
                 protect_toctree = None
             else:
-                output.append(line)
+                option_match = re.match(r"(:(?:caption):\s*)(.*)", raw.lstrip())
+                if option_match:
+                    translated_option = option_match.group(1) + translate_plain_text(option_match.group(2))
+                    output.append(raw[:indent] + translated_option + newline)
+                else:
+                    output.append(line)
                 continue
 
         if not stripped or _is_adornment(raw):
@@ -369,6 +402,7 @@ def translate_rst(content: str) -> str:
             "protocol": "protocole",
             "mathematical_models": "modeles_mathematiques",
             "cee_module": "module_cee",
+            "achat-energy": "achat-energie",
         }
 
         def restore_doc_target(match: re.Match[str]) -> str:

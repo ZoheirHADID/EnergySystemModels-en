@@ -25,7 +25,7 @@ en notant :math:`T_m = (T_{min}+T_{max})/2` :
    DJU_{raf} = T_m - \text{base}_{raf}
 
 **3. Journée mixte** (la temperature traverse une base) — pondération COSTIC.
-Pour le chauffage, with :math:`a = T_{max}-T_{min}` et
+Pour le chauffage, with:math:`a = T_{max}-T_{min}` et
 :math:`b = (\text{base}_{chauffage}-T_{min})/a` :
 
 .. math::

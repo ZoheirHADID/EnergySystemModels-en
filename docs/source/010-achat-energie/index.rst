@@ -36,7 +36,7 @@ Une facture d’energy rémunère toujours une energy livrée, un réseau mobili
 
 .. toctree::
    :maxdepth: 2
-   :caption: Achat d'énergie:
+   :caption: Energy Purchasing:
 
    contrat_electricite
    contrat_gaz

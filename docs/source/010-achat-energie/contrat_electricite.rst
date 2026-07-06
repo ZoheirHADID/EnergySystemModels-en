@@ -305,7 +305,7 @@ The general TURPE formula is therefore :
 
 .. toctree::
    :maxdepth: 1
-   :caption: Exemples TURPE
+   :caption: TURPE Examples
 
    exemples/exemple_hta_cu_pf
    exemples/exemple_hta_cu_pm
