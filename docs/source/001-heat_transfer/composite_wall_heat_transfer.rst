@@ -55,7 +55,7 @@ Le calcul retourne :
   - Flux thermique [W]
   - Surface [m²]
 
-Paramètres possibles
+Possible Parameters
 --------------------
 
 **Matériaux disponibles** :
@@ -93,7 +93,7 @@ Le calcul se base on :
 2. **Convection aux surfaces** : Résistances convectives intérieure et extérieure
 3. **Conduction in les matériaux** : Résistance fonction de l'épaisseur et de la conductivité
 
-Le model allows :
+The model allows :
 
 - Calculer la thermal resistance totale
 - Déterminer le flux thermique traversant le mur

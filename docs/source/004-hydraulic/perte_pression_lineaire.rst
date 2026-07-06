@@ -77,7 +77,7 @@ Usage
    :width: 800px
    :align: center
 
-Paramètres possibles
+Possible Parameters
 --------------------
 
 **Source.Object()** :
@@ -142,7 +142,7 @@ Ce model calcule la perte de charge (perte de pressure) due aux frottements in u
 - **Turbulent** (Re > 4000) : Équation de Colebrook-White
 - **Transition** (2300 < Re < 4000) : Zone instable
 
-Le model prend en compte :
+The model prend en compte :
 
 - Les propriétés thermodynamiques of the fluid via CoolProp
 - La rugosité of the inner wall du tuyau

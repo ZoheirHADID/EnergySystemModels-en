@@ -72,13 +72,13 @@ Les figures ci-dessous sont les real outputs are shown de ``calc.plot()`` et
 ``calc.plot_detail()`` for les data de l'example.
 
 .. figure:: ../../images/010_turpe_bt_m36_cu4_plot.svg
-   :alt: Répartition Fourniture TURPE Taxes pour l'exemple BT CU4
+   :alt: Supply TURPE Taxes Breakdown for the example BT CU4
    :align: center
 
    Répartition HTVA between fourniture, acheminement TURPE et taxes.
 
 .. figure:: ../../images/010_turpe_bt_m36_cu4_plot_detail.svg
-   :alt: Détail des composantes de facture pour l'exemple BT CU4
+   :alt: Bill Component Details for the example BT CU4
    :align: center
 
    Cascades détaillées by composante de fourniture, distribution et taxes.

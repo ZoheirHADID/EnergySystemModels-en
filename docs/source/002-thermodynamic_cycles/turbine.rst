@@ -7,7 +7,7 @@ Le module ``Turbine`` modélise une détente. Comme le compresseur, l'état d'in
 provient d'un composant amont **connecté via** ``Fluid_connect(TURB.Inlet, amont.Outlet)`` ;
 la pressure d'échappement est fixée by ``LP`` (en Pa, défaut 1 bar).
 
-Paramètres
+Parameters
 ----------
 
 .. list-table::

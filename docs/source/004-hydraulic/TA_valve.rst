@@ -5,13 +5,13 @@ Vanne d'équilibrage TA (Tour & Andersson / IMI Hydronic)
 
 Les vannes d'équilibrage **TA** (Tour & Andersson / IMI Hydronic Engineering) permettent l'équilibrage hydraulique des circuits CVC for garantir les flow rates nominaux et optimiser la performance energy des installations.
 
-Cette classe Python calcule les pertes de charge à travers différents models de vannes TA en utilisant les **data Kv officielles** du fabricant IMI TA en fonction du nombre de tours d'ouverture.
+This Python class calculates pressure drops through different TA valve models using the manufacturer's **official IMI TA Kv data** as a function of the number of opening turns.
 
 Usage
 -----------
 
 .. image:: ../images/004_TA_valve.png
-   :alt: Schéma Vanne TA
+   :alt: Diagram Vanne TA
    :width: 800px
    :align: center
 
@@ -71,7 +71,7 @@ Results ::
    :width: 800px
    :align: center
 
-Paramètres possibles
+Possible Parameters
 --------------------
 
 **Types de vannes TA disponibles**
@@ -116,7 +116,7 @@ La classe ``TA_Valve`` supporte **plus de 120 références** de vannes d'équili
 .. note::
    Le paramètre ``dn`` peut être spécifié under forme de **chaîne** (ex: "DN65", "STAF-DN100") ou d'**entier** (ex: 65).
 
-**Paramètres de configuration**
+**Configuration Parameters**
 
 .. list-table::
    :header-rows: 1

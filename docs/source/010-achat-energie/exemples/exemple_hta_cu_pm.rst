@@ -2,7 +2,7 @@
 --------------------------------------------
 
 **Contexte** : Un centre logistique raccorde en HTA (20 kV), option Courte
-Usage pointe mobile. Power souscrite 300 kW, consommation hiver
+Usage mobile peak. Power souscrite 300 kW, consommation hiver
 et ete equilibree. Facturation de mars 2025.
 
 .. code-block:: python
@@ -66,13 +66,13 @@ Les figures ci-dessous sont les real outputs are shown de ``calc.plot()`` et
 ``calc.plot_detail()`` for les data de l'example.
 
 .. figure:: ../../images/010_turpe_hta_cu_pm_plot.svg
-   :alt: Répartition Fourniture TURPE Taxes pour l'exemple HTA CU pointe mobile
+   :alt: Supply TURPE Taxes Breakdown for the example HTA CU mobile peak
    :align: center
 
    Répartition HTVA between fourniture, acheminement TURPE et taxes.
 
 .. figure:: ../../images/010_turpe_hta_cu_pm_plot_detail.svg
-   :alt: Détail des composantes de facture pour l'exemple HTA CU pointe mobile
+   :alt: Bill Component Details for the example HTA CU mobile peak
    :align: center
 
    Cascades détaillées by composante de fourniture, distribution et taxes.

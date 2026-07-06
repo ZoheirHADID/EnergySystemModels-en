@@ -4,17 +4,17 @@ Graphical Interfaces and Visual Tools
 =======================================
 
 EnergySystemModels contient plusieurs briques visuelles for construire,
-tester et présenter des models energy. Cette page sert de guide de
+test and present energy models. This page serves as a guide de
 travail : elle explique comment lancer le simulateur PyQt, comment lire un
 graphe, comment ajouter un nouveau node et comment documenter les results
-avec les figures réellement produites by la bibliothèque.
+avec les figures actually produites by the library.
 
 Overview
 --------------
 
 Le simulateur graphique principal est ``PyqtSimulator``. Il s'appuie on le
 moteur ``NodeEditor`` for manipuler des nodes et des connexions, then appelle
-les models physiques de la bibliothèque : compresseur, échangeur, pompe,
+les models physiques de the library : compresseur, échangeur, pompe,
 batterie, humidificateur, réchauffeur, etc.
 
 .. figure:: images/gui_pyqtsimulator_architecture.svg
@@ -39,7 +39,7 @@ Installation and Launch
 -------------------------
 
 Les interfaces nécessitent ``PyQt5``. Dans un environnement de développement,
-installer aussi la bibliothèque en mode éditable ou ajouter le dossier ``src``
+also install the library en mode éditable ou add the folder ``src``
 au ``PYTHONPATH``.
 
 .. code-block:: console
@@ -57,7 +57,7 @@ Dethen le dépôt source :
 
 Le script crée une ``QApplication``, applique le style ``Fusion`` then ouvre
 ``CalculatorWindow``. La fenêtre contient une zone MDI et une palette de nodes.
-Chaque élément de la palette vient du registre ``CALC_NODES``.
+Each palette item comes from the registry ``CALC_NODES``.
 
 PyqtSimulator Interface
 -----------------------
@@ -88,7 +88,7 @@ La fenêtre principale regroupe les éléments suivants :
 Port Convention
 --------------------
 
-Les connexions échangent des listes Python courtes. Cette convention rend les
+Connections exchange des listes Python courtes. This convention makes les
 graphes faciles à sérialiser in les fichiers ``.json``.
 
 .. list-table::
@@ -105,7 +105,7 @@ graphes faciles à sérialiser in les fichiers ``.json``.
      - ``w`` en g/kg d'air sec, ``F`` en kg/s, ``P`` en bar, ``h`` en kJ/kg
 
 Les helpers de ``PyqtSimulator.nodes.esm_node_helpers`` assurent la conversion
-entre ces listes et les objets de la bibliothèque :
+between these lists and the objects de the library :
 
 ``make_fluid_port(arr)``
    Convertit ``[fluid, F, P, h]`` to un ``FluidPort``.
@@ -122,7 +122,7 @@ Reading a Graph
 Pour un graphe simple ``Source -> Heater -> Output`` :
 
 .. figure:: images/gui_node_declaratif_heater.svg
-   :alt: Graphe source, réchauffeur, sortie
+   :alt: Graphe source, réchauffeur, output
    :align: center
 
    Le node source fournit le fluid. Le réchauffeur convertit la liste d'input
@@ -153,7 +153,7 @@ Certains composants possèdent plusieurs outputs physiques. C'est le cas du
 cas, le node renvoie une liste de valeurs, une by socket de output.
 
 .. figure:: images/gui_node_splitter_multisortie.svg
-   :alt: Exemple de nœud Diviseur avec deux sorties
+   :alt: Example de node Splitter with deux outputs
    :align: center
 
    Le ``Splitter`` conserve le même fluid, la même pressure et la même
@@ -199,14 +199,14 @@ temperature initiale, du volume, du flow rate entrant et des pertes vers
 l'ambiance.
 
 .. figure:: images/gui_node_mixed_storage_pas_temps.svg
-   :alt: Exemple de ballon de stockage dans PyqtSimulator
+   :alt: Example de ballon de stockage in PyqtSimulator
    :align: center
 
    Le node reçoit un flux entrant, calcule l'état du ballon after ``dt`` then
    renvoie un flux de output dont l'enthalpy correspond à la temperature du
    ballon.
 
-Paramètres principaux :
+Main Parameters :
 
 .. list-table::
    :header-rows: 1
@@ -266,7 +266,7 @@ descendants doivent être recalculés. L'évaluation d'un node de output remonte
 le graphe jusqu'aux sources, then propage les valeurs to l'aval.
 
 .. figure:: images/gui_evaluation_flow.svg
-   :alt: Cycle d'évaluation d'un graphe
+   :alt: Evaluation Cycle d'un graphe
    :align: center
 
    Les champs Qt déclenchent ``onInputChanged``. Le node aval demande ensuite
@@ -422,7 +422,7 @@ Tester with un graphe minimal
    Output``. Ajouter ensuite les branches multiples.
 
 Documenter le comportement
-   Chaque nouveau node important doit avoir un example in la documentation :
+   Each important new node must have an example in the documentation :
    diagram du graphe, paramètres, results attendus, limites et figure si une
    method ``plot()`` existe.
 
@@ -441,7 +441,7 @@ La documentation doit distinguer trois types de visuels :
    être visibles in l'en-tête ou in la première colonne.
 
 ``Plot du model``
-   Figure produite by une method réelle de la bibliothèque : for example
+   Figure produite by une method réelle de the library : for example
    ``ch.plot()``, ``calc.plot()`` ou ``calc.plot_detail()``. Il ne faut pas
    remplacer ces methods by un tracé manuel arbitraire lorsque le model
    fournit déjà sa propre fonction de visualisation.
@@ -452,7 +452,7 @@ Workflow recommandé for une page d'example :
 2. Afficher le diagram des nodes connectés.
 3. Donner le code minimal reproductible.
 4. Afficher les results in une table.
-5. Afficher les plots réellement générés by les fonctions du model.
+5. Afficher les plots actually générés by les fonctions du model.
 6. Ajouter une courte interprétation métier.
 
 Generating Diagrams and Plots
@@ -465,7 +465,7 @@ Dethen le dépôt ``EnergySystemModels-fr`` :
    cd A:\OneDrive\_Github_\EnergySystemModels-fr
    python docs\generate_diagrams.py
 
-Pour les plots réellement exposés by les models :
+Pour les plots actually exposés by les models :
 
 .. code-block:: powershell
 
@@ -475,7 +475,7 @@ Pour les plots réellement exposés by les models :
    python docs\generate_model_plots.py
 
 Le fichier ``generate_model_plots.py`` doit rester strict : il appelle les
-methods de plot de la bibliothèque et sauvegarde les figures dans
+methods de plot de the library and saves the figures dans
 ``docs/source/images``. Les figures de remplacement ne sont acceptables que
 pour les examples without method graphique déterministe, et elles doivent être
 signalées comme telles in le script.
@@ -504,10 +504,10 @@ Troubleshooting
    en mode éditable.
 
 ``QApplication`` ou ``PyQt5`` introuvable
-   Installer ``PyQt5`` in l'environnement actif.
+   Install ``PyQt5`` in l'environnement actif.
 
 ``CoolProp`` introuvable
-   Installer les dépendances scientifiques utilisées by les composants
+   Install les dépendances scientifiques utilisées by les composants
    thermodynamiques.
 
 Un node n'apparaît pas in la palette

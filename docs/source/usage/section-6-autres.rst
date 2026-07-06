@@ -124,7 +124,7 @@ Installation for des modules spécifiques :
 7.3. Conclusion
 ---------------
 
-Cette documentation couvre l'ensemble des fonctionnalités d'EnergySystemModels according to la chaîne de valeur energy :
+This documentation covers all EnergySystemModels features according to the energy value chain :
 
 1. **Achat et Facturation** : TURPE, CEE
 2. **Data et Production** : Météo, PV

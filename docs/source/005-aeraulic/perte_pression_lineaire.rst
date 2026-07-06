@@ -58,7 +58,7 @@ Pour ``d_hyd`` = 120 mm, ``L`` = 1 m et 120 m³/h d'air à 15 °C : vitesse ≈ 
 régime turbulent (Re ≈ 23 816), coefficient de perte de charge λ ≈ 0,0284 et
 **linear pressure drop ≈ 1,24 Pa/m**.
 
-5.1.3. Paramètres
+5.1.3. Parameters
 -----------------
 
 .. list-table::
@@ -80,7 +80,7 @@ régime turbulent (Re ≈ 23 816), coefficient de perte de charge λ ≈ 0,0284 
      - Roughness absolue de la paroi (défaut lisse)
      - m
 
-Le model calcule le nombre Reynolds number then le coefficient de perte de charge λ
+The model calcule le nombre Reynolds number then le coefficient de perte de charge λ
 (Colebrook for le régime turbulent), et en déduit la linear pressure drop
 :math:`\Delta P = \dfrac{\lambda}{d_{hyd}} \cdot \dfrac{\rho\, u^2}{2} \cdot L`.
 

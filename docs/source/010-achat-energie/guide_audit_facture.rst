@@ -72,7 +72,7 @@ Conversion d'unites
 Principe general
 -----------------
 
-Chaque calculateur produit plusieurs DataFrames by section :
+Each calculator produces several DataFrames per section :
 
 .. list-table::
    :header-rows: 1
@@ -208,7 +208,7 @@ Colonnes standard de chaque DataFrame :
 
 **Lecture du tableau** :
 
-Chaque ligne du ``df_acheminement`` montre :
+Each row of the ``df_acheminement`` montre :
 
 - Les coefficients **b** (part power) with la version TURPE utilisee
 - Les coefficients **c** (part energie) by poste horaire

@@ -9,7 +9,7 @@ Une boucle d'eau sort d'un procédé à ``38 degC`` et peut être refroidie jusq
 ``6 500 h/an``.
 
 .. figure:: ../images/012_chaleur_fatale_eau_refroidissement.svg
-   :alt: Schéma de récupération sur eau de refroidissement
+   :alt: Diagram de récupération on eau de refroidissement
    :align: center
 
    La source basse temperature est séparée de l'usage by un échangeur.
@@ -56,7 +56,7 @@ Lecture for l'utilisateur :
 
    La heat recovery on un compresseur d'air (ou tout autre rejet
    thermique) peut être valorisée en Energy Savings Certificates via la
-   fiche ``IND-UT-103``. Le calcul CEE est traité in le chapitre dédié :
+   fiche ``IND-UT-103``. The ESC calculation is handled in the dedicated chapter :
    voir :doc:`../011-cee/module_cee` (« Example 3 : heat recovery sur
    compresseur d'air »).
 
@@ -68,7 +68,7 @@ Une source à ``35 degC`` ne peut pas alimenter directement un usage à
 temperature with une pompe à chaleur.
 
 .. figure:: ../images/012_chaleur_fatale_pac.svg
-   :alt: Schéma de valorisation par pompe à chaleur
+   :alt: Diagram de valorisation by pompe à chaleur
    :align: center
 
    La pompe à chaleur relève le niveau de temperature au prix d'une
@@ -134,7 +134,7 @@ d'identifier la récupération maximale théorique before de dessiner les
 échangeurs.
 
 .. figure:: ../images/012_chaleur_fatale_pinch.svg
-   :alt: Schéma de préparation d'une analyse Pinch
+   :alt: Diagram de préparation d'une analyse Pinch
    :align: center
 
    Les hot and cold streams alimentent l'analyse, qui fournit les utilités
@@ -195,14 +195,14 @@ intégration, la totalité du besoin de chauffe ; seule une utilité froide de
 Plots générés by l'example (real outputs are shown) :
 
 .. figure:: ../images/012_chaleur_fatale_pinch_composites.svg
-   :alt: Courbes composites réelles (chaleur fatale)
+   :alt: Courbes composites réelles (waste heat)
    :align: center
 
    ``pinch.plot_composites_curves()`` : composites chaude et froide en
    temperatures décalées ; le recouvrement = 361 kW récupérables.
 
 .. figure:: ../images/012_chaleur_fatale_pinch_gcc.svg
-   :alt: Grande courbe composite réelle (chaleur fatale)
+   :alt: Grande courbe composite réelle (waste heat)
    :align: center
 
    ``pinch.plot_GCC()`` : la grande courbe composite touche l'axe au pincement

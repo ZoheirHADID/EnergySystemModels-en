@@ -1,12 +1,12 @@
 12. Waste Heat et rejets
 ============================
 
-Cette section aide l'utilisateur à qualifier, quantifier et valoriser les
+This section helps the user qualify, quantify and value
 rejets energy d'un site industriel ou tertiaire. Elle complète les
 chapitres on le transfert thermique, l'analyse Pinch, les cycles
 thermodynamiques et les CEE.
 
-Objectifs du chapitre
+Chapter Objectives
 ---------------------
 
 * Identifier les sources de waste heat : fumées, air extrait, eau de
@@ -16,7 +16,7 @@ Objectifs du chapitre
 * Hiérarchiser les usages possibles : préchauffage d'air neuf, eau chaude,
   chauffage de locaux, procédé, pompe à chaleur, réseau de chaleur.
 * Donner des examples reproductibles with les modules existants de la
-  bibliothèque.
+  library.
 
 .. toctree::
    :maxdepth: 2

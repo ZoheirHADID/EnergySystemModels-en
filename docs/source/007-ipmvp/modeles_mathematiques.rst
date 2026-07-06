@@ -27,7 +27,7 @@ Signature
     y_pred_report, df_report, conformite_report,
     table_incertitude_report, df_savings) = res
 
-Paramètres
+Parameters
 ----------
 
 * **y** : consommation energy (``Series`` indexée by le temps) ;

@@ -1,7 +1,7 @@
 Contexte IPMVP
 ==============
 
-Le module implémente l'Option C de l'IPMVP (analyse de bâtiment/site entier with model statistique).
+Le module implémente l'Option C de l'IPMVP (analysis of bâtiment/site entier with model statistique).
 
 Option C : Principe
 -------------------

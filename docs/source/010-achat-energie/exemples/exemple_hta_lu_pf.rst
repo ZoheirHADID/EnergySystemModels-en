@@ -66,13 +66,13 @@ Les figures ci-dessous sont les real outputs are shown de ``turpe_calculator.plo
 et ``turpe_calculator.plot_detail()`` for les data de l'example.
 
 .. figure:: ../../images/010_turpe_hta_lu_pf_plot.svg
-   :alt: Répartition Fourniture TURPE Taxes pour l'exemple HTA LU pointe fixe
+   :alt: Supply TURPE Taxes Breakdown for the example HTA LU fixed peak
    :align: center
 
    Répartition HTVA between fourniture, acheminement TURPE et taxes.
 
 .. figure:: ../../images/010_turpe_hta_lu_pf_plot_detail.svg
-   :alt: Détail des composantes de facture pour l'exemple HTA LU pointe fixe
+   :alt: Bill Component Details for the example HTA LU fixed peak
    :align: center
 
    Cascades détaillées by composante de fourniture, distribution et taxes.

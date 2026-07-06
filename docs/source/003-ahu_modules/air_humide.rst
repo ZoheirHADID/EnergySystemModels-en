@@ -160,7 +160,7 @@ Calcule la pressure de vapeur saturée as a function of la temperature.
 
 **Référence :** ASHRAE Handbook—Fundamentals (2013) - Chapitre 1 - Équations (5) et (6) - Hyland et Wexler 1983
 
-**Paramètres :**
+**Parameters :**
 
 - ``T_db`` : Temperature de bulbe sec (°C)
 
@@ -199,7 +199,7 @@ Calcule la pressure de vapeur saturée as a function of la temperature.
 
 Calcule l'humidité absolue (rapport de mélange) en g d'eau by kg d'air sec.
 
-**Paramètres :**
+**Parameters :**
 
 - ``RH`` : Humidité relative (%)
 - ``P`` : Pressure atmosphérique (Pa) - défaut : 101325 Pa
@@ -241,7 +241,7 @@ Calcule l'humidité absolue (rapport de mélange) en g d'eau by kg d'air sec.
 
 Calcule l'humidité relative en pourcentage.
 
-**Paramètres :**
+**Parameters :**
 
 - ``w`` : Humidité absolue (g/kg)
 - ``P`` : Pressure atmosphérique (Pa) - défaut : 101325 Pa
@@ -279,7 +279,7 @@ Calcule l'humidité relative en pourcentage.
 
 Calcule l'enthalpy de l'air humide en kJ/kg d'air sec.
 
-**Paramètres :**
+**Parameters :**
 
 - ``T_db`` : Temperature de bulbe sec (°C)
 - ``w`` : Humidité absolue (g/kg)
@@ -316,7 +316,7 @@ Calcule l'enthalpy de l'air humide en kJ/kg d'air sec.
 
 Calcule la temperature de bulbe sec à partir d'autres paramètres.
 
-**Paramètres :**
+**Parameters :**
 
 - ``RH`` : Humidité relative (%)
 - ``w`` : Humidité absolue (g/kg)
@@ -349,7 +349,7 @@ Calcule la temperature de bulbe sec à partir d'autres paramètres.
 
 Calcule la temperature de bulbe humide (temperature humide).
 
-**Paramètres :**
+**Parameters :**
 
 - ``T_db`` : Temperature de bulbe sec (°C)
 - ``RH`` : Humidité relative (%)
@@ -388,7 +388,7 @@ Calcule la temperature de bulbe humide (temperature humide).
 
 Calcule la temperature de rosée (point de rosée).
 
-**Paramètres :**
+**Parameters :**
 
 - ``w`` : Humidité absolue (g/kg)
 - ``P`` : Pressure atmosphérique (Pa) - défaut : 101325 Pa
@@ -435,7 +435,7 @@ Calcule la temperature de rosée (point de rosée).
 
 Calcule la masse volumique de l'air humide en kg/m³.
 
-**Paramètres :**
+**Parameters :**
 
 - ``T_db`` : Temperature de bulbe sec (°C)
 - ``RH`` : Humidité relative (%)
@@ -474,7 +474,7 @@ Calcule la masse volumique de l'air humide en kg/m³.
 
 Calcule le volume spécifique de l'air humide en m³/kg.
 
-**Paramètres :** (identiques à Air_rho_hum)
+**Parameters :** (identiques à Air_rho_hum)
 
 **Retour :** Volume spécifique (m³/kg)
 
@@ -501,7 +501,7 @@ Calcule le volume spécifique de l'air humide en m³/kg.
 
 Calcule la masse volumique de l'air sec en kg_air_sec/m³.
 
-**Paramètres :** (identiques à Air_rho_hum)
+**Parameters :** (identiques à Air_rho_hum)
 
 **Retour :** Masse volumique de l'air sec (kg/m³)
 
@@ -530,7 +530,7 @@ Calcule la masse volumique de l'air sec en kg_air_sec/m³.
 
 Calcule le volume spécifique de l'air sec en m³/kg_air_sec.
 
-**Paramètres :** (identiques à Air_rho_dry)
+**Parameters :** (identiques à Air_rho_dry)
 
 **Retour :** Volume spécifique de l'air sec (m³/kg)
 
@@ -554,7 +554,7 @@ Calcule le volume spécifique de l'air sec en m³/kg_air_sec.
 
 Calcule la fraction molaire de l'eau in l'air humide.
 
-**Paramètres :**
+**Parameters :**
 
 - ``T_db`` : Temperature de bulbe sec (°C)
 - ``T_wb`` : Temperature de bulbe humide (°C)
@@ -588,7 +588,7 @@ Calcule la temperature de bulbe humide en utilisant la formulation de Roland Stu
 
 **Référence :** Roland Stull, University of British Columbia (2011)
 
-**Paramètres :**
+**Parameters :**
 
 - ``Td`` : Temperature de bulbe sec (°C)
 - ``RH`` : Humidité relative (%)
@@ -616,7 +616,7 @@ Calcule la temperature de bulbe humide en utilisant la formulation de Roland Stu
 
 Calcule la temperature de saturation correspondant à une humidité absolue donnée.
 
-**Paramètres :**
+**Parameters :**
 
 - ``w_target`` : Humidité absolue cible (g/kg)
 

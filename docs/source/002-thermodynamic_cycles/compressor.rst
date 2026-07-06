@@ -8,7 +8,7 @@ n'est pas saisi directement on le compresseur : il provient d'un composant amont
 (``Source``, échangeur…) **connecté via** ``Fluid_connect(COMP.Inlet, amont.Outlet)``.
 La consigne haute pressure est donnée by ``HP_bar`` (ou ``Tcond_degC``).
 
-Paramètres
+Parameters
 ----------
 
 .. list-table::

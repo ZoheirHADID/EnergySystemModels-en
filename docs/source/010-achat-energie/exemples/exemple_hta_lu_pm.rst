@@ -2,7 +2,7 @@
 --------------------------------------------
 
 **Contexte** : Une usine chimique raccordee en HTA (20 kV), option Longue
-Usage pointe mobile. Fonctionnement continu 24h/24, power souscrite
+Usage mobile peak. Fonctionnement continu 24h/24, power souscrite
 500 kW. Facturation de fevrier 2025.
 
 La version LU (Longue Usage) est adaptee aux sites qui fonctionnent
@@ -73,13 +73,13 @@ Les figures ci-dessous sont les real outputs are shown de ``calc.plot()`` et
 ``calc.plot_detail()`` for les data de l'example.
 
 .. figure:: ../../images/010_turpe_hta_lu_pm_plot.svg
-   :alt: Répartition Fourniture TURPE Taxes pour l'exemple HTA LU pointe mobile
+   :alt: Supply TURPE Taxes Breakdown for the example HTA LU mobile peak
    :align: center
 
    Répartition HTVA between fourniture, acheminement TURPE et taxes.
 
 .. figure:: ../../images/010_turpe_hta_lu_pm_plot_detail.svg
-   :alt: Détail des composantes de facture pour l'exemple HTA LU pointe mobile
+   :alt: Bill Component Details for the example HTA LU mobile peak
    :align: center
 
    Cascades détaillées by composante de fourniture, distribution et taxes.

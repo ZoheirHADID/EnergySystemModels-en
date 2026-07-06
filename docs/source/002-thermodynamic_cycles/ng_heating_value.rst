@@ -7,7 +7,7 @@ Le module ``NG_Heating_Value`` calcule les propriétés thermodynamiques d'un ga
 
 Results : PCS (HHV), PCI (LHV), densité, indice de Wobbe, Cp, facteur de compressibilité Z.
 
-Paramètres
+Parameters
 ----------
 
 La composition est définie by une liste de ``GasComponent(formule, fraction_molaire)`` :

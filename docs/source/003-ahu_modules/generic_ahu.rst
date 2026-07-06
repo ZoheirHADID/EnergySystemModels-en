@@ -10,7 +10,7 @@ sur une série chronologique. Il expose **deux classes** according to le mode :
 * ``AirRecoveryAHU`` — CTA with **récupération** de chaleur on l'air extrait
   (échangeur air/air).
 
-Chaque classe s'instancie with ``Object(config: dict, data: pandas.DataFrame)``,
+Each class is instantiated with ``Object(config: dict, data: pandas.DataFrame)``,
 then ``calculate()`` remplit le DataFrame de results ``ahu.df`` (une ligne par
 time step).
 

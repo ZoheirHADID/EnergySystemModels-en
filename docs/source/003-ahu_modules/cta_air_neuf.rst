@@ -63,9 +63,9 @@ Usage
 - **Batterie chauffage (BC)** : T_output=20°C, RH=29.8%, Q_th=15.9 kW
 - **Humidificateur (HMD)** : T_output=20.6°C, RH=53.1%, w_output=8 g/kg_sec, F_eau=0.0039 kg/s
 
-Chaque composant retourne un DataFrame (``df``) with les détails complets.
+Each component returns a DataFrame (``df``) with les détails complets.
 
-Paramètres possibles
+Possible Parameters
 --------------------
 
 **FreshAir (Air neuf)** :
@@ -104,7 +104,7 @@ Explication du model
 
 Ce model simule une Centrale de Traitement d'Air (CTA) simple composée de trois éléments en série :
 
-1. **Prise d'air neuf** : Introduction d'air extérieur with conditions définies (T, RH, flow rate)
+1. **Fresh air intake** : Outdoor air introduction with defined conditions (T, RH, flow rate)
 2. **Batterie de chauffage** : Réchauffage de l'air à temperature constante d'humidité absolue
 3. **Humidificateur** : Ajout d'humidité by injection de vapeur ou évaporation adiabatique
 

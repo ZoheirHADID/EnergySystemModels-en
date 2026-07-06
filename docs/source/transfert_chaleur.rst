@@ -8,7 +8,7 @@ The image below shows un example de transfert de chaleur confectif et radiatif �
    :width: 300px
    :align: center
 
-Les déperditions de chaleur à travers les parois de l'échangeur de chaleur à plaques peuvent être calculées en utilisant la classe PlateHeatTransfer. Cette classe allows calculer les déperditions de chaleur à travers les parois horizontales et verticales de l'échangeur de chaleur à plaques. Les déperditions de chaleur à travers les parois horizontales et verticales peuvent être calculées en utilisant les paramètres suivants :
+Heat losses through the plate heat exchanger walls can be calculated using the PlateHeatTransfer class. This class calculates heat losses through the horizontal and vertical walls of the plate heat exchanger. Heat losses through the horizontal and vertical walls can be calculated using the following parameters :
 
 .. code-block:: python
 
@@ -78,8 +78,8 @@ Explanation of Equations Used
 
 La classe `PlateHeatTransfer` utilise différentes équations to calculate les déperditions de chaleur as a function of l'orientation de la plaque (horizontale ou verticale). Voici les principales équations utilisées :
 
-Paramètres calculés
-~~~~~~~~~~~~~~~~~~~~
+Calculated Parameters
+~~~~~~~~~~~~~~~~~~~~~
 
 **Temperature du film (Tf)** : Temperature moyenne between la paroi et l'air ambiant.
 

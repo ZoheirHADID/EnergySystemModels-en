@@ -133,12 +133,12 @@ Règles de conception
 2. **Zone au-dessus du Pinch** :
    
    * Respecter CPchaud ≥ CPfroid for chaque échangeur
-   * Utiliser uniquement des utilités chaudes
+   * Utiliser only des utilités chaudes
 
 3. **Zone en-dessous du Pinch** :
    
    * Respecter CPchaud ≤ CPfroid for chaque échangeur
-   * Utiliser uniquement des utilités froides
+   * Utiliser only des utilités froides
 
 4. **Règle du tick-off** : apparier les flux en priorité for satisfaire les objectifs de récupération
 
@@ -183,11 +183,11 @@ Il est important d'analyser la robustesse de la solution vis-à-vis de :
 * Disponibilité des flux (arrêts, maintenance)
 * Modes opératoires différents (démarrage, arrêt, régime partiel)
 
-Outils for l'analyse de sensibilité :
+Outils for l'analysis of sensibilité :
 
 * **Grid diagram** : visualisation de la flexibilité du réseau
 * **Plus-Minus principle** : calcul des marges de sécurité
-* **Driving force plots** : analyse des forces motrices d'échange
+* **Driving force plots** : analysis ofs forces motrices d'échange
 
 Logiciels disponibles
 ----------------------

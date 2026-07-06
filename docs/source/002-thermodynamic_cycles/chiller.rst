@@ -6,13 +6,13 @@ Chiller (Groupe froid / PAC)
 Le module ``Chiller`` modélise un cycle frigorifique complet : évaporateur, compresseur, désurchauffeur, condenseur, détendeur. En mode PAC, la chaleur au condenseur est valorisée.
 
 .. figure:: ../images/002_chiller_cycle.svg
-   :alt: Schéma du cycle frigorifique Chiller
+   :alt: Diagram du cycle frigorifique Chiller
    :align: center
 
    Le fluid frigorigène traverse successivement l'évaporateur, le
    compresseur, le désurchauffeur, le condenseur et le détendeur.
 
-Paramètres
+Parameters
 ----------
 
 .. list-table::
@@ -55,7 +55,7 @@ Example
     # ch.plot(figsize=(12, 7))  # taille personnalisée
     # ch.plot_TS_diagram()      # alias de ch.plot()
 
-Output ``ch.df`` (valeurs réelles for l'example ci-dessus, R134a) :
+Output ``ch.df`` (valeurs réelles for the example ci-dessus, R134a) :
 
 .. list-table::
    :widths: 40 30 30
@@ -125,7 +125,7 @@ sous-refroidissement, détente et retour à l'évaporateur.
    :align: center
 
    Output réelle de ``ch.plot()`` for le cycle R134a de l'example (générée en
-   exécutant la bibliothèque). Les points rouges parcourent le cycle
+   exécutant the library). Les points rouges parcourent le cycle
    frigorifique in le sens horaire.
 
 Étude paramétrique
@@ -225,7 +225,7 @@ Extrait de ``df_study`` (R134a) — une ligne by couple (source, cible) valide :
 Plot sauvegardé by l'étude paramétrique (argument ``save_fig``) :
 
 .. figure:: ../images/002_chiller_plot_parametric.svg
-   :alt: Plot paramétrique réel COP et puissance compresseur Chiller
+   :alt: Plot paramétrique réel COP et power compresseur Chiller
    :align: center
 
    Output réelle : figure à deux panneaux — à gauche le COP chauffage en

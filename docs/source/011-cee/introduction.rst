@@ -1,5 +1,5 @@
-Introduction au Module CEE
-==========================
+Introduction to the ESC Module
+==============================
 
 Le module ``CEE`` d'EnergySystemModels aide à estimer rapidement les
 certificats d'économies d'energy associés à certaines opérations

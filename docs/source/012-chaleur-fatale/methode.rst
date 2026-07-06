@@ -148,7 +148,7 @@ Example de description minimale :
      ]
    }
 
-Cette approche garde la figure synchronisée with l'example : l'utilisateur lit
+This approach keeps the figure synchronized with the example : the user reads
 le diagram, le code et l'interprétation in le même ordre.
 
 Indicateurs à présenter à l'utilisateur

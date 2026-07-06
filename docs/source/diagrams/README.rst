@@ -6,7 +6,7 @@ Diagrammes de documentation
 Ce dossier contient les descriptions ``JSON`` utilisées for générer les
 figures de principe de la documentation.
 
-Chaque fichier décrit :
+Each file describes :
 
 * des ``nodes`` : composants, sources, usages, pertes, utilités ;
 * des ``edges`` : flux de chaleur, fluid, électricité, économie ou calcul ;

@@ -1,7 +1,7 @@
 Energy Savings Certificates
 ===================================
 
-Cette page présente un example by **fiche d'opération standardisée** réellement
+This page presents one example per **standardized operation sheet** actually
 supportée by le module ``CEE``, rangé by secteur. Seules les fiches **en
 vigueur** au catalogue officiel sont documentées (voir la note on les fiches
 obsolètes en fin de page).
@@ -34,7 +34,7 @@ IND-UT-103 — Récupération de chaleur on un compresseur d'air
 -------------------------------------------------------------
 
 .. figure:: ../images/012_chaleur_fatale_compresseur_cee.svg
-   :alt: Récupération de chaleur sur compresseur d'air (IND-UT-103)
+   :alt: Récupération de chaleur on compresseur d'air (IND-UT-103)
    :align: center
 
    La chaleur du compresseur est récupérée for un usage (chauffage, ECS ou
@@ -188,7 +188,7 @@ Projet multi-opérations
    :alt: Projet CEE multi-opérations
    :align: center
 
-   Chaque opération produit une ligne de result ; le rapport agrège ensuite
+   Each operation produces one result row ; the report then aggregates
    les volumes et les primes.
 
 .. code-block:: python

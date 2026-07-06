@@ -69,7 +69,7 @@ Output réelle
    stat_t_const    -4.80             False
    stat_t_DJU      13.60              True
 
-Le model explique 81 % de la variance (``r2`` = 0,81) et la variable DJU est
+The model explique 81 % de la variance (``r2`` = 0,81) et la variable DJU est
 significative (``stat_t_DJU``), mais le ``cv_remse`` (0,53) dépasse le seuil
 IPMVP — indiquant une dispersion résiduelle à améliorer (variables explicatives
 supplémentaires, granularité, etc.).

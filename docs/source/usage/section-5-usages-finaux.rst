@@ -11,7 +11,7 @@ Le module AHU allows modéliser les centrales de traitement d'air with leurs dif
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: ../images/003_ahu_fresh_air.png
-   :alt: Schéma mélange air neuf
+   :alt: Diagram mélange air neuf
    :align: center
    :width: 600px
 
@@ -591,7 +591,7 @@ Rapport IPMVP complet
 5.4. Modèle RC de bâtiment
 ---------------------------
 
-Le model RC (Résistance-Capacité) allows simuler le comportement thermique dynamique d'un bâtiment.
+The model RC (Résistance-Capacité) allows simuler le comportement thermique dynamique d'un bâtiment.
 
 Modèle RC simple (1R1C)
 ~~~~~~~~~~~~~~~~~~~~~~~~

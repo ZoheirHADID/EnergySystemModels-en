@@ -146,7 +146,7 @@ reseau de distribution (GRDF ou regie locale).
    ATRD = ATRD_fixe + (CJA x tarif_capacite x nb_jour)
           + (distance_km x tarif_distance / 365 x nb_jour)
 
-**Souscription de capacite distribution (T4 et TP uniquement) :**
+**Souscription de capacite distribution (T4 et TP only) :**
 
 Pour les tarifs **T4** et **TP**, l'ATRD comprend un **terme de souscription de capacite**
 qui depend de la CJA (Capacite Journaliere Annuelle) souscrite in le contrat.
@@ -761,7 +761,7 @@ Voir :ref:`calcul de la modulation <calcul-modulation>` for le detail du calcul 
 .. note::
 
    Le coefficient de stockage est tres volatile car il depend directement du resultat
-   des encheres de capacite de stockage souterrain. Ce coefficient s'applique uniquement
+   des encheres de capacite de stockage souterrain. Ce coefficient s'applique only
    a la part de **modulation hivernale**. Voir :ref:`calcul de la modulation <calcul-modulation>` for le detail.
 
 **Cout unitaire annuel ATRT hors stockage (naTran/GRTgaz PITD, NTR=2) :**
@@ -1015,11 +1015,11 @@ La TVA on le gaz naturel en France comporte historiquement **deux taux distincts
 .. note::
 
    Dethen le **1er aout 2025**, le taux reduit de 5,5% on l'abonnement est supprime.
-   La TVA est desormais de **20% on l'ensemble de la facture**. Cette modification
+   La TVA est desormais de **20% on l'ensemble de la facture**. This change
    fait suite a une directive europeenne interdisant l'application de taux differents
    sur des elements indissociables d'un meme service.
 
-   Le modele EnergySystemModels charge les taux from ``coefficients_gaz_TVA.json``
+   The modele EnergySystemModels charge les taux from ``coefficients_gaz_TVA.json``
    et gere automatiquement la **proratisation** si la facture chevauche un changement
    de taux (ex. facture juillet-aout 2025).
 
@@ -1384,7 +1384,7 @@ en Ile-de-France with un contrat T4.
      - Niveau tarifaire regional
    * - distance
      - >= 0 ou None
-     - Distance en km (uniquement for le tarif TP)
+     - Distance en km (only for le tarif TP)
 
 **Declarer une facture gaz** (``input_Facture``) :
 

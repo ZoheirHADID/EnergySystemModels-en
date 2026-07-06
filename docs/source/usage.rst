@@ -16,8 +16,8 @@ Pour utiliser EnergySystemModels, installez-le d'abord en utilisant pip :
 Overview
 --------------
 
-EnergySystemModels est une bibliothèque Python complète for la modélisation et l'analyse des systems energy.
-Cette documentation est organisée according to la **chaîne de valeur energy**, du fournisseur jusqu'à l'usage final :
+EnergySystemModels est une library Python complète for la modélisation and analysis energy systems.
+This documentation is organized according to the **energy value chain**, from supplier to end use :
 
 1. **Achat et Facturation** : TURPE, CEE
 2. **Data et Production** : Meteorology, Photovoltaics

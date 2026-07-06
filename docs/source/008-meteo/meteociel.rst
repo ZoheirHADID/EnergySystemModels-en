@@ -32,7 +32,7 @@ météo d'une station MeteoCiel et calcule les degrés-jours unifiés (DJU).
    print(df_month[['Température', 'DJU_Chauffage', 'DJU_Rafraichissement']])
 
 .. note::
-   Cette fonction effectue des requêtes HTTP to meteociel.fr (accès réseau
+   This function sends HTTP requests to meteociel.fr (network access
    requis) et dépend des paquets ``beautifulsoup4`` (bs4) et ``tqdm``. Les
    ``DJU_Chauffage`` / ``DJU_Rafraichissement`` sont calculés by la method
    COSTIC (voir :doc:`degres_jours`).

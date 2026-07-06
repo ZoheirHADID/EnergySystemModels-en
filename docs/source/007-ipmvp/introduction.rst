@@ -1,5 +1,5 @@
-Introduction au module IPMVP
-==============================
+Introduction to the IPMVP Module
+================================
 
 Objectif
 --------

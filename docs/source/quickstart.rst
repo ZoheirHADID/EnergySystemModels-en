@@ -18,7 +18,7 @@ Installation
 Method standard
 ----------------
 
-Installez la bibliothèque via pip :
+Install the library with pip :
 
 .. code-block:: console
 
@@ -97,7 +97,7 @@ Voici un example minimal for illustrer le principe :
 Modules disponibles
 ===================
 
-La bibliothèque est organisée en modules thématiques :
+La library is organized into thematic modules :
 
 Transfer thermique
 -------------------

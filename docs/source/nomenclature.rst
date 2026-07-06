@@ -3,7 +3,7 @@
 Nomenclature générale
 =====================
 
-Cette page regroupe l'ensemble des symboles, paramètres et variables utilisés in la bibliothèque EnergySystemModels.
+This page groups all symbols, parameters and variables used in the EnergySystemModels library.
 
 Transfer thermique (HeatTransfer)
 ----------------------------------
@@ -344,7 +344,7 @@ Flow rates d'air
      - kg/s
      - Humidifier
 
-Paramètres de traitement
+Processing Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table:: 

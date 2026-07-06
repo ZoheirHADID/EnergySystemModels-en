@@ -5,7 +5,7 @@ Example 1 : Simulation site industriel
 ----------------------------------------
 
 .. figure:: ../images/009_pv_site_industriel.svg
-   :alt: Schéma de simulation photovoltaïque d'un site industriel
+   :alt: Diagram de simulation photovoltaïque d'un site industriel
    :align: center
 
    Le site fournit la localisation, PVGIS fournit la météo, then pvlib calcule
@@ -83,10 +83,10 @@ Example 2 : Étude paramétrique d'orientation
 ----------------------------------------------
 
 .. figure:: ../images/009_pv_orientation.svg
-   :alt: Schéma d'étude paramétrique d'orientation photovoltaïque
+   :alt: Diagram d'étude paramétrique d'orientation photovoltaïque
    :align: center
 
-   Chaque scénario d'orientation est simulé, then comparé in un tableau
+   Each orientation scenario is simulated, then comparé in un tableau
    annuel et un graphe mensuel.
 
 .. code-block:: python

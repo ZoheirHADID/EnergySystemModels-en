@@ -2,7 +2,7 @@
 --------------------------------------------
 
 **Contexte** : Un site industriel agroalimentaire raccorde en HTA (20 kV),
-option Courte Usage pointe fixe. Power souscrite 500 kW,
+option Courte Usage fixed peak. Power souscrite 500 kW,
 consommation hivernale typique. Facturation de fevrier 2025.
 
 .. code-block:: python
@@ -76,13 +76,13 @@ Les figures ci-dessous sont les real outputs are shown de ``calc.plot()`` et
 ``calc.plot_detail()`` for les data de l'example.
 
 .. figure:: ../../images/010_turpe_hta_cu_pf_plot.svg
-   :alt: Répartition Fourniture TURPE Taxes pour l'exemple HTA CU pointe fixe
+   :alt: Supply TURPE Taxes Breakdown for the example HTA CU fixed peak
    :align: center
 
    Répartition HTVA between fourniture, acheminement TURPE et taxes.
 
 .. figure:: ../../images/010_turpe_hta_cu_pf_plot_detail.svg
-   :alt: Détail des composantes de facture pour l'exemple HTA CU pointe fixe
+   :alt: Bill Component Details for the example HTA CU fixed peak
    :align: center
 
    Cascades détaillées by composante de fourniture, distribution et taxes.

@@ -63,12 +63,12 @@ Le calcul retourne :
   - Transfer by rayonnement [W]
   - Transfer total by face [W]
 
-Paramètres possibles
+Possible Parameters
 --------------------
 
 **Configuration des faces** (dictionnaire ``faces_config``) :
 
-Chaque face peut avoir :
+Each face can have :
 
 - ``'Tp'`` : Temperature de paroi [°C]
 - ``'isolated'`` : ``True`` ou ``False`` (face isolée ou non)

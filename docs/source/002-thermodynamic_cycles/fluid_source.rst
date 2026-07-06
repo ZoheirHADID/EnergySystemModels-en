@@ -51,7 +51,7 @@ Sm³/s, et l'enthalpy de output ``Outlet.h`` [J/kg].
    ``SOURCE.Ti_degC`` est **obligatoire** : without elle, ``calculate()`` lève une
    ``TypeError`` (temperature à ``None``).
 
-Paramètres possibles
+Possible Parameters
 --------------------
 
 **Fluids disponibles in CoolProp**
@@ -112,7 +112,7 @@ Paramètres possibles
 Explication du model
 ----------------------
 
-Le model Fluid Source calcule le flow rate massique as a function of diverses conditions d'input et des propriétés of the fluid. Le model utilise la bibliothèque CoolProp for déterminer les propriétés of the fluid et effectue les calculs suivants :
+The model Fluid Source calcule le flow rate massique as a function of diverses conditions d'input et des propriétés of the fluid. The model utilise the library CoolProp for déterminer les propriétés of the fluid et effectue les calculs suivants :
 
 1. Convertir les flow rates volumiques en flow rates massiques en utilisant la densité of the fluid.
 2. Calculer l'enthalpy de output et déterminer la qualité of the fluid (liquide, vapeur, diphasique ou supercritique).

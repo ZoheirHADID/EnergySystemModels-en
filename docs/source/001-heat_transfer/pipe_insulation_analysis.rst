@@ -94,7 +94,7 @@ Le calcul retourne :
   - Temperatures aux interfaces [°C]
   - Déperditions by convection et rayonnement [W]
 
-Paramètres possibles
+Possible Parameters
 --------------------
 
 **Matériaux de tuyau disponibles (material)** :
@@ -196,7 +196,7 @@ Le calcul prend en compte :
 4. **Convection externe** : Transfer between la surface et l'air ambiant (convection naturelle)
 5. **Rayonnement** : Émission thermique to l'environnement
 
-Le model détermine automatiquement :
+The model détermine automatiquement :
 
 - Le régime d'écoulement (laminaire ou turbulent)
 - Les propriétés thermophysiques of the fluid via CoolProp

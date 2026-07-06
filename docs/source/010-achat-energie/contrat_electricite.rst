@@ -216,9 +216,9 @@ The general TURPE formula is therefore :
    * - CU_pm
      - SC Contract (Single Contract) with mobile peak
    * - LU_pf
-     - Contrat LU (Longue Usage) with pointe fixe
+     - Contrat LU (Longue Usage) with fixed peak
    * - LU_pm
-     - Contrat LU (Longue Usage) with pointe mobile
+     - Contrat LU (Longue Usage) with mobile peak
 
 ***Déclarer vos tarifs***
 

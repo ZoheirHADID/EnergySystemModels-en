@@ -38,7 +38,7 @@ Output ``pv.df`` :
    Production / module (kWh/an)        306.9
    Productivite (kWh/kWc/an)            1397
 
-Paramètres
+Parameters
 ----------
 
 * **latitude/longitude** : Coordata GPS du site

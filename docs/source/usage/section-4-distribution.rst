@@ -11,7 +11,7 @@ Section 4 : Distribution de l'energy
 Le module CompositeWall allows calculer les transferts thermiques à travers des parois multicouches.
 
 .. image:: ../images/001_heat_transfer_composite_wall.png
-   :alt: Schéma d'une paroi composite
+   :alt: Diagram d'une paroi composite
    :align: center
    :width: 600px
 
@@ -235,7 +235,7 @@ Example : Optimisation de l'épaisseur d'isolation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: ../images/004_hydraulic_straight_pipe.png
-   :alt: Schéma tuyauterie droite
+   :alt: Diagram tuyauterie droite
    :align: center
    :width: 500px
 

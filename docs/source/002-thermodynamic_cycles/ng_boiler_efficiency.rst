@@ -14,7 +14,7 @@ Fonctionnalités
 * Port fumées (``FG_Outlet``) with composition, enthalpy, point de rosée
 * Adaptation automatique du flow rate GN au besoin thermique côté eau
 
-Paramètres
+Parameters
 ----------
 
 .. list-table::
