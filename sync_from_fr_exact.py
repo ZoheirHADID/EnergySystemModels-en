@@ -665,25 +665,11 @@ regulated public framework, regardless of the country or unit used.
    contrat_electricite
    contrat_gaz
    guide_audit_facture
-
-Examples
---------
-
-.. toctree::
-   :maxdepth: 1
-   :caption: TURPE Examples
-
-   exemples/exemple_hta_cu_pf
-   exemples/exemple_hta_cu_pm
-   exemples/exemple_hta_lu_pf
-   exemples/exemple_hta_lu_pm
-   exemples/exemple_bt_m36_cu4
-   exemples/exemple_bt_p36_cu
 """
     if rel == "gui_tools.rst":
         original = content.splitlines()
         try:
-            start = original.index("Installation and Launch")
+            start = original.index("Port Convention")
         except ValueError:
             return content
         polished_intro = """.. _gui_tools:
@@ -720,6 +706,54 @@ The usage principle is always the same:
 5. Fill in the parameters.
 6. Evaluate the graph or the output node.
 7. Save the project in ``.json`` format.
+
+Installation and Launch
+-------------------------
+
+The graphical interfaces require ``PyQt5``. In a development environment, also
+install the library in editable mode or add the ``src`` folder to
+``PYTHONPATH``.
+
+.. code-block:: console
+
+   pip install -e .
+   pip install PyQt5
+
+From the source repository:
+
+.. code-block:: powershell
+
+   cd A:\\OneDrive\\_Github_\\EnergySystemModels
+   $env:PYTHONPATH = "$PWD\\src"
+   python -m PyqtSimulator.main
+
+The script creates a ``QApplication``, applies the ``Fusion`` style, then opens
+``CalculatorWindow``. The window contains an MDI workspace and a node palette.
+Each palette item comes from the ``CALC_NODES`` registry.
+
+PyqtSimulator Interface
+-----------------------
+
+The main window groups the following elements:
+
+``Nodes``
+   Side palette. It lists the classes registered with ``@register_node(...)``.
+   Dragging an item creates a node in the scene.
+
+``Workspace``
+   NodeEditor scene. Nodes are placed, moved and connected there.
+
+``File menu``
+   Creation, opening and saving of graphs. Projects are stored as JSON by the
+   NodeEditor engine.
+
+``Context menu``
+   Right-click a node to evaluate it, mark it invalid, or force recalculation
+   of its descendants. Right-click a connection to choose the curve type.
+
+``Output node``
+   Final display node. It triggers upstream evaluation and presents the fluid,
+   flow rate, pressure, enthalpy, temperature and volumetric flow rate.
 
 """
         return polished_intro + "\n".join(original[start:]) + "\n"
@@ -838,4 +872,112 @@ def translate_json(content: str) -> str:
 
 
 def translate_conf(content: str) -> str:
-    content = content.replace("copyright = '2024-2025, Zoheir HAD
+    content = content.replace("copyright = '2024-2025, Zoheir HADID'", "copyright = '2024-2025, Zoheir HADID'")
+    if "language =" not in content:
+        content = content.replace("templates_path = ['_templates']\n", "templates_path = ['_templates']\nlanguage = 'en'\n")
+    else:
+        content = re.sub(r"language\s*=\s*['\"].*?['\"]", "language = 'en'", content)
+    return content
+
+
+def render_file(src: Path, dest: Path) -> str:
+    suffix = src.suffix.lower()
+    relative = src.relative_to(FR_ROOT)
+    if suffix in TEXT_SUFFIXES:
+        text = src.read_text(encoding="utf-8")
+        if src.name == "conf.py":
+            output = translate_conf(text)
+        elif suffix == ".json":
+            output = translate_json(text)
+        elif suffix == ".rst":
+            output = translate_rst(text, relative)
+        else:
+            output = translate_plain_text(text)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        previous = dest.read_text(encoding="utf-8") if dest.exists() else None
+        dest.write_text(output, encoding="utf-8")
+        return "updated" if previous != output else "unchanged"
+
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    previous = dest.read_bytes() if dest.exists() else None
+    data = src.read_bytes()
+    dest.write_bytes(data)
+    return "updated" if previous != data else "unchanged"
+
+
+def iter_source_files(root: Path) -> list[Path]:
+    return sorted(path for path in root.rglob("*") if path.is_file())
+
+
+def main() -> None:
+    if not FR_ROOT.exists():
+        raise SystemExit(f"French source tree not found: {FR_ROOT}")
+    EN_ROOT.mkdir(parents=True, exist_ok=True)
+
+    fr_files = iter_source_files(FR_ROOT)
+    expected = {path.relative_to(FR_ROOT) for path in fr_files}
+    existing = {path.relative_to(EN_ROOT) for path in iter_source_files(EN_ROOT)}
+
+    created: list[str] = []
+    updated: list[str] = []
+    unchanged: list[str] = []
+    removed: list[str] = []
+
+    for src in fr_files:
+        rel = src.relative_to(FR_ROOT)
+        dest = EN_ROOT / rel
+        existed = dest.exists()
+        state = render_file(src, dest)
+        if not existed:
+            created.append(str(rel))
+        elif state == "updated":
+            updated.append(str(rel))
+        else:
+            unchanged.append(str(rel))
+
+    for rel in sorted(existing - expected):
+        target = EN_ROOT / rel
+        target.unlink()
+        removed.append(str(rel))
+
+    for directory in sorted((path for path in EN_ROOT.rglob("*") if path.is_dir()), reverse=True):
+        try:
+            directory.rmdir()
+        except OSError:
+            pass
+
+    report = [
+        "# EnergySystemModels EN Synchronization Report",
+        "",
+        "Source of truth: `EnergySystemModels-fr/docs/source`.",
+        "Destination: `EnergySystemModels-en/docs/source`.",
+        "",
+        f"- Created: {len(created)}",
+        f"- Updated: {len(updated)}",
+        f"- Unchanged: {len(unchanged)}",
+        f"- Removed obsolete files: {len(removed)}",
+        "",
+        "## Created",
+        *[f"- `{item}`" for item in created],
+        "",
+        "## Updated",
+        *[f"- `{item}`" for item in updated],
+        "",
+        "## Removed",
+        *[f"- `{item}`" for item in removed],
+        "",
+        "## Notes",
+        "- Binary assets are copied exactly from the French documentation.",
+        "- Text files are translated with the deterministic local glossary.",
+        "- File names and toctree paths intentionally match the French source tree.",
+    ]
+    REPORT.write_text("\n".join(report) + "\n", encoding="utf-8")
+    print(f"Created: {len(created)}")
+    print(f"Updated: {len(updated)}")
+    print(f"Unchanged: {len(unchanged)}")
+    print(f"Removed obsolete files: {len(removed)}")
+    print(f"Report: {REPORT}")
+
+
+if __name__ == "__main__":
+    main()

@@ -3,51 +3,49 @@
 Graphical Interfaces and Visual Tools
 =======================================
 
-EnergySystemModels contains several visual building blocks to build,
-test and present energy models. This page serves as a working guide:
-it explains how to launch the PyQt simulator, how to read a
-graph, comment ajouter un nouveau node et comment documenter les results
-avec les figures actually produites by the library.
+EnergySystemModels contains several visual building blocks to build, test and
+present energy models. This page is a working guide: it explains how to launch
+the PyQt simulator, read a graph, add a new node and document results with the
+figures actually produced by the library.
 
 Overview
 --------------
 
 The main graphical simulator is ``PyqtSimulator``. It relies on the
-moteur ``NodeEditor`` for manipuler des nodes et des connexions, then calls
-les models physiques de the library : compressor, exchanger, pump,
-coil, humidifier, heater, etc.
+``NodeEditor`` engine to manipulate nodes and connections, then calls the
+library's physical models: compressor, exchanger, pump, coil, humidifier,
+heater, etc.
 
 .. figure:: images/gui_pyqtsimulator_architecture.svg
    :alt: PyQt simulator architecture
    :align: center
 
-   General architecture : the PyQt window hosts a NodeEditor scene, les
-   nodes enregistrés appellent les models EnergySystemModels, then les valeurs
-   are displayed or saved.
+   General architecture: the PyQt window hosts a NodeEditor scene, registered
+   nodes call EnergySystemModels models, then values are displayed or saved.
 
-Le principe d'usage est toujours le même :
+The usage principle is always the same:
 
-1. Lancer l'interface.
-2. Créer une nouvelle scène.
-3. Glisser des nodes from la palette.
-4. Relier les outputs aux inputs.
-5. Renseigner les paramètres.
-6. Évaluer le graph ou le node de output.
-7. Sauvegarder le projet au format ``.json``.
+1. Launch the interface.
+2. Create a new scene.
+3. Drag nodes from the palette.
+4. Connect outputs to inputs.
+5. Fill in the parameters.
+6. Evaluate the graph or the output node.
+7. Save the project in ``.json`` format.
 
 Installation and Launch
 -------------------------
 
-Les interfaces requiresnt ``PyQt5``. Dans un environnement de développement,
-also install the library en mode éditable ou add the folder ``src``
-au ``PYTHONPATH``.
+The graphical interfaces require ``PyQt5``. In a development environment, also
+install the library in editable mode or add the ``src`` folder to
+``PYTHONPATH``.
 
 .. code-block:: console
 
    pip install -e .
    pip install PyQt5
 
-Dethen le dépôt source :
+From the source repository:
 
 .. code-block:: powershell
 
@@ -55,35 +53,33 @@ Dethen le dépôt source :
    $env:PYTHONPATH = "$PWD\src"
    python -m PyqtSimulator.main
 
-Le script crée une ``QApplication``, applique le style ``Fusion`` then ouvre
-``CalculatorWindow``. La fenêtre contient une zone MDI et une palette de nodes.
-Each palette item comes from the registry ``CALC_NODES``.
+The script creates a ``QApplication``, applies the ``Fusion`` style, then opens
+``CalculatorWindow``. The window contains an MDI workspace and a node palette.
+Each palette item comes from the ``CALC_NODES`` registry.
 
 PyqtSimulator Interface
 -----------------------
 
-La fenêtre principale regroupe les éléments suivants :
+The main window groups the following elements:
 
 ``Nodes``
-   Palette latérale. Elle liste les classes enregistrées par
-   ``@register_node(...)``. Un glisser-déposer crée un node in la scène.
+   Side palette. It lists the classes registered with ``@register_node(...)``.
+   Dragging an item creates a node in the scene.
 
-``Zone de travail``
-   Scène NodeEditor. Les nodes y sont placés, déplacés et connectés.
+``Workspace``
+   NodeEditor scene. Nodes are placed, moved and connected there.
 
-``Menu fichier``
-   Création, ouverture et sauvegarde des graphs. Les projets sont stockés en
-   JSON by le moteur NodeEditor.
+``File menu``
+   Creation, opening and saving of graphs. Projects are stored as JSON by the
+   NodeEditor engine.
 
-``Menu contextuel``
-   Clic droit on un node for l'évaluer, le marquer invalide ou forcer le
-   recalcul de ses descendants. Clic droit on une connexion for choisir le
-   type de courbe.
+``Context menu``
+   Right-click a node to evaluate it, mark it invalid, or force recalculation
+   of its descendants. Right-click a connection to choose the curve type.
 
-``Node Output``
-   Node d'affichage final. Il déclenche l'évaluation amont et présente le
-   fluid, le flow rate, la pressure, l'enthalpy, la temperature et le flow rate
-   volumique.
+``Output node``
+   Final display node. It triggers upstream evaluation and presents the fluid,
+   flow rate, pressure, enthalpy, temperature and volumetric flow rate.
 
 Port Convention
 --------------------

@@ -4,19 +4,14 @@ Source of truth: `EnergySystemModels-fr/docs/source`.
 Destination: `EnergySystemModels-en/docs/source`.
 
 - Created: 0
-- Updated: 6
-- Unchanged: 137
+- Updated: 1
+- Unchanged: 142
 - Removed obsolete files: 0
 
 ## Created
 
 ## Updated
-- `009-pv-solaire\exemples.rst`
-- `010-achat-energie\index.rst`
-- `012-chaleur-fatale\methode.rst`
-- `diagrams\gui_evaluation_flow.json`
-- `diagrams\gui_pyqtsimulator_architecture.json`
-- `gui_tools.rst`
+- `004-hydraulic\perte_pression_lineaire.rst`
 
 ## Removed
 

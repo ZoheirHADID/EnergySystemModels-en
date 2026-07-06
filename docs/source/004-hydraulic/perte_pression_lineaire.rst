@@ -67,7 +67,7 @@ Usage
 **Sink** :
 
 - P_output : 63373 Pa (0.63 bar)
-- Density : 997.2 kg/m³
+- Density : 997.0 kg/m³
 - Quality fluid : liquide
 
 **Courbe de network :**
@@ -106,7 +106,8 @@ Possible Parameters
   - PVC/Plastique : 0.0000015 m
   - Cuivre : 0.0000015 m
 
-- ``alpha`` : Angle d'inclinaison [rad] (optionnel, défaut: 0)
+- ``alpha`` : Angle d'inclinaison du tube by rapport à l'horizontale [rad]
+  (optionnel, défaut : π/2, soit un tube vertical)
 - ``Inlet`` : Connecté via ``Fluid_connect()``
 
 **Sink.Object()** :
