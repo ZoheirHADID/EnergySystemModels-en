@@ -3,7 +3,7 @@
 Diagrammes de documentation
 ===========================
 
-Ce dossier contient les descriptions ``JSON`` utilisées for générer les
+Ce dossier contient les descriptions ``JSON`` useds for générer les
 figures de principe de la documentation.
 
 Each file describes :
@@ -18,5 +18,5 @@ Pour régénérer les figures ``SVG`` :
 
    python docs/generate_diagrams.py
 
-Les images générées sont écrites in ``docs/source/images`` et peuvent être
+Les images générées sont écrites in ``docs/source/images`` et can be
 référencées in les pages ``.rst`` with la directive ``figure``.

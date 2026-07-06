@@ -33,7 +33,7 @@
     {
       "id": "node",
       "label": "Noeud ESMNode",
-      "subtitle": "champs, ports, resultats",
+      "subtitle": "champs, ports, results",
       "kind": "exchange",
       "column": 3
     },
@@ -71,7 +71,7 @@
     {
       "from": "scene",
       "to": "node",
-      "label": "graphe"
+      "label": "graph"
     },
     {
       "from": "node",
@@ -81,7 +81,7 @@
     {
       "from": "model",
       "to": "output",
-      "label": "resultats"
+      "label": "results"
     }
   ]
 }

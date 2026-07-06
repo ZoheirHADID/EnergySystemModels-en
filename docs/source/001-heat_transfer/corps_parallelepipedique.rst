@@ -51,13 +51,13 @@ Results ::
   5   right           Vertical          0.90    60.0       25    35.0    False             337.58            375.09
   6   TOTAL                  -          5.16       -       25       -        -            1956.56            379.18
 
-Le calcul retourne :
+The calculation retourne :
 
 - **Transfer thermique total** : Somme des pertes by toutes les faces [W]
 - **DataFrame détaillé** : Pour chaque face (top, bottom, front, back, left, right)
   
   - Surface [m²]
-  - Temperature de paroi [°C]
+  - Temperature de wall [°C]
   - Coefficient de convection [W/m²·K]
   - Transfer by convection [W]
   - Transfer by rayonnement [W]
@@ -70,7 +70,7 @@ Possible Parameters
 
 Each face can have :
 
-- ``'Tp'`` : Temperature de paroi [°C]
+- ``'Tp'`` : Temperature de wall [°C]
 - ``'isolated'`` : ``True`` ou ``False`` (face isolée ou non)
 
 **Faces disponibles** : ``'top'``, ``'bottom'``, ``'front'``, ``'back'``, ``'left'``, ``'right'``
@@ -78,16 +78,16 @@ Each face can have :
 Explication du model
 ----------------------
 
-Ce model calcule le transfert thermique d'un corps parallélépipédique (boîte rectangulaire) to l'environnement ambiant. 
+Ce model calculates le transfert thermique d'un parallelepiped body (rectangular box) to l'ambient environment. 
 
-Le calcul prend en compte :
+The calculation prend en compte :
 
 1. **Convection naturelle** : Échange thermique between la surface et l'air ambiant
 2. **Rayonnement** : Émission de chaleur by radiation to l'environnement
 
 Pour chaque face, le model :
 
-- Calcule la surface d'échange
+- Calculated la surface d'échange
 - Détermine le coefficient de convection according to l'orientation (horizontale/verticale)
-- Calcule les flux de convection et de rayonnement
+- Calculated les flux de convection et de rayonnement
 - Somme les contributions for obtenir le transfert total

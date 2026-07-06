@@ -1,7 +1,7 @@
 Air Humide - Guide d'usage
 =================================
 
-Ce module fournit l'ensemble des équations psychrométriques for les calculs d'air humide, basées on les formulations de l'ASHRAE Handbook - Fundamentals.
+This module fournit l'ensemble des équations psychrométriques for les calculs d'air humide, basées on les formulations de l'ASHRAE Handbook - Fundamentals.
 
 Import du module
 ----------------
@@ -11,13 +11,13 @@ Import du module
    from AHU.air_humide import air_humide
 
 
-Équations ASHRAE utilisées
+Équations ASHRAE useds
 ---------------------------
 
 Équation de la pressure de vapeur saturée (Hyland et Wexler, 1983)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le module utilise les équations ASHRAE Handbook—Fundamentals (2013), Chapitre 1 - Psychrometrics, équations (5) et (6), basées on les travaux de Hyland et Wexler (1983).
+The module utilise les équations ASHRAE Handbook—Fundamentals (2013), Chapitre 1 - Psychrometrics, équations (5) et (6), basées on les travaux de Hyland et Wexler (1983).
 
 **Pour les temperatures inférieures à 0°C** (valable between -100°C et 0°C) :
 
@@ -156,7 +156,7 @@ Fonctions disponibles
 1. Air_Pv_sat - Pressure de vapeur saturée
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule la pressure de vapeur saturée as a function of la temperature.
+Calculated la pressure de vapeur saturée as a function of la temperature.
 
 **Référence :** ASHRAE Handbook—Fundamentals (2013) - Chapitre 1 - Équations (5) et (6) - Hyland et Wexler 1983
 
@@ -197,7 +197,7 @@ Calcule la pressure de vapeur saturée as a function of la temperature.
 2. Air_w - Humidité absolue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule l'humidité absolue (rapport de mélange) en g d'eau by kg d'air sec.
+Calculated l'humidité absolue (rapport de mélange) en g d'eau by kg d'air sec.
 
 **Parameters :**
 
@@ -239,7 +239,7 @@ Calcule l'humidité absolue (rapport de mélange) en g d'eau by kg d'air sec.
 3. Air_RH - Humidité relative
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule l'humidité relative en pourcentage.
+Calculated l'humidité relative en pourcentage.
 
 **Parameters :**
 
@@ -277,7 +277,7 @@ Calcule l'humidité relative en pourcentage.
 4. Air_h - Enthalpy de l'air humide
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule l'enthalpy de l'air humide en kJ/kg d'air sec.
+Calculated l'enthalpy de l'air humide en kJ/kg d'air sec.
 
 **Parameters :**
 
@@ -314,7 +314,7 @@ Calcule l'enthalpy de l'air humide en kJ/kg d'air sec.
 5. Air_T_db - Temperature de bulbe sec
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule la temperature de bulbe sec à partir d'autres paramètres.
+Calculated la temperature de bulbe sec à partir d'autres paramètres.
 
 **Parameters :**
 
@@ -347,7 +347,7 @@ Calcule la temperature de bulbe sec à partir d'autres paramètres.
 6. Air_T_wb - Temperature de bulbe humide
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule la temperature de bulbe humide (temperature humide).
+Calculated la temperature de bulbe humide (temperature humide).
 
 **Parameters :**
 
@@ -386,7 +386,7 @@ Calcule la temperature de bulbe humide (temperature humide).
 7. Air_T_dp - Temperature de rosée
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule la temperature de rosée (point de rosée).
+Calculated la temperature de rosée (point de rosée).
 
 **Parameters :**
 
@@ -433,7 +433,7 @@ Calcule la temperature de rosée (point de rosée).
 8. Air_rho_hum - Masse volumique de l'air humide
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule la masse volumique de l'air humide en kg/m³.
+Calculated la masse volumique de l'air humide en kg/m³.
 
 **Parameters :**
 
@@ -472,7 +472,7 @@ Calcule la masse volumique de l'air humide en kg/m³.
 9. Air_v_hum - Volume spécifique de l'air humide
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule le volume spécifique de l'air humide en m³/kg.
+Calculated le volume spécifique de l'air humide en m³/kg.
 
 **Parameters :** (identiques à Air_rho_hum)
 
@@ -499,7 +499,7 @@ Calcule le volume spécifique de l'air humide en m³/kg.
 10. Air_rho_dry - Masse volumique de l'air sec
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule la masse volumique de l'air sec en kg_air_sec/m³.
+Calculated la masse volumique de l'air sec en kg_air_sec/m³.
 
 **Parameters :** (identiques à Air_rho_hum)
 
@@ -528,7 +528,7 @@ Calcule la masse volumique de l'air sec en kg_air_sec/m³.
 11. Air_v_dry - Volume spécifique de l'air sec
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule le volume spécifique de l'air sec en m³/kg_air_sec.
+Calculated le volume spécifique de l'air sec en m³/kg_air_sec.
 
 **Parameters :** (identiques à Air_rho_dry)
 
@@ -552,7 +552,7 @@ Calcule le volume spécifique de l'air sec en m³/kg_air_sec.
 12. Air_xH2O - Fraction molaire de l'eau
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule la fraction molaire de l'eau in l'air humide.
+Calculated la fraction molaire de l'eau in l'air humide.
 
 **Parameters :**
 
@@ -584,7 +584,7 @@ Calcule la fraction molaire de l'eau in l'air humide.
 13. Air_T_wb_ROLAND_STULL - Temperature de bulbe humide (method Stull)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule la temperature de bulbe humide en utilisant la formulation de Roland Stull (2011).
+Calculated la temperature de bulbe humide en utilisant la formulation de Roland Stull (2011).
 
 **Référence :** Roland Stull, University of British Columbia (2011)
 
@@ -614,7 +614,7 @@ Calcule la temperature de bulbe humide en utilisant la formulation de Roland Stu
 14. T_sat - Temperature de saturation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Calcule la temperature de saturation correspondant à une humidité absolue donnée.
+Calculated la temperature de saturation correspondant à une humidité absolue donnée.
 
 **Parameters :**
 

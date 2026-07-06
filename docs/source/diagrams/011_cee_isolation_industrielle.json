@@ -1,9 +1,9 @@
 {
   "title": "CEE - Isolation thermique industrielle",
-  "description": "Diagram de calcul CEE for une isolation de paroi industrielle.",
+  "description": "Diagram de calcul CEE for une isolation de wall industrielle.",
   "nodes": [
     {
-      "id": "paroi",
+      "id": "wall",
       "label": "Paroi chaude",
       "subtitle": "180 degC",
       "kind": "source",
@@ -33,7 +33,7 @@
   ],
   "edges": [
     {
-      "from": "paroi",
+      "from": "wall",
       "to": "isolation",
       "label": "pertes réduites"
     },

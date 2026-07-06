@@ -1,9 +1,9 @@
 IPMVP — Example de Mesure et Vérification (Option C)
 ====================================================
 
-La fonction ``Mathematical_Models`` ajuste un model de régression on une
-**période de référence** (baseline) then quantifie les économies on une
-**période de suivi** (reporting). Elle **returns a 9-item tuple**
+The function ``Mathematical_Models`` ajuste un model de régression on une
+**period de référence** (baseline) then quantifie les économies on une
+**period de suivi** (reporting). Elle **returns a 9-item tuple**
 (il n'existe pas d'objet ``model`` with des attributs ``.r2`` / ``.plot_*``).
 
 Signature et valeurs de retour
@@ -25,7 +25,7 @@ Signature et valeurs de retour
 
 Les 9 éléments : ``y_pred`` (prédiction baseline), ``df`` (data + prédiction),
 ``conformite`` (indicateurs IPMVP + verdict), ``table_incertitude`` (incertitude
-baseline), les 4 équivalents for la période de reporting, et ``df_savings``
+baseline), les 4 équivalents for la period de reporting, et ``df_savings``
 (économies ANTE-POST / POST-ANTE).
 
 Example complet
@@ -56,7 +56,7 @@ Example complet
    print(conformite)
    print(df_savings)
 
-Output réelle
+Output realle
 -------------
 
 **Conformité du model baseline** (``conformite``) :
@@ -84,7 +84,7 @@ supplémentaires, granularité, etc.).
    pourcentage d'économie>0       18.15        17.80
 
 L'approche **ANTE-POST** (référence ajustée − mesuré) donne **18,15 %**
-d'économie on la période de suivi.
+d'économie on la period de suivi.
 
 **Incertitude** (``table_incertitude``) : ``precision_relative`` ≈ 0,69,
 ``Erreur type (rmse)`` ≈ 236 260, for un niveau de confiance de 80 %.

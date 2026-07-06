@@ -4,7 +4,7 @@ Examples utilisateur
 Example 1 : récupération on eau de refroidissement
 ---------------------------------------------------
 
-Une boucle d'eau sort d'un procédé à ``38 degC`` et peut être refroidie jusqu'à
+Une boucle d'eau sort d'un procédé à ``38 degC`` et can be refroidie jusqu'à
 ``28 degC`` before retour. Le flow rate est de ``22 m3/h`` et le site fonctionne
 ``6 500 h/an``.
 
@@ -55,7 +55,7 @@ Lecture for l'utilisateur :
 .. note:: **Valorisation en CEE**
 
    La heat recovery on un compresseur d'air (ou tout autre rejet
-   thermique) peut être valorisée en Energy Savings Certificates via la
+   thermique) can be valorisée en Energy Savings Certificates via la
    fiche ``IND-UT-103``. The ESC calculation is handled in the dedicated chapter :
    voir :doc:`../011-cee/module_cee` (« Example 3 : heat recovery sur
    compresseur d'air »).
@@ -72,7 +72,7 @@ temperature with une pompe à chaleur.
    :align: center
 
    La pompe à chaleur relève le niveau de temperature au prix d'une
-   consommation électrique.
+   consumption électrique.
 
 .. code-block:: python
 
@@ -124,12 +124,12 @@ Interprétation :
 * si le gain net est négatif, la pompe à chaleur n'est pas pertinente with ces
   hypothèses de prix ;
 * si le gaz évité est cher ou carboné, l'intérêt augmente ;
-* le COP réel doit être recalculé with les temperatures source et usage.
+* le COP real doit être recalculé with les temperatures source et usage.
 
 Example 3 : préparer une analyse Pinch
 --------------------------------------
 
-Lorsque plusieurs hot and cold streams existent, l'analyse Pinch permet
+Lorsque plusieurs hot and cold streams existent, l'analyse Pinch allows
 d'identifier la récupération maximale théorique before de dessiner les
 échangeurs.
 
@@ -166,7 +166,7 @@ d'identifier la récupération maximale théorique before de dessiner les
    pinch.plot_composites_curves()
    pinch.plot_GCC()
 
-Results réels :
+Results reals :
 
 .. list-table::
    :widths: 40 40 20
@@ -195,14 +195,14 @@ intégration, la totalité du besoin de chauffe ; seule une utilité froide de
 Plots générés by l'example (real outputs are shown) :
 
 .. figure:: ../images/012_chaleur_fatale_pinch_composites.svg
-   :alt: Courbes composites réelles (waste heat)
+   :alt: Courbes composites real (waste heat)
    :align: center
 
    ``pinch.plot_composites_curves()`` : composites chaude et froide en
    temperatures décalées ; le recouvrement = 361 kW récupérables.
 
 .. figure:: ../images/012_chaleur_fatale_pinch_gcc.svg
-   :alt: Grande courbe composite réelle (waste heat)
+   :alt: Grande courbe composite realle (waste heat)
    :align: center
 
    ``pinch.plot_GCC()`` : la grande courbe composite touche l'axe au pincement

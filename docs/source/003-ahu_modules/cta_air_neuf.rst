@@ -63,7 +63,7 @@ Usage
 - **Batterie chauffage (BC)** : T_output=20°C, RH=29.8%, Q_th=15.9 kW
 - **Humidificateur (HMD)** : T_output=20.6°C, RH=53.1%, w_output=8 g/kg_sec, F_eau=0.0039 kg/s
 
-Each component returns a DataFrame (``df``) with les détails complets.
+Each component returns a DataFrame (``df``) with les details complets.
 
 Possible Parameters
 --------------------
@@ -79,7 +79,7 @@ Possible Parameters
 
 - ``To_target`` : Temperature de output cible [°C]
 - ``Inlet`` : Connecté via ``Air_connect()``
-- Calcule automatiquement ``Q_th`` (power thermique) [kW]
+- Calculated automatiquement ``Q_th`` (power thermique) [kW]
 
 **Humidifier** :
 
@@ -90,7 +90,7 @@ Possible Parameters
   - ``"vapeur"`` : Injection de vapeur
 
 - ``Inlet`` : Connecté via ``Air_connect()``
-- Calcule automatiquement ``F_water`` (flow rate d'eau) [kg/s] et ``Q_th`` [kW]
+- Calculated automatiquement ``F_water`` (flow rate d'eau) [kg/s] et ``Q_th`` [kW]
 
 **PsychrometricChart** :
 
@@ -102,19 +102,19 @@ Possible Parameters
 Explication du model
 ----------------------
 
-Ce model simule une Centrale de Traitement d'Air (CTA) simple composée de trois éléments en série :
+Ce model simulates une Centrale de Traitement d'Air (CTA) simple composée de trois éléments en série :
 
 1. **Fresh air intake** : Outdoor air introduction with defined conditions (T, RH, flow rate)
 2. **Batterie de chauffage** : Réchauffage de l'air à temperature constante d'humidité absolue
 3. **Humidificateur** : Ajout d'humidité by injection de vapeur ou évaporation adiabatique
 
-Le module utilise les propriétés de l'air humide to calculate :
+The module utilise les propriétés de l'air humide to calculate :
 
 - Les transformations on le diagramme psychrométrique (h, w)
 - Les powers thermiques nécessaires
 - Les flow rates de fluids (air sec, air humide, eau d'humidification)
 
-La fonction ``Air_connect()`` allows chaîner les composants en connectant la output d'un composant à l'input du suivant.
+The function ``Air_connect()`` allows chaîner les composants en connectant la output d'un composant à l'input du suivant.
 
 **Transformations psychrométriques** :
 

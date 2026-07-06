@@ -3,19 +3,15 @@
 
 Welcome to the EnergySystemModels library documentation!
 
-**Développée by Zoheir HADID**
+**Developed by Zoheir HADID**
 
 Objective and Approach
 ----------------------
-
-This documentation presents the EnergySystemModels Python library, conçue for faciliter les calculs et analyses liés à l'efficacité energy. En proposant des models écrits en Python, vous pouvez facilement put into practice les concepts d'efficacité energy. Les outils de calcul can also facilitate la understanding and analysis de data complexes liées à l'efficacité energy.
 
 This documentation presents the EnergySystemModels Python library, designed to facilitate calculations and analyses related to energy efficiency. By providing Python-written models, you can easily put energy efficiency concepts into practice. The calculation tools can also facilitate understanding and analysis of complex data related to energy efficiency.
 
 Prerequisites
 -------------
-
-Afin de mieux comprendre les models d'efficacité energy présentés in ce document et les outils de calcul en Python qui les accompagnent, il est nécessaire d'avoir des connaissances préalables en programmation, en particulier in le langage Python. Cependant, les models sont présentés étape by étape, de manière simple et accessible, afin de faciliter leur appropriation by un large public.
 
 In order to better understand the energy efficiency models presented in this document and the accompanying Python calculation tools, prior knowledge of programming is necessary, particularly in the Python language. However, the models are presented step by step, in a simple and accessible manner, to facilitate their adoption by a wide audience.
 

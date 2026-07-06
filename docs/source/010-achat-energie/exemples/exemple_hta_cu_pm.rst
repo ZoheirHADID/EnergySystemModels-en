@@ -2,7 +2,7 @@
 --------------------------------------------
 
 **Contexte** : Un centre logistique raccorde en HTA (20 kV), option Courte
-Usage mobile peak. Power souscrite 300 kW, consommation hiver
+Usage mobile peak. Power souscrite 300 kW, consumption hiver
 et ete equilibree. Facturation de mars 2025.
 
 .. code-block:: python
@@ -43,7 +43,7 @@ et ete equilibree. Facturation de mars 2025.
 
    calc.plot()
 
-**Output réelle (df_totaux)** :
+**Output realle (df_totaux)** :
 
 .. code-block:: text
 

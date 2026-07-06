@@ -2,11 +2,11 @@ Energy Savings Certificates
 ===================================
 
 This page presents one example per **standardized operation sheet** actually
-supportée by le module ``CEE``, rangé by secteur. Seules les fiches **en
-vigueur** au catalogue officiel sont documentées (voir la note on les fiches
+supportée by le module ``CEE``, rangé by secteur. Seules les sheets **en
+vigueur** au catalogue officiel sont documentées (voir la note on les sheets
 obsolètes en fin de page).
 
-Lister les fiches disponibles
+Lister les sheets disponibles
 -----------------------------
 
 .. code-block:: python
@@ -15,7 +15,7 @@ Lister les fiches disponibles
 
    print(list_fiches())
 
-Result réel :
+Result real :
 
 .. code-block:: text
 
@@ -37,7 +37,7 @@ IND-UT-103 — Récupération de chaleur on un compresseur d'air
    :alt: Récupération de chaleur on compresseur d'air (IND-UT-103)
    :align: center
 
-   La chaleur du compresseur est récupérée for un usage (chauffage, ECS ou
+   La compressor heat is recovered for a use (chauffage, ECS ou
    procédé) et valorisée en CEE.
 
 .. code-block:: python
@@ -54,7 +54,7 @@ IND-UT-103 — Récupération de chaleur on un compresseur d'air
    )
    print(f"{d['MWh_cumac']:.0f} MWh cumac — {d['euro']:.0f} EUR")
 
-Result réel : **2 304 MWh cumac** — 11 520 EUR (à 5 €/MWh cumac).
+Result real : **2 304 MWh cumac** — 11 520 EUR (à 5 €/MWh cumac).
 
 IND-UT-130 — Condenseur on les effluents gazeux d'une chaudière vapeur
 -----------------------------------------------------------------------
@@ -71,16 +71,16 @@ IND-UT-130 — Condenseur on les effluents gazeux d'une chaudière vapeur
    )
    print(f"{d['MWh_cumac']:.0f} MWh cumac — {d['euro']:.0f} EUR")
 
-Result réel : **2 100 MWh cumac** — 10 500 EUR.
+Result real : **2 100 MWh cumac** — 10 500 EUR.
 
-IND-UT-131 — Isolation thermique de parois industrielles
+IND-UT-131 — Isolation thermique de walls industrielles
 --------------------------------------------------------
 
 .. figure:: ../images/011_cee_isolation_industrielle.svg
-   :alt: Isolation thermique de parois industrielles (IND-UT-131)
+   :alt: Isolation thermique de walls industrielles (IND-UT-131)
    :align: center
 
-   La fiche s'applique à une paroi plane (surface ``S``) ou cylindrique
+   La fiche s'applique à une wall plane (surface ``S``) ou cylindrique
    (diamètre ``D``, longueur ``L``) according to sa temperature de service.
 
 .. code-block:: python
@@ -97,7 +97,7 @@ IND-UT-131 — Isolation thermique de parois industrielles
    )
    print(f"{d['MWh_cumac']:.2f} MWh cumac — {d['euro']:.2f} EUR")
 
-Result réel : **246,96 MWh cumac** — 1 234,80 EUR.
+Result real : **246,96 MWh cumac** — 1 234,80 EUR.
 
 IND-UT-134 — Système de mesurage d'indicateurs de performance energy
 -------------------------------------------------------------------------
@@ -115,7 +115,7 @@ IND-UT-134 — Système de mesurage d'indicateurs de performance energy
    )
    print(f"{d['MWh_cumac']:.2f} MWh cumac — {d['euro']:.2f} EUR")
 
-Result réel : **149,54 MWh cumac** — 747,70 EUR.
+Result real : **149,54 MWh cumac** — 747,70 EUR.
 
 IND-UT-135 — Freecooling by eau de refroidissement (substitution groupe froid)
 -------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ IND-UT-135 — Freecooling by eau de refroidissement (substitution groupe froid)
    )
    print(f"{d['MWh_cumac']:.0f} MWh cumac — {d['euro']:.0f} EUR")
 
-Result réel : **4 356 MWh cumac** — 21 780 EUR.
+Result real : **4 356 MWh cumac** — 21 780 EUR.
 
 Secteur Transport
 =================
@@ -146,7 +146,7 @@ TRA-EQ-101 — Unité de transport intermodal rail-route
    :alt: Transport intermodal (TRA-EQ-101 / TRA-EQ-107)
    :align: center
 
-   Le volume CEE dépend du nombre d'unités de transport et de voyages annuels.
+   Le volume CEE depends on the nombre d'unités de transport et de voyages annuels.
 
 .. code-block:: python
 
@@ -161,7 +161,7 @@ TRA-EQ-101 — Unité de transport intermodal rail-route
    )
    print(f"{d['MWh_cumac']:.0f} MWh cumac — {d['euro']:.0f} EUR")
 
-Result réel : **37 000 MWh cumac** — 185 000 EUR.
+Result real : **37 000 MWh cumac** — 185 000 EUR.
 
 TRA-EQ-107 — Unité de transport intermodal fluvial-route
 --------------------------------------------------------
@@ -179,7 +179,7 @@ TRA-EQ-107 — Unité de transport intermodal fluvial-route
    )
    print(f"{d['MWh_cumac']:.0f} MWh cumac — {d['euro']:.0f} EUR")
 
-Result réel : **902 MWh cumac** — 4 510 EUR.
+Result real : **902 MWh cumac** — 4 510 EUR.
 
 Projet multi-opérations
 =======================
@@ -217,7 +217,7 @@ Projet multi-opérations
    print(df)
    print(f"Total : {total_kwh:.0f} kWh cumac — {total_kwh * prix_mwh / 1000:.0f} EUR")
 
-Result réel (prime à 9 €/MWh cumac) :
+Result real (prime à 9 €/MWh cumac) :
 
 .. list-table::
    :widths: 25 30 30
@@ -242,10 +242,10 @@ Result réel (prime à 9 €/MWh cumac) :
 Fiches obsolètes (non éligibles)
 ================================
 
-Certaines fiches restent in le registre du code for l'historique mais sont
-**exclues de** ``list_fiches()`` et refusées by ``calcul_CEE`` (``ValueError``) :
+Certaines sheets restent in le registre du code for l'historique mais sont
+**exclues de** ``list_sheets()`` et refusées by ``calcul_CEE`` (``ValueError``) :
 
-* **IND-UT-136** — Systèmes moto-régulés : **abrogée** by arrêté du 18/08/2025.
+* **IND-UT-136** — Systèmes motor-controlled : **repealed** by arrêté du 18/08/2025.
 * **TRA-EQ-108** — Wagon d'autoroute ferroviaire : opération **close au 31/03/2020**.
 
 .. code-block:: python
@@ -262,5 +262,5 @@ Conseils d'usage
 * Lancer ``calcul_CEE(..., return_details=True)`` for un dictionnaire
   exploitable in un rapport (``kWh_cumac``, ``MWh_cumac``, ``euro``, ``titre``).
 * Ajuster ``CEE.euro_MWhcumac`` (défaut 5) ou appliquer un prix externe.
-* Vérifier l'éligibilité réglementaire on les fiches officielles before toute
+* Vérifier l'éligibilité réglementaire on les sheets officielles before toute
   décision d'investissement (catalogue ADEME/ATEE).

@@ -81,7 +81,7 @@ Each calculator produces several DataFrames per section :
    * - DataFrame
      - Contenu
    * - ``df_contrat``
-     - Parametres contractuels : tension, tarif, powers souscrites, periode
+     - Parametres contractuels : tension, tarif, powers souscrites, period
    * - ``df_fourniture_detail``
      - Detail de la fourniture d'energy : kWh x prix by poste horaire, capacite, ARENH
    * - ``df_acheminement``
@@ -106,13 +106,13 @@ Colonnes standard de chaque DataFrame :
    * - **Ligne**
      - Description du poste de calcul
    * - **Formule**
-     - Equation utilisee (ex: ``kWh x prix``)
+     - Equation used (ex: ``kWh x prix``)
    * - **Entree(s)**
      - Valeurs d'entree formatees (ex: ``150,000 kWh``)
    * - **Coefficient**
      - Taux ou coefficient utilise + source (ex: ``0.00827 EUR/kWh (ATRD7)``)
    * - **Resultat**
-     - Montant calcule
+     - Montant calculates
    * - **Annuel**
      - Projection annuelle (si applicable)
 
@@ -168,7 +168,7 @@ Colonnes standard de chaque DataFrame :
    calc.plot()          # Donut : Fourniture / TURPE / Taxes
    calc.plot_detail()   # Cascades detaillees
 
-**Result réel (df_acheminement)** :
+**Result real (df_acheminement)** :
 
 .. code-block:: text
 
@@ -190,7 +190,7 @@ Colonnes standard de chaque DataFrame :
         Dépassement PS (CMDPS)                             CMDPS mensuel                                                 0.00
   = TOTAL TURPE (acheminement) CG + CC + CS_fixe + CS_var + CMDPS + CACS                                              3671.56  44021.2
 
-**Result réel (df_totaux)** :
+**Result real (df_totaux)** :
 
 .. code-block:: text
 
@@ -210,14 +210,14 @@ Colonnes standard de chaque DataFrame :
 
 Each row of the ``df_acheminement`` montre :
 
-- Les coefficients **b** (part power) with la version TURPE utilisee
+- Les coefficients **b** (part power) with la version TURPE used
 - Les coefficients **c** (part energy) by poste horaire
 - La formule exacte : ``b0 x PS_Pointe``, ``c_HPH x kWh_HPH``, etc.
-- Les sous-totaux CS fixe et CS variable
+- Les subtotals CS fixe et CS variable
 
-**Verifier un ecart :** Comparez chaque ligne du ``df_acheminement`` with les
-montants de votre facture ENEDIS. Les coefficients b et c doivent correspondre
-a la grille TURPE en vigueur (publiee by la CRE).
+**Verifier un difference :** Comparez chaque ligne du ``df_acheminement`` with les
+amounts de votre facture ENEDIS. Les coefficients b et c must match
+a la grille TURPE in force (publiee by la CRE).
 
 
 10.3.2. Auditer une facture gas en France (ATR)
@@ -275,7 +275,7 @@ a la grille TURPE en vigueur (publiee by la CRE).
 
 **Points cles a verifier :**
 
-- **CJN** : calculee automatiquement from CAR x Zi x A (coefficients meteo et reseau)
+- **CJN** : calculated automatiquement from CAR x Zi x A (coefficients meteo et network)
 - **ATRT** : Transport = TCS + TCR x NTR + TCL (coefficients annuels naTran (ex-GRTgaz)/Terega)
 - **ATRD** : Distribution = fixe + capacite + variable (coefficients GRDF)
 - **TVA** : 5,5% on fixe+CTA, 20% on variable+molecule+accise
@@ -425,7 +425,7 @@ Au-dela, un malus s'applique. En-dessous, un bonus est accorde.
 10.3.5. Module utilitaire : df_utils
 --------------------------------------
 
-Le module ``Facture.df_utils`` fournit les fonctions partagees by tous les
+The module ``Facture.df_utils`` fournit les fonctions shared by tous les
 calculateurs for construire les DataFrames auditables :
 
 .. code-block:: python

@@ -46,13 +46,13 @@ On crée une liste de tous les changements de temperature in le system for divis
 Bilan energy by intervalle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pour chaque intervalle de temperature, on calcule :
+Pour chaque intervalle de temperature, on calculates :
 
 * **Chaleur disponible** (flux chauds traversant l'intervalle)
 * **Chaleur requise** (flux froids traversant l'intervalle)
 * **Surplus ou déficit** energy
 
-Le bilan cumulé permet d'identifier :
+Le bilan cumulé identifies :
 
 * **Point Pinch** : où le cascade energy atteint son minimum
 * **Utilité chaude minimale** (Qh,min)
@@ -95,7 +95,7 @@ La CCF représente le profil de chauffage total du procédé.
 Identification du Pinch
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le point Pinch est visible on les courbes composites :
+The Pinch point is visible on les courbes composites :
 
 * C'est le point où l'écart vertical between CCC et CCF est minimal (= ΔTmin)
 * Il divise le system en deux régions thermiquement indépendantes
@@ -103,7 +103,7 @@ Le point Pinch est visible on les courbes composites :
 Étape 5 : Construction de la Grande Courbe Composite (GCC)
 ----------------------------------------------------------
 
-La GCC se construit en :
+La GCC is built en :
 
 1. Calculant la différence between CCC et CCF à chaque temperature
 2. Traçant cette différence as a function of la temperature décalée
@@ -117,14 +117,14 @@ Interprétation de la GCC
 * **Extrémité haute** : utilité chaude minimale
 * **Extrémité basse** : utilité froide minimale
 
-La GCC permet d'optimiser le positionnement des utilités :
+La GCC optimizes le positionnement des utilités :
 
 * Vapeur HP/MP/BP
 * Eau de refroidissement à différentes temperatures
 * Réfrigération
 
-Étape 6 : Conception du réseau d'échangeurs (HEN)
--------------------------------------------------
+Étape 6 : Conception du network d'échangeurs (HEN)
+--------------------------------------------------
 
 Règles de conception
 ~~~~~~~~~~~~~~~~~~~~
@@ -145,7 +145,7 @@ Règles de conception
 Number minimum d'échangeurs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le nombre minimum théorique d'unités (MER - Minimum Energy Recovery) se calcule by :
+Le nombre minimum théorique d'unités (MER - Minimum Energy Recovery) is calculated by :
 
 .. math::
 
@@ -162,7 +162,7 @@ En pratique, on ajoute souvent des échangeurs supplémentaires for :
 Optimisation coût-energy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le choix du ΔTmin est un compromis between :
+The choice du ΔTmin est un compromis between :
 
 * **ΔTmin faible** : moins d'utilités mais plus de surface d'échange (coût capital)
 * **ΔTmin élevé** : moins de surface mais plus d'utilités (coût opérationnel)
@@ -185,7 +185,7 @@ Il est important d'analyser la robustesse de la solution vis-à-vis de :
 
 Outils for l'analysis of sensibilité :
 
-* **Grid diagram** : visualisation de la flexibilité du réseau
+* **Grid diagram** : visualisation de la flexibilité du network
 * **Plus-Minus principle** : calcul des marges de sécurité
 * **Driving force plots** : analysis ofs forces motrices d'échange
 

@@ -3,7 +3,7 @@
 Compresseur
 ===========
 
-Le module ``Compressor`` modélise une compressure polytropique. L'état d'input
+The module ``Compressor`` models une compressure polytropique. L'état d'input
 n'est pas saisi directement on le compresseur : il provient d'un composant amont
 (``Source``, échangeur…) **connecté via** ``Fluid_connect(COMP.Inlet, amont.Outlet)``.
 La consigne haute pressure est donnée by ``HP_bar`` (ou ``Tcond_degC``).
@@ -59,7 +59,7 @@ Example
 
     print(COMPRESSOR.df)
 
-Output réelle (``COMPRESSOR.df``) :
+Output realle (``COMPRESSOR.df``) :
 
 .. code-block:: text
 

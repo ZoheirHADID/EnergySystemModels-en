@@ -40,7 +40,7 @@
    turpe_calculator.plot()          # Repartition Fourniture / TURPE / Taxes
    turpe_calculator.plot_detail()   # Cascades detaillees par composante
 
-**Output réelle (df_totaux)** :
+**Output realle (df_totaux)** :
 
 .. code-block:: text
 
@@ -54,9 +54,9 @@
           Coût HTVA (EUR/MWh)           Total_HTVA / MWh  0.04 MWh              42513.75
 
 .. note::
-   Les consommations de cet example sont volontairement minimes (10 kWh par
+   Les consumptions de cet example sont volontairement minimes (10 kWh par
    poste) : la part fixe (abonnement/TURPE) domine, d'où un coût unitaire
-   ``EUR/MWh`` très élevé. Pour un site HTA réaliste, utiliser des consommations
+   ``EUR/MWh`` très élevé. Pour un site HTA réaliste, utiliser des consumptions
    de l'ordre de plusieurs dizaines de MWh/mois (cf. :doc:`exemple_hta_lu_pm`).
 
 Plots générés by l'example

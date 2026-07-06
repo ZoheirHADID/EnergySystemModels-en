@@ -25,7 +25,7 @@ Usage
     # Résultats
     print(SOURCE.df)
 
-Output réelle (``SOURCE.df``) :
+Output realle (``SOURCE.df``) :
 
 .. code-block:: text
 
@@ -112,25 +112,25 @@ Possible Parameters
 Explication du model
 ----------------------
 
-The model Fluid Source calcule le flow rate massique as a function of diverses conditions d'input et des propriétés of the fluid. The model utilise the library CoolProp for déterminer les propriétés of the fluid et effectue les calculs suivants :
+The model Fluid Source calculates le flow rate massique as a function of diverses conditions d'input et des propriétés of the fluid. The model utilise the library CoolProp for déterminer les propriétés of the fluid et effectue les calculs suivants :
 
 1. Convertir les flow rates volumiques en flow rates massiques en utilisant la densité of the fluid.
-2. Calculer l'enthalpy de output et déterminer la qualité of the fluid (liquide, vapeur, diphasique ou supercritique).
+2. Calculatedr l'enthalpy de output et déterminer la qualité of the fluid (liquide, vapeur, diphasique ou supercritique).
 3. Mettre à jour les propriétés de output et générer un DataFrame with les results.
 
-Les principales équations utilisées in le model sont :
+Les principales équations useds in le model sont :
 
-- Flow rate massique à partir de mètres cubes standards by heure (Sm³/h) :
+- Flow rate massique from mètres cubes standards by heure (Sm³/h) :
 
   .. math::
     \dot{m} = \frac{F_{Sm3h}}{3600} \cdot \rho(P_{std}, T_{std})
 
-- Flow rate massique à partir de mètres cubes normaux by heure (Nm³/h) :
+- Flow rate massique from mètres cubes normaux by heure (Nm³/h) :
 
   .. math::
     \dot{m} = \frac{F_{Nm3h}}{3600} \cdot \rho(P_{std}, T_{norm})
 
-- Flow rate massique à partir de mètres cubes by seconde (m³/s) :
+- Flow rate massique from mètres cubes by seconde (m³/s) :
 
   .. math::
     \dot{m} = F_{m3s} \cdot \rho(P_{in}, T_{in})

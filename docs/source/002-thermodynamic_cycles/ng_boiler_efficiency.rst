@@ -3,7 +3,7 @@
 NG Boiler Efficiency (Rendement chaudière EN12952-15)
 ======================================================
 
-Le module ``NG_Boiler_Efficiency`` calcule le rendement d'une chaudière gaz naturel by la **method indirecte** (calcul des pertes) according to les normes EN12952-15 (tubes d'eau) et EN12953-11 (tubes de fumées). Il utilise CoolProp for les enthalpys exactes des gaz de combustion.
+The module ``NG_Boiler_Efficiency`` calculates le rendement d'une chaudière gaz naturel by la **method indirecte** (calcul des pertes) according to les normes EN12952-15 (tubes d'eau) et EN12953-11 (tubes de fumées). Il utilise CoolProp for les enthalpys exactes des gaz de combustion.
 
 Fonctionnalités
 ---------------
@@ -167,7 +167,7 @@ Methods FlueGasPort
      - Définir la composition volumique
      -
    * - ``calculate_properties()``
-     - Calcule h, Cp, rho, T_condensation
+     - Calculated h, Cp, rho, T_condensation
      -
    * - ``enthalpy_at(T_C)``
      - Enthalpy à T en kW/(Nm3/h)

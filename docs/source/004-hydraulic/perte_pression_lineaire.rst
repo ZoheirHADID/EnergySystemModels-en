@@ -70,10 +70,10 @@ Usage
 - Density : 997.2 kg/m³
 - Quality fluid : liquide
 
-**Courbe de réseau :**
+**Courbe de network :**
 
 .. image:: ../images/004_hydraulic_straight_pipe_courbe_reseau.png
-   :alt: Courbe de réseau du tuyau droit
+   :alt: Courbe de network du pipe droit
    :width: 800px
    :align: center
 
@@ -97,7 +97,7 @@ Possible Parameters
 **StraightPipe.Object()** :
 
 - ``d_hyd`` : Diameter hydraulique [m]
-- ``L`` : Length du tuyau [m]
+- ``L`` : Length du pipe [m]
 - ``K`` : Roughness absolue [m]
   
   - Acier commercial : 0.000045 m
@@ -112,14 +112,14 @@ Possible Parameters
 **Sink.Object()** :
 
 - ``Inlet`` : Connecté via ``Fluid_connect()``
-- Calcule automatiquement les propriétés de output
+- Calculated automatiquement les propriétés de output
 
 Explication du model
 ----------------------
 
-Ce model calcule la perte de charge (perte de pressure) due aux frottements in un tuyau droit cylindrique.
+Ce model calculates la pressure drop (perte de pressure) due aux frottements in un straight cylindrical pipe.
 
-**Équations utilisées** :
+**Équations useds** :
 
 1. **Number Reynolds number** :
    
@@ -145,6 +145,6 @@ Ce model calcule la perte de charge (perte de pressure) due aux frottements in u
 The model prend en compte :
 
 - Les propriétés thermodynamiques of the fluid via CoolProp
-- La rugosité of the inner wall du tuyau
+- La roughness of the inner wall du pipe
 - La géométrie (diamètre, longueur)
 - L'effet de l'inclinaison (optionnel)

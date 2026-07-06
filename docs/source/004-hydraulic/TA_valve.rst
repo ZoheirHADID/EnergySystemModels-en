@@ -3,7 +3,7 @@
 Vanne d'équilibrage TA (Tour & Andersson / IMI Hydronic)
 =========================================================
 
-Les vannes d'équilibrage **TA** (Tour & Andersson / IMI Hydronic Engineering) permettent l'équilibrage hydraulique des circuits CVC for garantir les flow rates nominaux et optimiser la performance energy des installations.
+Les vannes d'équilibrage **TA** (Tour & Andersson / IMI Hydronic Engineering) allowstent l'équilibrage hydraulique des circuits CVC for garantir les flow rates nominaux et optimizesr la performance energy des installations.
 
 This Python class calculates pressure drops through different TA valve models using the manufacturer's **official IMI TA Kv data** as a function of the number of opening turns.
 
@@ -49,7 +49,7 @@ Usage
 
 .. note::
    Le **Puits (Sink)** impose sa pressure de output (2.0 bar = 200000 Pa) à la vanne. 
-   La pressure d'input de la vanne est donc **recalculée automatiquement** as a function of la perte de charge :
+   La pressure d'input de la vanne est donc **recalculated automatiquement** as a function of la pressure drop :
    
    P_input = P_output + ΔP = 200000 Pa + 52131.53 Pa = 252131.53 Pa
 
@@ -64,10 +64,10 @@ Results ::
   Loss de charge (Pa)      52131.527845
   Pressure de output (Pa)       200000.0
 
-**Courbe de réseau de la vanne :**
+**Courbe de network de la vanne :**
 
 .. image:: ../images/004_TA_valve-courbe-reseau.png
-   :alt: Courbe de réseau vanne TA
+   :alt: Courbe de network vanne TA
    :width: 800px
    :align: center
 
@@ -76,7 +76,7 @@ Possible Parameters
 
 **Types de vannes TA disponibles**
 
-La classe ``TA_Valve`` supporte **plus de 120 références** de vannes d'équilibrage IMI TA :
+The class ``TA_Valve`` supporte **plus de 120 références** de vannes d'équilibrage IMI TA :
 
 .. list-table:: **Types de vannes TA et références disponibles**
    :header-rows: 1
@@ -99,7 +99,7 @@ La classe ``TA_Valve`` supporte **plus de 120 références** de vannes d'équili
      - Réseaux primaires fonte à brides (PN 16/25)
    * - **STAF-SG**
      - DN65-400
-     - Grands réseaux fonte GS haute résistance (PN 16/25)
+     - Grands networkx fonte GS haute résistance (PN 16/25)
    * - **STAG**
      - DN65-300
      - Installation rapide with raccords rainurés Victaulic (PN 16)
@@ -114,7 +114,7 @@ La classe ``TA_Valve`` supporte **plus de 120 références** de vannes d'équili
      - Orifices fixes de mesure (Kv fixe)
 
 .. note::
-   Le paramètre ``dn`` peut être spécifié under forme de **chaîne** (ex: "DN65", "STAF-DN100") ou d'**entier** (ex: 65).
+   Le paramètre ``dn`` can be spécifié under forme de **chaîne** (ex: "DN65", "STAF-DN100") ou d'**entier** (ex: 65).
 
 **Configuration Parameters**
 
@@ -141,7 +141,7 @@ La classe ``TA_Valve`` supporte **plus de 120 références** de vannes d'équili
      - Loss de charge à travers la vanne
      - Pa
    * - **rho**
-     - Masse volumique of the fluid (calculée via CoolProp)
+     - Masse volumique of the fluid (calculated via CoolProp)
      - kg/m³
    * - **Ti_degC**
      - Temperature d'input
@@ -163,7 +163,7 @@ La classe ``TA_Valve`` supporte **plus de 120 références** de vannes d'équili
      - FluidPort
 
 .. note::
-   Les propriétés thermodynamiques of the fluid (densité, viscosité) sont calculées automatiquement via **CoolProp** as a function of la temperature et de la pressure.
+   Les propriétés thermodynamiques of the fluid (densité, viscosité) sont calculateds automatiquement via **CoolProp** as a function of la temperature et de la pressure.
 
 **Conseils de sélection :**
 
@@ -175,8 +175,8 @@ La classe ``TA_Valve`` supporte **plus de 120 références** de vannes d'équili
 
 **Dimensionnement :**
 
-- Calculer le flow rate nominal du circuit
-- Sélectionner le DN for une perte de charge between **3 et 15 kPa** au flow rate nominal
+- Calculatedr le flow rate nominal du circuit
+- Sélectionner le DN for une pressure drop between **3 et 15 kPa** au flow rate nominal
 - Vérifier la plage de réglage disponible (nombre de tours)
 - Prévoir une marge for les ajustements futurs
 
@@ -191,7 +191,7 @@ Explication du model
 
 **Principe du coefficient Kv**
 
-Le coefficient Kv représente le **flow rate d'eau en m³/h** traversant la vanne with une perte de charge de **1 bar** à 15-20°C. Plus le Kv est élevé, plus la vanne laisse passer de flow rate for une perte de charge donnée.
+Le coefficient Kv représente le **flow rate d'eau en m³/h** traversant la vanne with une pressure drop de **1 bar** à 15-20°C. Plus le Kv est élevé, plus la vanne laisse passer de flow rate for une pressure drop donnée.
 
 **Équations de calcul**
 
@@ -255,7 +255,7 @@ Pour une vanne STAF-DN100 with 4.3 tours (entre 4 tours et 4.5 tours) :
 Sources des data et références
 ----------------------------------
 
-Les data Kv utilisées proviennent de la **documentation technique officielle IMI TA** :
+Les data Kv useds proviennent de la **documentation technique officielle IMI TA** :
 
 **Sources documentaires :**
 
@@ -273,5 +273,5 @@ Les data Kv utilisées proviennent de la **documentation technique officielle IM
 **Documentation complémentaire :**
 
 - Site officiel : `https://www.imi-hydronic.com <https://www.imi-hydronic.com>`_
-- Logiciel : TA-Designer (dimensionnement de réseaux hydrauliques)
+- Logiciel : TA-Designer (dimensionnement de networkx hydrauliques)
 - Formation : Équilibrage hydraulique et usage du TA-Scope

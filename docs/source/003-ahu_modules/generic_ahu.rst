@@ -3,7 +3,7 @@
 GenericAHU — Simulation de CTA paramétrable
 ===========================================
 
-Le subpackage ``AHU.GenericAHU`` simule une Centrale de Traitement d'Air (CTA)
+Le subpackage ``AHU.GenericAHU`` simulates une Centrale de Traitement d'Air (CTA)
 sur une série chronologique. Il expose **deux classes** according to le mode :
 
 * ``AirRecyclingAHU`` — CTA with **recyclage** d'air (mélange air neuf + air repris) ;
@@ -96,7 +96,7 @@ Mode recyclage — ``AirRecyclingAHU``
    print(ahu.df[["Timestamp", "MXA_Outlet_T[°C]", "HC_Q_th[kW]",
                  "CC_Q_th[kW]", "POSTHC_Outlet_T[°C]", "POSTHC_Q_th[kW]"]].head(2))
 
-Output réelle (extrait ; ``ahu.df`` compte **72 colonnes**) :
+Output realle (extrait ; ``ahu.df`` compte **72 colonnes**) :
 
 .. code-block:: text
 
@@ -148,7 +148,7 @@ output de chaque composant, préfixé by un code de station :
 
 Pour chaque station : ``T[°C]``, ``RH[%]``, ``h[kJ/kgas]``, ``w[gH2O/kgda]``,
 flow rates, ``P[Pa]``. Les powers thermiques sont ``HC_Q_th[kW]``,
-``CC_Q_th[kW]``, ``HMD_Q_th[kW]``, ``POSTHC_Q_th[kW]`` et la consommation d'eau
+``CC_Q_th[kW]``, ``HMD_Q_th[kW]``, ``POSTHC_Q_th[kW]`` et la consumption d'eau
 ``HMD_F_water[kg/h]``.
 
 .. note::

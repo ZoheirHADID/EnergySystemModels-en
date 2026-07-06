@@ -40,7 +40,7 @@ Results ::
   3           0.02           Plâtre                   0.50              0.040000                17.547079                18.141726  148.661889      10
   4            NaN    Air intérieur                    NaN              0.125000                18.141726                20.000000  148.661889      10
 
-Le calcul retourne :
+The calculation retourne :
 
 - **Résistance thermique totale** (``R_total``) [m²·K/W]
 - **Flux thermique** (``Q``) [W]
@@ -85,9 +85,9 @@ Possible Parameters
 Explication du model
 ----------------------
 
-Ce model calcule le transfert thermique à travers un mur multicouche. 
+Ce model calculates le transfert thermique à travers un multilayer wall. 
 
-Le calcul se base on :
+The calculation se base on :
 
 1. **Résistances en série** : Les résistances thermiques de chaque couche s'additionnent
 2. **Convection aux surfaces** : Résistances convectives intérieure et extérieure
@@ -95,7 +95,7 @@ Le calcul se base on :
 
 The model allows :
 
-- Calculer la thermal resistance totale
+- Calculatedr la thermal resistance totale
 - Déterminer le flux thermique traversant le mur
 - Obtenir le profil de temperature à travers les couches
 - Analyser la contribution de chaque couche

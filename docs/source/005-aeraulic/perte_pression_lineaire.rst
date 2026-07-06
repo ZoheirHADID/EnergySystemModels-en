@@ -38,7 +38,7 @@
 5.1.2. Results
 ----------------
 
-Output réelle (``STRAIGHT_PIPE.df``) :
+Output realle (``STRAIGHT_PIPE.df``) :
 
 .. code-block:: text
 
@@ -55,7 +55,7 @@ Output réelle (``STRAIGHT_PIPE.df``) :
     perte de charge (Pa)                              1.241891
 
 Pour ``d_hyd`` = 120 mm, ``L`` = 1 m et 120 m³/h d'air à 15 °C : vitesse ≈ 2,95 m/s,
-régime turbulent (Re ≈ 23 816), coefficient de perte de charge λ ≈ 0,0284 et
+régime turbulent (Re ≈ 23 816), coefficient de pressure drop λ ≈ 0,0284 et
 **linear pressure drop ≈ 1,24 Pa/m**.
 
 5.1.3. Parameters
@@ -77,10 +77,10 @@ régime turbulent (Re ≈ 23 816), coefficient de perte de charge λ ≈ 0,0284 
      - Length de gaine
      - m
    * - ``epsilon``
-     - Roughness absolue de la paroi (défaut lisse)
+     - Roughness absolue de la wall (défaut lisse)
      - m
 
-The model calcule le nombre Reynolds number then le coefficient de perte de charge λ
+The model calculates le nombre Reynolds number then le coefficient de pressure drop λ
 (Colebrook for le régime turbulent), et en déduit la linear pressure drop
 :math:`\Delta P = \dfrac{\lambda}{d_{hyd}} \cdot \dfrac{\rho\, u^2}{2} \cdot L`.
 

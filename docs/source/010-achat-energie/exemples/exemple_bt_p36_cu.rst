@@ -44,7 +44,7 @@ power souscrite de 80 kW. Facturation mensuelle de janvier 2025.
    calc.plot()
    calc.plot_detail()
 
-**Output réelle (df_totaux)** :
+**Output realle (df_totaux)** :
 
 .. code-block:: text
 

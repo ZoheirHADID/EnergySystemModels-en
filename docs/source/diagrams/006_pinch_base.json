@@ -1,6 +1,6 @@
 {
   "title": "Pinch - Analyse de base",
-  "description": "Flux chauds et froids convertis en courbes composites, GCC et réseau HEN.",
+  "description": "Flux chauds et froids convertis en courbes composites, GCC et network HEN.",
   "nodes": [
     {
       "id": "hot",

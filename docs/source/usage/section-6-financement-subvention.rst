@@ -5,7 +5,7 @@ Section 6 : Financing and subsidies
 6.1. Energy Savings Certificates (CEE)
 --------------------------------------------
 
-Le module CEE allows calculer les économies d'energy et les volumes de certificats générés according to les fiches d'opérations standardisées.
+The module CEE calculates les energy savings et les volumes de generated certificates according to les standardized operation sheets.
 
 Fiche BAT-TH-116 : Isolation de combles ou de toitures
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

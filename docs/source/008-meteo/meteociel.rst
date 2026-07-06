@@ -1,8 +1,8 @@
 MeteoCiel — Data historiques
 ===============================
 
-La fonction ``MeteoCiel_histoScraping`` récupère by *scraping* l'historique
-météo d'une station MeteoCiel et calcule les degrés-jours unifiés (DJU).
+The function ``MeteoCiel_histoScraping`` retrieves by *scraping* l'historique
+météo d'une station MeteoCiel et calculates the degrés-jours unifiés (DJU).
 
 .. code-block:: python
 
@@ -33,8 +33,8 @@ météo d'une station MeteoCiel et calcule les degrés-jours unifiés (DJU).
 
 .. note::
    This function sends HTTP requests to meteociel.fr (network access
-   requis) et dépend des paquets ``beautifulsoup4`` (bs4) et ``tqdm``. Les
+   requis) et depends on the paquets ``beautifulsoup4`` (bs4) et ``tqdm``. Les
    ``DJU_Chauffage`` / ``DJU_Rafraichissement`` sont calculés by la method
    COSTIC (voir :doc:`degres_jours`).
 
-Pour les data temps réel via API, voir :doc:`openweathermap`.
+Pour les data temps real via API, voir :doc:`openweathermap`.

@@ -1,6 +1,6 @@
 {
   "title": "Example de noeud declaratif : Rechauffeur",
-  "description": "Flux de donnees between une source fluid, le noeud Heater et le noeud Output.",
+  "description": "Flux de data between une source fluid, le noeud Heater et le noeud Output.",
   "nodes": [
     {
       "id": "source",

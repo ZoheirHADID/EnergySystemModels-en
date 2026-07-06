@@ -3,7 +3,7 @@
 
 **Contexte** : Un site industriel agroalimentaire raccorde en HTA (20 kV),
 option Courte Usage fixed peak. Power souscrite 500 kW,
-consommation hivernale typique. Facturation de fevrier 2025.
+consumption hivernale typique. Facturation de February 2025.
 
 .. code-block:: python
 
@@ -53,7 +53,7 @@ consommation hivernale typique. Facturation de fevrier 2025.
    calc.plot()
    calc.plot_detail()
 
-**Output réelle (df_totaux)** :
+**Output realle (df_totaux)** :
 
 .. code-block:: text
 

@@ -14,7 +14,7 @@ Chapter Objectives
 * Estimer une power récupérable à partir d'un flow rate, d'une capacité
   thermique et d'un écart de temperature.
 * Hiérarchiser les usages possibles : préchauffage d'air neuf, eau chaude,
-  chauffage de locaux, procédé, pompe à chaleur, réseau de chaleur.
+  chauffage de locaux, procédé, pompe à chaleur, network de chaleur.
 * Donner des examples reproductibles with les modules existants de la
   library.
 

@@ -1,7 +1,7 @@
 Transfer de Chaleur
 ====================
 
-The image below shows un example de transfert de chaleur confectif et radiatif à travers un échangeur de chaleur à plaques non isolé dont la temperature de la paroi est de 60°C et la temperature ambiante est de 25°C.:
+The image below shows un example de transfert de chaleur confectif et radiatif à travers un échangeur de chaleur à plaques non isolé dont la temperature de la wall est de 60°C et la temperature ambiante est de 25°C.:
 
 .. image:: images/PlateHeatTransfer.png
    :alt: Plate Heat Transfer
@@ -76,12 +76,12 @@ Result :
 Explanation of Equations Used
 -----------------------------------
 
-La classe `PlateHeatTransfer` utilise différentes équations to calculate les déperditions de chaleur as a function of l'orientation de la plaque (horizontale ou verticale). Voici les principales équations utilisées :
+The class `PlateHeatTransfer` utilise différentes équations to calculate les déperditions de chaleur as a function of l'orientation de la plaque (horizontale ou verticale). Voici les principales équations useds :
 
 Calculated Parameters
 ~~~~~~~~~~~~~~~~~~~~~
 
-**Temperature du film (Tf)** : Temperature moyenne between la paroi et l'air ambiant.
+**Temperature du film (Tf)** : Temperature moyenne between la wall et l'air ambiant.
 
 .. math::
 

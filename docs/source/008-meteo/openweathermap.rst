@@ -32,8 +32,8 @@ DataFrame retourné (colonnes) :
 * **RH(%)** : humidité relative.
 
 .. note::
-   ``API_call_location`` effectue un appel réseau to l'API OpenWeatherMap et
-   nécessite une clé valide in ``config.ini``. Le module n'expose **que**
+   ``API_call_location`` effectue un appel network to l'API OpenWeatherMap et
+   requires une clé valide in ``config.ini``. The module exposes **only**
    l'appel by coordata (il n'existe pas d'appel by nom de ville).
 
 Example : acquisition périodique

@@ -1,4 +1,4 @@
-Isolation des tuyaux
+Isolation des pipex
 ====================
 
 Usage
@@ -80,7 +80,7 @@ Results ::
   Insulation Temperature (°C)                      28.868999
   Conductive Resistance of Bare Tube (K/W)          0.000001
 
-Le calcul retourne :
+The calculation retourne :
 
 - **Heat loss totales** (``q_total``) [W]
 - **Surface temperature externe** (``Tc``) [°C]
@@ -97,7 +97,7 @@ Le calcul retourne :
 Possible Parameters
 --------------------
 
-**Matériaux de tuyau disponibles (material)** :
+**Matériaux de pipe disponibles (material)** :
 
 - ``'Cuivre'`` (λ = 380 W/m·K)
 - ``'Plomb'`` (λ = 35 W/m·K)
@@ -186,19 +186,19 @@ Analyse paramétrique de l'épaisseur d'isolant
 Explication du model
 ----------------------
 
-Ce model calcule les heat loss d'un insulated pipe transportant un fluid chaud ou froid.
+Ce model calculates the heat loss d'un insulated pipe transportant un fluid chaud ou froid.
 
-Le calcul prend en compte :
+The calculation prend en compte :
 
-1. **Convection interne** : Transfer between le fluid et la paroi interne du tuyau
-2. **Conduction in le tuyau** : Transfer à travers la paroi métallique
+1. **Convection interne** : Transfer between le fluid et la wall interne du pipe
+2. **Conduction in le pipe** : Transfer à travers la wall métallique
 3. **Conduction in l'isolant** : Transfer à travers l'isolation
 4. **Convection externe** : Transfer between la surface et l'air ambiant (convection naturelle)
 5. **Rayonnement** : Émission thermique to l'environnement
 
 The model détermine automatiquement :
 
-- Le régime d'écoulement (laminaire ou turbulent)
+- Le flow regime (laminaire ou turbulent)
 - Les propriétés thermophysiques of the fluid via CoolProp
 - Les coefficients de transfert thermique appropriés
 - La surface temperature by itération (équilibre thermique)

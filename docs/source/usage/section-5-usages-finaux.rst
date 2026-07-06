@@ -5,7 +5,7 @@ Section 5 : Usages finaux de l'energy
 5.1. Module AHU - Centrales de Traitement d'Air (CTA)
 ------------------------------------------------------
 
-Le module AHU allows modéliser les centrales de traitement d'air with leurs différents composants.
+The module AHU allows model les centrales de traitement d'air with leurs différents composants.
 
 5.1.1. FreshAir - Mélange d'air neuf et air recyclé
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -286,7 +286,7 @@ Example issu des tests : GenericAHU (Recycling)
 5.2. Module PinchAnalysis - Pinch Analysis
 ------------------------------------------
 
-L'analyse Pinch permet d'optimiser les réseaux d'échangeurs de chaleur et de minimiser la consommation energy.
+L'analyse Pinch optimizes les networkx d'échangeurs de chaleur et de minimiser la consumption energy.
 
 Example : Pinch Analysis simple
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -388,7 +388,7 @@ Example complet : Optimisation d'un procédé industriel
    fig = pinch_optimal.plot_composite_curves()
    plt.show()
 
-Example issu des tests : PinchAnalysis on data réelles
+Example issu des tests : PinchAnalysis on data real
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
@@ -414,7 +414,7 @@ Example issu des tests : PinchAnalysis on data réelles
 5.3. Module IPMVP - International Performance Measurement and Verification Protocol
 ------------------------------------------------------------------------------------
 
-Le module IPMVP allows mesurer et vérifier les économies d'energy according to the protocol international.
+The module IPMVP allows mesurer et vérifier les energy savings according to the protocol international.
 
 5.3.1. Modèle de régression journalière
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -591,7 +591,7 @@ Rapport IPMVP complet
 5.4. Modèle RC de bâtiment
 ---------------------------
 
-The model RC (Résistance-Capacité) allows simuler le comportement thermique dynamique d'un bâtiment.
+The model RC (Résistance-Capacité) allows simulatesr le comportement thermique dynamique d'un bâtiment.
 
 Modèle RC simple (1R1C)
 ~~~~~~~~~~~~~~~~~~~~~~~~

@@ -3,7 +3,7 @@
 Turbine
 =======
 
-Le module ``Turbine`` modélise une détente. Comme le compresseur, l'état d'input
+The module ``Turbine`` models une détente. Comme le compresseur, l'état d'input
 provient d'un composant amont **connecté via** ``Fluid_connect(TURB.Inlet, amont.Outlet)`` ;
 la pressure d'échappement est fixée by ``LP`` (en Pa, défaut 1 bar).
 
@@ -51,7 +51,7 @@ Example
 
     print(TURBINE.df)
 
-Output réelle (``TURBINE.df``) :
+Output realle (``TURBINE.df``) :
 
 .. code-block:: text
 

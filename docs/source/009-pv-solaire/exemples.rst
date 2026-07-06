@@ -8,7 +8,7 @@ Example 1 : Simulation site industriel
    :alt: Diagram de simulation photovoltaïque d'un site industriel
    :align: center
 
-   Le site fournit la localisation, PVGIS fournit la météo, then pvlib calcule
+   Le site fournit la localisation, PVGIS fournit la météo, then pvlib calculates
    the production horaire et la synthèse économique.
 
 .. code-block:: python
@@ -87,7 +87,7 @@ Example 2 : Étude paramétrique d'orientation
    :align: center
 
    Each orientation scenario is simulated, then comparé in un tableau
-   annuel et un graphe mensuel.
+   annuel et un graph mensuel.
 
 .. code-block:: python
 

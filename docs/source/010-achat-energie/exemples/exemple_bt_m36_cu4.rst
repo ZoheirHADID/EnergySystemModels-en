@@ -2,7 +2,7 @@
 --------------------------------------------
 
 **Contexte** : Un petit commerce (boulangerie) raccorde en basse tension with une
-power souscrite de 12 kW. Facturation mensuelle de fevrier 2025.
+power souscrite de 12 kW. Facturation mensuelle de February 2025.
 
 .. code-block:: python
 
@@ -63,7 +63,7 @@ power souscrite de 12 kW. Facturation mensuelle de fevrier 2025.
   Coût distribution (EUR/MWh)                TURPE / MWh                           68.99
          Coût taxes (EUR/MWh)                Taxes / MWh                            3.40
 
-Les valeurs dépendent de la grille TURPE en vigueur for la période facturée.
+Les valeurs depend on la grille TURPE in force for la period billed.
 
 Plots générés by l'example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

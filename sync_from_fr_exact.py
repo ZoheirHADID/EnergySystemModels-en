@@ -163,6 +163,16 @@ GLOSSARY: dict[str, str] = {
     "Introduction au Module PV": "Introduction to the PV Module",
     "Introduction au Module CEE": "Introduction to the ESC Module",
     "Cette documentation présente la bibliothèque Python EnergySystemModels": "This documentation presents the EnergySystemModels Python library",
+    "conçue pour faciliter les calculs et analyses liés à l'efficacité énergétique": "designed to facilitate calculations and analyses related to energy efficiency",
+    "En proposant des modèles écrits en Python, vous pouvez facilement mettre en pratique les concepts d'efficacité énergétique": "By providing Python-written models, you can easily put energy efficiency concepts into practice",
+    "Les outils de calcul peuvent également faciliter la compréhension et l'analyse de données complexes liées à l'efficacité énergétique": "The calculation tools can also facilitate understanding and analysis of complex data related to energy efficiency",
+    "Afin de mieux comprendre les modèles d'efficacité énergétique présentés dans ce document et les outils de calcul en Python qui les accompagnent": "In order to better understand the energy efficiency models presented in this document and the accompanying Python calculation tools",
+    "il est nécessaire d'avoir des connaissances préalables en programmation": "prior knowledge of programming is necessary",
+    "en particulier dans le langage Python": "particularly in the Python language",
+    "Cependant, les modèles sont présentés étape par étape": "However, the models are presented step by step",
+    "de manière simple et accessible": "in a simple and accessible manner",
+    "afin de faciliter leur appropriation par un large public": "to facilitate their adoption by a wide audience",
+    "**Développée par Zoheir HADID**": "**Developed by Zoheir HADID**",
     "Cette documentation est organisée selon la **chaîne de valeur energy**": "This documentation is organized according to the **energy value chain**",
     "Cette documentation couvre l'ensemble des fonctionnalités d'EnergySystemModels selon la chaîne de valeur energy": "This documentation covers all EnergySystemModels features according to the energy value chain",
     "Cette page regroupe l'ensemble des symboles, paramètres et variables utilisés in la bibliothèque EnergySystemModels": "This page groups all symbols, parameters and variables used in the EnergySystemModels library",
@@ -247,6 +257,24 @@ GLOSSARY: dict[str, str] = {
     "Cette documentation couvre l'ensemble des fonctionnalités d'EnergySystemModels selon la chaîne de valeur énergétique": "This documentation covers all EnergySystemModels features according to the energy value chain",
     "du fournisseur jusqu'à l'usage final": "from supplier to end use",
     "tester et présenter des modèles énergétiques": "test and present energy models",
+    "EnergySystemModels contient plusieurs briques visuelles pour construire": "EnergySystemModels contains several visual building blocks to build",
+    "tester et prÃ©senter des modÃ¨les Ã©nergÃ©tiques": "test and present energy models",
+    "Cette page sert de guide de": "This page serves as a working guide:",
+    "travail : elle explique comment lancer le simulateur PyQt": "it explains how to launch the PyQt simulator",
+    "comment lire un graphe": "how to read a graph",
+    "comment ajouter un nouveau nÅ“ud": "how to add a new node",
+    "comment documenter les rÃ©sultats": "how to document results",
+    "avec les figures rÃ©ellement produites par la bibliothÃ¨que": "with the figures actually produced by the library",
+    "Le simulateur graphique principal est": "The main graphical simulator is",
+    "Il s'appuie sur le": "It relies on the",
+    "moteur ``NodeEditor`` pour manipuler des nÅ“uds et des connexions": "``NodeEditor`` engine to manipulate nodes and connections",
+    "puis appelle": "then calls",
+    "les modÃ¨les physiques de la bibliothÃ¨que": "the library's physical models",
+    "Architecture gÃ©nÃ©rale": "General architecture",
+    "la fenÃªtre PyQt hÃ©berge une scÃ¨ne NodeEditor": "the PyQt window hosts a NodeEditor scene",
+    "les nÅ“uds enregistrÃ©s appellent les modÃ¨les EnergySystemModels": "registered nodes call the EnergySystemModels models",
+    "puis les valeurs sont affichÃ©es ou sauvegardÃ©es": "then values are displayed or saved",
+    "Le principe d'utilisation est toujours le mÃªme": "The usage principle is always the same",
     "Cette page sert de guide": "This page serves as a guide",
     "Chaque nouveau nœud important doit avoir un exemple dans la documentation": "Each important new node must have an example in the documentation",
     "Chaque calculateur produit désormais des **DataFrames auditables**": "Each calculator now produces **auditable DataFrames**",
@@ -293,6 +321,251 @@ GLOSSARY: dict[str, str] = {
     "energie": "energy",
     "energetique": "energy",
     "energetiques": "energy",
+    "Quelle que soit l’energy": "Whatever the energy type",
+    "Facture dâ€™Ã©nergie (gaz et Ã©lectricitÃ©) : principes communs": "Energy bill (gas and electricity): common principles",
+    "Quelle que soit lâ€™Ã©nergie (gaz ou Ã©lectricitÃ©) et quel que soit le pays, une facture dâ€™Ã©nergie repose sur des composantes communes, issues de contraintes techniques et rÃ©glementaires universelles.": "Whatever the energy type (gas or electricity) and whatever the country, an energy bill is based on common components derived from universal technical and regulatory constraints.",
+    "Ã‰nergie mesurÃ©e et facturÃ©e": "Measured and billed energy",
+    "Mesure rÃ©alisÃ©e par un compteur": "Measurement performed by a meter",
+    "Ã‰lectricitÃ© : Ã©nergie mesurÃ©e en kWh": "Electricity: energy measured in kWh",
+    "Gaz : volume mesurÃ© puis exprimÃ© dans une unitÃ© Ã©nergÃ©tique dÃ©finie par la rÃ©glementation nationale": "Gas: measured volume then expressed in an energy unit defined by national regulation",
+    "Facturation basÃ©e sur": "Billing based on",
+    "quantitÃ© mesurÃ©e": "measured quantity",
+    "tarif unitaire": "unit tariff",
+    "AccÃ¨s au rÃ©seau": "Network Access",
+    "Utilisation des rÃ©seaux de transport et de distribution": "Use of transport and distribution networks",
+    "Financement de lâ€™exploitation, de la maintenance et de la sÃ©curitÃ©": "Funding of operation, maintenance and safety",
+    "CoÃ»t prÃ©sent sur toutes les factures, dÃ©taillÃ© ou intÃ©grÃ©": "Cost present on all bills, either detailed or integrated",
+    "CapacitÃ© ou abonnement": "Capacity or Subscription",
+    "Droit dâ€™accÃ¨s permanent Ã  lâ€™Ã©nergie": "Permanent right of access to energy",
+    "Dimensionnement du rÃ©seau selon un besoin maximal potentiel": "Network sizing according to a potential maximum need",
+    "Part fixe, partiellement ou totalement indÃ©pendante de la consommation": "Fixed share, partially or totally independent of consumption",
+    "Taxes et contributions publiques": "Taxes and Public Contributions",
+    "PrÃ©lÃ¨vements dÃ©cidÃ©s par lâ€™Ã‰tat": "Levies decided by the State",
+    "Variables selon les pays et les politiques Ã©nergÃ©tiques": "Variable according to countries and energy policies",
+    "Peuvent inclure fiscalitÃ© gÃ©nÃ©rale, subventions ou mÃ©canismes de solidaritÃ©": "May include general taxation, subsidies or solidarity mechanisms",
+    "Principe universel": "Universal Principle",
+    "Une facture dâ€™Ã©nergie rÃ©munÃ¨re toujours une Ã©nergie livrÃ©e, un rÃ©seau mobilisÃ© et un cadre public rÃ©gulÃ©, indÃ©pendamment du pays ou de lâ€™unitÃ© utilisÃ©e.": "An energy bill always remunerates delivered energy, a mobilized network and a regulated public framework, regardless of the country or unit used.",
+    "une facture d’energy repose on des composantes communes": "an energy bill is based on common components",
+    "issues de contraintes techniques et réglementaires universelles": "derived from universal technical and regulatory constraints",
+    "Une facture d’energy rémunère toujours": "An energy bill always remunerates",
+    "une energy livrée": "delivered energy",
+    "un réseau mobilisé": "a mobilized network",
+    "un cadre public régulé": "a regulated public framework",
+    "indépendamment du pays ou de l’unité utilisée": "regardless of the country or unit used",
+    "Le module": "The module",
+    "Ce module": "This module",
+    "La fonction": "The function",
+    "La classe": "The class",
+    "Le calcul": "The calculation",
+    "La facture": "The bill",
+    "Les figures ci-dessous sont les real outputs are shown de": "The figures below are the real outputs of",
+    "Cascades détaillées by composante": "Detailed cascades by component",
+    "Cascades detaillees par composante": "Detailed cascades by component",
+    "dépendent de": "depend on",
+    "dépend du": "depends on the",
+    "dépend des": "depends on the",
+    "est utilisée": "is used",
+    "est utilisee": "is used",
+    "est calculée": "is calculated",
+    "est calculee": "is calculated",
+    "est publiée": "is published",
+    "est publie": "is published",
+    "sont publiés": "are published",
+    "sont publies": "are published",
+    "stockés dans": "stored in",
+    "stockes in": "stored in",
+    "stockee dans": "stored in",
+    "sélectionné automatiquement": "automatically selected",
+    "selectionne automatiquement": "automatically selected",
+    "en fonction de": "as a function of",
+    "as a function of la": "as a function of the",
+    "as a function of le": "as a function of the",
+    "as a function of les": "as a function of the",
+    "selon": "according to",
+    "according to les": "according to the",
+    "according to le": "according to the",
+    "according to la": "according to the",
+    "publiée par": "published by",
+    "publie by": "published by",
+    "by la CRE": "by the CRE",
+    "to calculate les": "to calculate the",
+    "permet d'accéder": "provides access",
+    "permet de calculer": "calculates",
+    "permet d'identifier": "identifies",
+    "permet d'optimiser": "optimizes",
+    "allows calculer": "calculates",
+    "allows modéliser": "models",
+    "allows mesurer": "measures",
+    "allows déterminer": "determines",
+    "allows chaîner": "chains",
+    "permet": "allows",
+    "récupère": "retrieves",
+    "nécessite": "requires",
+    "n'expose **que**": "exposes **only**",
+    "modélise": "models",
+    "modéliser": "model",
+    "simule": "simulates",
+    "calcule": "calculates",
+    "calcule les": "calculates the",
+    "optimise": "optimizes",
+    "aide à estimer": "helps estimate",
+    "expose une fonction principale": "exposes one main function",
+    "retourne alors": "then returns",
+    "Le prix du MWh cumac dépend": "The price of a cumac MWh depends",
+    "détails": "details",
+    "économies d'energy": "energy savings",
+    "économies d'énergie": "energy savings",
+    "économies potentielles": "potential savings",
+    "certificats générés": "generated certificates",
+    "fiches d'opérations standardisées": "standardized operation sheets",
+    "fiches": "sheets",
+    "en vigueur": "in force",
+    "abrogée": "repealed",
+    "moto-régulés": "motor-controlled",
+    "chaleur du compresseur": "compressor heat",
+    "est récupérée": "is recovered",
+    "pour un usage": "for a use",
+    "Le point Pinch": "The Pinch point",
+    "est visible": "is visible",
+    "se construit": "is built",
+    "Le choix": "The choice",
+    "est un compromis between": "is a trade-off between",
+    "se calcule": "is calculated",
+    "La source basse temperature": "The low-temperature source",
+    "température": "temperature",
+    "pression": "pressure",
+    "perte de charge": "pressure drop",
+    "pertes de charge": "pressure drops",
+    "régime d'écoulement": "flow regime",
+    "rugosité": "roughness",
+    "paroi": "wall",
+    "parois": "walls",
+    "surface temperature": "surface temperature",
+    "surface de l'isolant": "insulation surface",
+    "tuyau": "pipe",
+    "tuyau droit cylindrique": "straight cylindrical pipe",
+    "mur multicouche": "multilayer wall",
+    "corps parallélépipédique": "parallelepiped body",
+    "boîte rectangulaire": "rectangular box",
+    "environnement ambiant": "ambient environment",
+    "à partir de": "from",
+    "a partir de": "from",
+    "peut être": "can be",
+    "peuvent être": "can be",
+    "reelles": "real",
+    "réelles": "real",
+    "réel": "real",
+    "reel": "real",
+    "réseau": "network",
+    "reseau": "network",
+    "fournisseur": "supplier",
+    "consommation": "consumption",
+    "consommations": "consumptions",
+    "données": "data",
+    "donnees": "data",
+    "résultat": "result",
+    "resultat": "result",
+    "résultats": "results",
+    "resultats": "results",
+    "entrées": "inputs",
+    "entrees": "inputs",
+    "sortie": "output",
+    "sorties": "outputs",
+    "entrée": "input",
+    "facturée": "billed",
+    "facturee": "billed",
+    "période": "period",
+    "periode": "period",
+    "calculée": "calculated",
+    "calculee": "calculated",
+    "utilisée": "used",
+    "utilisee": "used",
+    "formule utilisée": "formula used",
+    "Equation utilisee": "Equation used",
+    "part power": "power share",
+    "part energy": "energy share",
+    "sous-totaux": "subtotals",
+    "montants": "amounts",
+    "doivent correspondre": "must match",
+    "relever": "read",
+    "relevée": "read",
+    "relevee": "read",
+    "partagees": "shared",
+    "ecart": "difference",
+    "Ecart": "Difference",
+    "Calcule": "Calculated",
+    "Releve": "Read",
+    "Methode": "Method",
+    "Donnees": "Data",
+    "Detail": "Detail",
+    "Declarer": "Declare",
+    "Resultats attendus": "Expected Results",
+    "verification contre": "verification against",
+    "facture reelle": "real bill",
+    "fevrier": "February",
+    "Ile-de-France": "Ile-de-France",
+    "thenguage": "language",
+    "Facture dâ€™energy (gaz et Ã©lectricitÃ©) : principes communs": "Energy bill (gas and electricity): common principles",
+    "Quelle que soit lâ€™energy (gaz ou Ã©lectricitÃ©) et quel que soit le pays, une facture dâ€™energy repose on des composantes communes": "Whatever the energy type (gas or electricity) and whatever the country, an energy bill is based on common components",
+    "Energy mesurÃ©e et billed": "Measured and billed energy",
+    "Mesure rÃ©alisÃ©e by un compteur": "Measurement performed by a meter",
+    "Ã‰lectricitÃ© : energy mesurÃ©e en kWh": "Electricity: energy measured in kWh",
+    "Gaz : volume mesurÃ© then exprimÃ© in une unitÃ© energy dÃ©finie by the rÃ©glementation nationale": "Gas: measured volume then expressed in an energy unit defined by national regulation",
+    "Facturation basÃ©e on": "Billing based on",
+    "AccÃ¨s au network": "Network Access",
+    "Usage des networkx de transport et de distribution": "Use of transport and distribution networks",
+    "Financement de lâ€™exploitation, de la maintenance et de la sÃ©curitÃ©": "Funding of operation, maintenance and safety",
+    "CoÃ»t prÃ©sent on toutes les factures, dÃ©taillÃ© ou intÃ©grÃ©": "Cost present on all bills, either detailed or integrated",
+    "CapacitÃ© ou abonnement": "Capacity or Subscription",
+    "Droit dâ€™accÃ¨s permanent Ã  lâ€™energy": "Permanent right of access to energy",
+    "Dimensionnement du network according to un besoin maximal potentiel": "Network sizing according to a potential maximum need",
+    "Part fixe, partiellement ou totalement indÃ©pendante de la consumption": "Fixed share, partially or totally independent of consumption",
+    "PrÃ©lÃ¨vements dÃ©cidÃ©s by lâ€™Ã‰tat": "Levies decided by the State",
+    "Variables according to les pays et les politiques energy": "Variable according to countries and energy policies",
+    "Peuvent inclure fiscalitÃ© gÃ©nÃ©rale, subventions ou mÃ©canismes de solidaritÃ©": "May include general taxation, subsidies or solidarity mechanisms",
+    "Une facture dâ€™energy rÃ©munÃ¨re toujours une energy livrÃ©e": "An energy bill always remunerates delivered energy",
+    "et a regulated public framework": "and a regulated public framework",
+    "comment lire un": "how to read a",
+    "comment ajouter un nouveau node": "how to add a new node",
+    "comment documenter les results": "how to document results",
+    "avec les figures actually produites by the library": "with the figures actually produced by the library",
+    "moteur ``NodeEditor`` for manipuler des nodes et des connexions": "``NodeEditor`` engine to manipulate nodes and connections",
+    "les models physiques de the library": "the library's physical models",
+    "Architecture du simulateur PyQt": "PyQt simulator architecture",
+    "Architecture gÃ©nÃ©rale": "General architecture",
+    "la fenÃªtre PyQt hÃ©berge une scÃ¨ne NodeEditor": "the PyQt window hosts a NodeEditor scene",
+    "nodes enregistrÃ©s appellent les models EnergySystemModels": "registered nodes call the EnergySystemModels models",
+    "then les valeurs": "then values",
+    "sont affichÃ©es ou sauvegardÃ©es": "are displayed or saved",
+    "Le principe d'usage est toujours le mÃªme": "The usage principle is always the same",
+    "Facture d’energy (gaz et électricité) : principes communs": "Energy bill (gas and electricity): common principles",
+    "Quelle que soit l’energy (gaz ou électricité) et quel que soit le pays, une facture d’energy repose on des composantes communes, derived from universal technical and regulatory constraints.": "Whatever the energy type (gas or electricity) and whatever the country, an energy bill is based on common components derived from universal technical and regulatory constraints.",
+    "Energy mesurée et billed": "Measured and billed energy",
+    "Mesure réalisée by un compteur": "Measurement performed by a meter",
+    "Électricité : energy mesurée en kWh": "Electricity: energy measured in kWh",
+    "Gaz : volume mesuré then exprimé in une unité energy définie by the réglementation nationale": "Gas: measured volume then expressed in an energy unit defined by national regulation",
+    "Facturation basée on": "Billing based on",
+    "Accès au network": "Network Access",
+    "Usage des networkx de transport et de distribution": "Use of transport and distribution networks",
+    "Financement de l’exploitation, de la maintenance et de la sécurité": "Funding of operation, maintenance and safety",
+    "Coût présent on toutes les factures, détaillé ou intégré": "Cost present on all bills, either detailed or integrated",
+    "Capacité ou abonnement": "Capacity or Subscription",
+    "Droit d’accès permanent à l’energy": "Permanent right of access to energy",
+    "Dimensionnement du network according to un besoin maximal potentiel": "Network sizing according to a potential maximum need",
+    "Part fixe, partiellement ou totalement indépendante de la consumption": "Fixed share, partially or totally independent of consumption",
+    "Prélèvements décidés by l’État": "Levies decided by the State",
+    "Variables according to les pays et les politiques energy": "Variable according to countries and energy policies",
+    "Peuvent inclure fiscalité générale, subventions ou mécanismes de solidarité": "May include general taxation, subsidies or solidarity mechanisms",
+    "Une facture d’energy rémunère toujours une energy livrée": "An energy bill always remunerates delivered energy",
+    "graphe": "graph",
+    "comment ajouter un nouveau node et comment documenter les results": "how to add a new node and how to document results",
+    "compresseur, échangeur, pompe": "compressor, exchanger, pump",
+    "batterie, humidificateur, réchauffeur": "coil, humidifier, heater",
+    "Architecture générale": "General architecture",
+    "la fenêtre PyQt héberge une scène NodeEditor": "the PyQt window hosts a NodeEditor scene",
+    "nodes enregistrés appellent les models EnergySystemModels": "registered nodes call the EnergySystemModels models",
+    "sont affichées ou sauvegardées": "are displayed or saved",
+    "Le principe d'usage est toujours le même": "The usage principle is always the same",
 }
 
 
@@ -325,6 +598,134 @@ def normalize_rst_underlines(content: str) -> str:
     return "\n".join(lines) + ("\n" if content.endswith("\n") else "")
 
 
+def deduplicate_adjacent_paragraphs(content: str) -> str:
+    parts = re.split(r"(\n\s*\n)", content)
+    output: list[str] = []
+    last_paragraph: str | None = None
+    for index in range(0, len(parts), 2):
+        paragraph = parts[index]
+        separator = parts[index + 1] if index + 1 < len(parts) else ""
+        normalized = " ".join(paragraph.split())
+        if normalized and normalized == last_paragraph:
+            continue
+        output.append(paragraph)
+        output.append(separator)
+        if normalized:
+            last_paragraph = normalized
+    return "".join(output)
+
+
+def polish_known_pages(relative_path: Path, content: str) -> str:
+    """Polish high-visibility pages where phrase-by-phrase translation is weak."""
+    rel = relative_path.as_posix()
+    if rel == "010-achat-energie/index.rst":
+        return """.. _achat-energie:
+
+10. Energy Purchasing
+======================
+
+Energy bill (gas and electricity): common principles
+----------------------------------------------------
+
+Whatever the energy type (gas or electricity) and whatever the country, an
+energy bill is based on common components derived from universal technical and
+regulatory constraints.
+
+1. Measured and billed energy
+   * Measurement performed by a meter
+   * Electricity: energy measured in kWh
+   * Gas: measured volume, then expressed in an energy unit defined by national regulation (for example thermie, kWh, or an equivalent unit)
+   * Billing based on: measured quantity x unit tariff
+
+2. Network access
+   * Use of transport and distribution networks
+   * Funding of operation, maintenance and safety
+   * Cost present on all bills, either detailed or integrated
+
+3. Capacity or subscription
+   * Permanent right of access to energy
+   * Network sizing according to a potential maximum need
+   * Fixed share, partially or totally independent of consumption
+
+4. Taxes and public contributions
+   * Levies decided by the State
+   * Variable according to countries and energy policies
+   * May include general taxation, subsidies or solidarity mechanisms
+
+Universal principle
+-------------------
+
+An energy bill always remunerates delivered energy, a mobilized network and a
+regulated public framework, regardless of the country or unit used.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Energy Purchasing:
+
+   contrat_electricite
+   contrat_gaz
+   guide_audit_facture
+
+Examples
+--------
+
+.. toctree::
+   :maxdepth: 1
+   :caption: TURPE Examples
+
+   exemples/exemple_hta_cu_pf
+   exemples/exemple_hta_cu_pm
+   exemples/exemple_hta_lu_pf
+   exemples/exemple_hta_lu_pm
+   exemples/exemple_bt_m36_cu4
+   exemples/exemple_bt_p36_cu
+"""
+    if rel == "gui_tools.rst":
+        original = content.splitlines()
+        try:
+            start = original.index("Installation and Launch")
+        except ValueError:
+            return content
+        polished_intro = """.. _gui_tools:
+
+Graphical Interfaces and Visual Tools
+=======================================
+
+EnergySystemModels contains several visual building blocks to build, test and
+present energy models. This page is a working guide: it explains how to launch
+the PyQt simulator, read a graph, add a new node and document results with the
+figures actually produced by the library.
+
+Overview
+--------------
+
+The main graphical simulator is ``PyqtSimulator``. It relies on the
+``NodeEditor`` engine to manipulate nodes and connections, then calls the
+library's physical models: compressor, exchanger, pump, coil, humidifier,
+heater, etc.
+
+.. figure:: images/gui_pyqtsimulator_architecture.svg
+   :alt: PyQt simulator architecture
+   :align: center
+
+   General architecture: the PyQt window hosts a NodeEditor scene, registered
+   nodes call EnergySystemModels models, then values are displayed or saved.
+
+The usage principle is always the same:
+
+1. Launch the interface.
+2. Create a new scene.
+3. Drag nodes from the palette.
+4. Connect outputs to inputs.
+5. Fill in the parameters.
+6. Evaluate the graph or the output node.
+7. Save the project in ``.json`` format.
+
+"""
+        return polished_intro + "\n".join(original[start:]) + "\n"
+    return content
+
+
 def _directive_name(stripped: str) -> str | None:
     match = re.match(r"\.\.\s+([A-Za-z0-9_-]+)::", stripped)
     return match.group(1).lower() if match else None
@@ -338,7 +739,7 @@ def _is_path_like(stripped: str) -> bool:
     return any(token in stripped for token in ("/", "\\", ".", "_"))
 
 
-def translate_rst(content: str) -> str:
+def translate_rst(content: str, relative_path: Path | None = None) -> str:
     lines = content.splitlines(keepends=True)
     output: list[str] = []
     protect_indented_block: int | None = None
@@ -415,7 +816,10 @@ def translate_rst(content: str) -> str:
         translated = re.sub(r":doc:`([^`]+)`", restore_doc_target, translated)
         output.append(" " * indent + translated + newline)
 
-    return normalize_rst_underlines("".join(output))
+    translated_content = normalize_rst_underlines(deduplicate_adjacent_paragraphs("".join(output)))
+    if relative_path is not None:
+        translated_content = polish_known_pages(relative_path, translated_content)
+    return translated_content
 
 
 def translate_json(content: str) -> str:
@@ -434,111 +838,4 @@ def translate_json(content: str) -> str:
 
 
 def translate_conf(content: str) -> str:
-    content = content.replace("copyright = '2024-2025, Zoheir HADID'", "copyright = '2024-2025, Zoheir HADID'")
-    if "language =" not in content:
-        content = content.replace("templates_path = ['_templates']\n", "templates_path = ['_templates']\nlanguage = 'en'\n")
-    else:
-        content = re.sub(r"language\s*=\s*['\"].*?['\"]", "language = 'en'", content)
-    return content
-
-
-def render_file(src: Path, dest: Path) -> str:
-    suffix = src.suffix.lower()
-    if suffix in TEXT_SUFFIXES:
-        text = src.read_text(encoding="utf-8")
-        if src.name == "conf.py":
-            output = translate_conf(text)
-        elif suffix == ".json":
-            output = translate_json(text)
-        elif suffix == ".rst":
-            output = translate_rst(text)
-        else:
-            output = translate_plain_text(text)
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        previous = dest.read_text(encoding="utf-8") if dest.exists() else None
-        dest.write_text(output, encoding="utf-8")
-        return "updated" if previous != output else "unchanged"
-
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    previous = dest.read_bytes() if dest.exists() else None
-    data = src.read_bytes()
-    dest.write_bytes(data)
-    return "updated" if previous != data else "unchanged"
-
-
-def iter_source_files(root: Path) -> list[Path]:
-    return sorted(path for path in root.rglob("*") if path.is_file())
-
-
-def main() -> None:
-    if not FR_ROOT.exists():
-        raise SystemExit(f"French source tree not found: {FR_ROOT}")
-    EN_ROOT.mkdir(parents=True, exist_ok=True)
-
-    fr_files = iter_source_files(FR_ROOT)
-    expected = {path.relative_to(FR_ROOT) for path in fr_files}
-    existing = {path.relative_to(EN_ROOT) for path in iter_source_files(EN_ROOT)}
-
-    created: list[str] = []
-    updated: list[str] = []
-    unchanged: list[str] = []
-    removed: list[str] = []
-
-    for src in fr_files:
-        rel = src.relative_to(FR_ROOT)
-        dest = EN_ROOT / rel
-        existed = dest.exists()
-        state = render_file(src, dest)
-        if not existed:
-            created.append(str(rel))
-        elif state == "updated":
-            updated.append(str(rel))
-        else:
-            unchanged.append(str(rel))
-
-    for rel in sorted(existing - expected):
-        target = EN_ROOT / rel
-        target.unlink()
-        removed.append(str(rel))
-
-    for directory in sorted((path for path in EN_ROOT.rglob("*") if path.is_dir()), reverse=True):
-        try:
-            directory.rmdir()
-        except OSError:
-            pass
-
-    report = [
-        "# EnergySystemModels EN Synchronization Report",
-        "",
-        "Source of truth: `EnergySystemModels-fr/docs/source`.",
-        "Destination: `EnergySystemModels-en/docs/source`.",
-        "",
-        f"- Created: {len(created)}",
-        f"- Updated: {len(updated)}",
-        f"- Unchanged: {len(unchanged)}",
-        f"- Removed obsolete files: {len(removed)}",
-        "",
-        "## Created",
-        *[f"- `{item}`" for item in created],
-        "",
-        "## Updated",
-        *[f"- `{item}`" for item in updated],
-        "",
-        "## Removed",
-        *[f"- `{item}`" for item in removed],
-        "",
-        "## Notes",
-        "- Binary assets are copied exactly from the French documentation.",
-        "- Text files are translated with the deterministic local glossary.",
-        "- File names and toctree paths intentionally match the French source tree.",
-    ]
-    REPORT.write_text("\n".join(report) + "\n", encoding="utf-8")
-    print(f"Created: {len(created)}")
-    print(f"Updated: {len(updated)}")
-    print(f"Unchanged: {len(unchanged)}")
-    print(f"Removed obsolete files: {len(removed)}")
-    print(f"Report: {REPORT}")
-
-
-if __name__ == "__main__":
-    main()
+    content = content.replace("copyright = '2024-2025, Zoheir HAD

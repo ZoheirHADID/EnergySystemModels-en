@@ -1,5 +1,5 @@
 {
-  "title": "Cycle d'evaluation d'un graphe",
+  "title": "Cycle d'evaluation d'un graph",
   "description": "Propagation des calculs from les noeuds amont jusqu'aux noeuds de output.",
   "nodes": [
     {
@@ -12,7 +12,7 @@
     {
       "id": "dirty",
       "label": "markDirty",
-      "subtitle": "descendants a recalculer",
+      "subtitle": "descendants a recalculatesr",
       "kind": "utility",
       "column": 1
     },
@@ -59,7 +59,7 @@
     {
       "from": "eval",
       "to": "upstream",
-      "label": "entrees"
+      "label": "inputs"
     },
     {
       "from": "upstream",

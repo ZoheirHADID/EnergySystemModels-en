@@ -1,8 +1,8 @@
 Usage du module IPMVP
 ===========================
 
-Le module ``IPMVP`` construit un model de **baseline** (régression) et calcule
-les économies d'energy according to l'**Option C** (mesure au niveau du site). La
+The module ``IPMVP`` construit un model de **baseline** (régression) et calculates
+les energy savings according to l'**Option C** (mesure au niveau du site). La
 fonction principale ``Mathematical_Models`` **returns a 9-item tuple** ;
 il n'existe pas d'objet ``model`` with des attributs ``.r2`` ou des methods
 ``plot_*`` (voir :doc:`exemples` for un example exécutable complet).
@@ -30,10 +30,10 @@ Signature
 Parameters
 ----------
 
-* **y** : consommation energy (``Series`` indexée by le temps) ;
+* **y** : consumption energy (``Series`` indexée by le temps) ;
 * **X** : variable(s) explicative(s) (``DataFrame``, ex. ``[["DJU"]]``) ;
-* **start/end_baseline_period** : période de référence (``datetime``) ;
-* **start/end_reporting_period** : période de suivi (``datetime``) ;
+* **start/end_baseline_period** : period de référence (``datetime``) ;
+* **start/end_reporting_period** : period de suivi (``datetime``) ;
 * **degree** : degré du polynôme (1=linéaire, 2=quadratique, 3=cubique) ;
 * **print_report** : si ``True``, génère un rapport ``.docx`` (via ``docx_report``) ;
 * **seuil_z_scores** : seuil d'exclusion des points aberrants (**défaut 8**).
@@ -41,13 +41,13 @@ Parameters
 Valeurs de retour
 -----------------
 
-* ``y_pred`` : consommation prédite on la baseline ;
+* ``y_pred`` : consumption prédite on la baseline ;
 * ``df`` : data baseline + colonne de prédiction (colonne ``"ANTE-POST"``) ;
 * ``conformite`` : ``DataFrame`` des indicateurs (``r2``, ``cv_remse``,
   ``stat_t_*``) with la colonne ``conformité IPMVP`` (booléens) ;
 * ``table_incertitude`` : incertitude baseline (``precision_relative``, ``rmse``…) ;
 * ``y_pred_report``, ``df_report``, ``conformite_report``,
-  ``table_incertitude_report`` : équivalents for la période de suivi ;
+  ``table_incertitude_report`` : équivalents for la period de suivi ;
 * ``df_savings`` : économies **ANTE-POST** / **POST-ANTE** (relevé, prédiction,
   pourcentage d'économie).
 
@@ -77,7 +77,7 @@ Seuils de référence ASHRAE : ≤ 15 % (mensuel) / ≤ 30 % (horaire).
 Détection des valeurs aberrantes
 --------------------------------
 
-Le module utilise la method du **z-score** :
+The module utilise la method du **z-score** :
 
 .. math::
 
@@ -88,8 +88,8 @@ Les points with:math:`|z|` > ``seuil_z_scores`` (**défaut 8**) sont exclus.
 Variables explicatives (X)
 --------------------------
 
-Le plus souvent, ``X`` contient les **degrés-jours unifiés (DJU)**. Le module
-calcule les DJU by la method COSTIC (voir :doc:`../008-meteo/degres_jours`) ;
+Le plus souvent, ``X`` contient les **degrés-jours unifiés (DJU)**. The module
+calculates the DJU by la method COSTIC (voir :doc:`../008-meteo/degres_jours`) ;
 on peut aussi ajouter d'autres variables according to le contexte :
 
 .. code-block:: python

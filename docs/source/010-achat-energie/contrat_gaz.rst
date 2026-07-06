@@ -9,7 +9,7 @@
 1.1 Consommation Annuelle de Reference (CAR)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La **CAR** represente une estimation de la consommation annuelle gas naturel for un
+La **CAR** represente une estimation de la consumption annuelle gas naturel for un
 **Point de Comptage et d'Estimation (PCE)**. Elle est fournie in le contrat et exprimee en MWh/an.
 
 1.2 Le Tarif d'Acheminement
@@ -36,38 +36,38 @@ du **T1** (menages) au **TP** (grands consommateurs raccordes au transport) :
      - Industries moyennes
    * - **T4**
      - CAR > 5 000 MWh/an
-     - Grands industriels (reseau distribution)
+     - Grands industriels (network distribution)
    * - **TP**
      - CAR > 5 000 MWh/an
-     - Grands consommateurs (reseau transport)
+     - Grands consommateurs (network transport)
 
 .. note::
 
-   **TP (Tarif de Proximite)** : dedie aux grands consommateurs raccordes au reseau
-   de distribution mais eligibles a un raccordement direct au reseau de transport
+   **TP (Tarif de Proximite)** : dedie aux grands consommateurs raccordes au network
+   de distribution mais eligibles a un raccordement direct au network de transport
    (naTran (ex-GRTgaz) / Terega). Le TP reste une option tarifaire de l'ATRD (distribution).
 
 **Example pratique** : Un site with une CAR de 15 466,8 MWh/an :
 
 - CAR > 5 000 MWh/an
-- Option tarifaire **T4** (reseau de distribution)
+- Option tarifaire **T4** (network de distribution)
 - Ou option tarifaire **TP** (si eligible au raccordement transport)
 
 1.3 Capacite Journaliere Annuelle souscrite (CJA)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La **CJA (Capacite Journaliere Annuelle)** est la capacite journaliere **choisie et souscrite
-contractuellement** by le client aupres du gestionnaire de reseau (GRDF / naTran (ex-GRTgaz) / Terega).
+contractuellement** by le client aupres du gestionnaire de network (GRDF / naTran (ex-GRTgaz) / Terega).
 C'est un **engagement contractuel** du client on sa capacite maximale de soutirage journalier,
 exprimee en **MWh/jour**.
 
-La CJA est utilisee comme base de calcul for la souscription de capacite ATRD (tarifs T4 et TP).
-Si la CJA n'est pas fournie, le modele recalcule la capacite via ``CAR x Zi x A`` (CJN).
+La CJA is used comme base de calcul for la souscription de capacite ATRD (tarifs T4 et TP).
+Si la CJA n'est pas fournie, le modele recalculates la capacite via ``CAR x Zi x A`` (CJN).
 
 1.4 Capacite Journaliere Normalisee (CJN)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La **CJN** est la capacite journaliere **calculee** a partir des parameters climatiques et reseau :
+La **CJN** est la capacite journaliere **calculated** froms parameters climatiques et network :
 
 .. code-block:: text
 
@@ -75,8 +75,8 @@ La **CJN** est la capacite journaliere **calculee** a partir des parameters clim
 
 Ou :
 
-- **Zi** : coefficient climatique (station meteo x profil de consommation)
-- **A** : coefficient reseau (naTran (ex-GRTgaz) ou Terega)
+- **Zi** : coefficient climatique (station meteo x profil de consumption)
+- **A** : coefficient network (naTran (ex-GRTgaz) ou Terega)
 
 **Priorite in le modele** : ``CJN explicite > CJA souscrite > CAR x Zi x A``
 
@@ -85,13 +85,13 @@ Ou :
 2. Composantes d'une facture gas naturel
 ------------------------------------------------------------
 
-La facture gas naturel se compose de trois grandes parties :
+The bill gas naturel se compose de trois grandes parties :
 
 - **La part acheminement** : transport (ATRT) + distribution (ATRD)
 - **La part taxes et contributions** : Accise gaz (ex-TICGN) + CTA
-- **La part fourniture** : consommation x prix unitaire negocie
+- **La part fourniture** : consumption x prix unitaire negocie
 
-Le prix paye for l'usage du reseau comprend deux volets :
+Le prix paye for l'usage du network comprend deux volets :
 
 - **ATRD** : Acces des Tiers au Reseau de Distribution (GRDF ou regie locale)
 - **ATRT** : Acces des Tiers au Reseau de Transport (naTran (ex-GRTgaz) ou Terega)
@@ -100,14 +100,14 @@ Le prix paye for l'usage du reseau comprend deux volets :
 
    Cout_acheminement_gaz = ATRD + ATRT
 
-**Tout client raccorde au reseau de distribution paie ATRD + ATRT**, car le gaz transite
-d'abord by le reseau de transport before d'etre injecte in le reseau de distribution.
+**Tout client raccorde au network de distribution paie ATRD + ATRT**, car le gaz transite
+d'abord by le network de transport before d'etre injecte in le network de distribution.
 
 2.1 Acheminement Distribution — ATRD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'**ATRD (Acces des Tiers au Reseau de Distribution)** est le tarif d'usage du
-reseau de distribution (GRDF ou regie locale).
+network de distribution (GRDF ou regie locale).
 
 **Structure de l'ATRD by option tarifaire :**
 
@@ -150,7 +150,7 @@ reseau de distribution (GRDF ou regie locale).
 
 Pour les tarifs **T4** et **TP**, l'ATRD comprend un **terme de souscription de capacite**
 qui depend de la CJA (Capacite Journaliere Annuelle) souscrite in le contrat.
-Ce terme remunere GRDF for la reservation de capacite on le reseau de distribution.
+Ce terme remunere GRDF for la reservation de capacite on le network de distribution.
 
 *Tarif T4 :*
 
@@ -438,16 +438,16 @@ Le tarif TP ajoute un **terme de distance** en plus de la souscription de capaci
 
 .. note::
 
-   Les coefficients ATRD sont publies by la CRE et stockes in ``coefficients_gaz_ATRD.json``.
-   Le tarif applicable est selectionne automatiquement as a function of la date de debut de la facture
+   Les coefficients ATRD are published by la CRE et stockes in ``coefficients_gaz_ATRD.json``.
+   Le tarif applicable est automatically selected as a function of la date de debut de la facture
    et du type de tarif d'acheminement du contrat.
 
 2.2 Acheminement Transport — ATRT
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 L'**ATRT (Acces des Tiers au Reseau de Transport)** est le tarif d'usage du
-reseau de transport (naTran (ex-GRTgaz) ou Terega). Il est paye by tout consommateur,
-meme raccorde au reseau de distribution, car le gaz transite d'abord by le transport.
+network de transport (naTran (ex-GRTgaz) ou Terega). Il est paye by tout consommateur,
+meme raccorde au network de distribution, car le gaz transite d'abord by le transport.
 
 **Formule de calcul ATRT :**
 
@@ -464,10 +464,10 @@ meme raccorde au reseau de distribution, car le gaz transite d'abord by le trans
    * - **Composante**
      - **Formule de calcul**
      - **Explication**
-   * - **TCS** (reseau principal)
+   * - **TCS** (network principal)
      - ``CJN x TCS``
-     - Cout d'acces au reseau principal (capacite de output)
-   * - **TCR** (reseau regional)
+     - Cout d'acces au network principal (capacite de output)
+   * - **TCR** (network regional)
      - ``CJN x TCR x NTR``
      - Cout d'acheminement regional, pondere by le niveau tarifaire (NTR)
    * - **TCL** (capacite de livraison)
@@ -493,11 +493,11 @@ meme raccorde au reseau de distribution, car le gaz transite d'abord by le trans
    * - **Zi**
      - Coefficient climatique (station meteo x profil). Voir section :ref:`stations-meteo-zi`
    * - **A**
-     - Coefficient reseau (naTran (ex-GRTgaz) ou Terega). Voir section :ref:`coefficient-A`
+     - Coefficient network (naTran (ex-GRTgaz) ou Terega). Voir section :ref:`coefficient-A`
    * - **CJN**
      - Capacite Journaliere Normalisee. Voir :ref:`calcul de la CJN <calcul-cjn>` ci-dessous.
    * - **Modulation_hivernale**
-     - Ecart between la consommation de pointe hivernale et la consommation moyenne. Voir :ref:`calcul de la modulation <calcul-modulation>` ci-dessous.
+     - Difference between la consumption de pointe hivernale et la consumption moyenne. Voir :ref:`calcul de la modulation <calcul-modulation>` ci-dessous.
    * - **NTR**
      - Niveau Tarifaire Regional (0 a 10) according to la localisation du site
    * - **coef_stockage**
@@ -507,13 +507,13 @@ meme raccorde au reseau de distribution, car le gaz transite d'abord by le trans
 
 **Calcul de la CJN (Capacite Journaliere Normalisee) :**
 
-La CJN est calculee differemment according to le type de client
+La CJN is calculated differemment according to le type de client
 (deliberation CRE 2025-35, section 4.2.2.2) :
 
 *Clients "profiles" (T1, T2, T3) :*
 
-Ces clients n'ont pas de souscription de capacite. La CJN est calculee automatiquement
-par le GRT a partir de la CAR, du profil de consommation et de la station meteo :
+Ces clients n'ont pas de souscription de capacite. La CJN is calculated automatiquement
+par le GRT from la CAR, du profil de consumption et de la station meteo :
 
 .. code-block:: text
 
@@ -521,15 +521,15 @@ par le GRT a partir de la CAR, du profil de consommation et de la station meteo 
 
 *Clients "a souscription" (T4, TP) :*
 
-Le fournisseur reserve aupres du GRT la capacite de transport souhaitee for son portefeuille
+Le supplier reserve aupres du GRT la capacite de transport souhaitee for son portefeuille
 de clients. La **CJA (Capacite Journaliere Annuelle)** souscrite in le contrat de distribution
-est utilisee comme base de calcul for la souscription de capacite ATRD.
+is used comme base de calcul for la souscription de capacite ATRD.
 
 Pour le calcul de l'ATRT, la capacite de livraison normalisee au PITD est allouee
 automatiquement by le GRT. Elle est egale a la somme des :
 
 - capacites souscrites for les PDL "a souscription" en aval du PITD
-- capacites calculees (``CAR x Zi x A``) for les PDL "profiles" en aval du PITD
+- capacites calculateds (``CAR x Zi x A``) for les PDL "profiles" en aval du PITD
 
 Pour un client T4 individuel, la capacite transport est generalement proche de la CJA souscrite.
 Dans le modele Python, si la CJN n'est pas fournie explicitement, on utilise la CJA :
@@ -540,8 +540,8 @@ Dans le modele Python, si la CJN n'est pas fournie explicitement, on utilise la 
 
 .. note::
 
-   La CJA est visible on la facture : "Capacite journaliere annuelle souscrite (kWh) : 109 000".
-   La CJN exacte utilisee by le GRT for le transport peut differer legerement de la CJA.
+   La CJA is visible on la facture : "Capacite journaliere annuelle souscrite (kWh) : 109 000".
+   La CJN exacte used by le GRT for le transport peut differer legerement de la CJA.
    Si l'abonnement transport figure on la facture, utiliser ``atrt_mensuel_facture`` dans
    le modele for un calcul exact (reverse-engineering de la modulation).
 
@@ -549,8 +549,8 @@ Dans le modele Python, si la CJN n'est pas fournie explicitement, on utilise la 
 
 **Calcul de la modulation hivernale :**
 
-La modulation hivernale mesure l'ecart between la consommation de pointe en hiver
-et la consommation moyenne annuelle. Elle sert de base au calcul du **terme tarifaire
+La modulation hivernale mesure l'difference between la consumption de pointe en hiver
+et la consumption moyenne annuelle. Elle sert de base au calcul du **terme tarifaire
 de stockage (TS)**.
 
 *Clients "profiles" (T1, T2, T3) :*
@@ -563,7 +563,7 @@ Ou ``Int`` est la somme des capacites interruptibles contractualisees (0 by defa
 
 *Clients "a souscription" (T4, TP) — Formule CRE officielle :*
 
-La modulation est calculee a partir des **consommations hiver reelles** des 4 dernieres annees
+La modulation is calculated froms **consumptions hiver real** des 4 dernieres annees
 (deliberation CRE 2025-35, section 4.2.2.2, page 35) :
 
 .. code-block:: text
@@ -581,13 +581,13 @@ Ou :
 
 Avec :
 
-- **Conso_hiver** : consommation du site du 1er novembre N-1 au 31 mars N (**151 jours**)
-- **Conso_annuelle** : consommation du site du 1er novembre N-1 au 31 octobre N (**365 jours**)
+- **Conso_hiver** : consumption du site du 1er novembre N-1 au 31 mars N (**151 jours**)
+- **Conso_annuelle** : consumption du site du 1er novembre N-1 au 31 octobre N (**365 jours**)
 
 .. note::
 
    La modulation hivernale **n'apparait pas on la facture**. Seul le montant
-   mensuel "Abonnement transport" est visible. Pour retrouver la modulation,
+   mensuel "Abonnement transport" is visible. Pour retrouver la modulation,
    le modele Python peut la **reverse-engineer** a partir du montant ATRT facture :
 
    .. code-block:: python
@@ -614,13 +614,13 @@ Avec :
    **Priorite du calcul in le modele :**
 
    1. ``modulation_MWh_j`` fourni explicitement
-   2. ``consommations_hiver_MWh`` + ``consommations_annuelles_MWh`` (formule CRE M_fav4)
+   2. ``consumptions_hiver_MWh`` + ``consumptions_annuelles_MWh`` (formule CRE M_fav4)
    3. ``atrt_mensuel_facture`` (reverse-engineering from la facture)
    4. Estimation by defaut : ``CJN - CAR/365`` (approximation haute)
 
 **Historique complet des coefficients ATRT (source : coefficients_gaz_ATRT.json) :**
 
-*TCS — Terme de Capacite de Output (reseau principal, euro/MWh/j/an) :*
+*TCS — Terme de Capacite de Output (network principal, euro/MWh/j/an) :*
 
 .. list-table:: Historique TCS
    :header-rows: 1
@@ -717,11 +717,11 @@ Avec :
 
    Le TCL depend du type de point de livraison. Les valeurs ci-dessus sont for les PITD
    (Point d'Interface Transport Distribution), qui concerne la majorite des clients
-   raccordes au reseau de distribution. Source : deliberation CRE 2025-35, page 33.
+   raccordes au network de distribution. Source : deliberation CRE 2025-35, page 33.
 
 *TTS — Terme Tarifaire de Stockage (compensation hivernale, euro/MWh/j) :*
 
-Le terme tarifaire de stockage est publie by la CRE et resulte des encheres de stockage.
+Le terme tarifaire de stockage is published by la CRE et resulte des encheres de stockage.
 Il compense le cout de modulation hivernale lie a la variabilite saisonniere de la demande.
 Voir :ref:`calcul de la modulation <calcul-modulation>` for le detail du calcul de la modulation.
 
@@ -760,7 +760,7 @@ Voir :ref:`calcul de la modulation <calcul-modulation>` for le detail du calcul 
 
 .. note::
 
-   Le coefficient de stockage est tres volatile car il depend directement du resultat
+   Le coefficient de stockage est tres volatile car il depend directement du result
    des encheres de capacite de stockage souterrain. Ce coefficient s'applique only
    a la part de **modulation hivernale**. Voir :ref:`calcul de la modulation <calcul-modulation>` for le detail.
 
@@ -791,7 +791,7 @@ Voir :ref:`calcul de la modulation <calcul-modulation>` for le detail du calcul 
 
 .. note::
 
-   Les coefficients ATRT sont publies by la CRE et stockes in ``coefficients_gaz_ATRT.json``.
+   Les coefficients ATRT are published by la CRE et stockes in ``coefficients_gaz_ATRT.json``.
    La transition ATRT7 to ATRT8 (avril 2024) a marque une hausse significative (+19,3%)
    principalement on le TCS (+30,7%). La compensation stockage a ete multipliee by 2,4
    en 2025-2026 (331,44 vs 139,07 euro/MWh/j).
@@ -802,7 +802,7 @@ Voir :ref:`calcul de la modulation <calcul-modulation>` for le detail du calcul 
 **CTA (Contribution Tarifaire d'Acheminement)**
 
 La CTA est une taxe assise on les **termes fixes d'acheminement**. Elle comporte
-**deux parts distinctes** calculees a partir de l'abonnement distribution (ATRD fixe) :
+**deux parts distinctes** calculateds from l'abonnement distribution (ATRD fixe) :
 
 .. code-block:: text
 
@@ -818,7 +818,7 @@ Ou :
 - ``taux_distribution`` = **20,80 %** (constant)
 - ``taux_transport`` = **4,71 %** (constant)
 - ``coefficient_proportionnalite`` = coefficient CRE representant la **quote-part transport**
-  incluse indirectement in l'abonnement de distribution. Ce coefficient est publie
+  incluse indirectement in l'abonnement de distribution. Ce coefficient is published
   par la CRE in chaque deliberation ATRD.
 
 **Example (facture T4, ATRD7 2025-2026) :**
@@ -835,12 +835,12 @@ Ou :
 
 .. note::
 
-   L'assiette CTA transport (3 681,88 EUR in l'example) est visible on la facture EDF.
-   Elle n'est **pas** l'abonnement transport reel (ATRT = 4 176,67 EUR) mais un montant
-   calcule a partir de l'ATRD fixe via le coefficient de proportionnalite CRE.
-   Ce mecanisme simplifie le calcul of the AHU : instead of dependre de l'ATRT reel
+   L'assiette CTA transport (3 681,88 EUR in l'example) is visible on la facture EDF.
+   Elle n'est **pas** l'abonnement transport real (ATRT = 4 176,67 EUR) mais un montant
+   calculates from l'ATRD fixe via le coefficient de proportionnalite CRE.
+   Ce mecanisme simplifie le calcul of the AHU : instead of dependre de l'ATRT real
    (qui varie according to la modulation hivernale et le stockage), la CTA est toujours
-   calculee on la base de l'ATRD fixe, qui est un montant stable et previsible.
+   calculated on la base de l'ATRD fixe, qui est un montant stable et previsible.
 
 **Historique du coefficient de proportionnalite CTA (source : coefficients_gaz_ATRD.json) :**
 
@@ -882,7 +882,7 @@ Ou :
 .. note::
 
    Les taux de CTA (20,80% et 4,71%) sont restes constants from 2018.
-   Seul le coefficient de proportionnalite varie legerement between les periodes ATRD
+   Seul le coefficient de proportionnalite varie legerement between les periods ATRD
    (de 0,8321 a 0,8357). Il est retourne a 0,8321 en ATRD7 2025-2026.
 
 **Accise on les gaz naturels (ex-TICGN)**
@@ -964,7 +964,7 @@ Evolution historique des taux de l'accise gaz (ex-TICGN) :
    Le taux a presque double between 2023 (8,37 EUR/MWh) et 2024 (16,37 EUR/MWh),
    suite a la fin du bouclier tarifaire. Les taux sont integres in le fichier
    ``coefficients_gaz_TICGN.json`` from the library EnergySystemModels et
-   selectionnes automatiquement as a function of la periode de facturation.
+   selectionnes automatiquement as a function of la period de facturation.
 
 2.4 TVA applicable
 ^^^^^^^^^^^^^^^^^^^^
@@ -972,7 +972,7 @@ Evolution historique des taux de l'accise gaz (ex-TICGN) :
 La TVA on le gaz naturel en France comporte historiquement **deux taux distincts** :
 
 - **Taux reduit** : applique a l'abonnement (parts fixes) et a la CTA
-- **Taux normal** : applique a la consommation (parts variables), a la molecule et a l'accise
+- **Taux normal** : applique a la consumption (parts variables), a la molecule et a l'accise
 
 .. list-table:: Historique des taux de TVA gaz naturel en France (source : coefficients_gaz_TVA.json)
    :header-rows: 1
@@ -981,7 +981,7 @@ La TVA on le gaz naturel en France comporte historiquement **deux taux distincts
    * - Periode
      - Evenement
      - TVA abonnement
-     - TVA consommation
+     - TVA consumption
    * - Avant 01/01/2014
      - Taux historiques
      - 5,5%
@@ -1026,7 +1026,7 @@ La TVA on le gaz naturel en France comporte historiquement **deux taux distincts
 2.5 Fourniture
 ^^^^^^^^^^^^^^^
 
-La part fourniture correspond a la consommation gas facturee by le fournisseur.
+La part fourniture correspond a la consumption gas billed by le supplier.
 
 .. code-block:: text
 
@@ -1044,9 +1044,9 @@ Le prix unitaire est negocie in le contrat de fourniture.
 3.1 Stations meteo disponibles for le calcul de Zi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le coefficient Zi est une constante reglementaire publiee by la CRE, stockee dans
+Le coefficient Zi est une constante reglementaire publiee by la CRE, stored in
 ``coefficients_gaz_ATRT.json``. Il est indexe by une table a double entree :
-**station meteo** (36 stations) x **profil de consommation** (P011 a P019).
+**station meteo** (36 stations) x **profil de consumption** (P011 a P019).
 
 .. list-table::
    :header-rows: 1
@@ -1199,7 +1199,7 @@ Le coefficient Zi est une constante reglementaire publiee by la CRE, stockee dan
 
 H1 = climat froid (Zi plus eleve), H3 = climat doux (Zi plus bas).
 
-**Profils de consommation (P011 a P019)**
+**Profils de consumption (P011 a P019)**
 
 .. list-table::
    :header-rows: 1
@@ -1224,7 +1224,7 @@ Plus le profil est eleve, plus Zi est grand, ce qui augmente la CJN et les couts
 
 .. _coefficient-A:
 
-3.2 Coefficient A by reseau de transport
+3.2 Coefficient A by network de transport
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
@@ -1262,7 +1262,7 @@ disponibles in les deliberations annuelles ATRT6).
 4.1 Example : facture gaz T4 - Site industriel Ile-de-France
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Cet example reproduit une facture reelle EDF (fevrier 2026) for un site industriel
+Cet example reproduit une real bill EDF (February 2026) for un site industriel
 en Ile-de-France with un contrat T4.
 
 .. code-block:: python
@@ -1309,7 +1309,7 @@ en Ile-de-France with un contrat T4.
    atr.plot()                       # Repartition globale
    atr.plot_detail()                # Detail par composante
 
-**Resultats attendus (verification contre la facture EDF) :**
+**Expected Results (verification against la facture EDF) :**
 
 .. list-table::
    :header-rows: 1
@@ -1346,7 +1346,7 @@ en Ile-de-France with un contrat T4.
 4.2 Parametres d'entree
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Declarer un contrat gaz** (``input_Contrat``) :
+**Declare un contrat gaz** (``input_Contrat``) :
 
 .. list-table::
    :header-rows: 1
@@ -1366,19 +1366,19 @@ en Ile-de-France with un contrat T4.
      - Capacite journaliere souscrite (MWh/j). Utilisee for la souscription ATRD T4/TP.
    * - CJN_MWh_j
      - >= 0 ou None
-     - Si fourni, utilise tel quel. Sinon recalcule via CAR x Zi x A.
+     - Si fourni, utilise tel quel. Sinon recalculates via CAR x Zi x A.
    * - modulation_MWh_j
      - >= 0 ou None
-     - Si fourni, utilise tel quel. Sinon recalcule via CJN - (CAR / 365).
+     - Si fourni, utilise tel quel. Sinon recalculates via CJN - (CAR / 365).
    * - profil
      - "P011" a "P019"
      - Profil de thermo-sensibilite (P016 by defaut)
    * - station_meteo
      - Voir table section 4.1
      - Station meteo de reference (36 stations)
-   * - reseau_transport
+   * - network_transport
      - "naTran", "GRTgaz" (legacy), "Terega"
-     - Gestionnaire du reseau de transport
+     - Gestionnaire du network de transport
    * - niv_tarif_region
      - 0 a 10
      - Niveau tarifaire regional
@@ -1386,7 +1386,7 @@ en Ile-de-France with un contrat T4.
      - >= 0 ou None
      - Distance en km (only for le tarif TP)
 
-**Declarer une facture gaz** (``input_Facture``) :
+**Declare une facture gaz** (``input_Facture``) :
 
 .. list-table::
    :header-rows: 1
@@ -1397,12 +1397,12 @@ en Ile-de-France with un contrat T4.
      - Description
    * - start, end
      - Date (YYYY-MM-DD)
-     - Debut et fin de la periode de facturation
+     - Debut et fin de la period de facturation
    * - kWh_total
      - >= 0
-     - Consommation totale on la periode (kWh)
+     - Consommation totale on la period (kWh)
 
-**Declarer les tarifs** (``input_Tarif``) :
+**Declare les tarifs** (``input_Tarif``) :
 
 .. list-table::
    :header-rows: 1

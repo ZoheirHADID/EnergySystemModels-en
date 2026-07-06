@@ -3,27 +3,27 @@
 Graphical Interfaces and Visual Tools
 =======================================
 
-EnergySystemModels contient plusieurs briques visuelles for construire,
-test and present energy models. This page serves as a guide de
-travail : elle explique comment lancer le simulateur PyQt, comment lire un
-graphe, comment ajouter un nouveau node et comment documenter les results
+EnergySystemModels contains several visual building blocks to build,
+test and present energy models. This page serves as a working guide:
+it explains how to launch the PyQt simulator, how to read a
+graph, comment ajouter un nouveau node et comment documenter les results
 avec les figures actually produites by the library.
 
 Overview
 --------------
 
-Le simulateur graphique principal est ``PyqtSimulator``. Il s'appuie on le
-moteur ``NodeEditor`` for manipuler des nodes et des connexions, then appelle
-les models physiques de the library : compresseur, échangeur, pompe,
-batterie, humidificateur, réchauffeur, etc.
+The main graphical simulator is ``PyqtSimulator``. It relies on the
+moteur ``NodeEditor`` for manipuler des nodes et des connexions, then calls
+les models physiques de the library : compressor, exchanger, pump,
+coil, humidifier, heater, etc.
 
 .. figure:: images/gui_pyqtsimulator_architecture.svg
-   :alt: Architecture du simulateur PyQt
+   :alt: PyQt simulator architecture
    :align: center
 
-   Architecture générale : la fenêtre PyQt héberge une scène NodeEditor, les
+   General architecture : the PyQt window hosts a NodeEditor scene, les
    nodes enregistrés appellent les models EnergySystemModels, then les valeurs
-   sont affichées ou sauvegardées.
+   are displayed or saved.
 
 Le principe d'usage est toujours le même :
 
@@ -32,13 +32,13 @@ Le principe d'usage est toujours le même :
 3. Glisser des nodes from la palette.
 4. Relier les outputs aux inputs.
 5. Renseigner les paramètres.
-6. Évaluer le graphe ou le node de output.
+6. Évaluer le graph ou le node de output.
 7. Sauvegarder le projet au format ``.json``.
 
 Installation and Launch
 -------------------------
 
-Les interfaces nécessitent ``PyQt5``. Dans un environnement de développement,
+Les interfaces requiresnt ``PyQt5``. Dans un environnement de développement,
 also install the library en mode éditable ou add the folder ``src``
 au ``PYTHONPATH``.
 
@@ -72,7 +72,7 @@ La fenêtre principale regroupe les éléments suivants :
    Scène NodeEditor. Les nodes y sont placés, déplacés et connectés.
 
 ``Menu fichier``
-   Création, ouverture et sauvegarde des graphes. Les projets sont stockés en
+   Création, ouverture et sauvegarde des graphs. Les projets sont stockés en
    JSON by le moteur NodeEditor.
 
 ``Menu contextuel``
@@ -89,7 +89,7 @@ Port Convention
 --------------------
 
 Connections exchange des listes Python courtes. This convention makes les
-graphes faciles à sérialiser in les fichiers ``.json``.
+graphs faciles à sérialiser in les fichiers ``.json``.
 
 .. list-table::
    :header-rows: 1
@@ -119,7 +119,7 @@ between these lists and the objects de the library :
 Reading a Graph
 -------------------
 
-Pour un graphe simple ``Source -> Heater -> Output`` :
+Pour un graph simple ``Source -> Heater -> Output`` :
 
 .. figure:: images/gui_node_declaratif_heater.svg
    :alt: Graphe source, réchauffeur, output
@@ -194,7 +194,7 @@ Storage and Step-by-Step Calculation
 ------------------------------------
 
 Le node ``Storage tank`` expose le model ``MixedStorage``. Il estime la
-temperature d'un ballon mélangé after un time step, à partir de la
+temperature d'un ballon mélangé after un time step, from la
 temperature initiale, du volume, du flow rate entrant et des pertes vers
 l'ambiance.
 
@@ -202,7 +202,7 @@ l'ambiance.
    :alt: Example de ballon de stockage in PyqtSimulator
    :align: center
 
-   Le node reçoit un flux entrant, calcule l'état du ballon after ``dt`` then
+   Le node reçoit un flux entrant, calculates l'état du ballon after ``dt`` then
    renvoie un flux de output dont l'enthalpy correspond à la temperature du
    ballon.
 
@@ -238,11 +238,11 @@ Example d'usage :
 1. Créer une ``Source`` with un fluid compatible CoolProp, for example
    ``Water``.
 2. Définir une temperature d'input supérieure à la temperature initiale du
-   ballon for simuler une charge, ou inférieure for simuler une décharge.
+   ballon for simulatesr une charge, ou inférieure for simulatesr une décharge.
 3. Ajouter ``Storage tank``.
 4. Renseigner ``Volume``, ``T° initiale``, ``T° ambiante`` et ``Pas de temps``.
 5. Ajouter ``Output`` en output.
-6. Évaluer le graphe.
+6. Évaluer le graph.
 
 Results affichés localement :
 
@@ -254,7 +254,7 @@ Results affichés localement :
 
 Limite importante : in l'interface actuelle, le node crée une nouvelle
 instance du model à chaque évaluation. Il représente donc un time step
-isolé from ``T° initiale``. Pour simuler une série temporelle complète, il
+isolé from ``T° initiale``. Pour simulatesr une série temporelle complète, il
 faut mettre à jour ``T° initiale`` between les pas ou utiliser un script Python
 qui conserve l'objet ``MixedStorage`` between deux appels à ``calculate()``.
 
@@ -263,14 +263,14 @@ Evaluation Cycle
 
 Lorsqu'un paramètre est modifié, le node est marqué comme sale et ses
 descendants doivent être recalculés. L'évaluation d'un node de output remonte
-le graphe jusqu'aux sources, then propage les valeurs to l'aval.
+le graph jusqu'aux sources, then propage les valeurs to l'aval.
 
 .. figure:: images/gui_evaluation_flow.svg
-   :alt: Evaluation Cycle d'un graphe
+   :alt: Evaluation Cycle d'un graph
    :align: center
 
    Les champs Qt déclenchent ``onInputChanged``. Le node aval demande ensuite
-   l'évaluation des nodes amont, récupère leurs valeurs et appelle son model
+   l'évaluation des nodes amont, retrieves leurs valeurs et appelle son model
    physique.
 
 Les points importants for l'utilisateur sont :
@@ -280,8 +280,8 @@ Les points importants for l'utilisateur sont :
    fiable.
 3. Le node ``Output`` est le meilleur point de contrôle : il force le calcul
    de toute la chaîne amont.
-4. Les unités affichées ne sont pas toujours celles utilisées en interne. Par
-   example, la pressure circule en bar in le graphe mais les models peuvent
+4. Les unités affichées ne sont pas toujours celles useds en interne. Par
+   example, la pressure circule en bar in le graph mais les models peuvent
    utiliser le pascal.
 
 Creating a New Node
@@ -411,19 +411,19 @@ Limiter la logique Qt in les nodes
 
 Valider les unités à chaque conversion
    Les ports internes des models utilisent souvent le pascal et le joule par
-   kilogramme. Les graphes utilisent plutôt le bar et le kJ/kg.
+   kilogramme. Les graphs utilisent plutôt le bar et le kJ/kg.
 
 Afficher les results utiles localement
    Un node de composant peut afficher ses indicateurs propres : power,
-   rendement, temperature de output, humidité relative, COP, perte de charge.
+   rendement, temperature de output, humidité relative, COP, pressure drop.
 
-Tester with un graphe minimal
+Tester with un graph minimal
    Avant d'intégrer un composant complexe, tester ``Source -> composant ->
    Output``. Ajouter ensuite les branches multiples.
 
 Documenter le comportement
    Each important new node must have an example in the documentation :
-   diagram du graphe, paramètres, results attendus, limites et figure si une
+   diagram du graph, paramètres, results attendus, limites et figure si une
    method ``plot()`` existe.
 
 Results and Figures in the Documentation
@@ -431,7 +431,7 @@ Results and Figures in the Documentation
 
 La documentation doit distinguer trois types de visuels :
 
-``Diagram de graphe``
+``Diagram de graph``
    Figure pédagogique montrant les nodes et les connexions. Ces diagrams sont
    générés from ``docs/source/diagrams/*.json`` par
    ``docs/generate_diagrams.py``.
@@ -441,7 +441,7 @@ La documentation doit distinguer trois types de visuels :
    être visibles in l'en-tête ou in la première colonne.
 
 ``Plot du model``
-   Figure produite by une method réelle de the library : for example
+   Figure produite by une method realle de the library : for example
    ``ch.plot()``, ``calc.plot()`` ou ``calc.plot_detail()``. Il ne faut pas
    remplacer ces methods by un tracé manuel arbitraire lorsque le model
    fournit déjà sa propre fonction de visualisation.
@@ -507,7 +507,7 @@ Troubleshooting
    Install ``PyQt5`` in l'environnement actif.
 
 ``CoolProp`` introuvable
-   Install les dépendances scientifiques utilisées by les composants
+   Install les dépendances scientifiques useds by les composants
    thermodynamiques.
 
 Un node n'apparaît pas in la palette

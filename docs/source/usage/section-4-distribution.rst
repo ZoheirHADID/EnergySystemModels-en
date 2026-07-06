@@ -8,10 +8,10 @@ Section 4 : Distribution de l'energy
 4.1.1. CompositeWall - Paroi multicouche
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le module CompositeWall allows calculer les transferts thermiques à travers des parois multicouches.
+The module CompositeWall calculates les transferts thermiques à travers des walls multicouches.
 
 .. image:: ../images/001_heat_transfer_composite_wall.png
-   :alt: Diagram d'une paroi composite
+   :alt: Diagram d'une wall composite
    :align: center
    :width: 600px
 
@@ -140,7 +140,7 @@ Example issu des tests : PlateHeatTransfer
    heat_transfer1 = plate1.calculate()
    print(f"Heat transfer for horizontal plate facing down: {heat_transfer1} W")
 
-4.1.3. PipeInsulation - Isolation de tuyauteries
+4.1.3. PipeInsulation - Isolation de pipeteries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
@@ -231,11 +231,11 @@ Example : Optimisation de l'épaisseur d'isolation
 4.2. Hydraulique
 ----------------
 
-4.2.1. StraightPipe - Tuyauterie droite et pertes de charge
+4.2.1. StraightPipe - Tuyauterie droite et pressure drops
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: ../images/004_hydraulic_straight_pipe.png
-   :alt: Diagram tuyauterie droite
+   :alt: Diagram pipeterie droite
    :align: center
    :width: 500px
 
@@ -267,7 +267,7 @@ Example : Optimisation de l'épaisseur d'isolation
    print(f"Pertes de charge linéaires : {resultats['pertes_lineaires_Pa']:.1f} Pa")
    print(f"Pertes de charge linéaires : {resultats['pertes_lineaires_Pa']/100:.1f} mCE")
 
-Example issu des tests : StraightPipe (réseau hydraulique)
+Example issu des tests : StraightPipe (network hydraulique)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
@@ -299,11 +299,11 @@ Example issu des tests : StraightPipe (réseau hydraulique)
     print(STRAIGHT_PIPE.df)
     print(SINK.df)
 
-Courbe de réseau
-~~~~~~~~~~~~~~~~
+Courbe de network
+~~~~~~~~~~~~~~~~~
 
 .. image:: ../images/004_hydraulic_straight_pipe_courbe_reseau.png
-   :alt: Courbe de réseau hydraulique
+   :alt: Courbe de network hydraulique
    :align: center
    :width: 600px
 
@@ -417,7 +417,7 @@ Courbe caractéristique de la vanne
 4.3. Réseaux aérauliques
 -------------------------
 
-4.3.1. AirDuct - Conduits d'air et pertes de charge aérauliques
+4.3.1. AirDuct - Conduits d'air et pressure drops aérauliques
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python

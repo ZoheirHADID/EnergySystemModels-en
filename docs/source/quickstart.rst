@@ -107,7 +107,7 @@ Transfer thermique
    :header-rows: 0
 
    * - **Heat Transfer**
-     - Calculs thermiques for murs, tuyauteries, échangeurs
+     - Calculs thermiques for murs, pipeteries, échangeurs
 
 Systèmes thermodynamiques
 --------------------------
@@ -129,7 +129,7 @@ Systèmes HVAC
    * - **Centrales de traitement d'air (CTA)**
      - Simulation complète de CTA with batteries, humidification, récupération
    * - **Hydraulique**
-     - Calculs de pertes de charge, dimensionnement de pompes et vannes
+     - Calculs de pressure drops, dimensionnement de pompes et vannes
 
 Optimisation energy
 -------------------------
@@ -149,7 +149,7 @@ Data et production
    :header-rows: 0
 
    * - **Data météo**
-     - Récupération de data climatiques en temps réel ou historiques
+     - Récupération de data climatiques en temps real ou historiques
    * - **Production solaire**
      - Simulation de production photovoltaïque
 
@@ -161,7 +161,7 @@ Facturation et certificats
    :header-rows: 0
 
    * - **Facturation**
-     - Calcul du TURPE, certificats d'économies d'energy (CEE)
+     - Calcul du TURPE, certificats d'energy savings (CEE)
 
 ----
 
@@ -211,7 +211,7 @@ Les results sont accessibles de **deux manières** :
 Method 1 : Attributs de l'objet
 ----------------------------------
 
-Accès direct aux propriétés calculées :
+Accès direct aux propriétés calculateds :
 
 .. code-block:: python
 
@@ -243,7 +243,7 @@ Accès tabulaire for analyse et export :
    source.df.to_excel('resultats.xlsx', index=False)
 
 .. tip::
-   Les DataFrames pandas permettent une manipulation et analyse facile des results.
+   Les DataFrames pandas allowstent une manipulation et analyse facile des results.
 
 ----
 

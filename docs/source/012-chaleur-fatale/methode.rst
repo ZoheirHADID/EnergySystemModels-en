@@ -76,14 +76,14 @@ Example Python minimal :
 3. Vérifier la compatibilité with les usages
 --------------------------------------------
 
-Une source n'est valorisable que si elle correspond à un besoin réel. La
+Une source n'est valorisable que si elle correspond à un besoin real. La
 comparaison se fait on trois axes :
 
-* **temperature** : la source doit être assez chaude, ou être relevée by une
+* **temperature** : la source doit être assez chaude, ou être read by une
   pompe à chaleur ;
 * **temps** : la source et le besoin doivent fonctionner en même temps, sauf
   stockage ;
-* **distance** : plus la distance augmente, plus les pertes et le coût réseau
+* **distance** : plus la distance augmente, plus les pertes et le coût network
   augmentent.
 
 Repères de temperature :
@@ -118,15 +118,15 @@ Priorisez les solutions according to l'ordre suivant :
 5. Diagramtiser les examples
 ----------------------------
 
-Pour rendre les examples plus lisibles, chaque cas peut être représenté comme
-un graphe orienté :
+Pour rendre les examples plus lisibles, chaque cas can be représenté comme
+un graph orienté :
 
 * **nodes** : source, procédé, échangeur, pompe à chaleur, usage, rejet,
   financement ;
 * **arêtes** : flux de chaleur, fluid, électricité, économie, calcul CEE ;
 * **libellés** : temperature, flow rate, power, energy ou hypothèse de calcul.
 
-Dans cette documentation, les figures de principe peuvent être générées à
+Dans cette documentation, les figures de principe can be générées à
 partir d'un fichier ``JSON`` placé in ``docs/source/diagrams``. Le script
 ``docs/generate_diagrams.py`` convertit ensuite ces descriptions en ``SVG``
 dans ``docs/source/images``.

@@ -48,7 +48,7 @@ Géométrie et dimensions
      - mm
      - PipeInsulationAnalysis
    * - L_tube
-     - Length du tuyau
+     - Length du pipe
      - m
      - PipeInsulationAnalysis
 
@@ -88,7 +88,7 @@ Temperatures
      - °C
      - CompositeWall
    * - Tp
-     - Temperature de paroi
+     - Temperature de wall
      - °C
      - ParallelepipedicBody
    * - T_fluid
@@ -154,8 +154,8 @@ Matériaux et isolation
    * - Paramètre
      - Description
      - Valeurs possibles
-   * - material (tuyaux)
-     - Matériau du tuyau
+   * - material (pipex)
+     - Matériau du pipe
      - 'steel', 'copper', 'PVC', 'PE', 'stainless_steel', 'cast_iron'
    * - material (murs)
      - Matériau de construction
@@ -427,7 +427,7 @@ Losss de charge
      - Pa
      - StraightPipe
    * - L
-     - Length de tuyau
+     - Length de pipe
      - m
      - StraightPipe
    * - A
@@ -442,7 +442,7 @@ Unités
 ~~~~~~
 
 - Temperatures : °C (sauf indication contraire)
-- Pressures : Pa, bar (selon contexte)
+- Pressures : Pa, bar (according to contexte)
 - Flow rates massiques : kg/s, kg/h
 - Flow rates volumiques : m³/s, m³/h, Sm³/s (standard : 0°C, 1 atm)
 - Lengths : m, mm

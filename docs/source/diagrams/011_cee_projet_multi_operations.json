@@ -1,6 +1,6 @@
 {
   "title": "CEE - Projet multi-opérations",
-  "description": "Agrégation de plusieurs fiches CEE in un rapport projet.",
+  "description": "Agrégation de plusieurs sheets CEE in un rapport projet.",
   "nodes": [
     {
       "id": "op1",

@@ -3,7 +3,7 @@
 
 **Contexte** : Une usine chimique raccordee en HTA (20 kV), option Longue
 Usage mobile peak. Fonctionnement continu 24h/24, power souscrite
-500 kW. Facturation de fevrier 2025.
+500 kW. Facturation de February 2025.
 
 La version LU (Longue Usage) est adaptee aux sites qui fonctionnent
 plus de 3 000 heures by an a power significative. Les coefficients b
@@ -50,7 +50,7 @@ sont plus faibles que la version CU.
    calc.plot()
    calc.plot_detail()
 
-**Output réelle (df_totaux)** :
+**Output realle (df_totaux)** :
 
 .. code-block:: text
 

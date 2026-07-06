@@ -11,7 +11,7 @@ Section 1 : Achat et Facturation de l'energy
 Module TURPE - Tarif d'Usage des Réseaux Publics d'Électricité
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Le module TURPE allows calculer les coûts de transport et de distribution de l'électricité according to les tarifs réglementés français.
+The module TURPE calculates les coûts de transport et de distribution de l'électricité according to les tarifs réglementés français.
 
 Classes principales
 ~~~~~~~~~~~~~~~~~~~

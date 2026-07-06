@@ -88,7 +88,7 @@ Imports essentiels
 Dépendances externes
 ~~~~~~~~~~~~~~~~~~~~
 
-Le package EnergySystemModels nécessite les dépendances suivantes :
+Le package EnergySystemModels requires les dépendances suivantes :
 
 .. code-block:: text
 
@@ -155,4 +155,4 @@ EnergySystemModels est distribué under licence MIT.
 
 Copyright (c) 2024 EnergySystemModels Contributors
 
-Pour les détails complets de la licence, voir le fichier LICENSE in le dépôt source.
+Pour les details complets de la licence, voir le fichier LICENSE in le dépôt source.

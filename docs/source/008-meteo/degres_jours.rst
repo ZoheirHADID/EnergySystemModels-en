@@ -1,9 +1,9 @@
 Degrés-Jours Unifiés (DJU)
 ==========================
 
-Le module calcule les DJU by la **method COSTIC** (fonction
-``MeteoCiel.DJU_costic.DJU_costic``), à partir des temperatures **minimale et
-maximale** du jour — et non d'une simple moyenne. Trois cas se présentent selon
+The module calculates the DJU by la **method COSTIC** (fonction
+``MeteoCiel.DJU_costic.DJU_costic``), froms temperatures **minimale et
+maximale** du jour — et non d'une simple moyenne. Trois cas se présentent according to
 la position de ``Tmin``/``Tmax`` by rapport aux bases.
 
 Formules (method COSTIC)
@@ -47,7 +47,7 @@ Usage
    print(DJU_costic(5, 25))    # journée mixte
    print(DJU_costic(24, 30))   # journée chaude
 
-Output réelle (``(DJU_chauffage, DJU_rafraichissement)``) :
+Output realle (``(DJU_chauffage, DJU_rafraichissement)``) :
 
 .. code-block:: text
 

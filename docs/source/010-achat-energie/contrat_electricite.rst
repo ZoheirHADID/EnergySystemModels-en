@@ -6,7 +6,7 @@
 10.1.1. TURPE
 --------------------------------------------
 
-Le prix payé annuellement for l’usage des réseaux publics de distribution (RPD) est la somme des composantes suivantes :
+Le prix payé annuellement for l’usage des networkx publics de distribution (RPD) est la somme des composantes suivantes :
 
 .. list-table::
    :header-rows: 1
@@ -41,12 +41,12 @@ The general TURPE formula is therefore :
 
 - **CG** : Fixed contract management fees.
 - **CC** : Fees related to meter provision and reading.
-- **CS** : Frais liés à la quantité d’energy soutirée du réseau.
+- **CS** : Frais liés à la quantité d’energy soutirée du network.
 - **CMDPS** : Penalties for exceeding subscribed power.
 - **CACS** : Fees for supplementary or backup supplies.
 - **CR** : Fees for grouping multiple sites.
 - **CER** : Frais liés à l’energy réactive consommée.
-- **CI** : Frais for l’injection d’energy on le réseau.
+- **CI** : Frais for l’injection d’energy on le network.
 
 .. admonition:: Guide d'utilisation du calcul TURPE
 
@@ -107,7 +107,7 @@ The general TURPE formula is therefore :
       # Affichage des résultats
       print(turpe_calculator.df_totaux)
 
-   Output réelle (``df_totaux``, for ce contrat BT < 36 kVA / CU4 et 40 kWh
+   Output realle (``df_totaux``, for ce contrat BT < 36 kVA / CU4 et 40 kWh
    consommés en février 2025) :
 
    .. code-block:: text
@@ -172,11 +172,11 @@ The general TURPE formula is therefore :
    * - Version d'usage
      - Description
    * - CU4
-     - Contrat Unique 4 périodes (pointe, HPH, HCH, HPB, HCB)
+     - Contrat Unique 4 periods (pointe, HPH, HCH, HPB, HCB)
    * - CU
      - Contrat Unique (tarification standard BT < 36 kVA)
    * - MU4
-     - Multi-usage 4 périodes
+     - Multi-usage 4 periods
    * - MU_DT
      - Multi-usage double tarif
    * - LU
@@ -289,7 +289,7 @@ The general TURPE formula is therefore :
      - Dépassement de power souscrite en HPB
    * - kWh_pointe
      -  ≥ 0
-     - Consommation en période de pointe (kWh)
+     - Consommation en period de pointe (kWh)
    * - kWh_HPH
      -  ≥ 0
      - Consommation en heures pleines hiver (kWh)

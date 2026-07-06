@@ -3,7 +3,7 @@
 Chiller (Groupe froid / PAC)
 =============================
 
-Le module ``Chiller`` modélise un cycle frigorifique complet : évaporateur, compresseur, désurchauffeur, condenseur, détendeur. En mode PAC, la chaleur au condenseur est valorisée.
+The module ``Chiller`` models un cycle frigorifique complet : évaporateur, compresseur, désurchauffeur, condenseur, détendeur. En mode PAC, la chaleur au condenseur est valorisée.
 
 .. figure:: ../images/002_chiller_cycle.svg
    :alt: Diagram du cycle frigorifique Chiller
@@ -55,7 +55,7 @@ Example
     # ch.plot(figsize=(12, 7))  # taille personnalisée
     # ch.plot_TS_diagram()      # alias de ch.plot()
 
-Output ``ch.df`` (valeurs réelles for the example ci-dessus, R134a) :
+Output ``ch.df`` (valeurs real for the example ci-dessus, R134a) :
 
 .. list-table::
    :widths: 40 30 30
@@ -121,18 +121,18 @@ flèches — évaporation, surchauffe, compressure, désurchauffe, condensation,
 sous-refroidissement, détente et retour à l'évaporateur.
 
 .. figure:: ../images/002_chiller_plot_ts.svg
-   :alt: Diagramme T-S réel du cycle Chiller R134a
+   :alt: Diagramme T-S real du cycle Chiller R134a
    :align: center
 
-   Output réelle de ``ch.plot()`` for le cycle R134a de l'example (générée en
+   Output realle de ``ch.plot()`` for le cycle R134a de l'example (générée en
    exécutant the library). Les points rouges parcourent le cycle
    frigorifique in le sens horaire.
 
 Étude paramétrique
 ------------------
 
-Le module fournit aussi ``Chiller.parametric_study(...)`` for comparer le COP
-selon la temperature source et la temperature cible.
+The module fournit aussi ``Chiller.parametric_study(...)`` for comparer le COP
+according to la temperature source et la temperature cible.
 
 .. code-block:: python
 
@@ -225,17 +225,17 @@ Extrait de ``df_study`` (R134a) — une ligne by couple (source, cible) valide :
 Plot sauvegardé by l'étude paramétrique (argument ``save_fig``) :
 
 .. figure:: ../images/002_chiller_plot_parametric.svg
-   :alt: Plot paramétrique réel COP et power compresseur Chiller
+   :alt: Plot paramétrique real COP et power compresseur Chiller
    :align: center
 
-   Output réelle : figure à deux panneaux — à gauche le COP chauffage en
+   Output realle : figure à deux panneaux — à gauche le COP chauffage en
    fonction du lift thermique, à droite la power compresseur as a function of
    la temperature cible, with une courbe by temperature source.
 
 Methods
 --------
 
-* ``ch.calculate_cycle()`` — Calcule le cycle complet
+* ``ch.calculate_cycle()`` — Calculated le cycle complet
 * ``ch.df`` — DataFrame de synthèse (EER, COP, powers, pressures)
 * ``ch.print_results()`` — Affiche le df de chaque composant
 * ``ch.plot()`` — Diagramme T-S du cycle

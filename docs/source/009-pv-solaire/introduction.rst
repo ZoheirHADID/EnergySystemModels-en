@@ -1,7 +1,7 @@
 Introduction to the PV Module
 =============================
 
-Le module ``SolarSystem`` simule the production photovoltaïque en utilisant pvlib-python et les data météo PVGIS.
+The module ``SolarSystem`` simulates the production photovoltaïque en utilisant pvlib-python et les data météo PVGIS.
 
 Example rapide
 --------------

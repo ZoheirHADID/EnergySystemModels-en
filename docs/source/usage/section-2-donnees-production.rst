@@ -5,10 +5,10 @@ Section 2 : Data et Production energy
 2.1. Data météorologiques
 -----------------------------
 
-2.1.1. OpenWeatherMap - Data météo en temps réel
+2.1.1. OpenWeatherMap - Data météo en temps real
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le module OpenWeatherMap permet d'accéder aux data météorologiques actuelles et prévisionnelles.
+The module OpenWeatherMap provides access aux data météorologiques actuelles et prévisionnelles.
 
 .. code-block:: python
 
@@ -71,7 +71,7 @@ Example : Analyse des data météo horaires
 2.1.2. MeteoCiel - Data historiques et DJU
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Le module MeteoCiel permet d'accéder aux data historiques et de calculer les Degrés-Jours Unifiés (DJU).
+The module MeteoCiel provides access aux data historiques et de calculatesr les Degrés-Jours Unifiés (DJU).
 
 .. code-block:: python
 
@@ -164,7 +164,7 @@ Example issu des tests : Scraping MeteoCiel
 2.2. Production solaire photovoltaïque
 ---------------------------------------
 
-Le module PV utilise pvlib for simuler the production photovoltaïque with une grande précision.
+The module PV utilise pvlib for simulatesr the production photovoltaïque with une grande précision.
 
 Configuration d'un system PV
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

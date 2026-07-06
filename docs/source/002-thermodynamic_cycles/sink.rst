@@ -3,7 +3,7 @@
 Sink (puits de fluid)
 ======================
 
-Le module ``Sink`` termine une ligne de fluid : il reçoit un état d'input
+The module ``Sink`` termine une ligne de fluid : il reçoit un état d'input
 (via ``Fluid_connect`` from l'amont, ou en renseignant directement le port
 ``Inlet``) et restitue les grandeurs de output (flow rates, enthalpy, état).
 
@@ -30,7 +30,7 @@ Example
     print(SINK.df)
     print(SINK.To_degC)
 
-Output réelle :
+Output realle :
 
 .. code-block:: text
 
@@ -51,7 +51,7 @@ Output réelle :
 
     20.59143900300944
 
-Le puits calcule la power enthalpique ``H`` = 140,3 kW, la temperature de
+Le puits calculates la power enthalpique ``H`` = 140,3 kW, la temperature de
 output ``To_degC`` ≈ 20,6 °C et les flow rates volumiques équivalents. Pour l'air,
 ``fluid_quality`` vaut toujours ``vapor`` (``Q`` > 1 est normal, l'air étant un
 gaz permanent).

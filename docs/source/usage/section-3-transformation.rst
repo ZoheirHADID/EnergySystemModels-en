@@ -5,7 +5,7 @@ Section 3 : Transformation de l'energy (Utilités)
 3.1. Cycles Thermodynamiques
 -----------------------------
 
-Le module ThermodynamicCycles allows modéliser les systems frigorifiques, pompes à chaleur et cycles thermodynamiques.
+The module ThermodynamicCycles allows model les systems frigorifiques, pompes à chaleur et cycles thermodynamiques.
 
 Composants de base
 ~~~~~~~~~~~~~~~~~~
