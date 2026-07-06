@@ -990,7 +990,7 @@ La TVA on le gaz naturel en France comporte historiquement **deux taux distincts
      - Loi de finances 2014 (taux normal 19,6% -> 20%)
      - 5,5%
      - 20,0%
-   * - **Depuis 01/08/2025**
+   * - **Dethen 01/08/2025**
      - **Loi n°2025-127 art. 20** (suppressure taux reduit, directive UE)
      - **20,0%**
      - **20,0%**
@@ -1014,7 +1014,7 @@ La TVA on le gaz naturel en France comporte historiquement **deux taux distincts
 
 .. note::
 
-   Depuis le **1er aout 2025**, le taux reduit de 5,5% on l'abonnement est supprime.
+   Dethen le **1er aout 2025**, le taux reduit de 5,5% on l'abonnement est supprime.
    La TVA est desormais de **20% on l'ensemble de la facture**. Cette modification
    fait suite a une directive europeenne interdisant l'application de taux differents
    sur des elements indissociables d'un meme service.

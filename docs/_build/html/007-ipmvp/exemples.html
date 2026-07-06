@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IPMVP - Measurement and Verification &mdash; EnergySystemModels post9 documentation</title>
+  <title>IPMVP — Example de Mesure et Vérification (Option C) &mdash; EnergySystemModels post9 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
@@ -49,16 +49,16 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Thermodynamic Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaics</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
@@ -70,7 +70,12 @@
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction au module IPMVP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="protocole.html">Contexte IPMVP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="modeles_mathematiques.html">Usage du module IPMVP</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">IPMVP — Example de Mesure et Vérification (Option C)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#signature-et-valeurs-de-retour">Signature et valeurs de retour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-complet">Example complet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-reelle">Output réelle</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -81,7 +86,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
 <ul>
@@ -106,7 +111,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">7. IPMVP - Measurement and Verification</a></li>
-      <li class="breadcrumb-item active">IPMVP - Measurement and Verification</li>
+      <li class="breadcrumb-item active">IPMVP — Example de Mesure et Vérification (Option C)</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/007-ipmvp/exemples.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -116,63 +121,92 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="ipmvp-measurement-and-verification">
-<h1>IPMVP - Measurement and Verification<a class="headerlink" href="#ipmvp-measurement-and-verification" title="Link to this heading"></a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPMVP.IPMVP</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mathematical_Models</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">MeteoCiel.MeteoCiel_Scraping</span><span class="w"> </span><span class="kn">import</span> <span class="n">MeteoCiel_histoScraping</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="c1"># 1. Récupérer les données météo historiques</span>
-<span class="c1"># 10637 : code station MeteoCiel</span>
-<span class="c1"># Retourne DJU chauffage et refroidissement</span>
-<span class="n">df_histo</span><span class="p">,</span> <span class="n">df_day</span><span class="p">,</span> <span class="n">df_month</span><span class="p">,</span> <span class="n">df_year</span> <span class="o">=</span> <span class="n">MeteoCiel_histoScraping</span><span class="p">(</span>
-    <span class="mi">10637</span><span class="p">,</span>
-    <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-    <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>
-    <span class="n">base_chauffage</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>           <span class="c1"># Base de calcul DJU chauffage</span>
-    <span class="n">base_refroidissement</span><span class="o">=</span><span class="mi">23</span>      <span class="c1"># Base de calcul DJU refroidissement</span>
-<span class="p">)</span>
-
-<span class="c1"># 2. Fusionner avec vos données de consommation</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df_month</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;consommation_kWh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12500</span><span class="p">,</span> <span class="mi">11800</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>  <span class="c1"># Vos factures mensuelles</span>
-
-<span class="c1"># 3. Définir les variables explicatives et la consommation</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;DJU_chaud&#39;</span><span class="p">,</span> <span class="s1">&#39;DJU_froid&#39;</span><span class="p">]]</span>  <span class="c1"># Variables indépendantes</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;consommation_kWh&#39;</span><span class="p">]</span>          <span class="c1"># Variable dépendante</span>
-
-<span class="c1"># 4. Créer le modèle IPMVP Option C</span>
-<span class="c1"># Période de référence (baseline) : 2020-2021</span>
-<span class="c1"># Période de reporting (post-travaux) : 2022-2023</span>
-<span class="c1"># degree=2 : modèle polynomial de degré 2</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">Mathematical_Models</span><span class="p">(</span>
+  <section id="ipmvp-example-de-mesure-et-verification-option-c">
+<h1>IPMVP — Example de Mesure et Vérification (Option C)<a class="headerlink" href="#ipmvp-example-de-mesure-et-verification-option-c" title="Link to this heading"></a></h1>
+<p>La fonction <code class="docutils literal notranslate"><span class="pre">Mathematical_Models</span></code> ajuste un model de régression on une
+<strong>période de référence</strong> (baseline) then quantifie les économies on une
+<strong>période de suivi</strong> (reporting). Elle <strong>returns a 9-item tuple</strong>
+(il n’existe pas d’objet <code class="docutils literal notranslate"><span class="pre">model</span></code> with des attributs <code class="docutils literal notranslate"><span class="pre">.r2</span></code> / <code class="docutils literal notranslate"><span class="pre">.plot_*</span></code>).</p>
+<section id="signature-et-valeurs-de-retour">
+<h2>Signature et valeurs de retour<a class="headerlink" href="#signature-et-valeurs-de-retour" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">conformite</span><span class="p">,</span> <span class="n">table_incertitude</span><span class="p">,</span> \
+<span class="n">y_pred_report</span><span class="p">,</span> <span class="n">df_report</span><span class="p">,</span> <span class="n">conformite_report</span><span class="p">,</span> <span class="n">table_incertitude_report</span><span class="p">,</span> \
+<span class="n">df_savings</span> <span class="o">=</span> <span class="n">Mathematical_Models</span><span class="p">(</span>
     <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span>
-    <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>  <span class="c1"># Baseline</span>
-    <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>  <span class="c1"># Reporting</span>
-    <span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">print_report</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Afficher le rapport détaillé</span>
+    <span class="n">start_baseline_period</span><span class="p">,</span> <span class="n">end_baseline_period</span><span class="p">,</span>
+    <span class="n">start_reporting_period</span><span class="p">,</span> <span class="n">end_reporting_period</span><span class="p">,</span>
+    <span class="n">print_report</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>      <span class="c1"># True -&gt; génère un rapport .docx (via docx_report)</span>
+    <span class="n">seuil_z_scores</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>        <span class="c1"># seuil d&#39;exclusion des points aberrants (défaut 8)</span>
+    <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                <span class="c1"># degré du modèle polynomial</span>
+    <span class="n">site</span><span class="o">=</span><span class="s2">&quot;****&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-
-<span class="c1"># 5. Accéder aux résultats</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R² (qualité du modèle): </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">r2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CV(RMSE): </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">cv_rmse</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Économies totales: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">total_savings</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Réduction: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">savings_percentage</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
-
-<span class="c1"># DataFrames de résultats</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">df_baseline</span><span class="p">)</span>           <span class="c1"># Données période baseline</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">df_reporting</span><span class="p">)</span>          <span class="c1"># Données période reporting</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">baseline_adjusted</span><span class="p">)</span>     <span class="c1"># Baseline ajustée au climat</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">consumption_measured</span><span class="p">)</span>  <span class="c1"># Consommation mesurée</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">monthly_savings</span><span class="p">)</span>       <span class="c1"># Économies mensuelles</span>
-
-<span class="c1"># 6. Générer les graphiques</span>
-<span class="n">model</span><span class="o">.</span><span class="n">plot_baseline_fit</span><span class="p">()</span>          <span class="c1"># Ajustement du modèle baseline</span>
-<span class="n">model</span><span class="o">.</span><span class="n">plot_monthly_comparison</span><span class="p">()</span>    <span class="c1"># Comparaison mensuelle</span>
-<span class="n">model</span><span class="o">.</span><span class="n">plot_cumulative_savings</span><span class="p">()</span>    <span class="c1"># Économies cumulées</span>
 </pre></div>
 </div>
+<p>Les 9 éléments : <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> (prédiction baseline), <code class="docutils literal notranslate"><span class="pre">df</span></code> (data + prédiction),
+<code class="docutils literal notranslate"><span class="pre">conformite</span></code> (indicateurs IPMVP + verdict), <code class="docutils literal notranslate"><span class="pre">table_incertitude</span></code> (incertitude
+baseline), les 4 équivalents for la période de reporting, et <code class="docutils literal notranslate"><span class="pre">df_savings</span></code>
+(économies ANTE-POST / POST-ANTE).</p>
+</section>
+<section id="example-complet">
+<h2>Example complet<a class="headerlink" href="#example-complet" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPMVP.IPMVP</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mathematical_Models</span>
+
+<span class="c1"># Données mensuelles livrées avec le paquet : consommation + DJU</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;src/IPMVP/IPMVP_input.xlsx&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Mois&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Mois&quot;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Mois&quot;</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;DJU&quot;</span><span class="p">]]</span>                              <span class="c1"># variable(s) explicative(s)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Consommation (kWh) - Relevé&quot;</span><span class="p">]</span>        <span class="c1"># consommation mesurée</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">Mathematical_Models</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>    <span class="c1"># baseline</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>  <span class="c1"># reporting</span>
+    <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seuil_z_scores</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s2">&quot;exemple_site&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">y_pred</span><span class="p">,</span> <span class="n">df_bl</span><span class="p">,</span> <span class="n">conformite</span><span class="p">,</span> <span class="n">table_inc</span><span class="p">,</span> <span class="o">*</span><span class="n">_rep</span><span class="p">,</span> <span class="n">df_savings</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">conformite</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_savings</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="output-reelle">
+<h2>Output réelle<a class="headerlink" href="#output-reelle" title="Link to this heading"></a></h2>
+<p><strong>Conformité du model baseline</strong> (<code class="docutils literal notranslate"><span class="pre">conformite</span></code>) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>               valeur  conformité IPMVP
+r2               0.81              True
+cv_remse         0.53             False
+stat_t_const    -4.80             False
+stat_t_DJU      13.60              True
+</pre></div>
+</div>
+<p>Le model explique 81 % de la variance (<code class="docutils literal notranslate"><span class="pre">r2</span></code> = 0,81) et la variable DJU est
+significative (<code class="docutils literal notranslate"><span class="pre">stat_t_DJU</span></code>), mais le <code class="docutils literal notranslate"><span class="pre">cv_remse</span></code> (0,53) dépasse le seuil
+IPMVP — indiquant une dispersion résiduelle à améliorer (variables explicatives
+supplémentaires, granularité, etc.).</p>
+<p><strong>Économies</strong> (<code class="docutils literal notranslate"><span class="pre">df_savings</span></code>) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           ANTE-POST    POST-ANTE
+Relevé de consommation    3914387.73  19655625.79
+Prédiction                4624795.55  16156026.80
+pourcentage d&#39;économie&gt;0       18.15        17.80
+</pre></div>
+</div>
+<p>L’approche <strong>ANTE-POST</strong> (référence ajustée − mesuré) donne <strong>18,15 %</strong>
+d’économie on la période de suivi.</p>
+<p><strong>Incertitude</strong> (<code class="docutils literal notranslate"><span class="pre">table_incertitude</span></code>) : <code class="docutils literal notranslate"><span class="pre">precision_relative</span></code> ≈ 0,69,
+<code class="docutils literal notranslate"><span class="pre">Erreur</span> <span class="pre">type</span> <span class="pre">(rmse)</span></code> ≈ 236 260, for un niveau de confiance de 80 %.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pour un rapport détaillé (graphiques d’ajustement, résidus, économies
+cumulées), appeler with <code class="docutils literal notranslate"><span class="pre">print_report=True</span></code> : un document <strong>.docx</strong> est
+généré via <code class="docutils literal notranslate"><span class="pre">docx_report</span></code> (dépend de <code class="docutils literal notranslate"><span class="pre">python-docx</span></code>). Il n’y a pas de
+methods <code class="docutils literal notranslate"><span class="pre">plot_*</span></code> on un objet model.</p>
+</div>
+</section>
 </section>
 
 

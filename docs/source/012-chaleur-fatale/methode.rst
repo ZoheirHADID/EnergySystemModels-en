@@ -112,7 +112,7 @@ Priorisez les solutions according to l'ordre suivant :
 * échangeur simple between source et besoin proche ;
 * stockage thermique si source et besoin sont décalés ;
 * pompe à chaleur si la temperature de la source est trop basse ;
-* conversion électrique, by example ORC, seulement for les gisements chauds,
+* conversion électrique, for example ORC, seulement for les gisements chauds,
   stables et importants.
 
 5. Diagramtiser les examples

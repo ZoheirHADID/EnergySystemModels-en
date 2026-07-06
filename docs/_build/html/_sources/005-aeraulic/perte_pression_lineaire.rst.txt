@@ -80,7 +80,7 @@ régime turbulent (Re ≈ 23 816), coefficient de perte de charge λ ≈ 0,0284 
      - Roughness absolue de la paroi (défaut lisse)
      - m
 
-Le model calcule le nombre Reynolds number puis le coefficient de perte de charge λ
+Le model calcule le nombre Reynolds number then le coefficient de perte de charge λ
 (Colebrook for le régime turbulent), et en déduit la linear pressure drop
 :math:`\Delta P = \dfrac{\lambda}{d_{hyd}} \cdot \dfrac{\rho\, u^2}{2} \cdot L`.
 

@@ -63,7 +63,7 @@ power souscrite de 80 kW. Facturation mensuelle de janvier 2025.
 Plots générés by l'example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Les figures ci-dessous sont les outputs réelles de ``calc.plot()`` et
+Les figures ci-dessous sont les real outputs are shown de ``calc.plot()`` et
 ``calc.plot_detail()`` for les data de l'example.
 
 .. figure:: ../../images/010_turpe_bt_p36_cu_plot.svg

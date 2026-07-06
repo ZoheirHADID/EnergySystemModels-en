@@ -132,7 +132,7 @@ Pour un graphe simple ``Source -> Heater -> Output`` :
 Example d'usage :
 
 1. Ajouter un node ``Source``.
-2. Choisir le fluid, by example ``Water`` ou ``R134a``.
+2. Choisir le fluid, for example ``Water`` ou ``R134a``.
 3. Définir le flow rate, la temperature et la pressure.
 4. Ajouter un node ``Heater``.
 5. Renseigner ``Power nominale`` et ``Taux de charge``.
@@ -235,7 +235,7 @@ Paramètres principaux :
 
 Example d'usage :
 
-1. Créer une ``Source`` with un fluid compatible CoolProp, by example
+1. Créer une ``Source`` with un fluid compatible CoolProp, for example
    ``Water``.
 2. Définir une temperature d'input supérieure à la temperature initiale du
    ballon for simuler une charge, ou inférieure for simuler une décharge.
@@ -441,7 +441,7 @@ La documentation doit distinguer trois types de visuels :
    être visibles in l'en-tête ou in la première colonne.
 
 ``Plot du model``
-   Figure produite by une method réelle de la bibliothèque : by example
+   Figure produite by une method réelle de la bibliothèque : for example
    ``ch.plot()``, ``calc.plot()`` ou ``calc.plot_detail()``. Il ne faut pas
    remplacer ces methods by un tracé manuel arbitraire lorsque le model
    fournit déjà sa propre fonction de visualisation.

@@ -1,5 +1,5 @@
-Analyse Pinch
-=============
+Pinch Analysis
+==============
 
 Le module ``PinchAnalysis`` optimise la heat recovery between hot and cold streams.
 

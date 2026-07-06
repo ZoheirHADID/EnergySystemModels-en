@@ -21,7 +21,7 @@ Heat Transfer — ``HeatTransfer``
 
 Each component is instantiated with ``.Object(...)`` then ``.calculate()`` ;
 results in ``.df`` (and attributes such as ``R_total``, ``Q``, ``q_total``).
-Details : :doc:`001-heat_transfer/index` et :doc:`transfert_chaleur`.
+Details : :doc:`001-heat_transfer/index` and :doc:`transfert_chaleur`.
 
 Thermodynamic Cycles — ``ThermodynamicCycles``
 -------------------------------------------------
@@ -45,11 +45,10 @@ Hydraulics and Aeraulics
 
 .. code-block:: python
 
-   from ThermodynamicCycles.Hydraulic.StraightPipe import StraightPipe
-   from ThermodynamicCycles.Hydraulic.TA_Valve import TA_Valve
+   from ThermodynamicCycles.Hydraulic import StraightPipe, TA_Valve
    from ThermodynamicCycles.Aeraulic import StraightPipe as AirDuct
 
-Details : :doc:`004-hydraulic/index` et :doc:`005-aeraulic/index`.
+Details : :doc:`004-hydraulic/index` and :doc:`005-aeraulic/index`.
 
 Air Handling — ``AHU``
 --------------------------

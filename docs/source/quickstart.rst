@@ -199,7 +199,7 @@ Unités et conventions
      - kWh
 
 .. warning::
-   Ne mélangez pas les unités (par example °C et K, ou bar et Pa) in les calculs.
+   Ne mélangez pas les unités (for example °C et K, ou bar et Pa) in les calculs.
 
 ----
 

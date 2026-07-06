@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analyse Pinch &mdash; EnergySystemModels post9 documentation</title>
+  <title>Pinch Analysis &mdash; EnergySystemModels post9 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
 
@@ -49,16 +49,16 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">1. Achat et fourniture d'énergie</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Achat d’energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">2. Production d'utilités et d'énergie</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Cycles thermodynamiques</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaïque</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/index.html">2. Thermodynamic Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">9. Production Photovoltaics</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">3. Transport des utilités</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Transfer de chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
@@ -71,9 +71,9 @@
 <p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur et chaleur fatale</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Analyse de pincement</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">Analyse Pinch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Pinch Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="methode.html">Methods disponibles</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Analyse Pinch</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pinch Analysis</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#example-2-optimisation-d-une-unite-de-distillation">Example 2 : Optimisation d’une unité de distillation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#contexte-industriel">Contexte industriel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#data">Data</a></li>
@@ -109,7 +109,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">6. Financement et subvention</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Certificats d’Économies d’Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">7. Autres</span></p>
 <ul>
@@ -134,7 +134,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">6. Analyse de pincement</a></li>
-      <li class="breadcrumb-item active">Analyse Pinch</li>
+      <li class="breadcrumb-item active">Pinch Analysis</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/006-pinch_analysis/exemples.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -144,12 +144,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="analyse-pinch">
-<h1>Analyse Pinch<a class="headerlink" href="#analyse-pinch" title="Link to this heading"></a></h1>
+  <section id="pinch-analysis">
+<h1>Pinch Analysis<a class="headerlink" href="#pinch-analysis" title="Link to this heading"></a></h1>
 <figure class="align-center" id="id1">
 <img alt="Schéma d'une analyse Pinch de base" src="../_images/006_pinch_base.svg" />
 <figcaption>
-<p><span class="caption-text">Les hot and cold streams sont structurés in un DataFrame, puis
+<p><span class="caption-text">Les hot and cold streams sont structurés in un DataFrame, then
 l’analyse produit les courbes, les utilités minimales et les appariements
 d’échange.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>

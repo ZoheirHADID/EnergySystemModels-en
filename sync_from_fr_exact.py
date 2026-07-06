@@ -384,4 +384,9 @@ def main() -> None:
     print(f"Created: {len(created)}")
     print(f"Updated: {len(updated)}")
     print(f"Unchanged: {len(unchanged)}")
-    print(f"Removed obsol
+    print(f"Removed obsolete files: {len(removed)}")
+    print(f"Report: {REPORT}")
+
+
+if __name__ == "__main__":
+    main()
