@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesure des économies &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Usage du module IPMVP" href="modeles_mathematiques.html" />
+    <link rel="prev" title="IPMVP — Example complet (Option C)" href="exemples.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">IPMVP - Measurement and Verification</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="exemples.html">IPMVP — Example complet (Option C)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mesure des économies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-a-copier">Code à copier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#figure-produite">Figure produite</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modeles_mathematiques.html">Usage du module IPMVP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contexte.html">Contexte et théorie IPMVP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">IPMVP - Measurement and Verification</a></li>
+      <li class="breadcrumb-item active">Mesure des économies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/007-ipmvp/mesure_economies.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesure-des-economies">
+<h1>Mesure des économies<a class="headerlink" href="#mesure-des-economies" title="Link to this heading"></a></h1>
+<p>Ce chapter isole le <strong>calcul et la revue des économies</strong> produites par
+<code class="docutils literal notranslate"><span class="pre">Mathematical_Models</span></code> : les deux approches ANTE-POST / POST-ANTE, la figure du
+model, et l’incertitude propagée de l’économie annoncée.</p>
+<section id="code-a-copier">
+<h2>Code à copier<a class="headerlink" href="#code-a-copier" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPMVP.IPMVP</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mathematical_Models</span><span class="p">,</span> <span class="n">incertitude_savings</span>
+
+<span class="c1"># --- Données + ajustement (voir chapitre Exemple complet) ---</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;src/IPMVP/IPMVP_input.xlsx&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Mois&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Mois&quot;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Mois&quot;</span><span class="p">)</span>
+<span class="n">col_conso</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;consommation&quot;</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;DJU&quot;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="n">col_conso</span><span class="p">]</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">Mathematical_Models</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seuil_z_scores</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s2">&quot;exemple_site&quot;</span><span class="p">,</span>
+    <span class="n">print_report</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>   <span class="c1"># produit eco-ANTE-POST.png / eco-POST-ANTE.png</span>
+<span class="p">)</span>
+<span class="n">df_bl</span><span class="p">,</span> <span class="n">df_savings</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+
+<span class="c1"># --- Revue des économies ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== ÉCONOMIES ANTE-POST / POST-ANTE (df_savings) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_savings</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Économie ANTE-POST (%) :&quot;</span><span class="p">,</span> <span class="n">df_savings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;pourcentage d&#39;économie&gt;0&quot;</span><span class="p">,</span> <span class="s2">&quot;ANTE-POST&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Économie POST-ANTE (%) :&quot;</span><span class="p">,</span> <span class="n">df_savings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;pourcentage d&#39;économie&gt;0&quot;</span><span class="p">,</span> <span class="s2">&quot;POST-ANTE&quot;</span><span class="p">])</span>
+
+<span class="c1"># --- Incertitude propagée de l&#39;économie annoncée ---</span>
+<span class="n">rmse</span>    <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">df_bl</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;rmse&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ddof</span>    <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">df_bl</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;ddof&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">mask</span>    <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">moyenne</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="n">inc</span> <span class="o">=</span> <span class="n">incertitude_savings</span><span class="p">(</span>
+    <span class="n">rmse</span><span class="p">,</span> <span class="n">ddof</span><span class="p">,</span> <span class="n">moyenne</span><span class="p">,</span>
+    <span class="n">gain_pct</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span> <span class="n">duree_contrat_mois</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">duree_reporting_mois</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+    <span class="n">niveau_confiance</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== INCERTITUDE PROPAGÉE (incertitude_savings) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;contrat  (60 mois) :&quot;</span><span class="p">,</span> <span class="n">inc</span><span class="p">[</span><span class="s2">&quot;contrat&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reporting (12 mois) :&quot;</span><span class="p">,</span> <span class="n">inc</span><span class="p">[</span><span class="s2">&quot;reporting&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">df_savings</span></code> — les deux approches de calcul :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           ANTE-POST    POST-ANTE
+Relevé de consommation    3914387.73  19655625.79
+Prédiction                4624795.55  16156026.80
+pourcentage d&#39;économie&gt;0       18.15        17.80
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ANTE-POST</strong> : model établi on la <strong>référence</strong>, appliqué à la period de
+suivi → économie = prédiction − mesuré = <strong>18,15 %</strong>.</p></li>
+<li><p><strong>POST-ANTE</strong> : model établi on la period de <strong>suivi</strong>, appliqué à la
+référence (utile si la référence est trop courte for un model fiable) →
+<strong>17,80 %</strong>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">incertitude_savings</span></code> — précision de l’économie annoncée (niveau 90 %) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>contrat  (60 mois) : {&#39;mois&#39;: 60, &#39;economie_kwh&#39;: 5335141.89,
+                      &#39;precision_absolue_kwh&#39;: 3078077.25, &#39;precision_relative&#39;: 0.577}
+reporting (12 mois) : {&#39;mois&#39;: 12, &#39;economie_kwh&#39;: 1067028.38,
+                      &#39;precision_absolue_kwh&#39;: 1376557.99, &#39;precision_relative&#39;: 1.290}
+</pre></div>
+</div>
+<p>La précision relative s’améliore with la durée cumulée (0,58 on 60 mois contre
+1,29 on 12 mois) : plus la period d’observation est longue, plus l’économie
+annoncée est robuste au sens IPMVP.</p>
+</section>
+<section id="figure-produite">
+<h2>Figure produite<a class="headerlink" href="#figure-produite" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">print_report=True</span></code> génère <code class="docutils literal notranslate"><span class="pre">eco-ANTE-POST.png</span></code> : relevé de référence, relevé
+de suivi et model IPMVP appliqué à la period de suivi.</p>
+<a class="reference internal image-reference" href="../_images/007_ipmvp_savings.png"><img alt="Application du model IPMVP on la period de suivi (ANTE-POST)" src="../_images/007_ipmvp_savings.png" style="width: 100%;" />
+</a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="exemples.html" class="btn btn-neutral float-left" title="IPMVP — Example complet (Option C)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modeles_mathematiques.html" class="btn btn-neutral float-right" title="Usage du module IPMVP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

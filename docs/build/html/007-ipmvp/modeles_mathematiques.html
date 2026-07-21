@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage du module IPMVP &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contexte et théorie IPMVP" href="contexte.html" />
+    <link rel="prev" title="Mesure des économies" href="mesure_economies.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">IPMVP - Measurement and Verification</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="exemples.html">IPMVP — Example complet (Option C)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesure_economies.html">Mesure des économies</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Usage du module IPMVP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#signature">Signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valeurs-de-retour">Valeurs de retour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#criteres-de-validation-ashrae-guideline-14">Critères de validation (ASHRAE Guideline 14)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detection-des-valeurs-aberrantes">Détection des valeurs aberrantes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variables-explicatives-x">Variables explicatives (X)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#granularite-temporelle">Granularité temporelle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incertitude-propagee-des-economies">Incertitude propagée des économies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">Références</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contexte.html">Contexte et théorie IPMVP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">IPMVP - Measurement and Verification</a></li>
+      <li class="breadcrumb-item active">Usage du module IPMVP</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/007-ipmvp/modeles_mathematiques.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage-du-module-ipmvp">
+<h1>Usage du module IPMVP<a class="headerlink" href="#usage-du-module-ipmvp" title="Link to this heading"></a></h1>
+<p>The module <code class="docutils literal notranslate"><span class="pre">IPMVP</span></code> construit un model de <strong>baseline</strong> (régression) et calculates
+les energy savings according to l’<strong>Option C</strong> (mesure au niveau du site). La
+fonction principale <code class="docutils literal notranslate"><span class="pre">Mathematical_Models</span></code> <strong>returns a 9-item tuple</strong> ;
+il n’existe pas d’objet <code class="docutils literal notranslate"><span class="pre">model</span></code> with des attributs <code class="docutils literal notranslate"><span class="pre">.r2</span></code> ou des methods
+<code class="docutils literal notranslate"><span class="pre">plot_*</span></code> (voir <a class="reference internal" href="exemples.html"><span class="doc">IPMVP — Example complet (Option C)</span></a> for un example exécutable complet).</p>
+<section id="signature">
+<h2>Signature<a class="headerlink" href="#signature" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPMVP.IPMVP</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mathematical_Models</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">Mathematical_Models</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span>
+    <span class="n">start_baseline_period</span><span class="p">,</span> <span class="n">end_baseline_period</span><span class="p">,</span>
+    <span class="n">start_reporting_period</span><span class="p">,</span> <span class="n">end_reporting_period</span><span class="p">,</span>
+    <span class="n">print_report</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">seuil_z_scores</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">site</span><span class="o">=</span><span class="s2">&quot;****&quot;</span><span class="p">,</span>
+    <span class="n">imposed_intercept</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">niveau_confiance</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">conformite</span><span class="p">,</span> <span class="n">table_incertitude</span><span class="p">,</span>
+ <span class="n">y_pred_report</span><span class="p">,</span> <span class="n">df_report</span><span class="p">,</span> <span class="n">conformite_report</span><span class="p">,</span>
+ <span class="n">table_incertitude_report</span><span class="p">,</span> <span class="n">df_savings</span><span class="p">)</span> <span class="o">=</span> <span class="n">res</span>
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>y</strong> : consumption energy (<code class="docutils literal notranslate"><span class="pre">Series</span></code> indexée by le temps) ;</p></li>
+<li><p><strong>X</strong> : variable(s) explicative(s) (<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>, ex. <code class="docutils literal notranslate"><span class="pre">[[&quot;DJU&quot;]]</span></code>) ;</p></li>
+<li><p><strong>start/end_baseline_period</strong> : period de référence (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>) ;</p></li>
+<li><p><strong>start/end_reporting_period</strong> : period de suivi (<code class="docutils literal notranslate"><span class="pre">datetime</span></code>) ;</p></li>
+<li><p><strong>degree</strong> : degré du polynôme (1=linéaire, 2=quadratique, 3=cubique) ;</p></li>
+<li><p><strong>print_report</strong> : si <code class="docutils literal notranslate"><span class="pre">True</span></code>, génère un rapport <code class="docutils literal notranslate"><span class="pre">.docx</span></code> (via <code class="docutils literal notranslate"><span class="pre">docx_report</span></code>) ;</p></li>
+<li><p><strong>seuil_z_scores</strong> : seuil d’exclusion des points aberrants (<strong>défaut 8</strong>) ;</p></li>
+<li><p><strong>imposed_intercept</strong> : impose la constante du model. <code class="docutils literal notranslate"><span class="pre">None</span></code> (défaut) =
+constante estimée librement ; <code class="docutils literal notranslate"><span class="pre">0</span></code> = régression by l’origine ; toute autre
+valeur = « talon » de consumption imposé. Les pentes sont alors ajustées sur
+le résidu <span class="math notranslate nohighlight">\(y - b_0\)</span>, then l’ordonnée est fixée à <span class="math notranslate nohighlight">\(b_0\)</span> ;</p></li>
+<li><p><strong>niveau_confiance</strong> : niveau de confiance du calcul d’incertitude
+(<strong>défaut 0,8</strong>). Pilote la statistique de Student et donc la
+<code class="docutils literal notranslate"><span class="pre">precision_absolue</span></code> / <code class="docutils literal notranslate"><span class="pre">precision_relative</span></code> de <code class="docutils literal notranslate"><span class="pre">table_incertitude</span></code>.</p></li>
+</ul>
+</section>
+<section id="valeurs-de-retour">
+<h2>Valeurs de retour<a class="headerlink" href="#valeurs-de-retour" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">y_pred</span></code> : consumption prédite on la baseline (<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>) ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df</span></code> : coefficients et indicateurs du model baseline, en colonne
+<code class="docutils literal notranslate"><span class="pre">&quot;ANTE-POST&quot;</span></code> (lignes <code class="docutils literal notranslate"><span class="pre">coef_const</span></code>, <code class="docutils literal notranslate"><span class="pre">coef_DJU</span></code>…, <code class="docutils literal notranslate"><span class="pre">r2</span></code>, <code class="docutils literal notranslate"><span class="pre">rmse</span></code>,
+<code class="docutils literal notranslate"><span class="pre">cv_rmse</span></code>, <code class="docutils literal notranslate"><span class="pre">ddof</span></code>, <code class="docutils literal notranslate"><span class="pre">serr_*</span></code>, <code class="docutils literal notranslate"><span class="pre">stat_t_*</span></code>) ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conformite</span></code> : <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> des indicateurs (<code class="docutils literal notranslate"><span class="pre">r2</span></code>, <code class="docutils literal notranslate"><span class="pre">cv_remse</span></code>,
+<code class="docutils literal notranslate"><span class="pre">stat_t_*</span></code>) with la colonne <code class="docutils literal notranslate"><span class="pre">conformité</span> <span class="pre">IPMVP</span></code> (booléens) ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">table_incertitude</span></code> : incertitude baseline (<code class="docutils literal notranslate"><span class="pre">gamma</span></code>, <code class="docutils literal notranslate"><span class="pre">niveau_confiance</span></code>,
+<code class="docutils literal notranslate"><span class="pre">stat_t_normale</span></code>, <code class="docutils literal notranslate"><span class="pre">Erreur</span> <span class="pre">type</span> <span class="pre">(rmse)</span></code>, <code class="docutils literal notranslate"><span class="pre">precision_absolue</span> <span class="pre">+/-</span></code>,
+<code class="docutils literal notranslate"><span class="pre">precision_relative</span></code>) ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y_pred_report</span></code>, <code class="docutils literal notranslate"><span class="pre">df_report</span></code>, <code class="docutils literal notranslate"><span class="pre">conformite_report</span></code>,
+<code class="docutils literal notranslate"><span class="pre">table_incertitude_report</span></code> : équivalents for la period de suivi
+(colonne <code class="docutils literal notranslate"><span class="pre">&quot;POST-ANTE&quot;</span></code>) ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df_savings</span></code> : économies <strong>ANTE-POST</strong> / <strong>POST-ANTE</strong> (relevé, prédiction,
+pourcentage d’économie).</p></li>
+</ul>
+</section>
+<section id="criteres-de-validation-ashrae-guideline-14">
+<h2>Critères de validation (ASHRAE Guideline 14)<a class="headerlink" href="#criteres-de-validation-ashrae-guideline-14" title="Link to this heading"></a></h2>
+<p><strong>R² (coefficient de détermination)</strong> :</p>
+<div class="math notranslate nohighlight">
+\[R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y}_i)^2}
+\qquad\text{seuil usuel } R^2 \ge 0.75\]</div>
+<p><strong>CV(RMSE)</strong> — coefficient de variation du RMSE :</p>
+<div class="math notranslate nohighlight">
+\[\text{CV(RMSE)} = \frac{1}{\bar{y}} \sqrt{\frac{\sum (y_i - \hat{y}_i)^2}{n - p}}\]</div>
+<p>Seuils de référence ASHRAE : ≤ 15 % (mensuel) / ≤ 30 % (horaire).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ces indicateurs sont fournis in le <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> <code class="docutils literal notranslate"><span class="pre">conformite</span></code> retourné,
+avec le verdict <code class="docutils literal notranslate"><span class="pre">conformité</span> <span class="pre">IPMVP</span></code>. Le seuil <code class="docutils literal notranslate"><span class="pre">cv_remse</span></code> <strong>codé in le
+module</strong> est unique (0,2 = 20 %), without distinction mensuel/horaire.</p>
+</div>
+</section>
+<section id="detection-des-valeurs-aberrantes">
+<h2>Détection des valeurs aberrantes<a class="headerlink" href="#detection-des-valeurs-aberrantes" title="Link to this heading"></a></h2>
+<p>The module utilise la method du <strong>z-score</strong> :</p>
+<div class="math notranslate nohighlight">
+\[z_i = \frac{y_i - \bar{y}}{\sigma_y}\]</div>
+<p>Les points with:math:<cite>|z|</cite> &gt; <code class="docutils literal notranslate"><span class="pre">seuil_z_scores</span></code> (<strong>défaut 8</strong>) sont exclus.</p>
+</section>
+<section id="variables-explicatives-x">
+<h2>Variables explicatives (X)<a class="headerlink" href="#variables-explicatives-x" title="Link to this heading"></a></h2>
+<p>Le plus souvent, <code class="docutils literal notranslate"><span class="pre">X</span></code> contient les <strong>degrés-jours unifiés (DJU)</strong>. The module
+calculates the DJU by la method COSTIC (voir <a class="reference internal" href="../008-meteo/degres_jours.html"><span class="doc">Degrés-Jours Unifiés (DJU)</span></a>) ;
+on peut aussi ajouter d’autres variables according to le contexte :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bâtiment thermiquement sensible</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;DJU&quot;</span><span class="p">]]</span>
+<span class="c1"># Site industriel : ajouter des inducteurs de production</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;DJU&quot;</span><span class="p">,</span> <span class="s2">&quot;tonnes_produites&quot;</span><span class="p">,</span> <span class="s2">&quot;heures_fonctionnement&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</section>
+<section id="granularite-temporelle">
+<h2>Granularité temporelle<a class="headerlink" href="#granularite-temporelle" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Mathematical_Models</span></code> s’applique à des data horaires, journalières ou
+mensuelles. Les data <strong>mensuelles</strong> offrent le meilleur compromis
+précision/simplicité for la plupart des projets M&amp;V.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_monthly</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;MS&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>   <span class="c1"># agrégation mensuelle</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="p">[[</span><span class="s2">&quot;DJU&quot;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="p">[</span><span class="s2">&quot;consommation_kWh&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="incertitude-propagee-des-economies">
+<h2>Incertitude propagée des économies<a class="headerlink" href="#incertitude-propagee-des-economies" title="Link to this heading"></a></h2>
+<p>The function <code class="docutils literal notranslate"><span class="pre">incertitude_savings</span></code> propage l’erreur-type du model de
+référence (<code class="docutils literal notranslate"><span class="pre">rmse</span></code>, <code class="docutils literal notranslate"><span class="pre">ddof</span></code>, moyenne de consumption) on une durée de
+contrat et une period de reporting, according to the protocol IPMVP :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPMVP.IPMVP</span><span class="w"> </span><span class="kn">import</span> <span class="n">incertitude_savings</span>
+
+<span class="n">inc</span> <span class="o">=</span> <span class="n">incertitude_savings</span><span class="p">(</span>
+    <span class="n">rmse</span><span class="p">,</span> <span class="n">ddof</span><span class="p">,</span> <span class="n">moyenne</span><span class="p">,</span>
+    <span class="n">gain_pct</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span>            <span class="c1"># économie mensuelle attendue</span>
+    <span class="n">duree_contrat_mois</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+    <span class="n">duree_reporting_mois</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+    <span class="n">niveau_confiance</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>     <span class="c1"># défaut 0,8</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Formule (identique au calcul Excel M&amp;V) :</p>
+<div class="math notranslate nohighlight">
+\[t = t_{\text{Student}}\!\left(\tfrac{1+\text{conf}}{2},\; ddof\right)
+\qquad
+\text{prec}_{\text{abs}}(m) = t \cdot rmse \cdot \sqrt{m}\]</div>
+<p>où <span class="math notranslate nohighlight">\(m\)</span> est le nombre de mois. The function est <strong>pure</strong> (aucun effet de
+bord) et retourne un <code class="docutils literal notranslate"><span class="pre">dict</span></code> contenant les clés <code class="docutils literal notranslate"><span class="pre">contrat</span></code> et <code class="docutils literal notranslate"><span class="pre">reporting</span></code>
+(chacune : <code class="docutils literal notranslate"><span class="pre">mois</span></code>, <code class="docutils literal notranslate"><span class="pre">economie_kwh</span></code>, <code class="docutils literal notranslate"><span class="pre">precision_absolue_kwh</span></code>,
+<code class="docutils literal notranslate"><span class="pre">precision_relative</span></code>). Voir <a class="reference internal" href="exemples.html"><span class="doc">IPMVP — Example complet (Option C)</span></a> for une output realle.</p>
+</section>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>IPMVP Volume I (2012), Efficiency Valuation Organization (EVO) ;</p></li>
+<li><p>ASHRAE Guideline 14 : Measurement of Energy, Demand, and Water Savings ;</p></li>
+<li><p>ISO 50015 : Systèmes de management de l’energy — Mesure et vérification.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mesure_economies.html" class="btn btn-neutral float-left" title="Mesure des économies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contexte.html" class="btn btn-neutral float-right" title="Contexte et théorie IPMVP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

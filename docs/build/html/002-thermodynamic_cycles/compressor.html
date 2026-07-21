@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compresseur &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Turbine" href="turbine.html" />
+    <link rel="prev" title="Nomenclature" href="nomenclature.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Compresseur</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-graphique-with-pyqtsimulator">Example graphique with PyqtSimulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-input-du-compresseur">Source (input du compresseur)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters-de-fluid-et-de-flow-rate-utilisables-en-input">Parameters de fluid et de flow rate utilisables en input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#equations-de-preparation-d-input">Équations de préparation d’input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#puits-output-du-compresseur">Puits (output du compresseur)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Compresseur</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/002-thermodynamic_cycles/compressor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="compresseur">
+<span id="compressor"></span><h1>Compresseur<a class="headerlink" href="#compresseur" title="Link to this heading"></a></h1>
+<p>The module <code class="docutils literal notranslate"><span class="pre">Compressor</span></code> models une compressure polytropique. L’état d’input
+n’est pas saisi directement on le compresseur : il provient d’un composant amont
+(<code class="docutils literal notranslate"><span class="pre">Source</span></code>, échangeur…) <strong>connecté via</strong> <code class="docutils literal notranslate"><span class="pre">Fluid_connect(COMP.Inlet,</span> <span class="pre">amont.Outlet)</span></code>.
+La consigne haute pressure est donnée by <code class="docutils literal notranslate"><span class="pre">HP_bar</span></code> (ou <code class="docutils literal notranslate"><span class="pre">Tcond_degC</span></code>).</p>
+<p>Dans ce chapter, les explications <code class="docutils literal notranslate"><span class="pre">Source</span></code> et <code class="docutils literal notranslate"><span class="pre">Sink</span></code> sont intégrées
+directement with les sections :</p>
+<ul class="simple">
+<li><p><strong>Source (input du compresseur)</strong></p></li>
+<li><p><strong>Puits (output du compresseur)</strong></p></li>
+</ul>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribut</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Inlet</span></code></p></td>
+<td><p>Port d’input (rempli by <code class="docutils literal notranslate"><span class="pre">Fluid_connect</span></code> from l’amont)</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">HP_bar</span></code></p></td>
+<td><p>Pressure de refoulement imposée</p></td>
+<td><p>bar</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Tcond_degC</span></code></p></td>
+<td><p>Alternative à <code class="docutils literal notranslate"><span class="pre">HP_bar</span></code> : temperature de condensation cible</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">eta_is</span></code></p></td>
+<td><p>Rendement isentropique (défaut 0,8)</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Tdischarge_target</span></code></p></td>
+<td><p>Temperature de refoulement cible (compresseur refroidi ; ignorée sinon)</p></td>
+<td><p>°C</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Source</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Compressor</span><span class="w"> </span><span class="kn">import</span> <span class="n">Compressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Connect</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fluid_connect</span>
+
+<span class="c1"># État d&#39;entrée fourni par une Source</span>
+<span class="n">SOURCE</span> <span class="o">=</span> <span class="n">Source</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">Pi_bar</span> <span class="o">=</span> <span class="mf">1.01325</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">Ti_degC</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;air&quot;</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="mi">1</span>                 <span class="c1"># kg/s</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Compresseur alimenté par la Source</span>
+<span class="n">COMPRESSOR</span> <span class="o">=</span> <span class="n">Compressor</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">COMPRESSOR</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">SOURCE</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">COMPRESSOR</span><span class="o">.</span><span class="n">HP_bar</span> <span class="o">=</span> <span class="mi">8</span>              <span class="c1"># pression de refoulement</span>
+<span class="n">COMPRESSOR</span><span class="o">.</span><span class="n">Tdischarge_target</span> <span class="o">=</span> <span class="mi">80</span>  <span class="c1"># °C (compresseur refroidi)</span>
+<span class="n">COMPRESSOR</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">COMPRESSOR</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output realle (<code class="docutils literal notranslate"><span class="pre">COMPRESSOR.df</span></code>) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                     Compressor
+Timestamp                  None
+comp_fluid                  air
+comp_F_kgs                    1
+Q_comp(KW)           321.109431
+Q_losses(KW)         266.775269
+HeatLossesRatio        0.830792
+Tis(°C)              261.805597
+To_is(°C)            261.805597
+H3is(kJ/kg)          665.268117
+T3ref(°C)            338.431681
+To(°C)                     80.0
+Ho(kJ/kg)            478.770206
+So(J/kg-K)             3.454806
+self.Outlet.P (bar)         8.0
+</pre></div>
+</div>
+<p>Principaux results : power de compressure <code class="docutils literal notranslate"><span class="pre">Q_comp</span></code> ≈ 321 kW, pertes
+thermiques <code class="docutils literal notranslate"><span class="pre">Q_losses</span></code> ≈ 267 kW (compresseur refroidi, <code class="docutils literal notranslate"><span class="pre">To</span></code> ramenée à 80 °C),
+et pressure de refoulement <code class="docutils literal notranslate"><span class="pre">Outlet.P</span></code> = 8 bar.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le compresseur ne définit pas <code class="docutils literal notranslate"><span class="pre">Pi_bar</span></code>/<code class="docutils literal notranslate"><span class="pre">Ti_degC</span></code>/<code class="docutils literal notranslate"><span class="pre">F</span></code> : ces grandeurs
+viennent du port <code class="docutils literal notranslate"><span class="pre">Inlet</span></code> connecté à l’amont. Sans <code class="docutils literal notranslate"><span class="pre">Fluid_connect</span></code> ni
+consigne <code class="docutils literal notranslate"><span class="pre">HP_bar</span></code>/<code class="docutils literal notranslate"><span class="pre">Tcond_degC</span></code>, <code class="docutils literal notranslate"><span class="pre">calculate()</span></code> lève une erreur.</p>
+</div>
+</section>
+<section id="example-graphique-with-pyqtsimulator">
+<h2>Example graphique with PyqtSimulator<a class="headerlink" href="#example-graphique-with-pyqtsimulator" title="Link to this heading"></a></h2>
+<p>Le même model can be utilisé in l’interface graphique PyqtSimulator. Le
+lancement du module se fait simplement with l’import suivant :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyqtSimulator</span><span class="w"> </span><span class="kn">import</span> <span class="n">main</span>
+</pre></div>
+</div>
+<p>En pratique, cet import lance l’application et ouvre l’éditeur de diagram où
+vous pouvez placer une <code class="docutils literal notranslate"><span class="pre">Source</span></code>, connecter un <code class="docutils literal notranslate"><span class="pre">Compresseur</span></code> then visualiser
+les results in la fenêtre de configuration.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Insérez ici la capture de la simulation PyqtSimulator lorsque l’image sera
+fournie. La page sera mise à jour with la figure correspondante.</p>
+</div>
+</section>
+<section id="source-input-du-compresseur">
+<h2>Source (input du compresseur)<a class="headerlink" href="#source-input-du-compresseur" title="Link to this heading"></a></h2>
+<p>En pratique, l’input du compresseur est fournie by un composant amont. Le cas
+le plus courant est une <code class="docutils literal notranslate"><span class="pre">Source</span></code> qui calculates un état thermodynamique cohérent
+(pressure, temperature, enthalpy, flow rate) before de l’envoyer vers
+<code class="docutils literal notranslate"><span class="pre">COMPRESSOR.Inlet</span></code> via <code class="docutils literal notranslate"><span class="pre">Fluid_connect</span></code>.</p>
+<p>Example détaillé de préparation d’input :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Source</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span>
+
+<span class="n">SOURCE</span> <span class="o">=</span> <span class="n">Source</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">Pi_bar</span> <span class="o">=</span> <span class="mf">1.01325</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">Ti_degC</span> <span class="o">=</span> <span class="mi">25</span>          <span class="c1"># température d&#39;entrée obligatoire</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;air&quot;</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="mi">1</span>                 <span class="c1"># débit massique [kg/s]</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">SOURCE</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output realle (<code class="docutils literal notranslate"><span class="pre">SOURCE.df</span></code>) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            Source
+Timestamp      2026-07-04 23:33:33
+fluid                          air
+Ti_degC                       25.0
+Pi_bar                        1.01
+F_Sm3h                      2937.5
+F_Nm3h                 2784.081453
+F_m3h                       3039.7
+F_kgh                         3600
+F_kgs                            1
+F_m3s                        0.844
+F_Sm3s                       0.816
+self.Outlet.h        424436.043917
+</pre></div>
+</div>
+<p>Le DataFrame de préparation contient : <code class="docutils literal notranslate"><span class="pre">Ti_degC</span></code> [°C], <code class="docutils literal notranslate"><span class="pre">Pi_bar</span></code> [bar], les
+flow rates (Sm³/h, Nm³/h, m³/h, kg/h, kg/s, m³/s, Sm³/s) et <code class="docutils literal notranslate"><span class="pre">Outlet.h</span></code> [J/kg].</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">SOURCE.Ti_degC</span></code> est obligatoire : without elle, <code class="docutils literal notranslate"><span class="pre">calculate()</span></code> lève une
+<code class="docutils literal notranslate"><span class="pre">TypeError</span></code> (temperature à <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+</div>
+</section>
+<section id="parameters-de-fluid-et-de-flow-rate-utilisables-en-input">
+<h2>Parameters de fluid et de flow rate utilisables en input<a class="headerlink" href="#parameters-de-fluid-et-de-flow-rate-utilisables-en-input" title="Link to this heading"></a></h2>
+<p><strong>Fluids disponibles in CoolProp</strong></p>
+<p><strong>Fluids purs courants :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'Water'</span></code> - Eau</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Air'</span></code> - Air</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Ammonia'</span></code> (ou <code class="docutils literal notranslate"><span class="pre">'NH3'</span></code>) - Ammoniac</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'CO2'</span></code> (ou <code class="docutils literal notranslate"><span class="pre">'CarbonDioxide'</span></code>) - Dioxyde de carbone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Nitrogen'</span></code> (ou <code class="docutils literal notranslate"><span class="pre">'N2'</span></code>) - Azote</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Oxygen'</span></code> (ou <code class="docutils literal notranslate"><span class="pre">'O2'</span></code>) - Oxygène</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Hydrogen'</span></code> (ou <code class="docutils literal notranslate"><span class="pre">'H2'</span></code>) - Hydrogène</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Methane'</span></code> - Méthane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Propane'</span></code> - Propane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'n-Butane'</span></code> - n-Butane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'IsoButane'</span></code> - Isobutane</p></li>
+</ul>
+<p><strong>Frigorigènes HFC :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'R134a'</span></code> - 1,1,1,2-Tétrafluoroéthane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R32'</span></code> - Difluorométhane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R125'</span></code> - Pentafluoroéthane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R143a'</span></code> - 1,1,1-Trifluoroéthane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R152a'</span></code> - 1,1-Difluoroéthane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R404A'</span></code> - Mélange (R125/143a/134a)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R407C'</span></code> - Mélange (R32/125/134a)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R410A'</span></code> - Mélange (R32/125)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R507A'</span></code> - Mélange (R125/143a)</p></li>
+</ul>
+<p><strong>Frigorigènes naturels et autres :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'R290'</span></code> (ou <code class="docutils literal notranslate"><span class="pre">'Propane'</span></code>) - Propane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R600a'</span></code> (ou <code class="docutils literal notranslate"><span class="pre">'IsoButane'</span></code>) - Isobutane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R717'</span></code> (ou <code class="docutils literal notranslate"><span class="pre">'Ammonia'</span></code>) - Ammoniac</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R744'</span></code> (ou <code class="docutils literal notranslate"><span class="pre">'CO2'</span></code>) - Dioxyde de carbone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R1234yf'</span></code> - 2,3,3,3-Tétrafluoropropène</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'R1234ze(E)'</span></code> - trans-1,3,3,3-Tétrafluoropropène</p></li>
+</ul>
+<p><strong>Fluids industriels :</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'Toluene'</span></code> - Toluène</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Ethanol'</span></code> - Éthanol</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Acetone'</span></code> - Acétone</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Methanol'</span></code> - Méthanol</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Liste complète des fluids :
+<a class="reference external" href="http://www.coolprop.org/fluid_properties/PurePseudoPure.html">http://www.coolprop.org/fluid_properties/PurePseudoPure.html</a></p>
+</div>
+<p><strong>Types de flow rates disponibles</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">F</span></code> : flow rate massique [kg/s]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F_kgh</span></code> : flow rate massique [kg/h]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F_Sm3s</span></code> / <code class="docutils literal notranslate"><span class="pre">F_Sm3h</span></code> : flow rate volumique standard [Sm³/s] / [Sm³/h]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F_Nm3s</span></code> / <code class="docutils literal notranslate"><span class="pre">F_Nm3h</span></code> : flow rate volumique normal [Nm³/s] / [Nm³/h]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F_m3s</span></code> / <code class="docutils literal notranslate"><span class="pre">F_m3h</span></code> : flow rate volumique aux conditions d’input [m³/s] / [m³/h]</p></li>
+</ul>
+</section>
+<section id="equations-de-preparation-d-input">
+<h2>Équations de préparation d’input<a class="headerlink" href="#equations-de-preparation-d-input" title="Link to this heading"></a></h2>
+<p>The calculation d’input (source amont) repose on CoolProp et convertit les flow rates
+vers un flow rate massique, then calculates l’enthalpy de l’état transmis au
+compresseur.</p>
+<ul>
+<li><p>Flow rate massique from Sm³/h :</p>
+<div class="math notranslate nohighlight">
+\[\dot{m} = \frac{F_{Sm3h}}{3600} \cdot \rho(P_{std}, T_{std})\]</div>
+</li>
+<li><p>Flow rate massique from Nm³/h :</p>
+<div class="math notranslate nohighlight">
+\[\dot{m} = \frac{F_{Nm3h}}{3600} \cdot \rho(P_{std}, T_{norm})\]</div>
+</li>
+<li><p>Flow rate massique from m³/s :</p>
+<div class="math notranslate nohighlight">
+\[\dot{m} = F_{m3s} \cdot \rho(P_{in}, T_{in})\]</div>
+</li>
+<li><p>Enthalpy de l’état transmis :</p>
+<div class="math notranslate nohighlight">
+\[h_{out} = \text{PropsSI}('H', 'P', P_{out}, 'T', T_{in}, \text{fluid})\]</div>
+</li>
+<li><p>Quality of the fluid :</p>
+<div class="math notranslate nohighlight">
+\[Q = 1 - \frac{H_v - h_{out}}{H_v - H_l}\]</div>
+</li>
+</ul>
+<p>avec : <span class="math notranslate nohighlight">\(\rho\)</span> densité, <span class="math notranslate nohighlight">\(P_{std}/T_{std}\)</span> conditions standards,
+<span class="math notranslate nohighlight">\(P_{norm}/T_{norm}\)</span> conditions normales, et <span class="math notranslate nohighlight">\(P_{in}/T_{in}\)</span>
+conditions d’input.</p>
+</section>
+<section id="puits-output-du-compresseur">
+<h2>Puits (output du compresseur)<a class="headerlink" href="#puits-output-du-compresseur" title="Link to this heading"></a></h2>
+<p>En aval du compresseur, un <code class="docutils literal notranslate"><span class="pre">Sink</span></code> termine la ligne de fluid. Il reçoit
+l’état de output du compresseur via <code class="docutils literal notranslate"><span class="pre">Fluid_connect</span></code> et calculates the grandeurs
+de bilan (flow rates, power enthalpique, état de phase, temperature).</p>
+<p>Example :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Sink</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sink</span>
+<span class="c1"># from ThermodynamicCycles.Connect import Fluid_connect</span>
+
+<span class="n">SINK</span> <span class="o">=</span> <span class="n">Sink</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+
+<span class="c1"># État d&#39;entrée (normalement : Fluid_connect(SINK.Inlet, COMPRESSOR.Outlet))</span>
+<span class="n">SINK</span><span class="o">.</span><span class="n">Inlet</span><span class="o">.</span><span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;air&quot;</span>
+<span class="n">SINK</span><span class="o">.</span><span class="n">Inlet</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="mf">0.334</span>        <span class="c1"># kg/s</span>
+<span class="n">SINK</span><span class="o">.</span><span class="n">Inlet</span><span class="o">.</span><span class="n">P</span> <span class="o">=</span> <span class="mi">101325</span>       <span class="c1"># Pa</span>
+<span class="n">SINK</span><span class="o">.</span><span class="n">Inlet</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="mi">420000</span>       <span class="c1"># J/kg</span>
+
+<span class="n">SINK</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">SINK</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SINK</span><span class="o">.</span><span class="n">To_degC</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output realle :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                              Sink
+Timestamp      2026-07-04 23:50:41
+fluid                          air
+F_kgs                        0.334
+Inlet.P(Pa)                 101325
+Inlet.P(bar)                   1.0
+Inlet.h(J/kg)               420000
+H(W)                      140280.0
+fluid_quality                vapor
+Q                         2.050715
+D (kg/m3)                      1.2
+F_Sm3h                       981.0
+F_m3h                       1000.0
+F_kgh                       1202.0
+
+20.59143900300944
+</pre></div>
+</div>
+<p>Le <code class="docutils literal notranslate"><span class="pre">Sink</span></code> calculates notamment :</p>
+<ul class="simple">
+<li><p>la power enthalpique : <span class="math notranslate nohighlight">\(H = \dot{m} \times h\)</span>,</p></li>
+<li><p>la temperature de output <code class="docutils literal notranslate"><span class="pre">To_degC</span></code>,</p></li>
+<li><p>les flow rates volumiques équivalents,</p></li>
+<li><p>l’indicateur d’état <code class="docutils literal notranslate"><span class="pre">fluid_quality</span></code>.</p></li>
+</ul>
+<p>Pour l’air, <code class="docutils literal notranslate"><span class="pre">fluid_quality</span></code> vaut généralement <code class="docutils literal notranslate"><span class="pre">vapor</span></code> (<code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>), ce qui
+est normal for un gaz permanent.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nomenclature.html" class="btn btn-neutral float-left" title="Nomenclature" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="turbine.html" class="btn btn-neutral float-right" title="Turbine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

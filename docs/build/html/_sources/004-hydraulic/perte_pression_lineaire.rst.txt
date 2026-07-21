@@ -1,0 +1,151 @@
+.. _straight_pipe:
+
+Loss de charge linéaire d'un water pipe
+============================================
+
+Usage
+-----------
+
+.. image:: ../images/004_hydraulic_straight_pipe.png
+   :alt: Straight Pipe
+   :width: 800px
+   :align: center
+
+.. code-block:: python
+
+    from ThermodynamicCycles.Hydraulic import StraightPipe
+    from ThermodynamicCycles.Source import Source
+    from ThermodynamicCycles.Sink import Sink
+    from ThermodynamicCycles.Connect import Fluid_connect
+
+    # Source
+    SOURCE = Source.Object()
+    SOURCE.fluid = "water"
+    SOURCE.Ti_degC = 25
+    SOURCE.Pi_bar = 2
+    SOURCE.F_m3h = 8
+    SOURCE.calculate()
+
+    # Tuyau droit
+    STRAIGHT_PIPE = StraightPipe.Object()
+    STRAIGHT_PIPE.d_hyd = 0.050
+    STRAIGHT_PIPE.L = 500
+    STRAIGHT_PIPE.K = 0.00002
+    Fluid_connect(STRAIGHT_PIPE.Inlet, SOURCE.Outlet)
+    STRAIGHT_PIPE.calculate()
+
+    # Puits
+    SINK = Sink.Object()
+    Fluid_connect(SINK.Inlet, STRAIGHT_PIPE.Outlet)
+    SINK.calculate()
+
+    # Affichage
+    print(SOURCE.df)
+    print(STRAIGHT_PIPE.df)
+    print(SINK.df)
+
+    # Tracer la courbe de réseau avec le point de fonctionnement
+    STRAIGHT_PIPE.Plot()
+
+**Source** :
+
+- Fluid : water
+- T_input : 25°C
+- P_input : 2 bar (200000 Pa)
+- Flow rate : 8 m³/h = 2.216 kg/s
+
+**StraightPipe** :
+
+- Diameter hydraulique : 0.050 m
+- Length : 500 m
+- Roughness : 0.00002 m
+- Section : 0.002 m²
+- Speed : 1.132 m/s
+- Reynolds : 63397 (turbulent)
+- **Loss de pressure : 136627 Pa** (1.37 bar)
+
+**Sink** :
+
+- P_output : 63373 Pa (0.63 bar)
+- Density : 997.0 kg/m³
+- Quality fluid : liquide
+
+**Courbe de network :**
+
+.. image:: ../images/004_hydraulic_straight_pipe_courbe_reseau.png
+   :alt: Courbe de network du pipe droit
+   :width: 800px
+   :align: center
+
+Possible Parameters
+--------------------
+
+**Source.Object()** :
+
+- ``fluid`` : Nom of the fluid (ex: "water", "air", voir CoolProp)
+- ``Ti_degC`` : Temperature d'input [°C]
+- ``Pi_bar`` : Pressure d'input [bar]
+- Flow rates possibles :
+  
+  - ``F_m3h`` : Flow rate volumique [m³/h]
+  - ``F_m3s`` : Flow rate volumique [m³/s]
+  - ``F_Sm3h`` : Flow rate volumique standard [Sm³/h]
+  - ``F_Sm3s`` : Flow rate volumique standard [Sm³/s]
+  - ``F_kgh`` : Flow rate massique [kg/h]
+  - ``F`` : Flow rate massique [kg/s]
+
+**StraightPipe.Object()** :
+
+- ``d_hyd`` : Diameter hydraulique [m]
+- ``L`` : Length du pipe [m]
+- ``K`` : Roughness absolue [m]
+  
+  - Acier commercial : 0.000045 m
+  - Acier galvanisé : 0.00015 m
+  - Fonte : 0.00026 m
+  - PVC/Plastique : 0.0000015 m
+  - Cuivre : 0.0000015 m
+
+- ``alpha`` : Angle d'inclinaison du tube by rapport à l'horizontale [rad]
+  (optionnel, défaut : π/2, soit un tube vertical)
+- ``Inlet`` : Connecté via ``Fluid_connect()``
+
+**Sink.Object()** :
+
+- ``Inlet`` : Connecté via ``Fluid_connect()``
+- Calculated automatiquement les propriétés de output
+
+Explication du model
+----------------------
+
+Ce model calculates la pressure drop (perte de pressure) due aux frottements in un straight cylindrical pipe.
+
+**Équations useds** :
+
+1. **Number Reynolds number** :
+   
+   .. math::
+      Re = \frac{\rho \cdot V \cdot d_{hyd}}{\mu}
+
+2. **Facteur de friction** (Colebrook-White for écoulement turbulent) :
+   
+   .. math::
+      \frac{1}{\sqrt{f}} = -2 \log_{10}\left(\frac{K/d_{hyd}}{3.7} + \frac{2.51}{Re\sqrt{f}}\right)
+
+3. **Loss de pressure** (Darcy-Weisbach) :
+   
+   .. math::
+      \Delta P = f \cdot \frac{L}{d_{hyd}} \cdot \frac{\rho \cdot V^2}{2}
+
+**Types d'écoulement** :
+
+- **Laminaire** (Re < 2300) : f = 64/Re
+- **Turbulent** (Re > 4000) : Équation de Colebrook-White
+- **Transition** (2300 < Re < 4000) : Zone instable
+
+The model prend en compte :
+
+- Les propriétés thermodynamiques of the fluid via CoolProp
+- La roughness of the inner wall du pipe
+- La géométrie (diamètre, longueur)
+- L'effet de l'inclinaison (optionnel)

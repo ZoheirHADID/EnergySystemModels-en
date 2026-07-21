@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chiller (Groupe froid / PAC) &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NG Heating Value (PCS/PCI gaz naturel)" href="ng_heating_value.html" />
+    <link rel="prev" title="Turbine" href="turbine.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="turbine.html">Turbine</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Chiller (Groupe froid / PAC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#diagramme-t-s-genere-by-ch-plot">Diagramme T-S généré by <code class="docutils literal notranslate"><span class="pre">ch.plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#etude-parametrique">Étude paramétrique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Chiller (Groupe froid / PAC)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/002-thermodynamic_cycles/chiller.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chiller-groupe-froid-pac">
+<span id="chiller"></span><h1>Chiller (Groupe froid / PAC)<a class="headerlink" href="#chiller-groupe-froid-pac" title="Link to this heading"></a></h1>
+<p>The module <code class="docutils literal notranslate"><span class="pre">Chiller</span></code> models un cycle frigorifique complet : évaporateur, compresseur, désurchauffeur, condenseur, détendeur. En mode PAC, la chaleur au condenseur est valorisée.</p>
+<figure class="align-center" id="id1">
+<img alt="Diagram du cycle frigorifique Chiller" src="../_images/002_chiller_cycle.svg" />
+<figcaption>
+<p><span class="caption-text">Le fluid frigorigène traverse successivement l’évaporateur, le
+compresseur, le désurchauffeur, le condenseur et le détendeur.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Paramètre</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>fluid</p></td>
+<td><p>Fluid frigorigène</p></td>
+<td><p>“R134a”, “R717”, “R744”…</p></td>
+</tr>
+<tr class="row-odd"><td><p>evap_params</p></td>
+<td><p>Ti_degC, surchauff, F</p></td>
+<td><p>dict</p></td>
+</tr>
+<tr class="row-even"><td><p>comp_params</p></td>
+<td><p>Tcond_degC, eta_is, Tdischarge_target</p></td>
+<td><p>dict</p></td>
+</tr>
+<tr class="row-odd"><td><p>cond_params</p></td>
+<td><p>subcooling</p></td>
+<td><p>dict</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Chiller</span><span class="w"> </span><span class="kn">import</span> <span class="n">Object</span> <span class="k">as</span> <span class="n">Chiller</span>
+
+<span class="n">ch</span> <span class="o">=</span> <span class="n">Chiller</span><span class="p">(</span>
+    <span class="n">fluid</span><span class="o">=</span><span class="s1">&#39;R134a&#39;</span><span class="p">,</span>
+    <span class="n">evap_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ti_degC&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;surchauff&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">},</span>
+    <span class="n">comp_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Tcond_degC&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;eta_is&#39;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">,</span> <span class="s1">&#39;Tdischarge_target&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">},</span>
+    <span class="n">cond_params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;subcooling&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">calculate_cycle</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ch</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Diagramme température-entropie du cycle (dôme de saturation + isobares + cycle)</span>
+<span class="n">ch</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>                 <span class="c1"># figsize=(10, 6) par défaut</span>
+<span class="c1"># ch.plot(figsize=(12, 7))  # taille personnalisée</span>
+<span class="c1"># ch.plot_TS_diagram()      # alias de ch.plot()</span>
+</pre></div>
+</div>
+<p>Output <code class="docutils literal notranslate"><span class="pre">ch.df</span></code> (valeurs real for the example ci-dessus, R134a) :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Index (<code class="docutils literal notranslate"><span class="pre">ch.df</span></code>)</p></th>
+<th class="head"><p>Valeur</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Fluid</span></code></p></td>
+<td><p>R134a</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">T_evap</span> <span class="pre">(C)</span></code></p></td>
+<td><p>5</p></td>
+<td><p>degC</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T_cond</span> <span class="pre">(C)</span></code></p></td>
+<td><p>40</p></td>
+<td><p>degC</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Lift</span> <span class="pre">(K)</span></code></p></td>
+<td><p>35</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EER</span></code></p></td>
+<td><p>5,072</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">COP</span></code></p></td>
+<td><p>6,072</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">COP_Carnot</span></code></p></td>
+<td><p>8,95</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Eta_Carnot</span> <span class="pre">(%)</span></code></p></td>
+<td><p>67,9</p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Q_comp</span> <span class="pre">(kW)</span></code></p></td>
+<td><p>30,39</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Q_losses</span> <span class="pre">(kW)</span></code></p></td>
+<td><p>0,0</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Q_evap</span> <span class="pre">(kW)</span></code></p></td>
+<td><p>154,13</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Q_condTot</span> <span class="pre">(kW)</span></code></p></td>
+<td><p>184,51</p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T_refoulement</span> <span class="pre">(C)</span></code></p></td>
+<td><p>55,5</p></td>
+<td><p>degC</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">P_evap</span> <span class="pre">(bar)</span></code></p></td>
+<td><p>3,50</p></td>
+<td><p>bar</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">P_cond</span> <span class="pre">(bar)</span></code></p></td>
+<td><p>10,17</p></td>
+<td><p>bar</p></td>
+</tr>
+</tbody>
+</table>
+<section id="diagramme-t-s-genere-by-ch-plot">
+<h3>Diagramme T-S généré by <code class="docutils literal notranslate"><span class="pre">ch.plot()</span></code><a class="headerlink" href="#diagramme-t-s-genere-by-ch-plot" title="Link to this heading"></a></h3>
+<p>La method <code class="docutils literal notranslate"><span class="pre">ch.plot()</span></code> (alias <code class="docutils literal notranslate"><span class="pre">ch.plot_TS_diagram()</span></code>) construit un diagramme
+temperature-entropie via <code class="docutils literal notranslate"><span class="pre">Temperature_Entropy_Chart</span></code> : dôme de saturation du
+fluid (courbe liquide en bleu, vapeur en rouge), isobares en pointillés
+étiquetées en bar, et les huit points du cycle (<code class="docutils literal notranslate"><span class="pre">ch.points</span></code>) reliés by des
+flèches — évaporation, surchauffe, compressure, désurchauffe, condensation,
+sous-refroidissement, détente et retour à l’évaporateur.</p>
+<figure class="align-center" id="id2">
+<img alt="Diagramme T-S real du cycle Chiller R134a" src="../_images/002_chiller_plot_ts.svg" />
+<figcaption>
+<p><span class="caption-text">Output realle de <code class="docutils literal notranslate"><span class="pre">ch.plot()</span></code> for le cycle R134a de l’example (générée en
+exécutant the library). Les points rouges parcourent le cycle
+frigorifique in le sens horaire.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="etude-parametrique">
+<h2>Étude paramétrique<a class="headerlink" href="#etude-parametrique" title="Link to this heading"></a></h2>
+<p>The module fournit aussi <code class="docutils literal notranslate"><span class="pre">Chiller.parametric_study(...)</span></code> for comparer le COP
+according to la temperature source et la temperature cible.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Chiller</span><span class="w"> </span><span class="kn">import</span> <span class="n">Object</span> <span class="k">as</span> <span class="n">Chiller</span>
+
+<span class="n">df_study</span> <span class="o">=</span> <span class="n">Chiller</span><span class="o">.</span><span class="n">parametric_study</span><span class="p">(</span>
+    <span class="n">fluid</span><span class="o">=</span><span class="s2">&quot;R134a&quot;</span><span class="p">,</span>
+    <span class="n">T_source_range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="n">T_cible_range</span><span class="o">=</span><span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
+    <span class="n">superheat</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">subcool</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">eta_is</span><span class="o">=</span><span class="mf">0.78</span><span class="p">,</span>
+    <span class="n">save_fig</span><span class="o">=</span><span class="s2">&quot;chiller_parametric.svg&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_study</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Colonnes du DataFrame <code class="docutils literal notranslate"><span class="pre">df_study</span></code> retourné :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35.0%" />
+<col style="width: 45.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Result</p></th>
+<th class="head"><p>Colonne du DataFrame</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Temperature source</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">T_source</span> <span class="pre">(degC)</span></code></p></td>
+<td><p>degC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Temperature cible</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">T_cible</span> <span class="pre">(degC)</span></code></p></td>
+<td><p>degC</p></td>
+</tr>
+<tr class="row-even"><td><p>Lift thermique</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Lift</span> <span class="pre">(K)</span></code></p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-odd"><td><p>COP chauffage</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COP</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>EER froid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EER</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>COP de Carnot</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COP</span> <span class="pre">Carnot</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Efficacité de Carnot</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Eta</span> <span class="pre">Carnot</span> <span class="pre">(%)</span></code></p></td>
+<td><p>%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power compresseur</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">W_comp</span> <span class="pre">(kW)</span></code></p></td>
+<td><p>kW</p></td>
+</tr>
+<tr class="row-even"><td><p>Power condenseur</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Q_cond</span> <span class="pre">(kW)</span></code></p></td>
+<td><p>kW</p></td>
+</tr>
+</tbody>
+</table>
+<p>Extrait de <code class="docutils literal notranslate"><span class="pre">df_study</span></code> (R134a) — une ligne by couple (source, cible) valide :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16.0%" />
+<col style="width: 16.0%" />
+<col style="width: 12.0%" />
+<col style="width: 12.0%" />
+<col style="width: 14.0%" />
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>T_source</p></th>
+<th class="head"><p>T_cible</p></th>
+<th class="head"><p>Lift</p></th>
+<th class="head"><p>COP</p></th>
+<th class="head"><p>W_comp</p></th>
+<th class="head"><p>Q_cond</p></th>
+<th class="head"><p>Eta Carnot</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>40</p></td>
+<td><p>35</p></td>
+<td><p>6,28</p></td>
+<td><p>29,2</p></td>
+<td><p>183,3</p></td>
+<td><p>70,1 %</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>40</p></td>
+<td><p>30</p></td>
+<td><p>7,40</p></td>
+<td><p>24,5</p></td>
+<td><p>181,6</p></td>
+<td><p>70,9 %</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>50</p></td>
+<td><p>50</p></td>
+<td><p>4,30</p></td>
+<td><p>41,3</p></td>
+<td><p>177,4</p></td>
+<td><p>66,5 %</p></td>
+</tr>
+</tbody>
+</table>
+<p>Plot sauvegardé by l’étude paramétrique (argument <code class="docutils literal notranslate"><span class="pre">save_fig</span></code>) :</p>
+<figure class="align-center" id="id3">
+<img alt="Plot paramétrique real COP et power compresseur Chiller" src="../_images/002_chiller_plot_parametric.svg" />
+<figcaption>
+<p><span class="caption-text">Output realle : figure à deux panneaux — à gauche le COP chauffage en
+fonction du lift thermique, à droite la power compresseur as a function of
+la temperature cible, with une courbe by temperature source.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ch.calculate_cycle()</span></code> — Calculated le cycle complet</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch.df</span></code> — DataFrame de synthèse (EER, COP, powers, pressures)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch.print_results()</span></code> — Affiche le df de chaque composant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch.plot()</span></code> — Diagramme T-S du cycle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ch.summary()</span></code> — Synthèse technique du cycle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Chiller.parametric_study(...)</span></code> — Étude paramétrique COP, EER, lift et power compresseur</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="turbine.html" class="btn btn-neutral float-left" title="Turbine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ng_heating_value.html" class="btn btn-neutral float-right" title="NG Heating Value (PCS/PCI gaz naturel)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

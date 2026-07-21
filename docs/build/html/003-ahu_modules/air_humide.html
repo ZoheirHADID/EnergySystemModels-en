@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Air humide — fonctions psychrométriques &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CTA d’air neuf" href="cta_air_neuf.html" />
+    <link rel="prev" title="3. Centrales de Traitement d’Air" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Centrales de Traitement d’Air</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Air humide — fonctions psychrométriques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#import">Import</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#un-example-by-fonction">Un example by fonction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#voir-aussi">Voir aussi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cta_air_neuf.html">CTA d’air neuf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generic_ahu.html">GenericAHU — Simulation de CTA paramétrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nomenclature.html">Nomenclature</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">3. Centrales de Traitement d’Air</a></li>
+      <li class="breadcrumb-item active">Air humide — fonctions psychrométriques</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/003-ahu_modules/air_humide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="air-humide-fonctions-psychrometriques">
+<h1>Air humide — fonctions psychrométriques<a class="headerlink" href="#air-humide-fonctions-psychrometriques" title="Link to this heading"></a></h1>
+<p>The module <code class="docutils literal notranslate"><span class="pre">AHU.air_humide</span></code> fournit les fonctions psychrométriques de l’air
+humide, basées on l’ASHRAE Handbook — Fundamentals (Hyland &amp; Wexler, 1983).
+Each fonction accepte plusieurs combinaisons d’inputs (<code class="docutils literal notranslate"><span class="pre">T_db</span></code>, <code class="docutils literal notranslate"><span class="pre">RH</span></code>,
+<code class="docutils literal notranslate"><span class="pre">w</span></code>, <code class="docutils literal notranslate"><span class="pre">h</span></code>, <code class="docutils literal notranslate"><span class="pre">T_wb</span></code>…) et renvoie une grandeur en unités SI usuelles.</p>
+<section id="import">
+<h2>Import<a class="headerlink" href="#import" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">AHU.air_humide</span><span class="w"> </span><span class="kn">import</span> <span class="n">air_humide</span> <span class="k">as</span> <span class="n">ah</span>
+</pre></div>
+</div>
+</section>
+<section id="un-example-by-fonction">
+<h2>Un example by fonction<a class="headerlink" href="#un-example-by-fonction" title="Link to this heading"></a></h2>
+<p>Toutes les fonctions sont ici évaluées on le <strong>même état d’air</strong> :
+<code class="docutils literal notranslate"><span class="pre">T_db</span> <span class="pre">=</span> <span class="pre">25</span> <span class="pre">°C</span></code>, <code class="docutils literal notranslate"><span class="pre">RH</span> <span class="pre">=</span> <span class="pre">50</span> <span class="pre">%</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">=</span> <span class="pre">101325</span> <span class="pre">Pa</span></code>. Les valeurs en commentaire
+<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">-&gt;</span></code> sont les <strong>real outputs are shown</strong> de the library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">AHU.air_humide</span><span class="w"> </span><span class="kn">import</span> <span class="n">air_humide</span> <span class="k">as</span> <span class="n">ah</span>
+
+<span class="c1"># Pression de vapeur saturante [Pa]  (Hyland &amp; Wexler)</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_Pv_sat</span><span class="p">(</span><span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>             <span class="c1"># -&gt; 3169.22</span>
+
+<span class="c1"># Humidité absolue w [g/kg d&#39;air sec]</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">ah</span><span class="o">.</span><span class="n">Air_w</span><span class="p">(</span><span class="n">RH</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>       <span class="c1"># -&gt; 9.882</span>
+
+<span class="c1"># Humidité relative [%]</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_RH</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>            <span class="c1"># -&gt; 50.0</span>
+
+<span class="c1"># Enthalpie [kJ/kg d&#39;air sec]</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">ah</span><span class="o">.</span><span class="n">Air_h</span><span class="p">(</span><span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">)</span>         <span class="c1"># -&gt; 50.132</span>
+
+<span class="c1"># Température de bulbe sec [°C]  (reconstruite depuis w et h)</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_T_db</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">)</span>              <span class="c1"># -&gt; 25.0</span>
+
+<span class="c1"># Température de bulbe humide [°C]</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_T_wb</span><span class="p">(</span><span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">RH</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>        <span class="c1"># -&gt; 17.81</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_T_wb_ROLAND_STULL</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c1"># -&gt; 17.998   (variante Roland Stull, 2011)</span>
+
+<span class="c1"># Température de rosée [°C]</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_T_dp</span><span class="p">(</span><span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">RH</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>        <span class="c1"># -&gt; 13.86</span>
+
+<span class="c1"># Fraction molaire de l&#39;eau [-]</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_xH2O</span><span class="p">(</span><span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">RH</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>        <span class="c1"># -&gt; 0.0156</span>
+
+<span class="c1"># Masse volumique / volume spécifique de l&#39;air humide</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_rho_hum</span><span class="p">(</span><span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">RH</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>     <span class="c1"># -&gt; 1.1745  kg/m³</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_v_hum</span><span class="p">(</span><span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">RH</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>       <span class="c1"># -&gt; 0.8514  m³/kg</span>
+
+<span class="c1"># Masse volumique / volume spécifique de l&#39;air sec</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_rho_dry</span><span class="p">(</span><span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">RH</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>     <span class="c1"># -&gt; 1.1630  kg_as/m³</span>
+<span class="n">ah</span><span class="o">.</span><span class="n">Air_v_dry</span><span class="p">(</span><span class="n">T_db</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">RH</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>       <span class="c1"># -&gt; 0.8599  m³/kg_as</span>
+</pre></div>
+</div>
+<p>Les inputs sont interchangeables : for example <code class="docutils literal notranslate"><span class="pre">Air_w</span></code> accepte <code class="docutils literal notranslate"><span class="pre">RH</span></code>,
+<code class="docutils literal notranslate"><span class="pre">h</span></code> ou <code class="docutils literal notranslate"><span class="pre">T_wb</span></code> en plus de <code class="docutils literal notranslate"><span class="pre">T_db</span></code>, et <code class="docutils literal notranslate"><span class="pre">Air_T_db</span></code> reconstruit la
+temperature from deux grandeurs quelconques (ici <code class="docutils literal notranslate"><span class="pre">w</span></code> et <code class="docutils literal notranslate"><span class="pre">h</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">T_sat(w_target)</span></code> (temperature de saturation for une humidité
+absolue cible) lève actuellement une erreur interne et n’est donc pas
+présentée ici.</p>
+</div>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Unités</strong> : temperatures en °C, pressures en Pa, humidité absolue <code class="docutils literal notranslate"><span class="pre">w</span></code> en
+g/kg d’air sec, enthalpy <code class="docutils literal notranslate"><span class="pre">h</span></code> en kJ/kg d’air sec, masse volumique en kg/m³,
+volume spécifique en m³/kg.</p></li>
+<li><p><strong>Pressure</strong> : by défaut <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">=</span> <span class="pre">101325</span> <span class="pre">Pa</span></code> (niveau de la mer) ; ajuster le
+paramètre <code class="docutils literal notranslate"><span class="pre">P</span></code> for une autre altitude.</p></li>
+<li><p><strong>Domaine de validité</strong> : formule Hyland &amp; Wexler de <code class="docutils literal notranslate"><span class="pre">Pv_sat</span></code> valable de
+−100 °C à 200 °C, plus précise between −20 °C et 60 °C.</p></li>
+<li><p><strong>Références</strong> : ASHRAE Handbook — Fundamentals (2013), ch. 1 Psychrometrics ;
+Hyland &amp; Wexler (1983) ; Roland Stull (2011) for la variante de <code class="docutils literal notranslate"><span class="pre">T_wb</span></code>.</p></li>
+</ul>
+</section>
+<section id="voir-aussi">
+<h2>Voir aussi<a class="headerlink" href="#voir-aussi" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="cta_air_neuf.html"><span class="doc">CTA d’air neuf</span></a> — centrale de traitement d’air neuf (classes <code class="docutils literal notranslate"><span class="pre">FreshAir</span></code>,
+<code class="docutils literal notranslate"><span class="pre">HeatingCoil</span></code>, <code class="docutils literal notranslate"><span class="pre">Humidifier</span></code>…)</p></li>
+<li><p><a class="reference internal" href="nomenclature.html"><span class="doc">Nomenclature</span></a> — symboles et unités</p></li>
+<li><p><a class="reference internal" href="index.html"><span class="doc">3. Centrales de Traitement d’Air</span></a> — index des modules AHU</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="3. Centrales de Traitement d’Air" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cta_air_neuf.html" class="btn btn-neutral float-right" title="CTA d’air neuf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

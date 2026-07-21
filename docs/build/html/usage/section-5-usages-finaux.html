@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section 5 : Usages finaux de l’energy &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Section 6 : Financing and subsidies" href="section-6-financement-subvention.html" />
+    <link rel="prev" title="Section 4 : Distribution de l’energy" href="section-4-distribution.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../usage.html">Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../usage.html#installation">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../usage.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="section-1-achat-facturation.html">Section 1 : Achat et Facturation de l’energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-2-donnees-production.html">Section 2 : Data et Production energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-3-transformation.html">Section 3 : Transformation de l’energy (Utilités)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-4-distribution.html">Section 4 : Distribution de l’energy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Section 5 : Usages finaux de l’energy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-ahu-centrales-de-traitement-d-air-cta">5.1. Module AHU - Centrales de Traitement d’Air (CTA)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-pinchanalysis-pinch-analysis">5.2. Module PinchAnalysis - Pinch Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-ipmvp-international-performance-measurement-and-verification-protocol">5.3. Module IPMVP - International Performance Measurement and Verification Protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modele-rc-de-batiment">5.4. Modèle RC de bâtiment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-financement-subvention.html">Section 6 : Financing and subsidies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="section-6-autres.html">Section 7 : Other</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../usage.html">Usage</a></li>
+      <li class="breadcrumb-item active">Section 5 : Usages finaux de l’energy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/usage/section-5-usages-finaux.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="section-5-usages-finaux-de-l-energy">
+<h1>Section 5 : Usages finaux de l’energy<a class="headerlink" href="#section-5-usages-finaux-de-l-energy" title="Link to this heading"></a></h1>
+<section id="module-ahu-centrales-de-traitement-d-air-cta">
+<h2>5.1. Module AHU - Centrales de Traitement d’Air (CTA)<a class="headerlink" href="#module-ahu-centrales-de-traitement-d-air-cta" title="Link to this heading"></a></h2>
+<p>The module AHU allows model les centrales de traitement d’air with leurs différents composants.</p>
+<section id="freshair-melange-d-air-neuf-et-air-recycle">
+<h3>5.1.1. FreshAir - Mélange d’air neuf et air recyclé<a class="headerlink" href="#freshair-melange-d-air-neuf-et-air-recycle" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/003_ahu_fresh_air.png"><img alt="Diagram mélange air neuf" class="align-center" src="../_images/003_ahu_fresh_air.png" style="width: 600px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.AHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">FreshAir</span>
+
+<span class="c1"># Configuration du mélange</span>
+<span class="n">fresh_air</span> <span class="o">=</span> <span class="n">FreshAir</span><span class="p">(</span>
+    <span class="n">debit_air_neuf_m3_h</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
+    <span class="n">debit_air_recycle_m3_h</span><span class="o">=</span><span class="mi">7000</span><span class="p">,</span>
+    <span class="n">temperature_ext_C</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">humidite_ext_pct</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+    <span class="n">temperature_reprise_C</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span>
+    <span class="n">humidite_reprise_pct</span><span class="o">=</span><span class="mi">45</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer l&#39;état du mélange</span>
+<span class="n">etat_melange</span> <span class="o">=</span> <span class="n">fresh_air</span><span class="o">.</span><span class="n">calculer_etat_melange</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température du mélange : </span><span class="si">{</span><span class="n">etat_melange</span><span class="p">[</span><span class="s1">&#39;temperature_C&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Humidité relative : </span><span class="si">{</span><span class="n">etat_melange</span><span class="p">[</span><span class="s1">&#39;humidite_relative_pct&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Humidité absolue : </span><span class="si">{</span><span class="n">etat_melange</span><span class="p">[</span><span class="s1">&#39;humidite_absolue_g_kg&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> g/kg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Enthalpie : </span><span class="si">{</span><span class="n">etat_melange</span><span class="p">[</span><span class="s1">&#39;enthalpie_kJ_kg&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kJ/kg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="diagramme-psychrometrique">
+<h3>Diagramme psychrométrique<a class="headerlink" href="#diagramme-psychrometrique" title="Link to this heading"></a></h3>
+<a class="reference internal image-reference" href="../_images/003_ahu_fresh_air_figure1.png"><img alt="Diagramme psychrométrique" class="align-center" src="../_images/003_ahu_fresh_air_figure1.png" style="width: 700px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.AHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">FreshAir</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">fresh_air</span> <span class="o">=</span> <span class="n">FreshAir</span><span class="p">(</span>
+    <span class="n">debit_air_neuf_m3_h</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
+    <span class="n">debit_air_recycle_m3_h</span><span class="o">=</span><span class="mi">7000</span><span class="p">,</span>
+    <span class="n">temperature_ext_C</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">humidite_ext_pct</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+    <span class="n">temperature_reprise_C</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span>
+    <span class="n">humidite_reprise_pct</span><span class="o">=</span><span class="mi">45</span>
+<span class="p">)</span>
+
+<span class="c1"># Tracer le diagramme psychrométrique</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">fresh_air</span><span class="o">.</span><span class="n">plot_psychrometric_chart</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="heatingcoil-batterie-chaude">
+<h3>5.1.2. HeatingCoil - Batterie chaude<a class="headerlink" href="#heatingcoil-batterie-chaude" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.AHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatingCoil</span>
+
+<span class="c1"># Batterie chaude à eau</span>
+<span class="n">batterie</span> <span class="o">=</span> <span class="n">HeatingCoil</span><span class="p">(</span>
+    <span class="n">type_batterie</span><span class="o">=</span><span class="s2">&quot;eau_chaude&quot;</span><span class="p">,</span>
+    <span class="n">puissance_nominale_kW</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">temperature_entree_eau_C</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+    <span class="n">temperature_sortie_eau_C</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+    <span class="n">efficacite</span><span class="o">=</span><span class="mf">0.85</span>
+<span class="p">)</span>
+
+<span class="c1"># Air à chauffer</span>
+<span class="n">debit_air</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># m³/h</span>
+<span class="n">T_air_entree</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># °C</span>
+
+<span class="c1"># Calculer le chauffage</span>
+<span class="n">resultats</span> <span class="o">=</span> <span class="n">batterie</span><span class="o">.</span><span class="n">calculer_chauffage</span><span class="p">(</span>
+    <span class="n">debit_air_m3_h</span><span class="o">=</span><span class="n">debit_air</span><span class="p">,</span>
+    <span class="n">temperature_air_entree_C</span><span class="o">=</span><span class="n">T_air_entree</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance de chauffage : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;puissance_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température air sortie : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;temperature_air_sortie_C&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Débit d&#39;eau : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;debit_eau_m3_h&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m³/h&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-dimensionnement-d-une-batterie-chaude">
+<h3>Example : Dimensionnement d’une batterie chaude<a class="headerlink" href="#example-dimensionnement-d-une-batterie-chaude" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.AHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">HeatingCoil</span>
+
+<span class="c1"># Conditions de dimensionnement</span>
+<span class="n">debit_air</span> <span class="o">=</span> <span class="mi">15000</span>       <span class="c1"># m³/h</span>
+<span class="n">T_air_entree</span> <span class="o">=</span> <span class="mi">5</span>        <span class="c1"># °C</span>
+<span class="n">T_air_sortie_voulue</span> <span class="o">=</span> <span class="mi">18</span>  <span class="c1"># °C</span>
+<span class="n">T_eau_aller</span> <span class="o">=</span> <span class="mi">80</span>        <span class="c1"># °C</span>
+<span class="n">T_eau_retour</span> <span class="o">=</span> <span class="mi">60</span>       <span class="c1"># °C</span>
+
+<span class="c1"># Calculer la puissance nécessaire</span>
+<span class="n">rho_air</span> <span class="o">=</span> <span class="mf">1.2</span>  <span class="c1"># kg/m³</span>
+<span class="n">cp_air</span> <span class="o">=</span> <span class="mf">1.005</span>  <span class="c1"># kJ/kg.K</span>
+
+<span class="n">debit_massique_air</span> <span class="o">=</span> <span class="n">debit_air</span> <span class="o">/</span> <span class="mi">3600</span> <span class="o">*</span> <span class="n">rho_air</span>  <span class="c1"># kg/s</span>
+<span class="n">puissance_requise</span> <span class="o">=</span> <span class="n">debit_massique_air</span> <span class="o">*</span> <span class="n">cp_air</span> <span class="o">*</span> <span class="p">(</span><span class="n">T_air_sortie_voulue</span> <span class="o">-</span> <span class="n">T_air_entree</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance requise : </span><span class="si">{</span><span class="n">puissance_requise</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+
+<span class="c1"># Créer la batterie avec cette puissance</span>
+<span class="n">batterie</span> <span class="o">=</span> <span class="n">HeatingCoil</span><span class="p">(</span>
+    <span class="n">type_batterie</span><span class="o">=</span><span class="s2">&quot;eau_chaude&quot;</span><span class="p">,</span>
+    <span class="n">puissance_nominale_kW</span><span class="o">=</span><span class="n">puissance_requise</span><span class="p">,</span>
+    <span class="n">temperature_entree_eau_C</span><span class="o">=</span><span class="n">T_eau_aller</span><span class="p">,</span>
+    <span class="n">temperature_sortie_eau_C</span><span class="o">=</span><span class="n">T_eau_retour</span><span class="p">,</span>
+    <span class="n">efficacite</span><span class="o">=</span><span class="mf">0.90</span>
+<span class="p">)</span>
+
+<span class="c1"># Vérifier les performances</span>
+<span class="n">resultats</span> <span class="o">=</span> <span class="n">batterie</span><span class="o">.</span><span class="n">calculer_chauffage</span><span class="p">(</span><span class="n">debit_air</span><span class="p">,</span> <span class="n">T_air_entree</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température air sortie obtenue : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;temperature_air_sortie_C&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="humidifier-humidificateur">
+<h3>5.1.3. Humidifier - Humidificateur<a class="headerlink" href="#humidifier-humidificateur" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.AHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">Humidifier</span>
+
+<span class="c1"># Humidificateur à vapeur</span>
+<span class="n">humidificateur</span> <span class="o">=</span> <span class="n">Humidifier</span><span class="p">(</span>
+    <span class="n">type_humidificateur</span><span class="o">=</span><span class="s2">&quot;vapeur&quot;</span><span class="p">,</span>
+    <span class="n">capacite_kg_h</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">efficacite</span><span class="o">=</span><span class="mf">0.95</span>
+<span class="p">)</span>
+
+<span class="c1"># Air à humidifier</span>
+<span class="n">debit_air</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># m³/h</span>
+<span class="n">T_air</span> <span class="o">=</span> <span class="mi">20</span>         <span class="c1"># °C</span>
+<span class="n">HR_entree</span> <span class="o">=</span> <span class="mi">30</span>     <span class="c1"># %</span>
+<span class="n">HR_souhaitee</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># %</span>
+
+<span class="c1"># Calculer l&#39;humidification</span>
+<span class="n">resultats</span> <span class="o">=</span> <span class="n">humidificateur</span><span class="o">.</span><span class="n">calculer_humidification</span><span class="p">(</span>
+    <span class="n">debit_air_m3_h</span><span class="o">=</span><span class="n">debit_air</span><span class="p">,</span>
+    <span class="n">temperature_C</span><span class="o">=</span><span class="n">T_air</span><span class="p">,</span>
+    <span class="n">humidite_relative_entree_pct</span><span class="o">=</span><span class="n">HR_entree</span><span class="p">,</span>
+    <span class="n">humidite_relative_sortie_pct</span><span class="o">=</span><span class="n">HR_souhaitee</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Débit de vapeur nécessaire : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;debit_vapeur_kg_h&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kg/h&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance consommée : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;puissance_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Humidité absolue entrée : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;humidite_abs_entree_g_kg&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> g/kg&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Humidité absolue sortie : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;humidite_abs_sortie_g_kg&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> g/kg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-complet-cta-complete">
+<h3>Example complet : CTA complète<a class="headerlink" href="#example-complet-cta-complete" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.AHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">FreshAir</span><span class="p">,</span> <span class="n">HeatingCoil</span><span class="p">,</span> <span class="n">CoolingCoil</span><span class="p">,</span> <span class="n">Humidifier</span><span class="p">,</span> <span class="n">Fan</span>
+
+<span class="c1"># Conditions extérieures hiver</span>
+<span class="n">T_ext</span> <span class="o">=</span> <span class="mi">5</span>      <span class="c1"># °C</span>
+<span class="n">HR_ext</span> <span class="o">=</span> <span class="mi">80</span>    <span class="c1"># %</span>
+
+<span class="c1"># Conditions intérieures</span>
+<span class="n">T_reprise</span> <span class="o">=</span> <span class="mi">22</span>  <span class="c1"># °C</span>
+<span class="n">HR_reprise</span> <span class="o">=</span> <span class="mi">45</span>  <span class="c1"># %</span>
+
+<span class="c1"># Consigne soufflage</span>
+<span class="n">T_soufflage</span> <span class="o">=</span> <span class="mi">18</span>  <span class="c1"># °C</span>
+<span class="n">HR_soufflage</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># %</span>
+
+<span class="c1"># Débits</span>
+<span class="n">debit_air_neuf</span> <span class="o">=</span> <span class="mi">3000</span>    <span class="c1"># m³/h</span>
+<span class="n">debit_air_recycle</span> <span class="o">=</span> <span class="mi">7000</span>  <span class="c1"># m³/h</span>
+<span class="n">debit_total</span> <span class="o">=</span> <span class="n">debit_air_neuf</span> <span class="o">+</span> <span class="n">debit_air_recycle</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== SIMULATION CTA HIVER ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Mélange air neuf / air recyclé</span>
+<span class="n">fresh_air</span> <span class="o">=</span> <span class="n">FreshAir</span><span class="p">(</span>
+    <span class="n">debit_air_neuf_m3_h</span><span class="o">=</span><span class="n">debit_air_neuf</span><span class="p">,</span>
+    <span class="n">debit_air_recycle_m3_h</span><span class="o">=</span><span class="n">debit_air_recycle</span><span class="p">,</span>
+    <span class="n">temperature_ext_C</span><span class="o">=</span><span class="n">T_ext</span><span class="p">,</span>
+    <span class="n">humidite_ext_pct</span><span class="o">=</span><span class="n">HR_ext</span><span class="p">,</span>
+    <span class="n">temperature_reprise_C</span><span class="o">=</span><span class="n">T_reprise</span><span class="p">,</span>
+    <span class="n">humidite_reprise_pct</span><span class="o">=</span><span class="n">HR_reprise</span>
+<span class="p">)</span>
+
+<span class="n">etat_melange</span> <span class="o">=</span> <span class="n">fresh_air</span><span class="o">.</span><span class="n">calculer_etat_melange</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1. Après mélange :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   T = </span><span class="si">{</span><span class="n">etat_melange</span><span class="p">[</span><span class="s1">&#39;temperature_C&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   HR = </span><span class="si">{</span><span class="n">etat_melange</span><span class="p">[</span><span class="s1">&#39;humidite_relative_pct&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Chauffage</span>
+<span class="n">batterie_chaude</span> <span class="o">=</span> <span class="n">HeatingCoil</span><span class="p">(</span>
+    <span class="n">type_batterie</span><span class="o">=</span><span class="s2">&quot;eau_chaude&quot;</span><span class="p">,</span>
+    <span class="n">puissance_nominale_kW</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+    <span class="n">temperature_entree_eau_C</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+    <span class="n">temperature_sortie_eau_C</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+    <span class="n">efficacite</span><span class="o">=</span><span class="mf">0.90</span>
+<span class="p">)</span>
+
+<span class="n">resultats_chauffage</span> <span class="o">=</span> <span class="n">batterie_chaude</span><span class="o">.</span><span class="n">calculer_chauffage</span><span class="p">(</span>
+    <span class="n">debit_air_m3_h</span><span class="o">=</span><span class="n">debit_total</span><span class="p">,</span>
+    <span class="n">temperature_air_entree_C</span><span class="o">=</span><span class="n">etat_melange</span><span class="p">[</span><span class="s1">&#39;temperature_C&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2. Après batterie chaude :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   T = </span><span class="si">{</span><span class="n">resultats_chauffage</span><span class="p">[</span><span class="s1">&#39;temperature_air_sortie_C&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Puissance = </span><span class="si">{</span><span class="n">resultats_chauffage</span><span class="p">[</span><span class="s1">&#39;puissance_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3. Humidification</span>
+<span class="n">humidificateur</span> <span class="o">=</span> <span class="n">Humidifier</span><span class="p">(</span>
+    <span class="n">type_humidificateur</span><span class="o">=</span><span class="s2">&quot;vapeur&quot;</span><span class="p">,</span>
+    <span class="n">capacite_kg_h</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">efficacite</span><span class="o">=</span><span class="mf">0.95</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer HR après chauffage (approximation)</span>
+<span class="n">HR_apres_chauffage</span> <span class="o">=</span> <span class="n">etat_melange</span><span class="p">[</span><span class="s1">&#39;humidite_relative_pct&#39;</span><span class="p">]</span> <span class="o">*</span> \
+                     <span class="n">etat_melange</span><span class="p">[</span><span class="s1">&#39;temperature_C&#39;</span><span class="p">]</span> <span class="o">/</span> \
+                     <span class="n">resultats_chauffage</span><span class="p">[</span><span class="s1">&#39;temperature_air_sortie_C&#39;</span><span class="p">]</span>
+
+<span class="n">resultats_humidif</span> <span class="o">=</span> <span class="n">humidificateur</span><span class="o">.</span><span class="n">calculer_humidification</span><span class="p">(</span>
+    <span class="n">debit_air_m3_h</span><span class="o">=</span><span class="n">debit_total</span><span class="p">,</span>
+    <span class="n">temperature_C</span><span class="o">=</span><span class="n">resultats_chauffage</span><span class="p">[</span><span class="s1">&#39;temperature_air_sortie_C&#39;</span><span class="p">],</span>
+    <span class="n">humidite_relative_entree_pct</span><span class="o">=</span><span class="n">HR_apres_chauffage</span><span class="p">,</span>
+    <span class="n">humidite_relative_sortie_pct</span><span class="o">=</span><span class="n">HR_soufflage</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3. Après humidification :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   HR = </span><span class="si">{</span><span class="n">HR_soufflage</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Vapeur = </span><span class="si">{</span><span class="n">resultats_humidif</span><span class="p">[</span><span class="s1">&#39;debit_vapeur_kg_h&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kg/h&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Puissance = </span><span class="si">{</span><span class="n">resultats_humidif</span><span class="p">[</span><span class="s1">&#39;puissance_kW&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 4. Ventilateur</span>
+<span class="n">ventilateur</span> <span class="o">=</span> <span class="n">Fan</span><span class="p">(</span>
+    <span class="n">type_ventilateur</span><span class="o">=</span><span class="s2">&quot;centrifuge&quot;</span><span class="p">,</span>
+    <span class="n">debit_nominal_m3_h</span><span class="o">=</span><span class="n">debit_total</span><span class="p">,</span>
+    <span class="n">pression_statique_Pa</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+    <span class="n">rendement</span><span class="o">=</span><span class="mf">0.75</span>
+<span class="p">)</span>
+
+<span class="n">puissance_ventilateur</span> <span class="o">=</span> <span class="n">ventilateur</span><span class="o">.</span><span class="n">calculer_puissance</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;4. Ventilateur :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Puissance = </span><span class="si">{</span><span class="n">puissance_ventilateur</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Bilan énergétique total</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== BILAN ÉNERGÉTIQUE ===&quot;</span><span class="p">)</span>
+<span class="n">puissance_totale</span> <span class="o">=</span> <span class="p">(</span><span class="n">resultats_chauffage</span><span class="p">[</span><span class="s1">&#39;puissance_kW&#39;</span><span class="p">]</span> <span class="o">+</span>
+                    <span class="n">resultats_humidif</span><span class="p">[</span><span class="s1">&#39;puissance_kW&#39;</span><span class="p">]</span> <span class="o">+</span>
+                    <span class="n">puissance_ventilateur</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Puissance totale CTA : </span><span class="si">{</span><span class="n">puissance_totale</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-issu-des-tests-genericahu-recycling">
+<h3>Example issu des tests : GenericAHU (Recycling)<a class="headerlink" href="#example-issu-des-tests-genericahu-recycling" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">AHU.GenericAHU</span><span class="w"> </span><span class="kn">import</span> <span class="n">GenericAHU</span>
+
+<span class="n">ahu</span> <span class="o">=</span> <span class="n">GenericAHU</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">ahu</span><span class="o">.</span><span class="n">run_simulation</span><span class="p">(</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s1">&#39;test/AHU/data/config_recycling.xlsx&#39;</span><span class="p">,</span>
+    <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;1. Air Recycling AHU Input&#39;</span><span class="p">,</span>
+    <span class="n">output_file</span><span class="o">=</span><span class="s1">&#39;test/AHU/data/results_recycling.xlsx&#39;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nombre de points simulés:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Colonnes de sortie:&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Puissance Chauffage moyenne:&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;HC_Q_th[kW]&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="module-pinchanalysis-pinch-analysis">
+<h2>5.2. Module PinchAnalysis - Pinch Analysis<a class="headerlink" href="#module-pinchanalysis-pinch-analysis" title="Link to this heading"></a></h2>
+<p>L’analyse Pinch optimizes les networkx d’échangeurs de chaleur et de minimiser la consumption energy.</p>
+<section id="example-pinch-analysis-simple">
+<h3>Example : Pinch Analysis simple<a class="headerlink" href="#example-pinch-analysis-simple" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PinchAnalysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">PinchAnalysis</span><span class="p">,</span> <span class="n">Stream</span>
+
+<span class="c1"># Définir les courants chauds</span>
+<span class="n">hot_streams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;H1&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span>  <span class="c1"># kW</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;H2&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Définir les courants froids</span>
+<span class="n">cold_streams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">135</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">250</span><span class="p">),</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Créer l&#39;analyse Pinch</span>
+<span class="n">pinch</span> <span class="o">=</span> <span class="n">PinchAnalysis</span><span class="p">(</span>
+    <span class="n">hot_streams</span><span class="o">=</span><span class="n">hot_streams</span><span class="p">,</span>
+    <span class="n">cold_streams</span><span class="o">=</span><span class="n">cold_streams</span><span class="p">,</span>
+    <span class="n">delta_T_min</span><span class="o">=</span><span class="mi">10</span>  <span class="c1"># Pincement minimal 10°C</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer les résultats</span>
+<span class="n">resultats</span> <span class="o">=</span> <span class="n">pinch</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température de pincement : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;pinch_temperature&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Besoin minimum de chauffage : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;hot_utility_min&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Besoin minimum de refroidissement : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;cold_utility_min&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Récupération de chaleur possible : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;heat_recovery&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Économie potentielle : </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;energy_savings_pct&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="courbes-composites">
+<h3>Courbes composites<a class="headerlink" href="#courbes-composites" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PinchAnalysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">PinchAnalysis</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Utiliser l&#39;analyse précédente</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pinch</span><span class="o">.</span><span class="n">plot_composite_curves</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="example-complet-optimisation-d-un-procede-industriel">
+<h3>Example complet : Optimisation d’un procédé industriel<a class="headerlink" href="#example-complet-optimisation-d-un-procede-industriel" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.PinchAnalysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">PinchAnalysis</span><span class="p">,</span> <span class="n">Stream</span>
+
+<span class="c1"># Procédé industriel avec 4 courants chauds et 3 courants froids</span>
+<span class="n">hot_streams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Reactor outlet&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">220</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">500</span><span class="p">),</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Distillation&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">400</span><span class="p">),</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Product cooling&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Exhaust gases&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">cold_streams</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Feed preheating&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">450</span><span class="p">),</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Reboiler&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">145</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">350</span><span class="p">),</span>
+    <span class="n">Stream</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Process water&quot;</span><span class="p">,</span> <span class="n">T_in</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">T_out</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">heat_flow</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Analyse avec différents pincements</span>
+<span class="n">delta_T_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Analyse de sensibilité au pincement :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;ΔTmin (°C)&#39;</span><span class="si">:</span><span class="s2">&lt;12</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Chauffage (kW)&#39;</span><span class="si">:</span><span class="s2">&lt;18</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Refroid. (kW)&#39;</span><span class="si">:</span><span class="s2">&lt;18</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;Récup. (%)&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">delta_T</span> <span class="ow">in</span> <span class="n">delta_T_values</span><span class="p">:</span>
+    <span class="n">pinch</span> <span class="o">=</span> <span class="n">PinchAnalysis</span><span class="p">(</span><span class="n">hot_streams</span><span class="p">,</span> <span class="n">cold_streams</span><span class="p">,</span> <span class="n">delta_T_min</span><span class="o">=</span><span class="n">delta_T</span><span class="p">)</span>
+    <span class="n">resultats</span> <span class="o">=</span> <span class="n">pinch</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">delta_T</span><span class="si">:</span><span class="s2">&lt;12.0f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;hot_utility_min&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;18.0f</span><span class="si">}</span><span class="s2"> &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;cold_utility_min&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;18.0f</span><span class="si">}</span><span class="s2"> &quot;</span>
+          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">resultats</span><span class="p">[</span><span class="s1">&#39;energy_savings_pct&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;15.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Analyse détaillée avec ΔTmin = 10°C</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Configuration optimale (ΔTmin = 10°C) ===&quot;</span><span class="p">)</span>
+<span class="n">pinch_optimal</span> <span class="o">=</span> <span class="n">PinchAnalysis</span><span class="p">(</span><span class="n">hot_streams</span><span class="p">,</span> <span class="n">cold_streams</span><span class="p">,</span> <span class="n">delta_T_min</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">resultats_optimal</span> <span class="o">=</span> <span class="n">pinch_optimal</span><span class="o">.</span><span class="n">analyze</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Bilan énergétique :&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Chaleur disponible : </span><span class="si">{</span><span class="n">resultats_optimal</span><span class="p">[</span><span class="s1">&#39;total_hot_available&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Chaleur requise : </span><span class="si">{</span><span class="n">resultats_optimal</span><span class="p">[</span><span class="s1">&#39;total_cold_required&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Récupération interne : </span><span class="si">{</span><span class="n">resultats_optimal</span><span class="p">[</span><span class="s1">&#39;heat_recovery&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Utilité chaude nécessaire : </span><span class="si">{</span><span class="n">resultats_optimal</span><span class="p">[</span><span class="s1">&#39;hot_utility_min&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Utilité froide nécessaire : </span><span class="si">{</span><span class="n">resultats_optimal</span><span class="p">[</span><span class="s1">&#39;cold_utility_min&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tracer les courbes composites</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">pinch_optimal</span><span class="o">.</span><span class="n">plot_composite_curves</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="example-issu-des-tests-pinchanalysis-on-data-real">
+<h3>Example issu des tests : PinchAnalysis on data real<a class="headerlink" href="#example-issu-des-tests-pinchanalysis-on-data-real" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PinchAnalysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">PinchAnalysis</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="s1">&#39;H2&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;mCp&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span>
+    <span class="s1">&#39;Ti&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>
+    <span class="s1">&#39;To&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">135</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="s1">&#39;dTmin2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">liste_flux</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">Pinch_study</span> <span class="o">=</span> <span class="n">PinchAnalysis</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span><span class="n">liste_flux</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Pinch_study</span><span class="o">.</span><span class="n">Pinch_Temperature</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Pinch_study</span><span class="o">.</span><span class="n">Heating_duty</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Pinch_study</span><span class="o">.</span><span class="n">Cooling_duty</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="module-ipmvp-international-performance-measurement-and-verification-protocol">
+<h2>5.3. Module IPMVP - International Performance Measurement and Verification Protocol<a class="headerlink" href="#module-ipmvp-international-performance-measurement-and-verification-protocol" title="Link to this heading"></a></h2>
+<p>The module IPMVP mesure et vérifie les energy savings (Option C). La
+fonction <code class="docutils literal notranslate"><span class="pre">Mathematical_Models</span></code> ajuste un model de baseline then quantifie les
+économies ; elle <strong>returns a 9-item tuple</strong> (il n’existe no class
+<code class="docutils literal notranslate"><span class="pre">IPMVPModel</span></code> ni <code class="docutils literal notranslate"><span class="pre">IPMVPReport</span></code>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPMVP.IPMVP</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mathematical_Models</span><span class="p">,</span> <span class="n">incertitude_savings</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;src/IPMVP/IPMVP_input.xlsx&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Mois&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Mois&quot;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Mois&quot;</span><span class="p">)</span>
+<span class="n">col_conso</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;consommation&quot;</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;DJU&quot;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="n">col_conso</span><span class="p">]</span>
+
+<span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">df_bl</span><span class="p">,</span> <span class="n">conformite</span><span class="p">,</span> <span class="n">table_inc</span><span class="p">,</span>
+ <span class="n">y_pred_report</span><span class="p">,</span> <span class="n">df_report</span><span class="p">,</span> <span class="n">conformite_report</span><span class="p">,</span> <span class="n">table_inc_report</span><span class="p">,</span>
+ <span class="n">df_savings</span><span class="p">)</span> <span class="o">=</span> <span class="n">Mathematical_Models</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>    <span class="c1"># période de référence</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>  <span class="c1"># période de suivi</span>
+    <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seuil_z_scores</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s2">&quot;exemple_site&quot;</span><span class="p">,</span>
+    <span class="n">print_report</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>   <span class="c1"># rapport .docx + figures matplotlib</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_bl</span><span class="p">)</span>          <span class="c1"># coefficients + indicateurs (r2, rmse, cv_rmse, stat_t…)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conformite</span><span class="p">)</span>     <span class="c1"># verdict de conformité IPMVP</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_savings</span><span class="p">)</span>     <span class="c1"># économies ANTE-POST / POST-ANTE</span>
+</pre></div>
+</div>
+<p>Output realle (extrait) : <code class="docutils literal notranslate"><span class="pre">r2</span></code> = 0,81, économie <strong>ANTE-POST = 18,15 %</strong>.</p>
+<p>Chapitre détaillé : example complet, mesure des économies, incertitude propagée
+(<code class="docutils literal notranslate"><span class="pre">incertitude_savings</span></code>), paramètres et théorie in <a class="reference internal" href="../007-ipmvp/index.html"><span class="doc">IPMVP - Measurement and Verification</span></a>.</p>
+</section>
+<section id="modele-rc-de-batiment">
+<h2>5.4. Modèle RC de bâtiment<a class="headerlink" href="#modele-rc-de-batiment" title="Link to this heading"></a></h2>
+<p>The model RC (Résistance-Capacité) allows simulatesr le comportement thermique dynamique d’un bâtiment.</p>
+<section id="modele-rc-simple-1r1c">
+<h3>Modèle RC simple (1R1C)<a class="headerlink" href="#modele-rc-simple-1r1c" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.BuildingModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">RC_Model</span>
+
+<span class="c1"># Paramètres du bâtiment</span>
+<span class="n">modele_rc</span> <span class="o">=</span> <span class="n">RC_Model</span><span class="p">(</span>
+    <span class="n">resistance_thermique</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>  <span class="c1"># K/W</span>
+    <span class="n">capacite_thermique</span><span class="o">=</span><span class="mf">50e6</span><span class="p">,</span>     <span class="c1"># J/K</span>
+    <span class="n">surface_vitree_m2</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">orientation_vitrage</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>     <span class="c1"># Sud</span>
+    <span class="n">apports_internes_W</span><span class="o">=</span><span class="mi">500</span>
+<span class="p">)</span>
+
+<span class="c1"># Conditions initiales</span>
+<span class="n">T_interieure_initiale</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># °C</span>
+
+<span class="c1"># Simulation sur 24h</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">heures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">temperatures_ext</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">heures</span> <span class="o">-</span> <span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">24</span><span class="p">)</span>
+
+<span class="n">temperatures_int</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">T_int</span> <span class="o">=</span> <span class="n">T_interieure_initiale</span>
+
+<span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">T_ext</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">heures</span><span class="p">,</span> <span class="n">temperatures_ext</span><span class="p">):</span>
+    <span class="n">T_int</span> <span class="o">=</span> <span class="n">modele_rc</span><span class="o">.</span><span class="n">simuler_pas_de_temps</span><span class="p">(</span>
+        <span class="n">T_interieure</span><span class="o">=</span><span class="n">T_int</span><span class="p">,</span>
+        <span class="n">T_exterieure</span><span class="o">=</span><span class="n">T_ext</span><span class="p">,</span>
+        <span class="n">rayonnement_solaire_W_m2</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)),</span>
+        <span class="n">dt_seconds</span><span class="o">=</span><span class="mi">3600</span>
+    <span class="p">)</span>
+    <span class="n">temperatures_int</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">T_int</span><span class="p">)</span>
+
+<span class="c1"># Affichage</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heures</span><span class="p">,</span> <span class="n">temperatures_ext</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;T° extérieure&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heures</span><span class="p">,</span> <span class="n">temperatures_int</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;T° intérieure&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Heure&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Température (°C)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Modèle RC 1R1C - Évolution des températures&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="modele-rc-avance-2r2c">
+<h3>Modèle RC avancé (2R2C)<a class="headerlink" href="#modele-rc-avance-2r2c" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">energysystemmodels.BuildingModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">RC_Model_Advanced</span>
+
+<span class="c1"># Modèle 2R2C avec inertie lourde et légère</span>
+<span class="n">modele_2r2c</span> <span class="o">=</span> <span class="n">RC_Model_Advanced</span><span class="p">(</span>
+    <span class="n">R_envelope</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span>      <span class="c1"># K/W - Résistance enveloppe</span>
+    <span class="n">R_internal</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span>      <span class="c1"># K/W - Résistance interne</span>
+    <span class="n">C_light</span><span class="o">=</span><span class="mf">10e6</span><span class="p">,</span>          <span class="c1"># J/K - Capacité légère (air)</span>
+    <span class="n">C_heavy</span><span class="o">=</span><span class="mf">100e6</span><span class="p">,</span>         <span class="c1"># J/K - Capacité lourde (structure)</span>
+    <span class="n">surface_vitree_m2</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">apports_internes_W</span><span class="o">=</span><span class="mi">800</span>
+<span class="p">)</span>
+
+<span class="c1"># Simulation avec chauffage</span>
+<span class="n">T_consigne</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># °C</span>
+
+<span class="n">resultats_simulation</span> <span class="o">=</span> <span class="n">modele_2r2c</span><span class="o">.</span><span class="n">simuler_periode</span><span class="p">(</span>
+    <span class="n">T_ext_serie</span><span class="o">=</span><span class="n">temperatures_ext</span><span class="p">,</span>
+    <span class="n">T_consigne</span><span class="o">=</span><span class="n">T_consigne</span><span class="p">,</span>
+    <span class="n">puissance_chauffage_max_W</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+    <span class="n">dt_seconds</span><span class="o">=</span><span class="mi">3600</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Consommation de chauffage : </span><span class="si">{</span><span class="n">resultats_simulation</span><span class="p">[</span><span class="s1">&#39;energie_chauffage_kWh&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kWh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température moyenne : </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">resultats_simulation</span><span class="p">[</span><span class="s1">&#39;temperatures_int&#39;</span><span class="p">])</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="section-4-distribution.html" class="btn btn-neutral float-left" title="Section 4 : Distribution de l’energy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="section-6-financement-subvention.html" class="btn btn-neutral float-right" title="Section 6 : Financing and subsidies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

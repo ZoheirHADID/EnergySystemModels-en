@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10. Energy Purchasing &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10.1. Electricity Grid Cost Calculation" href="contrat_electricite.html" />
+    <link rel="prev" title="Contribuer a la documentation" href="../contributing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Energy Purchasing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#energy-bill-gas-and-electricity-common-principles">Energy bill (gas and electricity): common principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#universal-principle">Universal principle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contrat_electricite.html">10.1. Electricity Grid Cost Calculation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contrat_gaz.html">10.2. Approvisionnement en Gaz Naturel - France</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guide_audit_facture.html">10.3. Guide pratique : Auditer une facture d’energy with Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">10. Energy Purchasing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/010-achat-energie/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="energy-purchasing">
+<span id="achat-energie"></span><h1>10. Energy Purchasing<a class="headerlink" href="#energy-purchasing" title="Link to this heading"></a></h1>
+<section id="energy-bill-gas-and-electricity-common-principles">
+<h2>Energy bill (gas and electricity): common principles<a class="headerlink" href="#energy-bill-gas-and-electricity-common-principles" title="Link to this heading"></a></h2>
+<p>Whatever the energy type (gas or electricity) and whatever the country, an
+energy bill is based on common components derived from universal technical and
+regulatory constraints.</p>
+<ol class="arabic simple">
+<li><p>Measured and billed energy
+* Measurement performed by a meter
+* Electricity: energy measured in kWh
+* Gas: measured volume, then expressed in an energy unit defined by national regulation (for example thermie, kWh, or an equivalent unit)
+* Billing based on: measured quantity x unit tariff</p></li>
+<li><p>Network access
+* Use of transport and distribution networks
+* Funding of operation, maintenance and safety
+* Cost present on all bills, either detailed or integrated</p></li>
+<li><p>Capacity or subscription
+* Permanent right of access to energy
+* Network sizing according to a potential maximum need
+* Fixed share, partially or totally independent of consumption</p></li>
+<li><p>Taxes and public contributions
+* Levies decided by the State
+* Variable according to countries and energy policies
+* May include general taxation, subsidies or solidarity mechanisms</p></li>
+</ol>
+</section>
+<section id="universal-principle">
+<h2>Universal principle<a class="headerlink" href="#universal-principle" title="Link to this heading"></a></h2>
+<p>An energy bill always remunerates delivered energy, a mobilized network and a
+regulated public framework, regardless of the country or unit used.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Energy Purchasing:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contrat_electricite.html">10.1. Electricity Grid Cost Calculation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contrat_electricite.html#turpe">10.1.1. TURPE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contrat_gaz.html">10.2. Approvisionnement en Gaz Naturel - France</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contrat_gaz.html#les-elements-d-un-contrat-de-fourniture-de-gaz-naturel">1. Les elements d’un contrat de fourniture de Gaz Naturel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contrat_gaz.html#composantes-d-une-facture-gas-naturel">2. Composantes d’une facture gas naturel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contrat_gaz.html#coefficients-zi-et-a">3. Coefficients Zi et A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contrat_gaz.html#modele-de-calcul-et-example-python">4. Modele de calcul et example Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide_audit_facture.html">10.3. Guide pratique : Auditer une facture d’energy with Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide_audit_facture.html#universal-structure-of-an-energy-bill">Universal Structure of an Energy Bill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_audit_facture.html#conversion-d-unites">Conversion d’unites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_audit_facture.html#principe-general">Principe general</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_audit_facture.html#auditer-an-electricity-bill-en-france-turpe">10.3.1. Auditer an electricity bill en France (TURPE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_audit_facture.html#auditer-une-facture-gas-en-france-atr">10.3.2. Auditer une facture gas en France (ATR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_audit_facture.html#auditer-an-electricity-bill-en-algerie-sonalgaz">10.3.3. Auditer an electricity bill en Algerie (Sonalgaz)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_audit_facture.html#auditer-une-facture-gas-en-algerie-sonalgaz-gaz">10.3.4. Auditer une facture gas en Algerie (Sonalgaz Gaz)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_audit_facture.html#module-utilitaire-df-utils">10.3.5. Module utilitaire : df_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide_audit_facture.html#recuperer-tous-les-dataframes-en-une-fois">10.3.6. Recuperer tous les DataFrames en une fois</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../contributing.html" class="btn btn-neutral float-left" title="Contribuer a la documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contrat_electricite.html" class="btn btn-neutral float-right" title="10.1. Electricity Grid Cost Calculation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

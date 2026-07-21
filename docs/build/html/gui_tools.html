@@ -1,0 +1,680 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graphical Interfaces and Visual Tools &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=116ee311"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Nomenclature générale" href="nomenclature.html" />
+    <link rel="prev" title="Degrés-Jours Unifiés (DJU)" href="008-meteo/degres_jours.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Graphical Interfaces and Visual Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-and-launch">Installation and Launch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pyqtsimulator-interface">PyqtSimulator Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#port-convention">Port Convention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-a-graph">Reading a Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphs-with-multiple-outputs">Graphs with Multiple Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#storage-and-step-by-step-calculation">Storage and Step-by-Step Calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation-cycle">Evaluation Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-new-node">Creating a New Node</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#real-example-heater-node">Real Example: Heater Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#registering-the-node-in-the-palette">Registering the Node in the Palette</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#development-best-practices">Development Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#results-and-figures-in-the-documentation">Results and Figures in the Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-diagrams-and-plots">Generating Diagrams and Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-documentation">Building the Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checklist-for-finalizing-an-example">Checklist for Finalizing an Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Graphical Interfaces and Visual Tools</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/gui_tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="graphical-interfaces-and-visual-tools">
+<span id="gui-tools"></span><h1>Graphical Interfaces and Visual Tools<a class="headerlink" href="#graphical-interfaces-and-visual-tools" title="Link to this heading"></a></h1>
+<p>EnergySystemModels contains several visual building blocks to build, test and
+present energy models. This page is a working guide: it explains how to launch
+the PyQt simulator, read a graph, add a new node and document results with the
+figures actually produced by the library.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The main graphical simulator is <code class="docutils literal notranslate"><span class="pre">PyqtSimulator</span></code>. It relies on the
+<code class="docutils literal notranslate"><span class="pre">NodeEditor</span></code> engine to manipulate nodes and connections, then calls the
+library’s physical models: compressor, exchanger, pump, coil, humidifier,
+heater, etc.</p>
+<figure class="align-center" id="id1">
+<img alt="PyQt simulator architecture" src="_images/gui_pyqtsimulator_architecture.svg" />
+<figcaption>
+<p><span class="caption-text">General architecture: the PyQt window hosts a NodeEditor scene, registered
+nodes call EnergySystemModels models, then values are displayed or saved.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The usage principle is always the same:</p>
+<ol class="arabic simple">
+<li><p>Launch the interface.</p></li>
+<li><p>Create a new scene.</p></li>
+<li><p>Drag nodes from the palette.</p></li>
+<li><p>Connect outputs to inputs.</p></li>
+<li><p>Fill in the parameters.</p></li>
+<li><p>Evaluate the graph or the output node.</p></li>
+<li><p>Save the project in <code class="docutils literal notranslate"><span class="pre">.json</span></code> format.</p></li>
+</ol>
+</section>
+<section id="installation-and-launch">
+<h2>Installation and Launch<a class="headerlink" href="#installation-and-launch" title="Link to this heading"></a></h2>
+<p>The graphical interfaces require <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code>. In a development environment, also
+install the library in editable mode or add the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder to
+<code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install -e .</span>
+<span class="go">pip install PyQt5</span>
+</pre></div>
+</div>
+<p>From the source repository:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd </span><span class="n">A</span><span class="p">:\</span><span class="n">OneDrive</span><span class="p">\</span><span class="n">_Github_</span><span class="p">\</span><span class="n">EnergySystemModels</span>
+<span class="nv">$env:PYTHONPATH</span> <span class="p">=</span> <span class="s2">&quot;$PWD\src&quot;</span>
+<span class="n">python</span> <span class="n">-m</span> <span class="n">PyqtSimulator</span><span class="p">.</span><span class="n">main</span>
+</pre></div>
+</div>
+<p>The script creates a <code class="docutils literal notranslate"><span class="pre">QApplication</span></code>, applies the <code class="docutils literal notranslate"><span class="pre">Fusion</span></code> style, then opens
+<code class="docutils literal notranslate"><span class="pre">CalculatorWindow</span></code>. The window contains an MDI workspace and a node palette.
+Each palette item comes from the <code class="docutils literal notranslate"><span class="pre">CALC_NODES</span></code> registry.</p>
+</section>
+<section id="pyqtsimulator-interface">
+<h2>PyqtSimulator Interface<a class="headerlink" href="#pyqtsimulator-interface" title="Link to this heading"></a></h2>
+<p>The main window groups the following elements:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Nodes</span></code></dt><dd><p>Side palette. It lists the classes registered with <code class="docutils literal notranslate"><span class="pre">&#64;register_node(...)</span></code>.
+Dragging an item creates a node in the scene.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Workspace</span></code></dt><dd><p>NodeEditor scene. Nodes are placed, moved and connected there.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">menu</span></code></dt><dd><p>Creation, opening and saving of graphs. Projects are stored as JSON by the
+NodeEditor engine.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Context</span> <span class="pre">menu</span></code></dt><dd><p>Right-click a node to evaluate it, mark it invalid, or force recalculation
+of its descendants. Right-click a connection to choose the curve type.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">node</span></code></dt><dd><p>Final display node. It triggers upstream evaluation and presents the fluid,
+flow rate, pressure, enthalpy, temperature and volumetric flow rate.</p>
+</dd>
+</dl>
+</section>
+<section id="port-convention">
+<h2>Port Convention<a class="headerlink" href="#port-convention" title="Link to this heading"></a></h2>
+<p>Connections exchange des listes Python courtes. This convention makes les
+graphs faciles à sérialiser in les fichiers <code class="docutils literal notranslate"><span class="pre">.json</span></code>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type de flux</p></th>
+<th class="head"><p>Format échangé</p></th>
+<th class="head"><p>Unités</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fluid thermodynamique</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[fluid,</span> <span class="pre">F,</span> <span class="pre">P,</span> <span class="pre">h]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">fluid</span></code> en chaîne, <code class="docutils literal notranslate"><span class="pre">F</span></code> en kg/s, <code class="docutils literal notranslate"><span class="pre">P</span></code> en bar, <code class="docutils literal notranslate"><span class="pre">h</span></code> en kJ/kg</p></td>
+</tr>
+<tr class="row-odd"><td><p>Air humide</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[w,</span> <span class="pre">F,</span> <span class="pre">P,</span> <span class="pre">h]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">w</span></code> en g/kg d’air sec, <code class="docutils literal notranslate"><span class="pre">F</span></code> en kg/s, <code class="docutils literal notranslate"><span class="pre">P</span></code> en bar, <code class="docutils literal notranslate"><span class="pre">h</span></code> en kJ/kg</p></td>
+</tr>
+</tbody>
+</table>
+<p>Les helpers de <code class="docutils literal notranslate"><span class="pre">PyqtSimulator.nodes.esm_node_helpers</span></code> assurent la conversion
+between these lists and the objects de the library :</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">make_fluid_port(arr)</span></code></dt><dd><p>Convertit <code class="docutils literal notranslate"><span class="pre">[fluid,</span> <span class="pre">F,</span> <span class="pre">P,</span> <span class="pre">h]</span></code> to un <code class="docutils literal notranslate"><span class="pre">FluidPort</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">fluid_out(port)</span></code></dt><dd><p>Convertit un <code class="docutils literal notranslate"><span class="pre">FluidPort</span></code> de output to la liste standard.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">make_air_port(arr)</span></code> et <code class="docutils literal notranslate"><span class="pre">air_out(port)</span></code></dt><dd><p>Appliquent la même logique aux ports d’air humide.</p>
+</dd>
+</dl>
+</section>
+<section id="reading-a-graph">
+<h2>Reading a Graph<a class="headerlink" href="#reading-a-graph" title="Link to this heading"></a></h2>
+<p>Pour un graph simple <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">-&gt;</span> <span class="pre">Heater</span> <span class="pre">-&gt;</span> <span class="pre">Output</span></code> :</p>
+<figure class="align-center" id="id2">
+<img alt="Graphe source, réchauffeur, output" src="_images/gui_node_declaratif_heater.svg" />
+<figcaption>
+<p><span class="caption-text">Le node source fournit le fluid. Le réchauffeur convertit la liste d’input
+en <code class="docutils literal notranslate"><span class="pre">FluidPort</span></code>, appelle le model <code class="docutils literal notranslate"><span class="pre">Heater.Object</span></code> then renvoie une liste
+de output compatible with <code class="docutils literal notranslate"><span class="pre">Output</span></code>.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Example d’usage :</p>
+<ol class="arabic simple">
+<li><p>Ajouter un node <code class="docutils literal notranslate"><span class="pre">Source</span></code>.</p></li>
+<li><p>Choisir le fluid, for example <code class="docutils literal notranslate"><span class="pre">Water</span></code> ou <code class="docutils literal notranslate"><span class="pre">R134a</span></code>.</p></li>
+<li><p>Définir le flow rate, la temperature et la pressure.</p></li>
+<li><p>Ajouter un node <code class="docutils literal notranslate"><span class="pre">Heater</span></code>.</p></li>
+<li><p>Renseigner <code class="docutils literal notranslate"><span class="pre">Power</span> <span class="pre">nominale</span></code> et <code class="docutils literal notranslate"><span class="pre">Taux</span> <span class="pre">de</span> <span class="pre">charge</span></code>.</p></li>
+<li><p>Ajouter un node <code class="docutils literal notranslate"><span class="pre">Output</span></code>.</p></li>
+<li><p>Relier <code class="docutils literal notranslate"><span class="pre">Source</span></code> to <code class="docutils literal notranslate"><span class="pre">Heater</span></code>, then <code class="docutils literal notranslate"><span class="pre">Heater</span></code> vers
+<code class="docutils literal notranslate"><span class="pre">Output</span></code>.</p></li>
+<li><p>Évaluer <code class="docutils literal notranslate"><span class="pre">Output</span></code>.</p></li>
+</ol>
+<p>Result attendu : <code class="docutils literal notranslate"><span class="pre">Output</span></code> affiche l’état de output, tandis que le node
+<code class="docutils literal notranslate"><span class="pre">Heater</span></code> affiche directement la power transférée et la temperature
+de output.</p>
+</section>
+<section id="graphs-with-multiple-outputs">
+<h2>Graphs with Multiple Outputs<a class="headerlink" href="#graphs-with-multiple-outputs" title="Link to this heading"></a></h2>
+<p>Certains composants possèdent plusieurs outputs physiques. C’est le cas du
+<code class="docutils literal notranslate"><span class="pre">Splitter</span></code>, du <code class="docutils literal notranslate"><span class="pre">Séparateur</span> <span class="pre">liq/vap</span></code> et du <code class="docutils literal notranslate"><span class="pre">Ballon</span> <span class="pre">de</span> <span class="pre">flash</span></code>. Dans ces
+cas, le node renvoie une liste de valeurs, une by socket de output.</p>
+<figure class="align-center" id="id3">
+<img alt="Example de node Splitter with deux outputs" src="_images/gui_node_splitter_multisortie.svg" />
+<figcaption>
+<p><span class="caption-text">Le <code class="docutils literal notranslate"><span class="pre">Splitter</span></code> conserve le même fluid, la même pressure et la même
+enthalpy on les deux branches. Seul le flow rate est réparti between les deux
+outputs according to le ratio saisi.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Example d’usage du <code class="docutils literal notranslate"><span class="pre">Splitter</span></code> :</p>
+<ol class="arabic simple">
+<li><p>Ajouter une <code class="docutils literal notranslate"><span class="pre">Source</span></code> with un flow rate de <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">kg/s</span></code>.</p></li>
+<li><p>Ajouter un node <code class="docutils literal notranslate"><span class="pre">Splitter</span></code>.</p></li>
+<li><p>Régler <code class="docutils literal notranslate"><span class="pre">Fraction</span> <span class="pre">to</span> <span class="pre">output</span> <span class="pre">1</span></code> à <code class="docutils literal notranslate"><span class="pre">0.30</span></code>.</p></li>
+<li><p>Ajouter deux nodes <code class="docutils literal notranslate"><span class="pre">Output</span></code>.</p></li>
+<li><p>Relier la première output du <code class="docutils literal notranslate"><span class="pre">Splitter</span></code> to <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">1</span></code>.</p></li>
+<li><p>Relier la deuxième output du <code class="docutils literal notranslate"><span class="pre">Splitter</span></code> to <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">2</span></code>.</p></li>
+<li><p>Évaluer les deux outputs.</p></li>
+</ol>
+<p>Result attendu :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Branche</p></th>
+<th class="head"><p>Flow rate attendu</p></th>
+<th class="head"><p>Commentaire</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Output 1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.30</span> <span class="pre">kg/s</span></code></p></td>
+<td><p>Fraction <code class="docutils literal notranslate"><span class="pre">Ratio</span></code> du flow rate d’input</p></td>
+</tr>
+<tr class="row-odd"><td><p>Output 2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.70</span> <span class="pre">kg/s</span></code></p></td>
+<td><p>Fraction <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">Ratio</span></code> du flow rate d’input</p></td>
+</tr>
+</tbody>
+</table>
+<p>Le routage est assuré by <code class="docutils literal notranslate"><span class="pre">CalcNode.getOutputValue(index)</span></code>. Pour un node à
+une seule output, la valeur est directement <code class="docutils literal notranslate"><span class="pre">[fluid,</span> <span class="pre">F,</span> <span class="pre">P,</span> <span class="pre">h]</span></code>. Pour un node
+multiple outputs, la valeur devient <code class="docutils literal notranslate"><span class="pre">[[fluid,</span> <span class="pre">F1,</span> <span class="pre">P,</span> <span class="pre">h],</span> <span class="pre">[fluid,</span> <span class="pre">F2,</span> <span class="pre">P,</span> <span class="pre">h]]</span></code> et
+l’index du socket allows choisir la bonne branche.</p>
+</section>
+<section id="storage-and-step-by-step-calculation">
+<h2>Storage and Step-by-Step Calculation<a class="headerlink" href="#storage-and-step-by-step-calculation" title="Link to this heading"></a></h2>
+<p>Le node <code class="docutils literal notranslate"><span class="pre">Storage</span> <span class="pre">tank</span></code> expose le model <code class="docutils literal notranslate"><span class="pre">MixedStorage</span></code>. Il estime la
+temperature d’un ballon mélangé after un time step, from la
+temperature initiale, du volume, du flow rate entrant et des pertes vers
+l’ambiance.</p>
+<figure class="align-center" id="id4">
+<img alt="Example de ballon de stockage in PyqtSimulator" src="_images/gui_node_mixed_storage_pas_temps.svg" />
+<figcaption>
+<p><span class="caption-text">Le node reçoit un flux entrant, calculates l’état du ballon after <code class="docutils literal notranslate"><span class="pre">dt</span></code> then
+renvoie un flux de output dont l’enthalpy correspond à la temperature du
+ballon.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Main Parameters :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Paramètre</p></th>
+<th class="head"><p>Signification</p></th>
+<th class="head"><p>Unité</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Volume</span></code></p></td>
+<td><p>Volume d’eau ou de fluid in le ballon</p></td>
+<td><p>m³</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">T°</span> <span class="pre">initiale</span></code></p></td>
+<td><p>Temperature du ballon au début du time step</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T°</span> <span class="pre">ambiante</span></code></p></td>
+<td><p>Temperature extérieure for le calcul des pertes</p></td>
+<td><p>°C</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Coeff</span> <span class="pre">U</span> <span class="pre">pertes</span></code></p></td>
+<td><p>Coefficient global de pertes thermiques</p></td>
+<td><p>W/m²/K</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Surface</span> <span class="pre">pertes</span></code></p></td>
+<td><p>Surface d’échange to l’ambiance</p></td>
+<td><p>m²</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Pas</span> <span class="pre">de</span> <span class="pre">temps</span></code></p></td>
+<td><p>Durée du calcul élémentaire</p></td>
+<td><p>s</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example d’usage :</p>
+<ol class="arabic simple">
+<li><p>Créer une <code class="docutils literal notranslate"><span class="pre">Source</span></code> with un fluid compatible CoolProp, for example
+<code class="docutils literal notranslate"><span class="pre">Water</span></code>.</p></li>
+<li><p>Définir une temperature d’input supérieure à la temperature initiale du
+ballon for simulatesr une charge, ou inférieure for simulatesr une décharge.</p></li>
+<li><p>Ajouter <code class="docutils literal notranslate"><span class="pre">Storage</span> <span class="pre">tank</span></code>.</p></li>
+<li><p>Renseigner <code class="docutils literal notranslate"><span class="pre">Volume</span></code>, <code class="docutils literal notranslate"><span class="pre">T°</span> <span class="pre">initiale</span></code>, <code class="docutils literal notranslate"><span class="pre">T°</span> <span class="pre">ambiante</span></code> et <code class="docutils literal notranslate"><span class="pre">Pas</span> <span class="pre">de</span> <span class="pre">temps</span></code>.</p></li>
+<li><p>Ajouter <code class="docutils literal notranslate"><span class="pre">Output</span></code> en output.</p></li>
+<li><p>Évaluer le graph.</p></li>
+</ol>
+<p>Results affichés localement :</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">T°</span> <span class="pre">ballon</span></code></dt><dd><p>Temperature du volume mélangé after le time step.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Power</span> <span class="pre">stockage</span></code></dt><dd><p>Power moyenne stockée ou restituée during le time step.</p>
+</dd>
+</dl>
+<p>Limite importante : in l’interface actuelle, le node crée une nouvelle
+instance du model à chaque évaluation. Il représente donc un time step
+isolé from <code class="docutils literal notranslate"><span class="pre">T°</span> <span class="pre">initiale</span></code>. Pour simulatesr une série temporelle complète, il
+faut mettre à jour <code class="docutils literal notranslate"><span class="pre">T°</span> <span class="pre">initiale</span></code> between les pas ou utiliser un script Python
+qui conserve l’objet <code class="docutils literal notranslate"><span class="pre">MixedStorage</span></code> between deux appels à <code class="docutils literal notranslate"><span class="pre">calculate()</span></code>.</p>
+</section>
+<section id="evaluation-cycle">
+<h2>Evaluation Cycle<a class="headerlink" href="#evaluation-cycle" title="Link to this heading"></a></h2>
+<p>Lorsqu’un paramètre est modifié, le node est marqué comme sale et ses
+descendants doivent être recalculés. L’évaluation d’un node de output remonte
+le graph jusqu’aux sources, then propage les valeurs to l’aval.</p>
+<figure class="align-center" id="id5">
+<img alt="Evaluation Cycle d'un graph" src="_images/gui_evaluation_flow.svg" />
+<figcaption>
+<p><span class="caption-text">Les champs Qt déclenchent <code class="docutils literal notranslate"><span class="pre">onInputChanged</span></code>. Le node aval demande ensuite
+l’évaluation des nodes amont, retrieves leurs valeurs et appelle son model
+physique.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Les points importants for l’utilisateur sont :</p>
+<ol class="arabic simple">
+<li><p>Un node without input connectée devient invalide.</p></li>
+<li><p>Une saisie numérique invalide doit être corrigée before d’obtenir un result
+fiable.</p></li>
+<li><p>Le node <code class="docutils literal notranslate"><span class="pre">Output</span></code> est le meilleur point de contrôle : il force le calcul
+de toute la chaîne amont.</p></li>
+<li><p>Les unités affichées ne sont pas toujours celles useds en interne. Par
+example, la pressure circule en bar in le graph mais les models peuvent
+utiliser le pascal.</p></li>
+</ol>
+</section>
+<section id="creating-a-new-node">
+<h2>Creating a New Node<a class="headerlink" href="#creating-a-new-node" title="Link to this heading"></a></h2>
+<p>Pour exposer un model EnergySystemModels in l’interface, utiliser de
+préférence la classe <code class="docutils literal notranslate"><span class="pre">ESMNode</span></code>. Elle évite de réécrire l’interface Qt, la
+sérialisation et les labels de results.</p>
+<p>Un node déclaratif contient :</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">op_code</span></code></dt><dd><p>Identifiant numérique unique in <code class="docutils literal notranslate"><span class="pre">PyqtSimulator.calc_conf</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">op_title</span></code></dt><dd><p>Nom affiché in la palette.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">icon</span></code></dt><dd><p>Chemin de l’icône affichée in la liste.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">INPUTS</span></code> et <code class="docutils literal notranslate"><span class="pre">OUTPUTS</span></code></dt><dd><p>Sockets d’input et de output.</p>
+<p>Pour un composant simple, <code class="docutils literal notranslate"><span class="pre">OUTPUTS</span> <span class="pre">=</span> <span class="pre">[1]</span></code> suffit. Pour un composant à
+deux outputs, utiliser <code class="docutils literal notranslate"><span class="pre">OUTPUTS</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">1]</span></code> et retourner une liste de deux
+ports in le même ordre que les sockets.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">OUTPUTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">evalOperation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">fluid_out</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Outlet_b</span><span class="p">),</span> <span class="n">fluid_out</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Outlet_c</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">FIELDS</span></code></dt><dd><p>Champs numériques affichés under forme de <code class="docutils literal notranslate"><span class="pre">QLineEdit</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">CHOICES</span></code></dt><dd><p>Listes déroulantes affichées under forme de <code class="docutils literal notranslate"><span class="pre">QComboBox</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">RESULTS</span></code></dt><dd><p>Labels de output mis à jour by le calcul.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">evalOperation(...)</span></code></dt><dd><p>Code métier : lecture des inputs, appel du model, affichage des results,
+retour de la valeur de output.</p>
+</dd>
+</dl>
+<section id="real-example-heater-node">
+<h3>Real Example: Heater Node<a class="headerlink" href="#real-example-heater-node" title="Link to this heading"></a></h3>
+<p>Le node <code class="docutils literal notranslate"><span class="pre">Heater</span></code> illustre la structure recommandée.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Components</span><span class="w"> </span><span class="kn">import</span> <span class="n">Heater</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.FluidPort.FluidPort</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fluid_connect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyqtSimulator.calc_conf</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_node</span><span class="p">,</span> <span class="n">OP_NODE_HEATER</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyqtSimulator.nodes.esm_node_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">ESMNode</span><span class="p">,</span> <span class="n">make_fluid_port</span><span class="p">,</span> <span class="n">fluid_out</span>
+
+
+<span class="nd">@register_node</span><span class="p">(</span><span class="n">OP_NODE_HEATER</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CalcNode_Heater</span><span class="p">(</span><span class="n">ESMNode</span><span class="p">):</span>
+    <span class="n">icon</span> <span class="o">=</span> <span class="s2">&quot;icons/heating_coil.png&quot;</span>
+    <span class="n">op_code</span> <span class="o">=</span> <span class="n">OP_NODE_HEATER</span>
+    <span class="n">op_title</span> <span class="o">=</span> <span class="s2">&quot;Réchauffeur&quot;</span>
+    <span class="n">content_label_objname</span> <span class="o">=</span> <span class="s2">&quot;calc_node_heater&quot;</span>
+
+    <span class="n">INPUTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">OUTPUTS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">300</span>
+
+    <span class="n">FIELDS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;q_nom&quot;</span><span class="p">,</span> <span class="s2">&quot;Puissance nominale (kW)&quot;</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;Taux de charge (0-1)&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="n">RESULTS</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;Puissance transférée (kW)&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;to&quot;</span><span class="p">,</span> <span class="s2">&quot;T° sortie (°C)&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">evalOperation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input1</span><span class="p">,</span> <span class="n">input2</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">make_fluid_port</span><span class="p">(</span><span class="n">input1</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Heater</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+        <span class="n">Fluid_connect</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">Q_flow_nominal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">(</span><span class="s2">&quot;q_nom&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1000.0</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show_result</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Q_flow</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">show_result</span><span class="p">(</span><span class="s2">&quot;to&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">model</span><span class="o">.</span><span class="n">To_degC</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">fluid_out</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+</div>
+<p>Ce model donne une règle générale : les champs affichés en kW ou en bar sont
+convertis in les unités attendues by le model, then reconvertis for les
+ports ou les labels utilisateur.</p>
+</section>
+<section id="registering-the-node-in-the-palette">
+<h3>Registering the Node in the Palette<a class="headerlink" href="#registering-the-node-in-the-palette" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Ajouter un code unique in <code class="docutils literal notranslate"><span class="pre">PyqtSimulator.calc_conf</span></code>.</p></li>
+<li><p>Décorer la classe with <code class="docutils literal notranslate"><span class="pre">&#64;register_node(OP_NODE_...)</span></code>.</p></li>
+<li><p>Placer le fichier in <code class="docutils literal notranslate"><span class="pre">PyqtSimulator/nodes</span></code>.</p></li>
+<li><p>Vérifier que le module est importé. Le fichier <code class="docutils literal notranslate"><span class="pre">nodes/__init__.py</span></code> importe
+automatiquement les fichiers <code class="docutils literal notranslate"><span class="pre">.py</span></code> du dossier.</p></li>
+<li><p>Relancer <code class="docutils literal notranslate"><span class="pre">PyqtSimulator</span></code>. Le node doit apparaître in la palette.</p></li>
+</ol>
+<p>Example de réservation d’opcode :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">OP_NODE_HEATER</span> <span class="o">=</span> <span class="mi">280</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="development-best-practices">
+<h2>Development Best Practices<a class="headerlink" href="#development-best-practices" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Utiliser des noms de champs explicites</dt><dd><p>Le libellé doit contenir l’unité : <code class="docutils literal notranslate"><span class="pre">Power</span> <span class="pre">nominale</span> <span class="pre">(kW)</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Pressure</span> <span class="pre">output</span> <span class="pre">(bar)</span></code>, <code class="docutils literal notranslate"><span class="pre">Rendement</span> <span class="pre">(-)</span></code>.</p>
+</dd>
+<dt>Limiter la logique Qt in les nodes</dt><dd><p>Pour les nouveaux models, préférer <code class="docutils literal notranslate"><span class="pre">ESMNode</span></code> et garder le code métier
+dans <code class="docutils literal notranslate"><span class="pre">evalOperation</span></code>.</p>
+</dd>
+<dt>Valider les unités à chaque conversion</dt><dd><p>Les ports internes des models utilisent souvent le pascal et le joule par
+kilogramme. Les graphs utilisent plutôt le bar et le kJ/kg.</p>
+</dd>
+<dt>Afficher les results utiles localement</dt><dd><p>Un node de composant peut afficher ses indicateurs propres : power,
+rendement, temperature de output, humidité relative, COP, pressure drop.</p>
+</dd>
+<dt>Tester with un graph minimal</dt><dd><p>Avant d’intégrer un composant complexe, tester <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">-&gt;</span> <span class="pre">composant</span> <span class="pre">-&gt;</span>
+<span class="pre">Output</span></code>. Ajouter ensuite les branches multiples.</p>
+</dd>
+<dt>Documenter le comportement</dt><dd><p>Each important new node must have an example in the documentation :
+diagram du graph, paramètres, results attendus, limites et figure si une
+method <code class="docutils literal notranslate"><span class="pre">plot()</span></code> existe.</p>
+</dd>
+</dl>
+</section>
+<section id="results-and-figures-in-the-documentation">
+<h2>Results and Figures in the Documentation<a class="headerlink" href="#results-and-figures-in-the-documentation" title="Link to this heading"></a></h2>
+<p>La documentation doit distinguer trois types de visuels :</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Diagram</span> <span class="pre">de</span> <span class="pre">graph</span></code></dt><dd><p>Figure pédagogique montrant les nodes et les connexions. Ces diagrams sont
+générés from <code class="docutils literal notranslate"><span class="pre">docs/source/diagrams/*.json</span></code> par
+<code class="docutils literal notranslate"><span class="pre">docs/generate_diagrams.py</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">de</span> <span class="pre">results</span></code></dt><dd><p>Valeurs numériques issues d’un example reproductible. Les unités doivent
+être visibles in l’en-tête ou in la première colonne.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Plot</span> <span class="pre">du</span> <span class="pre">model</span></code></dt><dd><p>Figure produite by une method realle de the library : for example
+<code class="docutils literal notranslate"><span class="pre">ch.plot()</span></code>, <code class="docutils literal notranslate"><span class="pre">calc.plot()</span></code> ou <code class="docutils literal notranslate"><span class="pre">calc.plot_detail()</span></code>. Il ne faut pas
+remplacer ces methods by un tracé manuel arbitraire lorsque le model
+fournit déjà sa propre fonction de visualisation.</p>
+</dd>
+</dl>
+<p>Workflow recommandé for une page d’example :</p>
+<ol class="arabic simple">
+<li><p>Décrire le cas étudié et les hypothèses.</p></li>
+<li><p>Afficher le diagram des nodes connectés.</p></li>
+<li><p>Donner le code minimal reproductible.</p></li>
+<li><p>Afficher les results in une table.</p></li>
+<li><p>Afficher les plots actually générés by les fonctions du model.</p></li>
+<li><p>Ajouter une courte interprétation métier.</p></li>
+</ol>
+</section>
+<section id="generating-diagrams-and-plots">
+<h2>Generating Diagrams and Plots<a class="headerlink" href="#generating-diagrams-and-plots" title="Link to this heading"></a></h2>
+<p>Dethen le dépôt <code class="docutils literal notranslate"><span class="pre">EnergySystemModels-fr</span></code> :</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd </span><span class="n">A</span><span class="p">:\</span><span class="n">OneDrive</span><span class="p">\</span><span class="n">_Github_</span><span class="p">\</span><span class="n">EnergySystemModels-fr</span>
+<span class="n">python</span> <span class="n">docs</span><span class="p">\</span><span class="n">generate_diagrams</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Pour les plots actually exposés by les models :</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd </span><span class="n">A</span><span class="p">:\</span><span class="n">OneDrive</span><span class="p">\</span><span class="n">_Github_</span><span class="p">\</span><span class="n">EnergySystemModels-fr</span>
+<span class="nv">$env:PYTHONPATH</span> <span class="p">=</span> <span class="s2">&quot;A:\OneDrive\_Github_\EnergySystemModels\src&quot;</span>
+<span class="nv">$env:PYTHONIOENCODING</span> <span class="p">=</span> <span class="s2">&quot;utf-8&quot;</span>
+<span class="n">python</span> <span class="n">docs</span><span class="p">\</span><span class="n">generate_model_plots</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">generate_model_plots.py</span></code> doit rester strict : il appelle les
+methods de plot de the library and saves the figures dans
+<code class="docutils literal notranslate"><span class="pre">docs/source/images</span></code>. Les figures de remplacement ne sont acceptables que
+pour les examples without method graphique déterministe, et elles doivent être
+signalées comme telles in le script.</p>
+</section>
+<section id="building-the-documentation">
+<h2>Building the Documentation<a class="headerlink" href="#building-the-documentation" title="Link to this heading"></a></h2>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd </span><span class="n">A</span><span class="p">:\</span><span class="n">OneDrive</span><span class="p">\</span><span class="n">_Github_</span><span class="p">\</span><span class="n">EnergySystemModels-fr</span>
+<span class="n">python</span> <span class="n">-m</span> <span class="n">sphinx</span> <span class="n">-b</span> <span class="n">html</span> <span class="n">docs</span><span class="p">\</span><span class="n">source</span> <span class="n">docs</span><span class="p">\</span><span class="n">_build</span><span class="p">\</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Ouvrir ensuite <code class="docutils literal notranslate"><span class="pre">docs\_build\html\gui_tools.html</span></code> for vérifier la mise en
+forme. Contrôler en particulier :</p>
+<ol class="arabic simple">
+<li><p>Les chemins <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">figure::</span> <span class="pre">images/...</span></code>.</p></li>
+<li><p>Les unités in les tableaux.</p></li>
+<li><p>La lisibilité des diagrams on une largeur réduite.</p></li>
+<li><p>La présence des plots lorsque l’example appelle une method <code class="docutils literal notranslate"><span class="pre">plot</span></code>.</p></li>
+</ol>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">PyqtSimulator</span></code></dt><dd><p>Ajouter <code class="docutils literal notranslate"><span class="pre">EnergySystemModels/src</span></code> au <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> ou installer le paquet
+en mode éditable.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">QApplication</span></code> ou <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code> introuvable</dt><dd><p>Install <code class="docutils literal notranslate"><span class="pre">PyQt5</span></code> in l’environnement actif.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">CoolProp</span></code> introuvable</dt><dd><p>Install les dépendances scientifiques useds by les composants
+thermodynamiques.</p>
+</dd>
+<dt>Un node n’apparaît pas in la palette</dt><dd><p>Vérifier l’opcode, le décorateur <code class="docutils literal notranslate"><span class="pre">&#64;register_node</span></code>, le nom du fichier dans
+<code class="docutils literal notranslate"><span class="pre">PyqtSimulator/nodes</span></code> et les erreurs d’import au démarrage.</p>
+</dd>
+<dt>Un result ne se met pas à jour</dt><dd><p>Vérifier que les champs sont connectés à <code class="docutils literal notranslate"><span class="pre">onInputChanged</span></code>. Avec
+<code class="docutils literal notranslate"><span class="pre">ESMNode</span></code>, cette connexion est automatique for <code class="docutils literal notranslate"><span class="pre">FIELDS</span></code> et <code class="docutils literal notranslate"><span class="pre">CHOICES</span></code>.</p>
+</dd>
+<dt>Une connexion est refusée</dt><dd><p>Le moteur empêche de relier deux inputs, deux outputs ou un node à lui-même.
+Repartir de la output du node amont to l’input du node aval.</p>
+</dd>
+<dt>Un plot manque in ReadTheDocs</dt><dd><p>Vérifier que la figure est générée in <code class="docutils literal notranslate"><span class="pre">docs/source/images</span></code> before le build
+et que le document référence exactement le bon nom de fichier.</p>
+</dd>
+</dl>
+</section>
+<section id="checklist-for-finalizing-an-example">
+<h2>Checklist for Finalizing an Example<a class="headerlink" href="#checklist-for-finalizing-an-example" title="Link to this heading"></a></h2>
+<p>Avant de considérer une page comme complète :</p>
+<ol class="arabic simple">
+<li><p>Le scénario est compréhensible without lire le code source.</p></li>
+<li><p>Les nodes et connexions sont diagramtisés.</p></li>
+<li><p>Les paramètres d’input sont listés with unités.</p></li>
+<li><p>Les results sont affichés in une table lisible.</p></li>
+<li><p>Les plots existants du model sont affichés.</p></li>
+<li><p>Les limites de validité sont indiquées.</p></li>
+<li><p>Le code est reproductible from un environnement propre.</p></li>
+<li><p>Le build Sphinx passe without erreur liée à la page.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="008-meteo/degres_jours.html" class="btn btn-neutral float-left" title="Degrés-Jours Unifiés (DJU)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nomenclature.html" class="btn btn-neutral float-right" title="Nomenclature générale" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

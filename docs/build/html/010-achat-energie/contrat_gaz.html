@@ -1,0 +1,1877 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10.2. Approvisionnement en Gaz Naturel - France &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10.3. Guide pratique : Auditer une facture d’energy with Python" href="guide_audit_facture.html" />
+    <link rel="prev" title="10.1.2.2. Example BT &gt; 36 kVA – CU" href="exemples/exemple_bt_p36_cu.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">10. Energy Purchasing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#energy-bill-gas-and-electricity-common-principles">Energy bill (gas and electricity): common principles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#universal-principle">Universal principle</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="contrat_electricite.html">10.1. Electricity Grid Cost Calculation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.2. Approvisionnement en Gaz Naturel - France</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#les-elements-d-un-contrat-de-fourniture-de-gaz-naturel">1. Les elements d’un contrat de fourniture de Gaz Naturel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#composantes-d-une-facture-gas-naturel">2. Composantes d’une facture gas naturel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coefficients-zi-et-a">3. Coefficients Zi et A</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modele-de-calcul-et-example-python">4. Modele de calcul et example Python</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="guide_audit_facture.html">10.3. Guide pratique : Auditer une facture d’energy with Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">10. Energy Purchasing</a></li>
+      <li class="breadcrumb-item active">10.2. Approvisionnement en Gaz Naturel - France</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/010-achat-energie/contrat_gaz.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="approvisionnement-en-gaz-naturel-france">
+<span id="calcul-atrd-atrt"></span><h1>10.2. Approvisionnement en Gaz Naturel - France<a class="headerlink" href="#approvisionnement-en-gaz-naturel-france" title="Link to this heading"></a></h1>
+<section id="les-elements-d-un-contrat-de-fourniture-de-gaz-naturel">
+<h2>1. Les elements d’un contrat de fourniture de Gaz Naturel<a class="headerlink" href="#les-elements-d-un-contrat-de-fourniture-de-gaz-naturel" title="Link to this heading"></a></h2>
+<section id="consommation-annuelle-de-reference-car">
+<h3>1.1 Consommation Annuelle de Reference (CAR)<a class="headerlink" href="#consommation-annuelle-de-reference-car" title="Link to this heading"></a></h3>
+<p>La <strong>CAR</strong> represente une estimation de la consumption annuelle gas naturel for un
+<strong>Point de Comptage et d’Estimation (PCE)</strong>. Elle est fournie in le contrat et exprimee en MWh/an.</p>
+</section>
+<section id="le-tarif-d-acheminement">
+<h3>1.2 Le Tarif d’Acheminement<a class="headerlink" href="#le-tarif-d-acheminement" title="Link to this heading"></a></h3>
+<p>Il existe <strong>5 options tarifaires</strong> liees a l’acheminement du gaz naturel,
+du <strong>T1</strong> (menages) au <strong>TP</strong> (grands consommateurs raccordes au transport) :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 30.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Consommation Annuelle (CAR)</p></th>
+<th class="head"><p>Clients concernes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>T1</strong></p></td>
+<td><p>CAR &lt;= 6 MWh/an</p></td>
+<td><p>Menages, petits usages</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>T2</strong></p></td>
+<td><p>6 &lt; CAR &lt;= 300 MWh/an</p></td>
+<td><p>PME, commerces</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>T3</strong></p></td>
+<td><p>300 &lt; CAR &lt;= 5 000 MWh/an</p></td>
+<td><p>Industries moyennes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>T4</strong></p></td>
+<td><p>CAR &gt; 5 000 MWh/an</p></td>
+<td><p>Grands industriels (network distribution)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TP</strong></p></td>
+<td><p>CAR &gt; 5 000 MWh/an</p></td>
+<td><p>Grands consommateurs (network transport)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>TP (Tarif de Proximite)</strong> : dedie aux grands consommateurs raccordes au network
+de distribution mais eligibles a un raccordement direct au network de transport
+(naTran (ex-GRTgaz) / Terega). Le TP reste une option tarifaire de l’ATRD (distribution).</p>
+</div>
+<p><strong>Example pratique</strong> : Un site with une CAR de 15 466,8 MWh/an :</p>
+<ul class="simple">
+<li><p>CAR &gt; 5 000 MWh/an</p></li>
+<li><p>Option tarifaire <strong>T4</strong> (network de distribution)</p></li>
+<li><p>Ou option tarifaire <strong>TP</strong> (si eligible au raccordement transport)</p></li>
+</ul>
+</section>
+<section id="capacite-journaliere-annuelle-souscrite-cja">
+<h3>1.3 Capacite Journaliere Annuelle souscrite (CJA)<a class="headerlink" href="#capacite-journaliere-annuelle-souscrite-cja" title="Link to this heading"></a></h3>
+<p>La <strong>CJA (Capacite Journaliere Annuelle)</strong> est la capacite journaliere <strong>choisie et souscrite
+contractuellement</strong> by le client aupres du gestionnaire de network (GRDF / naTran (ex-GRTgaz) / Terega).
+C’est un <strong>engagement contractuel</strong> du client on sa capacite maximale de soutirage journalier,
+exprimee en <strong>MWh/jour</strong>.</p>
+<p>La CJA is used comme base de calcul for la souscription de capacite ATRD (tarifs T4 et TP).
+Si la CJA n’est pas fournie, le modele recalculates la capacite via <code class="docutils literal notranslate"><span class="pre">CAR</span> <span class="pre">x</span> <span class="pre">Zi</span> <span class="pre">x</span> <span class="pre">A</span></code> (CJN).</p>
+</section>
+<section id="capacite-journaliere-normalisee-cjn">
+<h3>1.4 Capacite Journaliere Normalisee (CJN)<a class="headerlink" href="#capacite-journaliere-normalisee-cjn" title="Link to this heading"></a></h3>
+<p>La <strong>CJN</strong> est la capacite journaliere <strong>calculated</strong> froms parameters climatiques et network :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CJN = CAR x Zi x A
+</pre></div>
+</div>
+<p>Ou :</p>
+<ul class="simple">
+<li><p><strong>Zi</strong> : coefficient climatique (station meteo x profil de consumption)</p></li>
+<li><p><strong>A</strong> : coefficient network (naTran (ex-GRTgaz) ou Terega)</p></li>
+</ul>
+<p><strong>Priorite in le modele</strong> : <code class="docutils literal notranslate"><span class="pre">CJN</span> <span class="pre">explicite</span> <span class="pre">&gt;</span> <span class="pre">CJA</span> <span class="pre">souscrite</span> <span class="pre">&gt;</span> <span class="pre">CAR</span> <span class="pre">x</span> <span class="pre">Zi</span> <span class="pre">x</span> <span class="pre">A</span></code></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="composantes-d-une-facture-gas-naturel">
+<h2>2. Composantes d’une facture gas naturel<a class="headerlink" href="#composantes-d-une-facture-gas-naturel" title="Link to this heading"></a></h2>
+<p>The bill gas naturel se compose de trois grandes parties :</p>
+<ul class="simple">
+<li><p><strong>La part acheminement</strong> : transport (ATRT) + distribution (ATRD)</p></li>
+<li><p><strong>La part taxes et contributions</strong> : Accise gaz (ex-TICGN) + CTA</p></li>
+<li><p><strong>La part fourniture</strong> : consumption x prix unitaire negocie</p></li>
+</ul>
+<p>Le prix paye for l’usage du network comprend deux volets :</p>
+<ul class="simple">
+<li><p><strong>ATRD</strong> : Acces des Tiers au Reseau de Distribution (GRDF ou regie locale)</p></li>
+<li><p><strong>ATRT</strong> : Acces des Tiers au Reseau de Transport (naTran (ex-GRTgaz) ou Terega)</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Cout_acheminement_gaz = ATRD + ATRT
+</pre></div>
+</div>
+<p><strong>Tout client raccorde au network de distribution paie ATRD + ATRT</strong>, car le gaz transite
+d’abord by le network de transport before d’etre injecte in le network de distribution.</p>
+<section id="acheminement-distribution-atrd">
+<h3>2.1 Acheminement Distribution — ATRD<a class="headerlink" href="#acheminement-distribution-atrd" title="Link to this heading"></a></h3>
+<p>L’<strong>ATRD (Acces des Tiers au Reseau de Distribution)</strong> est le tarif d’usage du
+network de distribution (GRDF ou regie locale).</p>
+<p><strong>Structure de l’ATRD by option tarifaire :</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 25.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Structure</p></th>
+<th class="head"><p>Composantes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>T1/T2/T3</strong></p></td>
+<td><p>Binome</p></td>
+<td><p>Abonnement fixe (euro/an) + terme proportionnel (euro/kWh)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>T4</strong></p></td>
+<td><p>Trinome</p></td>
+<td><p>Abonnement fixe + souscription capacite CJA (euro/kWh/j) + terme proportionnel</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TP</strong></p></td>
+<td><p>Trinome + distance</p></td>
+<td><p>Abonnement fixe + souscription capacite + terme de distance (euro/m/an) + terme proportionnel</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Formules de calcul ATRD :</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># T1 / T2 / T3 (binome simple)
+ATRD = ATRD_fixe + (kWh_total x prix_proportionnel)
+
+# T4 (trinome avec souscription capacite)
+Si CJA &lt;= 500 MWh/j :
+    souscription = CJA x 1000 x tarif_capacite_inf500
+Sinon :
+    souscription = CJA x 1000 x tarif_capacite_supp500
+ATRD = ATRD_fixe + souscription + (kWh_total x prix_proportionnel)
+
+# TP (trinome + terme distance)
+ATRD = ATRD_fixe + (CJA x tarif_capacite x nb_jour)
+       + (distance_km x tarif_distance / 365 x nb_jour)
+</pre></div>
+</div>
+<p><strong>Souscription de capacite distribution (T4 et TP only) :</strong></p>
+<p>Pour les tarifs <strong>T4</strong> et <strong>TP</strong>, l’ATRD comprend un <strong>terme de souscription de capacite</strong>
+qui depend de la CJA (Capacite Journaliere Annuelle) souscrite in le contrat.
+Ce terme remunere GRDF for la reservation de capacite on le network de distribution.</p>
+<p><em>Tarif T4 :</em></p>
+<p>Le tarif de souscription depend du seuil de 500 MWh/j (500 000 kWh/j). Un tarif
+degressif s’applique au-dela de ce seuil :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Si CJA &lt;= 500 MWh/j :
+    Souscription = CJA x 1000 x tarif_capacite_inf500  (EUR/an)
+Sinon :
+    Souscription = CJA x 1000 x tarif_capacite_supp500  (EUR/an)
+
+ATRD_fixe_total = ATRD_fixe + Souscription
+ATRD_fixe_mensuel = ATRD_fixe_total / 12
+</pre></div>
+</div>
+<p><strong>Example (T4, CJA = 109 MWh/j, ATRD7 2025-2026) :</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CJA = 109 MWh/j = 109 000 kWh/j (&lt; 500 000 kWh/j)
+Souscription = 109 000 x 0,28800 = 31 392,00 EUR/an
+ATRD_fixe = 21 705,72 EUR/an
+ATRD_fixe_total = 21 705,72 + 31 392,00 = 53 097,72 EUR/an = 4 424,81 EUR/mois
+</pre></div>
+</div>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Historique des tarifs de souscription de capacite T4</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 12.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>Capacite &lt;= 500 MWh/j (EUR/kWh/j/an)</p></th>
+<th class="head"><p>Capacite &gt; 500 MWh/j (EUR/kWh/j/an)</p></th>
+<th class="head"><p>Ratio degressivite</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRD5</p></td>
+<td><p>01/2018 – 06/2019</p></td>
+<td><p>0,21300</p></td>
+<td><p>0,10644</p></td>
+<td><p>50%</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD6</p></td>
+<td><p>07/2019 – 06/2023</p></td>
+<td><p>0,23640</p></td>
+<td><p>0,10644</p></td>
+<td><p>45%</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRD6</p></td>
+<td><p>07/2023 – 06/2024</p></td>
+<td><p>0,21300</p></td>
+<td><p>0,10644</p></td>
+<td><p>50%</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD7</p></td>
+<td><p>07/2024 – 06/2025</p></td>
+<td><p>0,27156</p></td>
+<td><p>0,13572</p></td>
+<td><p>50%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRD7</strong></p></td>
+<td><p><strong>07/2025 – 06/2026</strong></p></td>
+<td><p><strong>0,28800</strong></p></td>
+<td><p><strong>0,14394</strong></p></td>
+<td><p><strong>50%</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Tarif TP (Proximite) :</em></p>
+<p>Le tarif TP ajoute un <strong>terme de distance</strong> en plus de la souscription de capacite :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Souscription = CJA x tarif_capacite x nb_jour  (EUR)
+Terme_distance = distance_km x tarif_distance / 365 x nb_jour  (EUR)
+</pre></div>
+</div>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Historique des tarifs TP (capacite + distance)</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 12.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>Capacite (EUR/kWh/j)</p></th>
+<th class="head"><p>Distance (EUR/m/an)</p></th>
+<th class="head"><p>Fixe (EUR/an)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRD5</p></td>
+<td><p>01/2018 – 06/2019</p></td>
+<td><p>0,07992</p></td>
+<td><p>62,64</p></td>
+<td><p>32 407,20</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD6</p></td>
+<td><p>07/2019 – 06/2023</p></td>
+<td><p>0,07992</p></td>
+<td><p>62,64</p></td>
+<td><p>32 407,20</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRD6</p></td>
+<td><p>07/2023 – 06/2024</p></td>
+<td><p>0,10620</p></td>
+<td><p>69,72</p></td>
+<td><p>38 164,56</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD7</p></td>
+<td><p>07/2024 – 06/2025</p></td>
+<td><p>0,13548</p></td>
+<td><p>88,92</p></td>
+<td><p>48 770,64</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRD7</strong></p></td>
+<td><p><strong>07/2025 – 06/2026</strong></p></td>
+<td><p><strong>0,13548</strong></p></td>
+<td><p><strong>88,92</strong></p></td>
+<td><p><strong>48 770,64</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L’ATRD fixe total (abonnement + souscription capacite) constitue la base de calcul
+of the AHU (distribution et transport). C’est ce montant mensuel qui apparait sur
+la facture comme “Abonnement distribution”.</p>
+</div>
+<p><strong>Historique complet des coefficients ATRD (source : coefficients_gaz_ATRD.json) :</strong></p>
+<p><em>Tarif T1 — Menages, petits usages (CAR &lt;= 6 MWh/an) :</em></p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Grille ATRD — T1 (historique complet)</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 31.6%" />
+<col style="width: 26.3%" />
+<col style="width: 26.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>Fixe (euro/an)</p></th>
+<th class="head"><p>Proportionnel (euro/kWh)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRD5</p></td>
+<td><p>01/2018 – 06/2019</p></td>
+<td><p>45,12</p></td>
+<td><p>0,03323</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD6</p></td>
+<td><p>07/2019 – 06/2023</p></td>
+<td><p>46,80</p></td>
+<td><p>0,03323</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRD6</p></td>
+<td><p>07/2023 – 06/2024</p></td>
+<td><p>33,48</p></td>
+<td><p>0,03323</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD7</p></td>
+<td><p>07/2024 – 06/2025</p></td>
+<td><p>51,96</p></td>
+<td><p>0,03323</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRD7</strong></p></td>
+<td><p><strong>07/2025 – 06/2026</strong></p></td>
+<td><p><strong>54,72</strong></p></td>
+<td><p><strong>0,04494</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Tarif T2 — PME, commerces (6 &lt; CAR &lt;= 300 MWh/an) :</em></p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Grille ATRD — T2 (historique complet)</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 31.6%" />
+<col style="width: 26.3%" />
+<col style="width: 26.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>Fixe (euro/an)</p></th>
+<th class="head"><p>Proportionnel (euro/kWh)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRD5</p></td>
+<td><p>01/2018 – 06/2019</p></td>
+<td><p>177,96</p></td>
+<td><p>0,00893</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD6</p></td>
+<td><p>07/2019 – 06/2023</p></td>
+<td><p>163,68</p></td>
+<td><p>0,00893</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRD6</p></td>
+<td><p>07/2023 – 06/2024</p></td>
+<td><p>130,68</p></td>
+<td><p>0,00893</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD7</p></td>
+<td><p>07/2024 – 06/2025</p></td>
+<td><p>175,92</p></td>
+<td><p>0,00893</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRD7</strong></p></td>
+<td><p><strong>07/2025 – 06/2026</strong></p></td>
+<td><p><strong>186,12</strong></p></td>
+<td><p><strong>0,01208</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Tarif T3 — Industries moyennes (300 &lt; CAR &lt;= 5 000 MWh/an) :</em></p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Grille ATRD — T3 (historique complet)</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 31.6%" />
+<col style="width: 26.3%" />
+<col style="width: 26.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>Fixe (euro/an)</p></th>
+<th class="head"><p>Proportionnel (euro/kWh)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRD5</p></td>
+<td><p>01/2018 – 06/2019</p></td>
+<td><p>804,12</p></td>
+<td><p>0,00642</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD6</p></td>
+<td><p>07/2019 – 06/2023</p></td>
+<td><p>1 100,00</p></td>
+<td><p>0,00642</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRD6</p></td>
+<td><p>07/2023 – 06/2024</p></td>
+<td><p>982,92</p></td>
+<td><p>0,00642</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD7</p></td>
+<td><p>07/2024 – 06/2025</p></td>
+<td><p>1 231,08</p></td>
+<td><p>0,00642</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRD7</strong></p></td>
+<td><p><strong>07/2025 – 06/2026</strong></p></td>
+<td><p><strong>1 301,40</strong></p></td>
+<td><p><strong>0,00869</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Tarif T4 — Avec souscription de capacite :</em></p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Grille ATRD — T4 (historique complet)</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 18.0%" />
+<col style="width: 16.0%" />
+<col style="width: 18.0%" />
+<col style="width: 18.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>Fixe (euro/an)</p></th>
+<th class="head"><p>Proportionnel (euro/kWh)</p></th>
+<th class="head"><p>Capacite &lt;=500 (euro/kWh/j)</p></th>
+<th class="head"><p>Capacite &gt;500 (euro/kWh/j)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRD5</p></td>
+<td><p>01/2018 – 06/2019</p></td>
+<td><p>15 104,76</p></td>
+<td><p>0,00087</p></td>
+<td><p>0,21300</p></td>
+<td><p>0,10644</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD6</p></td>
+<td><p>07/2019 – 06/2023</p></td>
+<td><p>15 405,24</p></td>
+<td><p>0,00087</p></td>
+<td><p>0,23640</p></td>
+<td><p>0,10644</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRD6</p></td>
+<td><p>07/2023 – 06/2024</p></td>
+<td><p>16 069,56</p></td>
+<td><p>0,00087</p></td>
+<td><p>0,21300</p></td>
+<td><p>0,10644</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD7</p></td>
+<td><p>07/2024 – 06/2025</p></td>
+<td><p>20 469,60</p></td>
+<td><p>0,00087</p></td>
+<td><p>0,27156</p></td>
+<td><p>0,13572</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRD7</strong></p></td>
+<td><p><strong>07/2025 – 06/2026</strong></p></td>
+<td><p><strong>21 705,72</strong></p></td>
+<td><p><strong>0,00118</strong></p></td>
+<td><p><strong>0,28800</strong></p></td>
+<td><p><strong>0,14394</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Tarif TP — Proximite (capacite + distance) :</em></p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-text">Grille ATRD — TP (historique complet)</span><a class="headerlink" href="#id7" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 13.3%" />
+<col style="width: 22.2%" />
+<col style="width: 20.0%" />
+<col style="width: 22.2%" />
+<col style="width: 22.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>Fixe (euro/an)</p></th>
+<th class="head"><p>Capacite (euro/kWh/j)</p></th>
+<th class="head"><p>Distance (euro/m/an)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRD5</p></td>
+<td><p>01/2018 – 06/2019</p></td>
+<td><p>32 407,20</p></td>
+<td><p>0,07992</p></td>
+<td><p>62,64</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD6</p></td>
+<td><p>07/2019 – 06/2023</p></td>
+<td><p>32 407,20</p></td>
+<td><p>0,07992</p></td>
+<td><p>62,64</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRD6</p></td>
+<td><p>07/2023 – 06/2024</p></td>
+<td><p>38 164,56</p></td>
+<td><p>0,10620</p></td>
+<td><p>69,72</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD7</p></td>
+<td><p>07/2024 – 06/2025</p></td>
+<td><p>48 770,64</p></td>
+<td><p>0,13548</p></td>
+<td><p>88,92</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRD7</strong></p></td>
+<td><p><strong>07/2025 – 06/2026</strong></p></td>
+<td><p><strong>48 770,64</strong></p></td>
+<td><p><strong>0,13548</strong></p></td>
+<td><p><strong>88,92</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Les coefficients ATRD are published by la CRE et stockes in <code class="docutils literal notranslate"><span class="pre">coefficients_gaz_ATRD.json</span></code>.
+Le tarif applicable est automatically selected as a function of la date de debut de la facture
+et du type de tarif d’acheminement du contrat.</p>
+</div>
+</section>
+<section id="acheminement-transport-atrt">
+<h3>2.2 Acheminement Transport — ATRT<a class="headerlink" href="#acheminement-transport-atrt" title="Link to this heading"></a></h3>
+<p>L’<strong>ATRT (Acces des Tiers au Reseau de Transport)</strong> est le tarif d’usage du
+network de transport (naTran (ex-GRTgaz) ou Terega). Il est paye by tout consommateur,
+meme raccorde au network de distribution, car le gaz transite d’abord by le transport.</p>
+<p><strong>Formule de calcul ATRT :</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ATRT = CJN x (TCS + TCR x NTR + TCL) + TS
+</pre></div>
+</div>
+<p><strong>Composantes du tarif ATRT :</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 30.0%" />
+<col style="width: 45.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Composante</strong></p></th>
+<th class="head"><p><strong>Formule de calcul</strong></p></th>
+<th class="head"><p><strong>Explication</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>TCS</strong> (network principal)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CJN</span> <span class="pre">x</span> <span class="pre">TCS</span></code></p></td>
+<td><p>Cout d’acces au network principal (capacite de output)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TCR</strong> (network regional)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CJN</span> <span class="pre">x</span> <span class="pre">TCR</span> <span class="pre">x</span> <span class="pre">NTR</span></code></p></td>
+<td><p>Cout d’acheminement regional, pondere by le niveau tarifaire (NTR)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TCL</strong> (capacite de livraison)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CJN</span> <span class="pre">x</span> <span class="pre">TCL_PITD</span></code></p></td>
+<td><p>Cout for la livraison au point d’interface transport/distribution (PITD)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TS</strong> (compensation stockage)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Modulation_hivernale</span> <span class="pre">x</span> <span class="pre">coef_stockage</span></code></p></td>
+<td><p>Cout de modulation hivernale, lie a la variabilite saisonniere</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total ATRT</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CJN</span> <span class="pre">x</span> <span class="pre">(TCS</span> <span class="pre">+</span> <span class="pre">TCR</span> <span class="pre">x</span> <span class="pre">NTR</span> <span class="pre">+</span> <span class="pre">TCL)</span> <span class="pre">+</span> <span class="pre">TS</span></code></p></td>
+<td><p>Somme de toutes les composantes</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Definitions des termes :</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Terme</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CAR</strong></p></td>
+<td><p>Consommation Annuelle de Reference (en MWh/an)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Zi</strong></p></td>
+<td><p>Coefficient climatique (station meteo x profil). Voir section <a class="reference internal" href="#stations-meteo-zi"><span class="std std-ref">3.1 Stations meteo disponibles for le calcul de Zi</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>A</strong></p></td>
+<td><p>Coefficient network (naTran (ex-GRTgaz) ou Terega). Voir section <a class="reference internal" href="#coefficient-a"><span class="std std-ref">3.2 Coefficient A by network de transport</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CJN</strong></p></td>
+<td><p>Capacite Journaliere Normalisee. Voir <a class="reference internal" href="#calcul-cjn"><span class="std std-ref">calcul de la CJN</span></a> ci-dessous.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Modulation_hivernale</strong></p></td>
+<td><p>Difference between la consumption de pointe hivernale et la consumption moyenne. Voir <a class="reference internal" href="#calcul-modulation"><span class="std std-ref">calcul de la modulation</span></a> ci-dessous.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NTR</strong></p></td>
+<td><p>Niveau Tarifaire Regional (0 a 10) according to la localisation du site</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>coef_stockage</strong></p></td>
+<td><p>Coefficient unitaire de stockage (euro/MWh/j), ex : 331,44 for 2025-2026</p></td>
+</tr>
+</tbody>
+</table>
+<p id="calcul-cjn"><strong>Calcul de la CJN (Capacite Journaliere Normalisee) :</strong></p>
+<p>La CJN is calculated differemment according to le type de client
+(deliberation CRE 2025-35, section 4.2.2.2) :</p>
+<p><em>Clients “profiles” (T1, T2, T3) :</em></p>
+<p>Ces clients n’ont pas de souscription de capacite. La CJN is calculated automatiquement
+par le GRT from la CAR, du profil de consumption et de la station meteo :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CJN = A x Zi x CAR
+</pre></div>
+</div>
+<p><em>Clients “a souscription” (T4, TP) :</em></p>
+<p>Le supplier reserve aupres du GRT la capacite de transport souhaitee for son portefeuille
+de clients. La <strong>CJA (Capacite Journaliere Annuelle)</strong> souscrite in le contrat de distribution
+is used comme base de calcul for la souscription de capacite ATRD.</p>
+<p>Pour le calcul de l’ATRT, la capacite de livraison normalisee au PITD est allouee
+automatiquement by le GRT. Elle est egale a la somme des :</p>
+<ul class="simple">
+<li><p>capacites souscrites for les PDL “a souscription” en aval du PITD</p></li>
+<li><p>capacites calculateds (<code class="docutils literal notranslate"><span class="pre">CAR</span> <span class="pre">x</span> <span class="pre">Zi</span> <span class="pre">x</span> <span class="pre">A</span></code>) for les PDL “profiles” en aval du PITD</p></li>
+</ul>
+<p>Pour un client T4 individuel, la capacite transport est generalement proche de la CJA souscrite.
+Dans le modele Python, si la CJN n’est pas fournie explicitement, on utilise la CJA :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CJN = CJA (si CJN non fourni explicitement)
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La CJA is visible on la facture : “Capacite journaliere annuelle souscrite (kWh) : 109 000”.
+La CJN exacte used by le GRT for le transport peut differer legerement de la CJA.
+Si l’abonnement transport figure on la facture, utiliser <code class="docutils literal notranslate"><span class="pre">atrt_mensuel_facture</span></code> dans
+le modele for un calcul exact (reverse-engineering de la modulation).</p>
+</div>
+<p id="calcul-modulation"><strong>Calcul de la modulation hivernale :</strong></p>
+<p>La modulation hivernale mesure l’difference between la consumption de pointe en hiver
+et la consumption moyenne annuelle. Elle sert de base au calcul du <strong>terme tarifaire
+de stockage (TS)</strong>.</p>
+<p><em>Clients “profiles” (T1, T2, T3) :</em></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Modulation = Max(0 ; CJN - CAR/365 - Int)
+</pre></div>
+</div>
+<p>Ou <code class="docutils literal notranslate"><span class="pre">Int</span></code> est la somme des capacites interruptibles contractualisees (0 by defaut).</p>
+<p><em>Clients “a souscription” (T4, TP) — Formule CRE officielle :</em></p>
+<p>La modulation is calculated froms <strong>consumptions hiver real</strong> des 4 dernieres annees
+(deliberation CRE 2025-35, section 4.2.2.2, page 35) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Modulation au 1er avril N = Max(0 ; M_fav4 - Int)
+</pre></div>
+</div>
+<p>Ou :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">M_fav4</span></code> = moyenne des <strong>2 modulations annuelles les plus basses</strong> parmi les 4 annees precedentes (N-4 a N-1)</p></li>
+<li><p>Pour chaque annee :</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Modulation annuelle N = Max(0 ; Conso_hiver / 151 - Conso_annuelle / 365)
+</pre></div>
+</div>
+<p>Avec :</p>
+<ul class="simple">
+<li><p><strong>Conso_hiver</strong> : consumption du site du 1er novembre N-1 au 31 mars N (<strong>151 jours</strong>)</p></li>
+<li><p><strong>Conso_annuelle</strong> : consumption du site du 1er novembre N-1 au 31 octobre N (<strong>365 jours</strong>)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La modulation hivernale <strong>n’apparait pas on la facture</strong>. Seul le montant
+mensuel “Abonnement transport” is visible. Pour retrouver la modulation,
+le modele Python peut la <strong>reverse-engineer</strong> a partir du montant ATRT facture :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Methode 1 : reverse-engineering depuis la facture</span>
+<span class="n">contrat</span> <span class="o">=</span> <span class="n">input_Contrat</span><span class="p">(</span>
+    <span class="n">type_tarif_acheminement</span><span class="o">=</span><span class="s1">&#39;T4&#39;</span><span class="p">,</span>
+    <span class="n">CJA_MWh_j</span><span class="o">=</span><span class="mi">109</span><span class="p">,</span>
+    <span class="n">atrt_mensuel_facture</span><span class="o">=</span><span class="mf">4176.67</span><span class="p">,</span>  <span class="c1"># lu sur la facture</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+<span class="n">atr</span> <span class="o">=</span> <span class="n">ATR_calculation</span><span class="p">(</span><span class="n">contrat</span><span class="p">,</span> <span class="n">facture</span><span class="p">,</span> <span class="n">tarif</span><span class="p">)</span>
+<span class="n">atr</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atr</span><span class="o">.</span><span class="n">modulation_hivernale</span><span class="p">)</span>  <span class="c1"># -&gt; 29.015 MWh/j</span>
+
+<span class="c1"># Methode 2 : reutiliser la modulation calculee pour les autres factures</span>
+<span class="n">contrat</span> <span class="o">=</span> <span class="n">input_Contrat</span><span class="p">(</span>
+    <span class="n">type_tarif_acheminement</span><span class="o">=</span><span class="s1">&#39;T4&#39;</span><span class="p">,</span>
+    <span class="n">CJA_MWh_j</span><span class="o">=</span><span class="mi">109</span><span class="p">,</span>
+    <span class="n">modulation_MWh_j</span><span class="o">=</span><span class="mf">29.015</span><span class="p">,</span>  <span class="c1"># valeur calculee precedemment</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Priorite du calcul in le modele :</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">modulation_MWh_j</span></code> fourni explicitement</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">consumptions_hiver_MWh</span></code> + <code class="docutils literal notranslate"><span class="pre">consumptions_annuelles_MWh</span></code> (formule CRE M_fav4)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">atrt_mensuel_facture</span></code> (reverse-engineering from la facture)</p></li>
+<li><p>Estimation by defaut : <code class="docutils literal notranslate"><span class="pre">CJN</span> <span class="pre">-</span> <span class="pre">CAR/365</span></code> (approximation haute)</p></li>
+</ol>
+</div>
+<p><strong>Historique complet des coefficients ATRT (source : coefficients_gaz_ATRT.json) :</strong></p>
+<p><em>TCS — Terme de Capacite de Output (network principal, euro/MWh/j/an) :</em></p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-text">Historique TCS</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 15.8%" />
+<col style="width: 31.6%" />
+<col style="width: 26.3%" />
+<col style="width: 26.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>TCS (euro/MWh/j/an)</p></th>
+<th class="head"><p>Evolution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRT6</p></td>
+<td><p>04/2017 – 03/2022</p></td>
+<td><p>89,44</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT7</p></td>
+<td><p>04/2022 – 03/2023</p></td>
+<td><p>93,25</p></td>
+<td><p>+4,3%</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRT7</p></td>
+<td><p>04/2023 – 03/2024</p></td>
+<td><p>95,20</p></td>
+<td><p>+2,1%</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT8</p></td>
+<td><p>04/2024 – 03/2025</p></td>
+<td><p>124,42</p></td>
+<td><p>+30,7%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRT8</strong></p></td>
+<td><p><strong>04/2025 – 03/2026</strong></p></td>
+<td><p><strong>123,58</strong></p></td>
+<td><p><strong>-0,7%</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>TCR — Terme de Capacite Regionale (euro/MWh/j/an), pondere by NTR :</em></p>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">Historique TCR par reseau de transport</span><a class="headerlink" href="#id9" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 17.6%" />
+<col style="width: 35.3%" />
+<col style="width: 23.5%" />
+<col style="width: 23.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>TCR naTran (ex-GRTgaz)</p></th>
+<th class="head"><p>TCR Terega</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRT6</p></td>
+<td><p>04/2017 – 03/2022</p></td>
+<td><p>74,30</p></td>
+<td><p>71,84</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT7</p></td>
+<td><p>04/2022 – 03/2023</p></td>
+<td><p>82,62</p></td>
+<td><p>82,52</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRT7</p></td>
+<td><p>04/2023 – 03/2024</p></td>
+<td><p>84,29</p></td>
+<td><p>84,79</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT8</p></td>
+<td><p>04/2024 – 03/2025</p></td>
+<td><p>96,38</p></td>
+<td><p>102,60</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRT8</strong></p></td>
+<td><p><strong>04/2025 – 03/2026</strong></p></td>
+<td><p><strong>95,85</strong></p></td>
+<td><p><strong>100,71</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><em>TCL — Terme de Capacite de Livraison au PITD (euro/MWh/j/an) :</em></p>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-text">Historique TCL par reseau de transport</span><a class="headerlink" href="#id10" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 17.6%" />
+<col style="width: 35.3%" />
+<col style="width: 23.5%" />
+<col style="width: 23.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>TCL naTran (ex-GRTgaz) PITD</p></th>
+<th class="head"><p>TCL Terega PITD</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRT6</p></td>
+<td><p>04/2017 – 03/2022</p></td>
+<td><p>43,65</p></td>
+<td><p>47,04</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT7</p></td>
+<td><p>04/2022 – 03/2023</p></td>
+<td><p>48,54</p></td>
+<td><p>54,04</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRT7</p></td>
+<td><p>04/2023 – 03/2024</p></td>
+<td><p>49,52</p></td>
+<td><p>55,52</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT8</p></td>
+<td><p>04/2024 – 03/2025</p></td>
+<td><p>56,62</p></td>
+<td><p>67,18</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRT8</strong></p></td>
+<td><p><strong>04/2025 – 03/2026</strong></p></td>
+<td><p><strong>56,31</strong></p></td>
+<td><p><strong>65,94</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le TCL depend du type de point de livraison. Les valeurs ci-dessus sont for les PITD
+(Point d’Interface Transport Distribution), qui concerne la majorite des clients
+raccordes au network de distribution. Source : deliberation CRE 2025-35, page 33.</p>
+</div>
+<p><em>TTS — Terme Tarifaire de Stockage (compensation hivernale, euro/MWh/j) :</em></p>
+<p>Le terme tarifaire de stockage is published by la CRE et resulte des encheres de stockage.
+Il compense le cout de modulation hivernale lie a la variabilite saisonniere de la demande.
+Voir <a class="reference internal" href="#calcul-modulation"><span class="std std-ref">calcul de la modulation</span></a> for le detail du calcul de la modulation.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Compensation_stockage = Modulation_hivernale x coef_stockage
+</pre></div>
+</div>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text">Historique du terme tarifaire de stockage</span><a class="headerlink" href="#id11" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>Coefficient (euro/MWh/j)</p></th>
+<th class="head"><p>Evolution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRT6</p></td>
+<td><p>04/2017 – 03/2022</p></td>
+<td><p>0</p></td>
+<td><p>(non disponible in le modele)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT7</p></td>
+<td><p>04/2022 – 03/2023</p></td>
+<td><p>139,07</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRT7</p></td>
+<td><p>04/2023 – 03/2024</p></td>
+<td><p>186,70</p></td>
+<td><p>+34,3% (crise energy, tensions stockage)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT8</p></td>
+<td><p>04/2024 – 03/2025</p></td>
+<td><p>139,07</p></td>
+<td><p>-25,5% (retour au niveau pre-crise)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRT8</strong></p></td>
+<td><p><strong>04/2025 – 03/2026</strong></p></td>
+<td><p><strong>331,44</strong></p></td>
+<td><p><strong>+138,3%</strong> (encheres stockage en forte hausse)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Le coefficient de stockage est tres volatile car il depend directement du result
+des encheres de capacite de stockage souterrain. Ce coefficient s’applique only
+a la part de <strong>modulation hivernale</strong>. Voir <a class="reference internal" href="#calcul-modulation"><span class="std std-ref">calcul de la modulation</span></a> for le detail.</p>
+</div>
+<p><strong>Cout unitaire annuel ATRT hors stockage (naTran/GRTgaz PITD, NTR=2) :</strong></p>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-text">Evolution du cout unitaire ATRT = TCS + TCR x 2 + TCL (naTran PITD)</span><a class="headerlink" href="#id12" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 33.3%" />
+<col style="width: 26.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Periode</p></th>
+<th class="head"><p>Cout (euro/MWh/j/an)</p></th>
+<th class="head"><p>Evolution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>04/2017 – 03/2022</p></td>
+<td><p>281,69</p></td>
+<td><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>04/2022 – 03/2023</p></td>
+<td><p>307,03</p></td>
+<td><p>+9,0%</p></td>
+</tr>
+<tr class="row-even"><td><p>04/2023 – 03/2024</p></td>
+<td><p>313,30</p></td>
+<td><p>+2,0%</p></td>
+</tr>
+<tr class="row-odd"><td><p>04/2024 – 03/2025</p></td>
+<td><p>373,80</p></td>
+<td><p>+19,3%</p></td>
+</tr>
+<tr class="row-even"><td><p>04/2025 – 03/2026</p></td>
+<td><p>371,59</p></td>
+<td><p>-0,6%</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Les coefficients ATRT are published by la CRE et stockes in <code class="docutils literal notranslate"><span class="pre">coefficients_gaz_ATRT.json</span></code>.
+La transition ATRT7 to ATRT8 (avril 2024) a marque une hausse significative (+19,3%)
+principalement on le TCS (+30,7%). La compensation stockage a ete multipliee by 2,4
+en 2025-2026 (331,44 vs 139,07 euro/MWh/j).</p>
+</div>
+</section>
+<section id="taxes-et-contributions">
+<h3>2.3 Taxes et contributions<a class="headerlink" href="#taxes-et-contributions" title="Link to this heading"></a></h3>
+<p><strong>CTA (Contribution Tarifaire d’Acheminement)</strong></p>
+<p>La CTA est une taxe assise on les <strong>termes fixes d’acheminement</strong>. Elle comporte
+<strong>deux parts distinctes</strong> calculateds from l’abonnement distribution (ATRD fixe) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CTA = CTA_distribution + CTA_transport
+
+CTA_distribution = ATRD_fixe_mensuel x taux_distribution
+CTA_transport    = Assiette_transport x taux_transport
+
+Assiette_transport = ATRD_fixe_mensuel x coefficient_proportionnalite
+</pre></div>
+</div>
+<p>Ou :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">taux_distribution</span></code> = <strong>20,80 %</strong> (constant)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">taux_transport</span></code> = <strong>4,71 %</strong> (constant)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coefficient_proportionnalite</span></code> = coefficient CRE representant la <strong>quote-part transport</strong>
+incluse indirectement in l’abonnement de distribution. Ce coefficient is published
+par la CRE in chaque deliberation ATRD.</p></li>
+</ul>
+<p><strong>Example (facture T4, ATRD7 2025-2026) :</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ATRD_fixe_mensuel = 4 424,81 EUR
+
+CTA_distribution = 4 424,81 x 20,80% = 920,36 EUR
+Assiette_transport = 4 424,81 x 0,8321 = 3 681,88 EUR
+CTA_transport = 3 681,88 x 4,71% = 173,42 EUR
+
+CTA totale = 920,36 + 173,42 = 1 093,78 EUR
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>L’assiette CTA transport (3 681,88 EUR in l’example) is visible on la facture EDF.
+Elle n’est <strong>pas</strong> l’abonnement transport real (ATRT = 4 176,67 EUR) mais un montant
+calculates from l’ATRD fixe via le coefficient de proportionnalite CRE.
+Ce mecanisme simplifie le calcul of the AHU : instead of dependre de l’ATRT real
+(qui varie according to la modulation hivernale et le stockage), la CTA est toujours
+calculated on la base de l’ATRD fixe, qui est un montant stable et previsible.</p>
+</div>
+<p><strong>Historique du coefficient de proportionnalite CTA (source : coefficients_gaz_ATRD.json) :</strong></p>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-text">Coefficient de proportionnalite CTA – historique</span><a class="headerlink" href="#id13" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 25.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tarif</p></th>
+<th class="head"><p>Periode</p></th>
+<th class="head"><p>Coef. proportionnalite</p></th>
+<th class="head"><p>Taux distribution</p></th>
+<th class="head"><p>Taux transport</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRD5</p></td>
+<td><p>01/2018 – 06/2019</p></td>
+<td><p>0,8321</p></td>
+<td><p>20,80%</p></td>
+<td><p>4,71%</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD6</p></td>
+<td><p>07/2019 – 06/2023</p></td>
+<td><p>0,8321</p></td>
+<td><p>20,80%</p></td>
+<td><p>4,71%</p></td>
+</tr>
+<tr class="row-even"><td><p>ATRD6</p></td>
+<td><p>07/2023 – 06/2024</p></td>
+<td><p>0,8351</p></td>
+<td><p>20,80%</p></td>
+<td><p>4,71%</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD7</p></td>
+<td><p>07/2024 – 06/2025</p></td>
+<td><p>0,8357</p></td>
+<td><p>20,80%</p></td>
+<td><p>4,71%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRD7</strong></p></td>
+<td><p><strong>07/2025 – 06/2026</strong></p></td>
+<td><p><strong>0,8321</strong></p></td>
+<td><p><strong>20,80%</strong></p></td>
+<td><p><strong>4,71%</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Les taux de CTA (20,80% et 4,71%) sont restes constants from 2018.
+Seul le coefficient de proportionnalite varie legerement between les periods ATRD
+(de 0,8321 a 0,8357). Il est retourne a 0,8321 en ATRD7 2025-2026.</p>
+</div>
+<p><strong>Accise on les gaz naturels (ex-TICGN)</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Accise = Consommation totale (kWh) x taux accise (euro/kWh)
+</pre></div>
+</div>
+<p>Evolution historique des taux de l’accise gaz (ex-TICGN) :</p>
+<table class="docutils align-default" id="id14">
+<caption><span class="caption-text">Accise sur les gaz naturels – historique complet (source : coefficients_gaz_TICGN.json)</span><a class="headerlink" href="#id14" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Date debut</p></th>
+<th class="head"><p>Date fin</p></th>
+<th class="head"><p>Taux (EUR/kWh)</p></th>
+<th class="head"><p>Taux (EUR/MWh)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>01/04/2014</p></td>
+<td><p>31/12/2014</p></td>
+<td><p>0,00141</p></td>
+<td><p>1,41</p></td>
+</tr>
+<tr class="row-odd"><td><p>01/01/2015</p></td>
+<td><p>31/12/2015</p></td>
+<td><p>0,00264</p></td>
+<td><p>2,64</p></td>
+</tr>
+<tr class="row-even"><td><p>01/01/2016</p></td>
+<td><p>31/12/2016</p></td>
+<td><p>0,00434</p></td>
+<td><p>4,34</p></td>
+</tr>
+<tr class="row-odd"><td><p>01/01/2017</p></td>
+<td><p>31/12/2017</p></td>
+<td><p>0,00588</p></td>
+<td><p>5,88</p></td>
+</tr>
+<tr class="row-even"><td><p>01/01/2018</p></td>
+<td><p>31/12/2018</p></td>
+<td><p>0,00845</p></td>
+<td><p>8,45</p></td>
+</tr>
+<tr class="row-odd"><td><p>01/01/2019</p></td>
+<td><p>31/12/2019</p></td>
+<td><p>0,00845</p></td>
+<td><p>8,45</p></td>
+</tr>
+<tr class="row-even"><td><p>01/01/2020</p></td>
+<td><p>31/12/2020</p></td>
+<td><p>0,00845</p></td>
+<td><p>8,45</p></td>
+</tr>
+<tr class="row-odd"><td><p>01/01/2021</p></td>
+<td><p>31/12/2021</p></td>
+<td><p>0,00843</p></td>
+<td><p>8,43</p></td>
+</tr>
+<tr class="row-even"><td><p>01/01/2022</p></td>
+<td><p>31/12/2022</p></td>
+<td><p>0,00841</p></td>
+<td><p>8,41</p></td>
+</tr>
+<tr class="row-odd"><td><p>01/01/2023</p></td>
+<td><p>31/12/2023</p></td>
+<td><p>0,00837</p></td>
+<td><p>8,37</p></td>
+</tr>
+<tr class="row-even"><td><p>01/01/2024</p></td>
+<td><p>31/12/2024</p></td>
+<td><p><strong>0,01637</strong></p></td>
+<td><p><strong>16,37</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>01/01/2025</p></td>
+<td><p>31/07/2025</p></td>
+<td><p><strong>0,01716</strong></p></td>
+<td><p><strong>17,16</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>01/08/2025</p></td>
+<td><p>31/01/2026</p></td>
+<td><p>0,01543</p></td>
+<td><p>15,43</p></td>
+</tr>
+<tr class="row-odd"><td><p>01/02/2026</p></td>
+<td><p>31/12/2026</p></td>
+<td><p>0,01639</p></td>
+<td><p>16,39</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La TICGN a ete renommee <strong>accise on les gaz naturels</strong> from 2022.
+Le taux a presque double between 2023 (8,37 EUR/MWh) et 2024 (16,37 EUR/MWh),
+suite a la fin du bouclier tarifaire. Les taux sont integres in le fichier
+<code class="docutils literal notranslate"><span class="pre">coefficients_gaz_TICGN.json</span></code> from the library EnergySystemModels et
+selectionnes automatiquement as a function of la period de facturation.</p>
+</div>
+</section>
+<section id="tva-applicable">
+<h3>2.4 TVA applicable<a class="headerlink" href="#tva-applicable" title="Link to this heading"></a></h3>
+<p>La TVA on le gaz naturel en France comporte historiquement <strong>deux taux distincts</strong> :</p>
+<ul class="simple">
+<li><p><strong>Taux reduit</strong> : applique a l’abonnement (parts fixes) et a la CTA</p></li>
+<li><p><strong>Taux normal</strong> : applique a la consumption (parts variables), a la molecule et a l’accise</p></li>
+</ul>
+<table class="docutils align-default" id="id15">
+<caption><span class="caption-text">Historique des taux de TVA gaz naturel en France (source : coefficients_gaz_TVA.json)</span><a class="headerlink" href="#id15" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 27.8%" />
+<col style="width: 27.8%" />
+<col style="width: 22.2%" />
+<col style="width: 22.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Periode</p></th>
+<th class="head"><p>Evenement</p></th>
+<th class="head"><p>TVA abonnement</p></th>
+<th class="head"><p>TVA consumption</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Avant 01/01/2014</p></td>
+<td><p>Taux historiques</p></td>
+<td><p>5,5%</p></td>
+<td><p>19,6%</p></td>
+</tr>
+<tr class="row-odd"><td><p>01/01/2014 – 31/07/2025</p></td>
+<td><p>Loi de finances 2014 (taux normal 19,6% -&gt; 20%)</p></td>
+<td><p>5,5%</p></td>
+<td><p>20,0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Dethen 01/08/2025</strong></p></td>
+<td><p><strong>Loi n°2025-127 art. 20</strong> (suppressure taux reduit, directive UE)</p></td>
+<td><p><strong>20,0%</strong></p></td>
+<td><p><strong>20,0%</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Assiettes TVA :</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># Assiette TVA abonnement (taux reduit ou normal selon la date)
+Assiette_abonnement = ATRT (TCS + TCR + TCL + stockage)
+                    + ATRD fixe + ATRD souscription capacite
+                    + CTA
+
+# Assiette TVA consommation (taux normal, toujours 20%)
+Assiette_consommation = ATRD variable
+                      + Molecule gaz
+                      + Accise (ex-TICGN)
+
+TVA = Assiette_abonnement x taux_abonnement
+    + Assiette_consommation x taux_consommation
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dethen le <strong>1er aout 2025</strong>, le taux reduit de 5,5% on l’abonnement est supprime.
+La TVA est now de <strong>20% on l’ensemble de la facture</strong>. This change
+fait suite a une directive europeenne interdisant l’application de taux differents
+sur des elements indissociables d’un meme service.</p>
+<p>The modele EnergySystemModels charge les taux from <code class="docutils literal notranslate"><span class="pre">coefficients_gaz_TVA.json</span></code>
+et gere automatiquement la <strong>proratisation</strong> si la facture chevauche un changement
+de taux (ex. facture juillet-aout 2025).</p>
+</div>
+</section>
+<section id="fourniture">
+<h3>2.5 Fourniture<a class="headerlink" href="#fourniture" title="Link to this heading"></a></h3>
+<p>La part fourniture correspond a la consumption gas billed by le supplier.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Fourniture = Consommation (kWh) x prix_kWh (euro/kWh)
+</pre></div>
+</div>
+<p>Le prix unitaire est negocie in le contrat de fourniture.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="coefficients-zi-et-a">
+<h2>3. Coefficients Zi et A<a class="headerlink" href="#coefficients-zi-et-a" title="Link to this heading"></a></h2>
+<section id="stations-meteo-disponibles-for-le-calcul-de-zi">
+<span id="stations-meteo-zi"></span><h3>3.1 Stations meteo disponibles for le calcul de Zi<a class="headerlink" href="#stations-meteo-disponibles-for-le-calcul-de-zi" title="Link to this heading"></a></h3>
+<p>Le coefficient Zi est une constante reglementaire publiee by la CRE, stored in
+<code class="docutils literal notranslate"><span class="pre">coefficients_gaz_ATRT.json</span></code>. Il est indexe by une table a double entree :
+<strong>station meteo</strong> (36 stations) x <strong>profil de consumption</strong> (P011 a P019).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 30.0%" />
+<col style="width: 15.0%" />
+<col style="width: 45.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Zone</p></th>
+<th class="head"><p>Station (valeur du parametre)</p></th>
+<th class="head"><p>Code</p></th>
+<th class="head"><p>Region</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PARIS-MONTSOURIS</span></code></p></td>
+<td><p>75114001</p></td>
+<td><p>Ile-de-France</p></td>
+</tr>
+<tr class="row-odd"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LILLE-LESQUIN</span></code></p></td>
+<td><p>59343001</p></td>
+<td><p>Hauts-de-France</p></td>
+</tr>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REIMS-PRUNAY</span></code></p></td>
+<td><p>51449002</p></td>
+<td><p>Grand Est</p></td>
+</tr>
+<tr class="row-odd"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">METZ-FRESCATY</span></code></p></td>
+<td><p>57039001</p></td>
+<td><p>Grand Est</p></td>
+</tr>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ENTZHEIM</span></code></p></td>
+<td><p>67124001</p></td>
+<td><p>Grand Est (Strasbourg)</p></td>
+</tr>
+<tr class="row-odd"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COLMAR-MEYENHEIM</span></code></p></td>
+<td><p>68205001</p></td>
+<td><p>Grand Est</p></td>
+</tr>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BALE-MULHOUSE</span></code></p></td>
+<td><p>68297001</p></td>
+<td><p>Grand Est</p></td>
+</tr>
+<tr class="row-odd"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ROUEN-BOOS</span></code></p></td>
+<td><p>76116001</p></td>
+<td><p>Normandie</p></td>
+</tr>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHARTRES</span></code></p></td>
+<td><p>28070001</p></td>
+<td><p>Centre-Val de Loire</p></td>
+</tr>
+<tr class="row-odd"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AUXERRE-PERRIGNY</span></code></p></td>
+<td><p>89295001</p></td>
+<td><p>Bourgogne</p></td>
+</tr>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DIJON-LONGVIC</span></code></p></td>
+<td><p>21473001</p></td>
+<td><p>Bourgogne</p></td>
+</tr>
+<tr class="row-odd"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BESANCON</span></code></p></td>
+<td><p>25056001</p></td>
+<td><p>Franche-Comte</p></td>
+</tr>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LUXEUIL</span></code></p></td>
+<td><p>70473001</p></td>
+<td><p>Franche-Comte</p></td>
+</tr>
+<tr class="row-odd"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LYON-BRON</span></code></p></td>
+<td><p>69029001</p></td>
+<td><p>Auvergne-Rhone-Alpes</p></td>
+</tr>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ST-ETIENNE-BOUTHEON</span></code></p></td>
+<td><p>42005001</p></td>
+<td><p>Auvergne-Rhone-Alpes</p></td>
+</tr>
+<tr class="row-odd"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CLERMONT-FERRAND</span></code></p></td>
+<td><p>63113001</p></td>
+<td><p>Auvergne-Rhone-Alpes</p></td>
+</tr>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GRENOBLE-ST-GEOIRS</span></code></p></td>
+<td><p>38384001</p></td>
+<td><p>Auvergne-Rhone-Alpes</p></td>
+</tr>
+<tr class="row-odd"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAMBERY-AIX</span></code></p></td>
+<td><p>73329001</p></td>
+<td><p>Savoie</p></td>
+</tr>
+<tr class="row-even"><td><p>H1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BONNEVILLE</span></code></p></td>
+<td><p>74042003</p></td>
+<td><p>Haute-Savoie</p></td>
+</tr>
+<tr class="row-odd"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BREST-GUIPAVAS</span></code></p></td>
+<td><p>29075001</p></td>
+<td><p>Bretagne</p></td>
+</tr>
+<tr class="row-even"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DINARD-LE-PLEURTUIT</span></code></p></td>
+<td><p>35228001</p></td>
+<td><p>Bretagne</p></td>
+</tr>
+<tr class="row-odd"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NANTES-BOUGUENAIS</span></code></p></td>
+<td><p>44020001</p></td>
+<td><p>Pays de la Loire</p></td>
+</tr>
+<tr class="row-even"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TOURS</span></code></p></td>
+<td><p>37179001</p></td>
+<td><p>Centre-Val de Loire</p></td>
+</tr>
+<tr class="row-odd"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BOURGES</span></code></p></td>
+<td><p>18033001</p></td>
+<td><p>Centre-Val de Loire</p></td>
+</tr>
+<tr class="row-even"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COGNAC</span></code></p></td>
+<td><p>16089001</p></td>
+<td><p>Nouvelle-Aquitaine</p></td>
+</tr>
+<tr class="row-odd"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BORDEAUX</span> <span class="pre">MERIGNAC</span></code></p></td>
+<td><p>33281001</p></td>
+<td><p>Nouvelle-Aquitaine</p></td>
+</tr>
+<tr class="row-even"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AGEN</span></code></p></td>
+<td><p>47091001</p></td>
+<td><p>Nouvelle-Aquitaine</p></td>
+</tr>
+<tr class="row-odd"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BIARRITZ-ANGLET</span></code></p></td>
+<td><p>64024001</p></td>
+<td><p>Nouvelle-Aquitaine</p></td>
+</tr>
+<tr class="row-even"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PAU-UZEIN</span></code></p></td>
+<td><p>64549001</p></td>
+<td><p>Nouvelle-Aquitaine</p></td>
+</tr>
+<tr class="row-odd"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TOULOUSE-BLAGNAC</span></code></p></td>
+<td><p>31069001</p></td>
+<td><p>Occitanie</p></td>
+</tr>
+<tr class="row-even"><td><p>H2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MONTELIMAR</span></code></p></td>
+<td><p>26198001</p></td>
+<td><p>Drome</p></td>
+</tr>
+<tr class="row-odd"><td><p>H3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NICE</span></code></p></td>
+<td><p>06088001</p></td>
+<td><p>PACA</p></td>
+</tr>
+<tr class="row-even"><td><p>H3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MARIGNANE</span></code></p></td>
+<td><p>13054001</p></td>
+<td><p>PACA (Marseille)</p></td>
+</tr>
+<tr class="row-odd"><td><p>H3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NIMES-COURBESSAC</span></code></p></td>
+<td><p>30189001</p></td>
+<td><p>Occitanie</p></td>
+</tr>
+<tr class="row-even"><td><p>H3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PERPIGNAN</span></code></p></td>
+<td><p>66136001</p></td>
+<td><p>Occitanie</p></td>
+</tr>
+</tbody>
+</table>
+<p>H1 = climat froid (Zi plus eleve), H3 = climat doux (Zi plus bas).</p>
+<p><strong>Profils de consumption (P011 a P019)</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Profil</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">P011</span></code></p></td>
+<td><p>Faible thermo-sensibilite (usage industriel continu, peu de chauffage)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">P012</span></code></p></td>
+<td><p>Thermo-sensibilite legere</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">P013</span> <span class="pre">a</span> <span class="pre">P015</span></code></p></td>
+<td><p>Thermo-sensibilite moderee</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">P016</span></code></p></td>
+<td><p>Thermo-sensibilite standard (valeur by defaut in le modele)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">P017</span> <span class="pre">a</span> <span class="pre">P018</span></code></p></td>
+<td><p>Forte thermo-sensibilite (chauffage predominant)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">P019</span></code></p></td>
+<td><p>Thermo-sensibilite maximale (chauffage tres predominant)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Plus le profil est eleve, plus Zi est grand, ce qui augmente la CJN et les couts d’acheminement.</p>
+</section>
+<section id="coefficient-a-by-network-de-transport">
+<span id="coefficient-a"></span><h3>3.2 Coefficient A by network de transport<a class="headerlink" href="#coefficient-a-by-network-de-transport" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41.2%" />
+<col style="width: 29.4%" />
+<col style="width: 29.4%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Periode ATRT</p></th>
+<th class="head"><p>A (naTran (ex-GRTgaz))</p></th>
+<th class="head"><p>A (Terega)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ATRT6 (2017-04 au 2022-03)</p></td>
+<td><p>1.000</p></td>
+<td><p>1.000</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT7 (2022-04 au 2023-03)</p></td>
+<td><p><em>(non disponible)</em></p></td>
+<td><p><em>(non disponible)</em></p></td>
+</tr>
+<tr class="row-even"><td><p>ATRT7 (2023-04 au 2024-03)</p></td>
+<td><p>1.073</p></td>
+<td><p>1.203</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRT8 (2024-04 au 2025-03)</p></td>
+<td><p>1.181</p></td>
+<td><p>1.305</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ATRT8 (2025-04 au 2026-03)</strong></p></td>
+<td><p><strong>1.168</strong></p></td>
+<td><p><strong>1.277</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>Ces valeurs sont publiees by la CRE et stockees in <code class="docutils literal notranslate"><span class="pre">coefficients_gaz_ATRT.json</span></code>.
+Le coefficient A for ATRT6 est fixe a 1.0 by defaut (valeurs exactes by GRD
+disponibles in les deliberations annuelles ATRT6).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modele-de-calcul-et-example-python">
+<h2>4. Modele de calcul et example Python<a class="headerlink" href="#modele-de-calcul-et-example-python" title="Link to this heading"></a></h2>
+<section id="example-facture-gaz-t4-site-industriel-ile-de-france">
+<h3>4.1 Example : facture gaz T4 - Site industriel Ile-de-France<a class="headerlink" href="#example-facture-gaz-t4-site-industriel-ile-de-france" title="Link to this heading"></a></h3>
+<p>Cet example reproduit une real bill EDF (February 2026) for un site industriel
+en Ile-de-France with un contrat T4.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Facture.ATR_Transport_Distribution</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">input_Contrat</span><span class="p">,</span> <span class="n">input_Facture</span><span class="p">,</span> <span class="n">input_Tarif</span><span class="p">,</span> <span class="n">ATR_calculation</span>
+<span class="p">)</span>
+
+<span class="c1"># Donnees du contrat (figurent sur la facture EDF)</span>
+<span class="n">contrat</span> <span class="o">=</span> <span class="n">input_Contrat</span><span class="p">(</span>
+    <span class="n">type_tarif_acheminement</span><span class="o">=</span><span class="s1">&#39;T4&#39;</span><span class="p">,</span>
+    <span class="n">CAR_MWh</span><span class="o">=</span><span class="mf">15466.800</span><span class="p">,</span>           <span class="c1"># CAR : 15 466 800 kWh/an</span>
+    <span class="n">profil</span><span class="o">=</span><span class="s2">&quot;P016&quot;</span><span class="p">,</span>               <span class="c1"># Profil de consommation</span>
+    <span class="n">station_meteo</span><span class="o">=</span><span class="s2">&quot;PARIS-MONTSOURIS&quot;</span><span class="p">,</span>
+    <span class="n">reseau_transport</span><span class="o">=</span><span class="s2">&quot;naTran&quot;</span><span class="p">,</span>
+    <span class="n">niv_tarif_region</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">CJA_MWh_j</span><span class="o">=</span><span class="mi">109</span><span class="p">,</span>               <span class="c1"># CJA souscrite : 109 000 kWh/j = 109 MWh/j</span>
+<span class="p">)</span>
+
+<span class="c1"># Donnees de la facture (periode et consommation relevee)</span>
+<span class="n">facture</span> <span class="o">=</span> <span class="n">input_Facture</span><span class="p">(</span>
+    <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2026-02-01&quot;</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2026-02-28&quot;</span><span class="p">,</span>
+    <span class="n">kWh_total</span><span class="o">=</span><span class="mi">2043755</span>             <span class="c1"># 2 043 755 kWh releves</span>
+<span class="p">)</span>
+
+<span class="c1"># Prix de la molecule negocie dans le contrat</span>
+<span class="n">tarif</span> <span class="o">=</span> <span class="n">input_Tarif</span><span class="p">(</span><span class="n">prix_kWh</span><span class="o">=</span><span class="mf">0.04580</span><span class="p">)</span>   <span class="c1"># 4,580 c/kWh</span>
+
+<span class="c1"># Calcul</span>
+<span class="n">atr</span> <span class="o">=</span> <span class="n">ATR_calculation</span><span class="p">(</span><span class="n">contrat</span><span class="p">,</span> <span class="n">facture</span><span class="p">,</span> <span class="n">tarif</span><span class="p">)</span>
+<span class="n">atr</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Resultats detailles (v20260408002)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atr</span><span class="o">.</span><span class="n">df_results</span><span class="p">)</span>            <span class="c1"># Resume general complet (toutes sections)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atr</span><span class="o">.</span><span class="n">df_contrat</span><span class="p">)</span>            <span class="c1"># Parametres contrat + coefficients CRE</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atr</span><span class="o">.</span><span class="n">df_fourniture</span><span class="p">)</span>         <span class="c1"># Molecule gaz (fournisseur)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atr</span><span class="o">.</span><span class="n">df_transport</span><span class="p">)</span>          <span class="c1"># Detail ATRT (TCS, TCR, TCL, stockage)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atr</span><span class="o">.</span><span class="n">df_distribution</span><span class="p">)</span>       <span class="c1"># Detail ATRD (fixe, souscription, variable)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atr</span><span class="o">.</span><span class="n">df_taxes</span><span class="p">)</span>              <span class="c1"># CTA distribution + CTA transport + Accise</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atr</span><span class="o">.</span><span class="n">df_totaux</span><span class="p">)</span>             <span class="c1"># Totaux HT/TTC + couts unitaires EUR/MWh</span>
+
+<span class="c1"># Graphiques</span>
+<span class="n">atr</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>                       <span class="c1"># Repartition globale</span>
+<span class="n">atr</span><span class="o">.</span><span class="n">plot_detail</span><span class="p">()</span>                <span class="c1"># Detail par composante</span>
+</pre></div>
+</div>
+<p><strong>Output realle (verifiee contre la facture EDF) :</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44.4%" />
+<col style="width: 27.8%" />
+<col style="width: 27.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Composante</p></th>
+<th class="head"><p>Modele</p></th>
+<th class="head"><p>Facture EDF</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Molecule gaz</p></td>
+<td><p>93 603,98</p></td>
+<td><p>93 603,98</p></td>
+</tr>
+<tr class="row-odd"><td><p>ATRD variable (terme quantite distribution)</p></td>
+<td><p>2 411,63</p></td>
+<td><p>2 411,63</p></td>
+</tr>
+<tr class="row-even"><td><p>Accise gaz (ex-TICGN)</p></td>
+<td><p>33 497,14</p></td>
+<td><p>33 497,14</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total HT (part EDF)</strong></p></td>
+<td><p><strong>129 512,75</strong></p></td>
+<td><p><strong>129 512,75</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>ATRD fixe total / mois</p></td>
+<td><p>4 424,81</p></td>
+<td><p>4 424,81 (abonnement distribution)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CTA distribution (assiette x 20,80%)</p></td>
+<td><p>920,36</p></td>
+<td><p>920,36</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sur cette facture EDF, seules les composantes variables (molecule, ATRD variable, accise)
+et les abonnements fixes (transport, distribution) apparaissent. L’ATRD fixe et l’ATRT
+peuvent etre factures by GRDF separement according to le type de contrat.</p>
+</div>
+</section>
+<section id="parametres-d-entree">
+<h3>4.2 Parametres d’entree<a class="headerlink" href="#parametres-d-entree" title="Link to this heading"></a></h3>
+<p><strong>Declare un contrat gaz</strong> (<code class="docutils literal notranslate"><span class="pre">input_Contrat</span></code>) :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parametre</p></th>
+<th class="head"><p>Valeurs</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type_tarif_acheminement</p></td>
+<td><p>“T1”, “T2”, “T3”, “T4”, “TP”</p></td>
+<td><p>Option tarifaire according to la CAR</p></td>
+</tr>
+<tr class="row-odd"><td><p>CAR_MWh</p></td>
+<td><p>&gt;= 0</p></td>
+<td><p>Consommation annuelle de reference (MWh)</p></td>
+</tr>
+<tr class="row-even"><td><p>CJA_MWh_j</p></td>
+<td><p>&gt;= 0</p></td>
+<td><p>Capacite journaliere souscrite (MWh/j). Utilisee for la souscription ATRD T4/TP.</p></td>
+</tr>
+<tr class="row-odd"><td><p>CJN_MWh_j</p></td>
+<td><p>&gt;= 0 ou None</p></td>
+<td><p>Si fourni, utilise tel quel. Sinon recalculates via CAR x Zi x A.</p></td>
+</tr>
+<tr class="row-even"><td><p>modulation_MWh_j</p></td>
+<td><p>&gt;= 0 ou None</p></td>
+<td><p>Si fourni, utilise tel quel. Sinon recalculates via CJN - (CAR / 365).</p></td>
+</tr>
+<tr class="row-odd"><td><p>profil</p></td>
+<td><p>“P011” a “P019”</p></td>
+<td><p>Profil de thermo-sensibilite (P016 by defaut)</p></td>
+</tr>
+<tr class="row-even"><td><p>station_meteo</p></td>
+<td><p>Voir table section 4.1</p></td>
+<td><p>Station meteo de reference (36 stations)</p></td>
+</tr>
+<tr class="row-odd"><td><p>network_transport</p></td>
+<td><p>“naTran”, “GRTgaz” (legacy), “Terega”</p></td>
+<td><p>Gestionnaire du network de transport</p></td>
+</tr>
+<tr class="row-even"><td><p>niv_tarif_region</p></td>
+<td><p>0 a 10</p></td>
+<td><p>Niveau tarifaire regional</p></td>
+</tr>
+<tr class="row-odd"><td><p>distance</p></td>
+<td><p>&gt;= 0 ou None</p></td>
+<td><p>Distance en km (only for le tarif TP)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Declare une facture gaz</strong> (<code class="docutils literal notranslate"><span class="pre">input_Facture</span></code>) :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parametre</p></th>
+<th class="head"><p>Valeurs</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>start, end</p></td>
+<td><p>Date (YYYY-MM-DD)</p></td>
+<td><p>Debut et fin de la period de facturation</p></td>
+</tr>
+<tr class="row-odd"><td><p>kWh_total</p></td>
+<td><p>&gt;= 0</p></td>
+<td><p>Consommation totale on la period (kWh)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Declare les tarifs</strong> (<code class="docutils literal notranslate"><span class="pre">input_Tarif</span></code>) :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parametre</p></th>
+<th class="head"><p>Valeurs</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>prix_kWh</p></td>
+<td><p>&gt;= 0 (euro/kWh)</p></td>
+<td><p>Tarif unitaire gaz negocie (hors taxes)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="exemples/exemple_bt_p36_cu.html" class="btn btn-neutral float-left" title="10.1.2.2. Example BT &gt; 36 kVA – CU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="guide_audit_facture.html" class="btn btn-neutral float-right" title="10.3. Guide pratique : Auditer une facture d’energy with Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

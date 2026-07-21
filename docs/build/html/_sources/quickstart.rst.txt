@@ -1,0 +1,335 @@
+.. _quickstart:
+
+=============================
+Guide de Démarrage Rapide
+=============================
+
+Ce guide vous allows commencer à utiliser **EnergySystemModels** en quelques minutes.
+
+.. contents:: Sommaire
+   :local:
+   :depth: 2
+
+----
+
+Installation
+============
+
+Method standard
+----------------
+
+Install the library with pip :
+
+.. code-block:: console
+
+   pip install energysystemmodels
+
+Environnement virtuel (recommandé)
+-----------------------------------
+
+.. code-block:: bash
+
+   # Créer un environnement virtuel
+   python -m venv .venv
+   
+   # Activer l'environnement (Windows)
+   .venv\Scripts\activate
+   
+   # Activer l'environnement (Linux/Mac)
+   source .venv/bin/activate
+   
+   # Installer la bibliothèque
+   pip install energysystemmodels
+
+.. tip::
+   L'usage d'un environnement virtuel est recommandée for éviter les conflits de dépendances.
+
+Lancer l'interface PyqtSimulator (développement)
+------------------------------------------------
+
+``PyqtSimulator`` est fourni by le dépôt source ``EnergySystemModels``.
+Dethen un clone local, vous pouvez le lancer ainsi :
+
+.. code-block:: powershell
+
+   cd A:\OneDrive\_Github_\EnergySystemModels
+   $env:PYTHONPATH = "$PWD\src"
+   python -m PyqtSimulator.main
+
+Alternative :
+
+.. code-block:: powershell
+
+   python A:\OneDrive\_Github_\EnergySystemModels\test\PyqtSimulator\_PyqtSimulator.py
+
+.. seealso::
+   Guide détaillé interface graphique : :doc:`gui_tools`
+
+----
+
+Principe d'usage
+======================
+
+EnergySystemModels suit un model de programmation **orienté objet** simple et cohérent.
+
+Workflow en 4 étapes
+---------------------
+
+.. admonition:: Workflow standard
+   :class: note
+
+   1. **Créer un objet** représentant un composant energy
+   2. **Définir les paramètres d'input** (temperatures, pressures, flow rates, etc.)
+   3. **Appeler la method calculate()** for effectuer les calculs
+   4. **Accéder aux results** via les attributs de l'objet ou le DataFrame
+
+Example simple
+--------------
+
+Voici un example minimal for illustrer le principe :
+
+.. code-block:: python
+   :linenos:
+   :emphasize-lines: 4,7-9,12,15-17
+
+   from HeatTransfer import CompositeWall
+
+   # 1. Créer l'objet
+   wall = CompositeWall.Object(he=23, hi=8, Ti=20, Te=-10, A=10)
+   
+   # 2. Définir la structure (ajouter des couches)
+   wall.add_layer(thickness=0.20, material='Parpaings creux')
+   wall.add_layer(thickness=0.05, material='Polystyrène')
+   wall.add_layer(thickness=0.02, material='Plâtre')
+   
+   # 3. Calculer
+   wall.calculate()
+   
+   # 4. Accéder aux résultats
+   print(f"Résistance thermique : {wall.R_total:.3f} m².K/W")
+   print(f"Flux thermique : {wall.Q:.2f} W")
+   print(wall.df)  # DataFrame avec tous les résultats
+
+.. seealso::
+   Pour plus d'examples, consultez :doc:`usage`
+
+----
+
+Modules disponibles
+===================
+
+La library is organized into thematic modules :
+
+Transfer thermique
+-------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Heat Transfer**
+     - Calculs thermiques for murs, pipeteries, échangeurs
+
+Systèmes thermodynamiques
+--------------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Thermodynamic Cycles**
+     - Modélisation de cycles frigorifiques, pompes à chaleur, compresseurs
+
+Systèmes HVAC
+-------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Centrales de traitement d'air (CTA)**
+     - Simulation complète de CTA with batteries, humidification, récupération
+   * - **Hydraulique**
+     - Calculs de pressure drops, dimensionnement de pompes et vannes
+
+Optimisation energy
+-------------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Analyse energy**
+     - Pinch Analysis, IPMVP, optimisation d'intégration thermique
+
+Data et production
+----------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Data météo**
+     - Récupération de data climatiques en temps real ou historiques
+   * - **Production solaire**
+     - Simulation de production photovoltaïque
+
+Facturation et certificats
+---------------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - **Facturation**
+     - Calcul du TURPE, certificats d'energy savings (CEE)
+
+----
+
+Unités et conventions
+=====================
+
+.. important::
+   Toutes les inputs et outputs utilisent le Système International (SI) with ces unités by défaut :
+
+.. list-table::
+   :widths: 40 30 30
+   :header-rows: 1
+   :class: striped
+
+   * - Grandeur physique
+     - Unité
+     - Symbole
+   * - Temperature
+     - Degré Celsius
+     - °C
+   * - Pressure
+     - Bar
+     - bar
+   * - Flow rate massique
+     - Kilogramme by seconde
+     - kg/s
+   * - Flow rate volumique
+     - Mètre cube by heure
+     - m³/h
+   * - Power
+     - Kilowatt
+     - kW
+   * - Energy
+     - Kilowatt-heure
+     - kWh
+
+.. warning::
+   Ne mélangez pas les unités (for example °C et K, ou bar et Pa) in les calculs.
+
+----
+
+Structure des results
+========================
+
+Les results sont accessibles de **deux manières** :
+
+Method 1 : Attributs de l'objet
+----------------------------------
+
+Accès direct aux propriétés calculateds :
+
+.. code-block:: python
+
+   from ThermodynamicCycles.Source import Source
+   
+   source = Source.Object()
+   source.Pi_bar = 5.0
+   source.fluid = "R134a"
+   source.calculate()
+   
+   # Accès direct
+   print(source.h_outlet)  # Enthalpie
+   print(source.T_outlet)  # Température
+
+Method 2 : DataFrame pandas
+-----------------------------
+
+Accès tabulaire for analyse et export :
+
+.. code-block:: python
+
+   # Tableau complet des résultats
+   print(source.df)
+   
+   # Accès à une colonne spécifique
+   print(source.df['h[J/kg]'])
+   
+   # Export vers Excel
+   source.df.to_excel('resultats.xlsx', index=False)
+
+.. tip::
+   Les DataFrames pandas allowstent une manipulation et analyse facile des results.
+
+----
+
+Building the Documentation en local
+====================================
+
+Pour prévisualiser la documentation ``EnergySystemModels-fr`` localement :
+
+.. code-block:: powershell
+
+   cd A:\OneDrive\_Github_\EnergySystemModels-fr\docs
+   python -m sphinx -b html source build\html
+
+Ouvrez ensuite ``build\html\index.html`` in votre navigateur.
+
+----
+
+Pour aller plus loin
+====================
+
+Documentation détaillée
+-----------------------
+
+Consultez les sections spécialisées :
+
+.. hlist::
+   :columns: 2
+
+   * :doc:`usage` - Guide d'usage complet
+   * :doc:`api` - Référence API détaillée
+   * :doc:`001-heat_transfer/index` - Heat Transfer
+   * :doc:`002-thermodynamic_cycles/index` - Thermodynamic Cycles
+   * :doc:`003-ahu_modules/index` - Centrales de traitement d'air
+   * :doc:`006-pinch_analysis/index` - Pinch Analysis
+
+----
+
+Ressources et support
+=====================
+
+Liens utiles
+------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Ressource
+     - Lien
+   * - 📚 Documentation en ligne
+     - https://energysystemmodels-fr.readthedocs.io/
+   * - 💻 Code source
+     - https://github.com/ZoheirHADID/EnergySystemModels
+   * - 📦 PyPI
+     - https://pypi.org/project/energysystemmodels/
+   * - 🐛 Issues et support
+     - https://github.com/ZoheirHADID/EnergySystemModels/issues
+
+Besoin d'aide ?
+---------------
+
+.. admonition:: Comment obtenir de l'aide
+   :class: tip
+
+   1. Consultez la :doc:`api` for la référence complète
+   2. Parcourez les examples in :doc:`usage`
+   3. Vérifiez les `Issues GitHub <https://github.com/ZoheirHADID/EnergySystemModels/issues>`_
+   4. Créez une nouvelle issue with un example minimal reproductible

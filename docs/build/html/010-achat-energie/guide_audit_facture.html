@@ -1,0 +1,678 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10.3. Guide pratique : Auditer une facture d’energy with Python &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../002-thermodynamic_cycles/index.html" />
+    <link rel="prev" title="10.2. Approvisionnement en Gaz Naturel - France" href="contrat_gaz.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">10. Energy Purchasing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#energy-bill-gas-and-electricity-common-principles">Energy bill (gas and electricity): common principles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#universal-principle">Universal principle</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="contrat_electricite.html">10.1. Electricity Grid Cost Calculation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contrat_gaz.html">10.2. Approvisionnement en Gaz Naturel - France</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.3. Guide pratique : Auditer une facture d’energy with Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#universal-structure-of-an-energy-bill">Universal Structure of an Energy Bill</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conversion-d-unites">Conversion d’unites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#principe-general">Principe general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#auditer-an-electricity-bill-en-france-turpe">10.3.1. Auditer an electricity bill en France (TURPE)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#auditer-une-facture-gas-en-france-atr">10.3.2. Auditer une facture gas en France (ATR)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#auditer-an-electricity-bill-en-algerie-sonalgaz">10.3.3. Auditer an electricity bill en Algerie (Sonalgaz)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#auditer-une-facture-gas-en-algerie-sonalgaz-gaz">10.3.4. Auditer une facture gas en Algerie (Sonalgaz Gaz)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-utilitaire-df-utils">10.3.5. Module utilitaire : df_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recuperer-tous-les-dataframes-en-une-fois">10.3.6. Recuperer tous les DataFrames en une fois</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">10. Energy Purchasing</a></li>
+      <li class="breadcrumb-item active">10.3. Guide pratique : Auditer une facture d’energy with Python</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/010-achat-energie/guide_audit_facture.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="guide-pratique-auditer-une-facture-d-energy-with-python">
+<span id="guide-audit-facture"></span><h1>10.3. Guide pratique : Auditer une facture d’energy with Python<a class="headerlink" href="#guide-pratique-auditer-une-facture-d-energy-with-python" title="Link to this heading"></a></h1>
+<p>This guide explains how to use the models <code class="docutils literal notranslate"><span class="pre">Facture</span></code> from the library
+EnergySystemModels for <strong>verifier et auditer</strong> an electricity bill ou
+gas, whether in France (TURPE, ATR) or in Algeria (Sonalgaz).</p>
+<div class="admonition-nouveaute-v20260408001 admonition">
+<p class="admonition-title">Nouveaute v20260408001</p>
+<p>Each calculateur produit now des <strong>DataFrames auditables</strong> (Option B)
+which detail each calculation row with: the formula used, the inputs,
+the coefficients and the result. The goal is to be able to check chaque
+composante d’une facture.</p>
+</div>
+<section id="universal-structure-of-an-energy-bill">
+<h2>Universal Structure of an Energy Bill<a class="headerlink" href="#universal-structure-of-an-energy-bill" title="Link to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+---------------------------------------------------------------+
+|                    FACTURE D&#39;ENERGIE                          |
++---------------------------------------------------------------+
+|                                                               |
+|  1. FOURNITURE (molecule)              = kWh x prix/kWh      |
+|     - Electricite : par poste horaire (Pointe, HPH, HCH...)  |
+|     - Gaz : prix fixe ou indexe (molecule)                    |
+|     + Certificats de capacite, ARENH, ENR                     |
+|                                                               |
+|  2. ACHEMINEMENT (reseau)              = composantes fixes    |
+|                                          + variables          |
+|     - Electricite : TURPE (CG+CC+CS+CMDPS+CACS)              |
+|     - Gaz : ATRD (distribution) + ATRT (transport)            |
+|                                                               |
+|  3. TAXES ET CONTRIBUTIONS                                    |
+|     - CTA (contribution tarifaire acheminement)               |
+|     - TICFE/CSPE (electricite) ou Accise/TICGN (gaz)          |
+|     - TVA : 5,5% sur fixe + 20% sur variable (France)        |
+|             ou 19% (Algerie)                                  |
+|                                                               |
++---------------------------------------------------------------+
+|  TOTAL HTVA = Fourniture + Acheminement + Taxes               |
+|  TOTAL TTC  = HTVA + TVA                                     |
++---------------------------------------------------------------+
+</pre></div>
+</div>
+</section>
+<section id="conversion-d-unites">
+<h2>Conversion d’unites<a class="headerlink" href="#conversion-d-unites" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 30.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Unite</p></th>
+<th class="head"><p>Conversion</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1 thermie (th)</p></td>
+<td><p>= 1,163 kWh = 0,001163 MWh</p></td>
+<td><p>Gaz naturel en Algerie (Sonalgaz)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1 MWh</p></td>
+<td><p>= 1 000 kWh</p></td>
+<td><p>Standard international</p></td>
+</tr>
+<tr class="row-even"><td><p>1 m3(n) gaz</p></td>
+<td><p>x PCS (~11,5 kWh/m3) = kWh</p></td>
+<td><p>Conversion volume → energy (France)</p></td>
+</tr>
+<tr class="row-odd"><td><p>cDA/kWh</p></td>
+<td><p>= centimes de Dinar by kWh</p></td>
+<td><p>Tarif Sonalgaz (diviser by 100 for DA/kWh)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="principe-general">
+<h2>Principe general<a class="headerlink" href="#principe-general" title="Link to this heading"></a></h2>
+<p>Each calculator produces several DataFrames per section :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>DataFrame</p></th>
+<th class="head"><p>Contenu</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df_contrat</span></code></p></td>
+<td><p>Parametres contractuels : tension, tarif, powers souscrites, period</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df_fourniture_detail</span></code></p></td>
+<td><p>Detail de la fourniture d’energy : kWh x prix by poste horaire, capacite, ARENH</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df_acheminement</span></code></p></td>
+<td><p>Detail du TURPE (France elec) : CG, CC, CS fixe/variable, CMDPS, CACS</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df_transport</span></code></p></td>
+<td><p>Detail ATRT (France gaz) : TCS, TCR, TCL, compensation stockage</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df_distribution</span></code></p></td>
+<td><p>Detail ATRD (France gaz) : fixe, capacite, variable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df_taxes</span></code></p></td>
+<td><p>Taxes et contributions : CTA, TICFE/CSPE, TICGN, TVA</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df_totaux</span></code></p></td>
+<td><p>Synthese : HT, TTC, couts unitaires EUR/MWh</p></td>
+</tr>
+</tbody>
+</table>
+<p>Colonnes standard de chaque DataFrame :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 85.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Colonne</p></th>
+<th class="head"><p>Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Ligne</strong></p></td>
+<td><p>Description du poste de calcul</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Formule</strong></p></td>
+<td><p>Equation used (ex: <code class="docutils literal notranslate"><span class="pre">kWh</span> <span class="pre">x</span> <span class="pre">prix</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Entree(s)</strong></p></td>
+<td><p>Valeurs d’entree formatees (ex: <code class="docutils literal notranslate"><span class="pre">150,000</span> <span class="pre">kWh</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Coefficient</strong></p></td>
+<td><p>Taux ou coefficient utilise + source (ex: <code class="docutils literal notranslate"><span class="pre">0.00827</span> <span class="pre">EUR/kWh</span> <span class="pre">(ATRD7)</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Resultat</strong></p></td>
+<td><p>Montant calculates</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Annuel</strong></p></td>
+<td><p>Projection annuelle (si applicable)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="auditer-an-electricity-bill-en-france-turpe">
+<h2>10.3.1. Auditer an electricity bill en France (TURPE)<a class="headerlink" href="#auditer-an-electricity-bill-en-france-turpe" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Facture.TURPE</span><span class="w"> </span><span class="kn">import</span> <span class="n">TurpeCalculator</span><span class="p">,</span> <span class="n">input_Contrat</span><span class="p">,</span> <span class="n">input_Tarif</span><span class="p">,</span> <span class="n">input_Facture</span>
+
+<span class="c1"># 1. Entrees : recopier les donnees de la facture</span>
+<span class="n">contrat</span> <span class="o">=</span> <span class="n">input_Contrat</span><span class="p">(</span>
+    <span class="n">domaine_tension</span><span class="o">=</span><span class="s2">&quot;HTA&quot;</span><span class="p">,</span>
+    <span class="n">version_utilisation</span><span class="o">=</span><span class="s2">&quot;CU_pf&quot;</span><span class="p">,</span>
+    <span class="n">cadre_contractuel</span><span class="o">=</span><span class="s2">&quot;contrat unique&quot;</span><span class="p">,</span>
+    <span class="n">PS_pointe</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">PS_HPH</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">PS_HCH</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">PS_HPB</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">PS_HCB</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">tarif</span> <span class="o">=</span> <span class="n">input_Tarif</span><span class="p">(</span>
+    <span class="n">c_euro_kWh_pointe</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HPH</span><span class="o">=</span><span class="mf">0.09</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HCH</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HPB</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span>
+    <span class="n">c_euro_kWh_HCB</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">facture</span> <span class="o">=</span> <span class="n">input_Facture</span><span class="p">(</span>
+    <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2025-01-01&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2025-01-31&quot;</span><span class="p">,</span>
+    <span class="n">kWh_pointe</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">kWh_HPH</span><span class="o">=</span><span class="mi">30000</span><span class="p">,</span> <span class="n">kWh_HCH</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span>
+    <span class="n">kWh_HPB</span><span class="o">=</span><span class="mi">25000</span><span class="p">,</span> <span class="n">kWh_HCB</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. Calcul</span>
+<span class="n">calc</span> <span class="o">=</span> <span class="n">TurpeCalculator</span><span class="p">(</span><span class="n">contrat</span><span class="p">,</span> <span class="n">tarif</span><span class="p">,</span> <span class="n">facture</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">calculate_turpe</span><span class="p">()</span>
+
+<span class="c1"># 3. Consultation des resultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== CONTRAT ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_contrat</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== FOURNITURE ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_fourniture_detail</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== ACHEMINEMENT (TURPE) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_acheminement</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== TAXES ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_taxes</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== TOTAUX ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_totaux</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># 4. Graphiques</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>          <span class="c1"># Donut : Fourniture / TURPE / Taxes</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">plot_detail</span><span class="p">()</span>   <span class="c1"># Cascades detaillees</span>
+</pre></div>
+</div>
+<p><strong>Output realle (df_acheminement)</strong> :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                       Ligne                                   Formule       Entrée(s)                Coefficient  Résultat   Annuel
+  Composante de Gestion (CG)                            CG_annuel / 12   361.20 EUR/an                   31 jours     30.10    361.2
+ Composante de Comptage (CC)                            CC_annuel / 12   306.00 EUR/an                   31 jours     25.50    306.0
+              CS Fixe Pointe                            b0 x PS_Pointe          100 kW 6.4400 EUR/kW/an (TURPE 5)    644.00
+          CS Fixe HPH-Pointe                 b1 x (PS_HPH - PS_Pointe)          100 kW 6.4400 EUR/kW/an (TURPE 5)    644.00
+             CS Fixe HCH-HPH                    b2 x (PS_HCH - PS_HPH)            0 kW 6.4400 EUR/kW/an (TURPE 5)      0.00
+             CS Fixe HPB-HCH                    b3 x (PS_HPB - PS_HCH)            0 kW 6.4400 EUR/kW/an (TURPE 5)      0.00
+             CS Fixe HCB-HPB                    b4 x (PS_HCB - PS_HPB)            0 kW 6.4400 EUR/kW/an (TURPE 5)      0.00
+       = CS Fixe (proratisé)                 CS_annuel x nb_jour / 365 1,288.00 EUR/an                   31 jours    109.39   1288.0
+          CS Variable Pointe                     c_Pointe x kWh_Pointe       5,000 kWh  0.03690 EUR/kWh (TURPE 5)    184.50
+             CS Variable HPH                           c_HPH x kWh_HPH      30,000 kWh  0.03690 EUR/kWh (TURPE 5)   1107.00
+             CS Variable HCH                           c_HCH x kWh_HCH      20,000 kWh  0.03690 EUR/kWh (TURPE 5)    738.00
+             CS Variable HPB                           c_HPB x kWh_HPB      25,000 kWh  0.03690 EUR/kWh (TURPE 5)    922.50
+             CS Variable HCB                           c_HCB x kWh_HCB      15,000 kWh  0.03690 EUR/kWh (TURPE 5)    553.50
+         = CS Variable total                             Somme c x kWh                                              3505.50
+      Dépassement PS (CMDPS)                             CMDPS mensuel                                                 0.00
+= TOTAL TURPE (acheminement) CG + CC + CS_fixe + CS_var + CMDPS + CACS                                              3671.56  44021.2
+</pre></div>
+</div>
+<p><strong>Output realle (df_totaux)</strong> :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                      Ligne                    Formule Entrée(s) Coefficient  Résultat
+                 Fourniture                                                    6950.00
+       Acheminement (TURPE)                                                    3671.56
+     Taxes et contributions                                                      83.68
+               = Total HTVA Fourniture + TURPE + Taxes                        10705.24
+                    TVA 20%           Total_HTVA x 20%                         2141.05
+                = Total TTC                 HTVA + TVA                        12846.29
+        Coût HTVA (EUR/MWh)           Total_HTVA / MWh 95.00 MWh                112.69
+  Coût fourniture (EUR/MWh)           Fourniture / MWh                           73.16
+Coût distribution (EUR/MWh)                TURPE / MWh                           38.65
+       Coût taxes (EUR/MWh)                Taxes / MWh                            0.88
+</pre></div>
+</div>
+<p><strong>Lecture du tableau</strong> :</p>
+<p>Each row of the <code class="docutils literal notranslate"><span class="pre">df_acheminement</span></code> montre :</p>
+<ul class="simple">
+<li><p>Les coefficients <strong>b</strong> (part power) with la version TURPE used</p></li>
+<li><p>Les coefficients <strong>c</strong> (part energy) by poste horaire</p></li>
+<li><p>La formule exacte : <code class="docutils literal notranslate"><span class="pre">b0</span> <span class="pre">x</span> <span class="pre">PS_Pointe</span></code>, <code class="docutils literal notranslate"><span class="pre">c_HPH</span> <span class="pre">x</span> <span class="pre">kWh_HPH</span></code>, etc.</p></li>
+<li><p>Les subtotals CS fixe et CS variable</p></li>
+</ul>
+<p><strong>Verifier un difference :</strong> Comparez chaque ligne du <code class="docutils literal notranslate"><span class="pre">df_acheminement</span></code> with les
+amounts de votre facture ENEDIS. Les coefficients b et c must match
+a la grille TURPE in force (publiee by la CRE).</p>
+</section>
+<section id="auditer-une-facture-gas-en-france-atr">
+<h2>10.3.2. Auditer une facture gas en France (ATR)<a class="headerlink" href="#auditer-une-facture-gas-en-france-atr" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Facture.ATR_Transport_Distribution</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ATR_calculation</span><span class="p">,</span> <span class="n">input_Contrat</span><span class="p">,</span> <span class="n">input_Facture</span><span class="p">,</span> <span class="n">input_Tarif</span>
+<span class="p">)</span>
+
+<span class="c1"># 1. Entrees</span>
+<span class="n">contrat</span> <span class="o">=</span> <span class="n">input_Contrat</span><span class="p">(</span>
+    <span class="n">type_tarif_acheminement</span><span class="o">=</span><span class="s2">&quot;T4&quot;</span><span class="p">,</span>
+    <span class="n">CAR_MWh</span><span class="o">=</span><span class="mi">8920</span><span class="p">,</span>              <span class="c1"># Consommation Annuelle de Reference (MWh)</span>
+    <span class="n">CJA_MWh_j</span><span class="o">=</span><span class="mi">93</span><span class="p">,</span>              <span class="c1"># Capacite Journaliere Annualisee (MWh/j)</span>
+    <span class="n">station_meteo</span><span class="o">=</span><span class="s2">&quot;PARIS-MONTSOURIS&quot;</span><span class="p">,</span>
+    <span class="n">profil</span><span class="o">=</span><span class="s2">&quot;P016&quot;</span><span class="p">,</span>
+    <span class="n">reseau_transport</span><span class="o">=</span><span class="s2">&quot;naTran&quot;</span><span class="p">,</span>
+    <span class="n">niv_tarif_region</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">facture</span> <span class="o">=</span> <span class="n">input_Facture</span><span class="p">(</span>
+    <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2024-01-31&quot;</span><span class="p">,</span>
+    <span class="n">kWh_total</span><span class="o">=</span><span class="mi">1358713</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">tarif</span> <span class="o">=</span> <span class="n">input_Tarif</span><span class="p">(</span><span class="n">prix_kWh</span><span class="o">=</span><span class="mf">0.03171</span><span class="p">)</span>
+
+<span class="c1"># 2. Calcul</span>
+<span class="n">calc</span> <span class="o">=</span> <span class="n">ATR_calculation</span><span class="p">(</span><span class="n">contrat</span><span class="p">,</span> <span class="n">facture</span><span class="p">,</span> <span class="n">tarif</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># 3. Resultats par section</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== CONTRAT ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_contrat</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== FOURNITURE ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_fourniture</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== TRANSPORT (ATRT) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_transport</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== DISTRIBUTION (ATRD) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_distribution</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== TAXES ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_taxes</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== TOTAUX ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_totaux</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># 4. Graphiques</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>            <span class="c1"># Donut : Acheminement / Consommation / Taxes</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">plot_detail</span><span class="p">()</span>     <span class="c1"># Cascades ATRD, ATRT, Taxes</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">plot_euro_MWh</span><span class="p">()</span>   <span class="c1"># Couts unitaires EUR/MWh</span>
+</pre></div>
+</div>
+<p><strong>Points cles a verifier :</strong></p>
+<ul class="simple">
+<li><p><strong>CJN</strong> : calculated automatiquement from CAR x Zi x A (coefficients meteo et network)</p></li>
+<li><p><strong>ATRT</strong> : Transport = TCS + TCR x NTR + TCL (coefficients annuels naTran (ex-GRTgaz)/Terega)</p></li>
+<li><p><strong>ATRD</strong> : Distribution = fixe + capacite + variable (coefficients GRDF)</p></li>
+<li><p><strong>TVA</strong> : 5,5% on fixe+CTA, 20% on variable+molecule+accise</p></li>
+</ul>
+</section>
+<section id="auditer-an-electricity-bill-en-algerie-sonalgaz">
+<h2>10.3.3. Auditer an electricity bill en Algerie (Sonalgaz)<a class="headerlink" href="#auditer-an-electricity-bill-en-algerie-sonalgaz" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Facture.SONALGAZ_Elec</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sonalgaz_Elec</span><span class="p">,</span> <span class="n">input_Contrat</span><span class="p">,</span> <span class="n">input_Facture</span>
+
+<span class="c1"># 1. Entrees (relever sur la facture Sonalgaz)</span>
+<span class="n">facture</span> <span class="o">=</span> <span class="n">input_Facture</span><span class="p">(</span>
+    <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2025-01-01&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2025-01-31&quot;</span><span class="p">,</span>
+    <span class="n">kWh_pointe</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+    <span class="n">kWh_pleine</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+    <span class="n">kWh_jour</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span>
+    <span class="n">kWh_nuit</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span>
+    <span class="n">kvarh_reactif</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>    <span class="c1"># Energie reactive mesuree</span>
+    <span class="n">PMA_kW</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>            <span class="c1"># Puissance Maximale Atteinte</span>
+<span class="p">)</span>
+<span class="n">contrat</span> <span class="o">=</span> <span class="n">input_Contrat</span><span class="p">(</span>
+    <span class="n">code_tarif</span><span class="o">=</span><span class="s2">&quot;41&quot;</span><span class="p">,</span>       <span class="c1"># HTA : 41, 42, 43, 44 / HTB : 31, 32 / BT : 51M-54NM</span>
+    <span class="n">PMD_kW</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>            <span class="c1"># Puissance Mise a Disposition</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. Calcul</span>
+<span class="n">calc</span> <span class="o">=</span> <span class="n">Sonalgaz_Elec</span><span class="p">(</span><span class="n">contrat</span><span class="p">,</span> <span class="n">facture</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># 3. Resultats detailles</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_contrat</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_fourniture_detail</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_totaux</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># 4. Graphiques</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">plot_detail</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Codes tarif Sonalgaz Electricite :</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Tension</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>41</p></td>
+<td><p>HTA</p></td>
+<td><p>Postes horaires : Pointe, Pleine, Jour, Hors Pointe, Nuit</p></td>
+</tr>
+<tr class="row-odd"><td><p>42</p></td>
+<td><p>HTA</p></td>
+<td><p>Postes : Pointe, Hors Pointe</p></td>
+</tr>
+<tr class="row-even"><td><p>43</p></td>
+<td><p>HTA</p></td>
+<td><p>Postes : Pointe, Jour, Nuit</p></td>
+</tr>
+<tr class="row-odd"><td><p>44</p></td>
+<td><p>HTA</p></td>
+<td><p>Poste unique</p></td>
+</tr>
+<tr class="row-even"><td><p>31</p></td>
+<td><p>HTB</p></td>
+<td><p>Postes : Pointe, Pleine, Nuit</p></td>
+</tr>
+<tr class="row-odd"><td><p>32</p></td>
+<td><p>HTB</p></td>
+<td><p>Poste unique</p></td>
+</tr>
+<tr class="row-even"><td><p>51M-54M</p></td>
+<td><p>BT</p></td>
+<td><p>Basse Tension mesure (54M = tranches progressives)</p></td>
+</tr>
+<tr class="row-odd"><td><p>51NM-54NM</p></td>
+<td><p>BT</p></td>
+<td><p>Basse Tension non-mesure</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Energie reactive :</strong> Un seuil de 50% de l’energy active est gratuit.
+Au-dela, un malus s’applique. En-dessous, un bonus est accorde.</p>
+</section>
+<section id="auditer-une-facture-gas-en-algerie-sonalgaz-gaz">
+<h2>10.3.4. Auditer une facture gas en Algerie (Sonalgaz Gaz)<a class="headerlink" href="#auditer-une-facture-gas-en-algerie-sonalgaz-gaz" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Facture.SONALGAZ_gaz</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sonalgaz_Gaz</span><span class="p">,</span> <span class="n">input_Contrat</span><span class="p">,</span> <span class="n">input_Facture</span>
+
+<span class="c1"># 1. Entrees</span>
+<span class="n">facture</span> <span class="o">=</span> <span class="n">input_Facture</span><span class="p">(</span>
+    <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2025-01-01&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2025-01-31&quot;</span><span class="p">,</span>
+    <span class="n">thermies</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span>           <span class="c1"># Consommation en thermies</span>
+    <span class="n">DMA_thermie_h</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>         <span class="c1"># Debit Maximal Absorbe</span>
+    <span class="c1"># Optionnel : montants releves pour comparaison</span>
+    <span class="n">releve_fixe</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span>
+    <span class="n">releve_DMD</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+    <span class="n">releve_DMA</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+    <span class="n">releve_energie</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+    <span class="n">releve_total_ht</span><span class="o">=</span><span class="mi">9300</span><span class="p">,</span>
+    <span class="n">releve_tva</span><span class="o">=</span><span class="mi">1767</span><span class="p">,</span>
+    <span class="n">redevance_entretien</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">contrat</span> <span class="o">=</span> <span class="n">input_Contrat</span><span class="p">(</span>
+    <span class="n">code_tarif</span><span class="o">=</span><span class="s2">&quot;11&quot;</span><span class="p">,</span>          <span class="c1"># HP : 11, 21T / MP : 21, 22 / BP : 23M, 23NM</span>
+    <span class="n">DMD_thermie_h</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>         <span class="c1"># Debit Mis a Disposition (souscrit)</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. Calcul</span>
+<span class="n">calc</span> <span class="o">=</span> <span class="n">Sonalgaz_Gaz</span><span class="p">(</span><span class="n">contrat</span><span class="p">,</span> <span class="n">facture</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># 3. Tableau de comparaison releve vs calcule</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># 4. DataFrames auditables detailles</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_contrat</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_fourniture_detail</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_charges</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">df_totaux</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Codes tarif Sonalgaz Gaz :</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Pressure</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>HP</p></td>
+<td><p>Haute Pressure : fixe + DMD + DMA + energy lineaire</p></td>
+</tr>
+<tr class="row-odd"><td><p>21T</p></td>
+<td><p>HP</p></td>
+<td><p>Haute Pressure Transport</p></td>
+</tr>
+<tr class="row-even"><td><p>21</p></td>
+<td><p>MP</p></td>
+<td><p>Moyenne Pressure : fixe + DMD + DMA + energy lineaire</p></td>
+</tr>
+<tr class="row-odd"><td><p>22</p></td>
+<td><p>MP</p></td>
+<td><p>Moyenne Pressure tarif reduit</p></td>
+</tr>
+<tr class="row-even"><td><p>23M</p></td>
+<td><p>BP</p></td>
+<td><p>Basse Pressure mesure : tranches progressives</p></td>
+</tr>
+<tr class="row-odd"><td><p>23NM</p></td>
+<td><p>BP</p></td>
+<td><p>Basse Pressure non-mesure : tranches progressives</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-utilitaire-df-utils">
+<h2>10.3.5. Module utilitaire : df_utils<a class="headerlink" href="#module-utilitaire-df-utils" title="Link to this heading"></a></h2>
+<p>The module <code class="docutils literal notranslate"><span class="pre">Facture.df_utils</span></code> fournit les fonctions shared by tous les
+calculateurs for construire les DataFrames auditables :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Facture.df_utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">add_row</span><span class="p">,</span>             <span class="c1"># Ajouter une ligne au tableau</span>
+    <span class="n">build_section_df</span><span class="p">,</span>    <span class="c1"># Construire un DataFrame de section</span>
+    <span class="n">format_number</span><span class="p">,</span>       <span class="c1"># Formater un nombre (separateurs, unite)</span>
+    <span class="n">smart_round</span><span class="p">,</span>         <span class="c1"># Arrondi adaptatif (&lt;10 : 6 dec, &gt;=10 : 2 dec)</span>
+    <span class="n">fmt</span><span class="p">,</span>                 <span class="c1"># Formater ou retourner &#39;---&#39; si None</span>
+    <span class="n">ecart</span><span class="p">,</span>               <span class="c1"># Calculer l&#39;ecart releve vs calcule</span>
+    <span class="n">add_comparison_row</span><span class="p">,</span>  <span class="c1"># Ligne de comparaison</span>
+    <span class="n">build_comparison_df</span><span class="p">,</span> <span class="c1"># DataFrame de comparaison</span>
+    <span class="n">set_display_options</span><span class="p">,</span> <span class="c1"># Configurer pandas pour affichage optimal</span>
+    <span class="n">STANDARD_COLUMNS</span><span class="p">,</span>    <span class="c1"># [&#39;Ligne&#39;, &#39;Formule&#39;, &#39;Entree(s)&#39;, &#39;Coefficient&#39;, &#39;Resultat&#39;, &#39;Annuel&#39;]</span>
+    <span class="n">COMPARISON_COLUMNS</span><span class="p">,</span>  <span class="c1"># [&#39;Composante&#39;, &#39;Releve (facture)&#39;, &#39;Calcule (Python)&#39;, &#39;Ecart&#39;]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="recuperer-tous-les-dataframes-en-une-fois">
+<h2>10.3.6. Recuperer tous les DataFrames en une fois<a class="headerlink" href="#recuperer-tous-les-dataframes-en-une-fois" title="Link to this heading"></a></h2>
+<p>Pour le modele ATR gaz, une methode <code class="docutils literal notranslate"><span class="pre">get_dataframes()</span></code> retourne un
+dictionnaire de tous les DataFrames :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">calc</span> <span class="o">=</span> <span class="n">ATR_calculation</span><span class="p">(</span><span class="n">contrat</span><span class="p">,</span> <span class="n">facture</span><span class="p">,</span> <span class="n">tarif</span><span class="p">)</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="n">dfs</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">get_dataframes</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;=== </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> lignes) ===&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contrat_gaz.html" class="btn btn-neutral float-left" title="10.2. Approvisionnement en Gaz Naturel - France" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../002-thermodynamic_cycles/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

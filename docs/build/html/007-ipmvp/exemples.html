@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPMVP — Example complet (Option C) &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mesure des économies" href="mesure_economies.html" />
+    <link rel="prev" title="IPMVP - Measurement and Verification" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">IPMVP - Measurement and Verification</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">IPMVP — Example complet (Option C)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-a-copier">Code à copier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interpretation">Interprétation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mesure_economies.html">Mesure des économies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeles_mathematiques.html">Usage du module IPMVP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contexte.html">Contexte et théorie IPMVP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">IPMVP - Measurement and Verification</a></li>
+      <li class="breadcrumb-item active">IPMVP — Example complet (Option C)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/007-ipmvp/exemples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ipmvp-example-complet-option-c">
+<h1>IPMVP — Example complet (Option C)<a class="headerlink" href="#ipmvp-example-complet-option-c" title="Link to this heading"></a></h1>
+<section id="code-a-copier">
+<h2>Code à copier<a class="headerlink" href="#code-a-copier" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPMVP.IPMVP</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mathematical_Models</span>
+
+<span class="c1"># --- Données mensuelles livrées avec le paquet : consommation + DJU ---</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;src/IPMVP/IPMVP_input.xlsx&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Mois&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Mois&quot;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Mois&quot;</span><span class="p">)</span>
+<span class="n">col_conso</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;consommation&quot;</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;DJU&quot;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="n">col_conso</span><span class="p">]</span>
+
+<span class="c1"># --- Ajustement baseline + calcul des économies (tuple de 9 éléments) ---</span>
+<span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">df_bl</span><span class="p">,</span> <span class="n">conformite</span><span class="p">,</span> <span class="n">table_inc</span><span class="p">,</span>
+ <span class="n">y_pred_report</span><span class="p">,</span> <span class="n">df_report</span><span class="p">,</span> <span class="n">conformite_report</span><span class="p">,</span> <span class="n">table_inc_report</span><span class="p">,</span>
+ <span class="n">df_savings</span><span class="p">)</span> <span class="o">=</span> <span class="n">Mathematical_Models</span><span class="p">(</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>    <span class="c1"># période de référence</span>
+    <span class="n">datetime</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>  <span class="c1"># période de suivi</span>
+    <span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seuil_z_scores</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">site</span><span class="o">=</span><span class="s2">&quot;exemple_site&quot;</span><span class="p">,</span>
+    <span class="n">imposed_intercept</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1"># None = constante libre ; 0 = régression par l&#39;origine</span>
+    <span class="n">niveau_confiance</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>     <span class="c1"># niveau de confiance de l&#39;incertitude</span>
+    <span class="n">print_report</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>        <span class="c1"># génère le rapport .docx + les figures matplotlib</span>
+<span class="p">)</span>
+
+<span class="c1"># --- Prints de revue de chaque sortie ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== MODÈLE BASELINE (df_bl) ===&quot;</span><span class="p">);</span>       <span class="nb">print</span><span class="p">(</span><span class="n">df_bl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== CONFORMITÉ IPMVP (conformite) ===&quot;</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">conformite</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== INCERTITUDE MODÈLE (table_inc) ===&quot;</span><span class="p">);</span><span class="nb">print</span><span class="p">(</span><span class="n">table_inc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== ÉCONOMIES (df_savings) ===&quot;</span><span class="p">);</span>        <span class="nb">print</span><span class="p">(</span><span class="n">df_savings</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">df_bl</span></code> — coefficients, qualité d’ajustement, erreurs types, statistiques de Student :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                  ANTE-POST
+coef_const   -320568.488196
+coef_DJU        3564.640541
+r2                 0.810000
+rmse          236260.000000
+cv_rmse            0.530000
+ddof              42.000000
+serr_const     66779.500000
+serr_DJU         262.400000
+stat_t_const      -4.800000
+stat_t_DJU        13.600000
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">conformite</span></code> — verdict IPMVP :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>              valeur  conformité IPMVP
+r2              0.81              True
+cv_remse        0.53             False
+stat_t_const   -4.80             False
+stat_t_DJU     13.60              True
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">table_inc</span></code> — incertitude du model (niveau de confiance 80 %) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                         valeurs
+gamma                       0.10
+niveau_confiance            0.80
+stat_t_normale              1.30
+Erreur type (rmse)     236260.04
+precision_absolue +/-  307618.95
+precision_relative          0.69
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df_savings</span></code> — économies (détaillées au chapter <a class="reference internal" href="mesure_economies.html"><span class="doc">Mesure des économies</span></a>) :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           ANTE-POST    POST-ANTE
+Relevé de consommation    3914387.73  19655625.79
+Prédiction                4624795.55  16156026.80
+pourcentage d&#39;économie&gt;0       18.15        17.80
+</pre></div>
+</div>
+</section>
+<section id="interpretation">
+<h2>Interprétation<a class="headerlink" href="#interpretation" title="Link to this heading"></a></h2>
+<p>The model de référence est <code class="docutils literal notranslate"><span class="pre">Conso</span> <span class="pre">=</span> <span class="pre">3564,64</span> <span class="pre">×</span> <span class="pre">DJU</span> <span class="pre">−</span> <span class="pre">320568,49</span></code> : il explique
+81 % de la variance (<code class="docutils literal notranslate"><span class="pre">r2</span></code> = 0,81) et la variable DJU est très significative
+(<code class="docutils literal notranslate"><span class="pre">stat_t_DJU</span></code> = 13,6). Le <code class="docutils literal notranslate"><span class="pre">cv_remse</span></code> (0,53) dépasse le seuil IPMVP de 0,20 —
+dispersion résiduelle à réduire (variables explicatives supplémentaires ou
+meilleure granularité). The calculation des économies est traité au chapter suivant,
+<a class="reference internal" href="mesure_economies.html"><span class="doc">Mesure des économies</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">Mathematical_Models</span></code> <strong>returns a 9-item tuple</strong> ; il n’existe pas
+d’objet <code class="docutils literal notranslate"><span class="pre">model</span></code> with attributs <code class="docutils literal notranslate"><span class="pre">.r2</span></code> ou methods <code class="docutils literal notranslate"><span class="pre">plot_*</span></code>. Les figures
+et les tables baseline <strong>et</strong> reporting sont produites in le rapport
+<code class="docutils literal notranslate"><span class="pre">.docx</span></code> généré by <code class="docutils literal notranslate"><span class="pre">print_report=True</span></code> (via <code class="docutils literal notranslate"><span class="pre">docx_report</span></code>).</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="IPMVP - Measurement and Verification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mesure_economies.html" class="btn btn-neutral float-right" title="Mesure des économies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

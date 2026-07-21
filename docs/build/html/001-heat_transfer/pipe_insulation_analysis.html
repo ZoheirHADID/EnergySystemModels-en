@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isolation des pipex &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Transfer de Chaleur" href="../transfert_chaleur.html" />
+    <link rel="prev" title="Mur composite" href="composite_wall_heat_transfer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">1. Heat Transfer</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="corps_parallelepipedique.html">Corps parallélépipédique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composite_wall_heat_transfer.html">Mur composite</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Isolation des pipex</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#possible-parameters">Possible Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explication-du-model">Explication du model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">1. Heat Transfer</a></li>
+      <li class="breadcrumb-item active">Isolation des pipex</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/001-heat_transfer/pipe_insulation_analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="isolation-des-pipex">
+<h1>Isolation des pipex<a class="headerlink" href="#isolation-des-pipex" title="Link to this heading"></a></h1>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/001_heat_transfer_pipe_insulation.png"><img alt="Pipe Insulation Analysis" class="align-center" src="../_images/001_heat_transfer_pipe_insulation.png" style="width: 600px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">HeatTransfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipeInsulationAnalysis</span>
+
+<span class="c1"># Créer un objet d&#39;analyse d&#39;isolation de tuyau</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">PipeInsulationAnalysis</span><span class="o">.</span><span class="n">Object</span><span class="p">(</span>
+    <span class="n">fluid</span><span class="o">=</span><span class="s1">&#39;water&#39;</span><span class="p">,</span>
+    <span class="n">T_fluid</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span>
+    <span class="n">F_m3h</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">DN</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+    <span class="n">L_tube</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">material</span><span class="o">=</span><span class="s1">&#39;Acier&#39;</span><span class="p">,</span>
+    <span class="n">insulation</span><span class="o">=</span><span class="s1">&#39;laine minérale&#39;</span><span class="p">,</span>
+    <span class="n">insulation_thickness</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span>
+    <span class="n">Tamb</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+
+<span class="c1"># Calculer les déperditions</span>
+<span class="n">pipe</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Afficher les résultats</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Déperditions totales: </span><span class="si">{</span><span class="n">pipe</span><span class="o">.</span><span class="n">q_total</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Température de surface: </span><span class="si">{</span><span class="n">pipe</span><span class="o">.</span><span class="n">Tc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> °C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pipe</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Results</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Déperditions totales: 8050.03 W
+Surface temperature: 28.87 °C
+                                                         0
+Fluid                                                water
+Regime                                           turbulent
+T_fluid (°C)                                            70
+v (m/s)                                           1.080789
+F_m3h (m3/h)                                            20
+DN                                                    80.0
+di (m)                                              0.0809
+de (m)                                              0.0889
+L_tube (m)                                             500
+Material                                             Acier
+Insulation                                  laine minérale
+Insulation Thickness (m)                              0.04
+Emissivity                                            0.01
+Tamb (°C)                                               20
+Humidity (%)                                            40
+Flow Regime                                      turbulent
+Tc (°C)                                          28.868999
+Tf (°C)                                          24.434499
+Outer Diameter with Insulation (m)                  0.1689
+Prandtl Number (Pr)                               2.562899
+External Surface Area (m²)                      265.307276
+Rayleigh Number                             4226671.100079
+Nusselt Number                                   21.942496
+Average Heat Transfer Coefficient (W/m².K)        3.361376
+Convective Heat Transfer (W)                   7909.350594
+Radiative Heat Transfer (W)                      140.67688
+Total Heat Transfer (W)                        8050.027474
+Convective Resistance (K/W)                       0.001121
+Radiative Resistance (K/W)                        0.063045
+Equivalent Resistance (K/W)                       0.001102
+Internal Surface Area (m²)                      127.077315
+Reynolds Number (Re_fluid)                   211849.962282
+velocity (m/s)                                    1.080789
+Nusselt Number (self.Nu_fluid)                  611.002747
+Heat Transfer Coefficient (self.h_fluid)       4982.869046
+Internal Convective Resistance (K/W)              0.000002
+Internal Wall Temperature (°C)                   69.987287
+External Wall Temperature (°C)                   69.982454
+Insulation Temperature (°C)                      28.868999
+Conductive Resistance of Bare Tube (K/W)          0.000001
+</pre></div>
+</div>
+<p>The calculation retourne :</p>
+<ul class="simple">
+<li><p><strong>Heat loss totales</strong> (<code class="docutils literal notranslate"><span class="pre">q_total</span></code>) [W]</p></li>
+<li><p><strong>Surface temperature externe</strong> (<code class="docutils literal notranslate"><span class="pre">Tc</span></code>) [°C]</p></li>
+<li><p><strong>DataFrame détaillé</strong> incluant :</p>
+<ul>
+<li><p>Properties of the fluid (viscosité, conductivité, densité, Cp)</p></li>
+<li><p>Régime d’écoulement (laminaire/turbulent)</p></li>
+<li><p>Numbers adimensionnels (Reynolds, Prandtl, Nusselt, Rayleigh)</p></li>
+<li><p>Coefficients de transfert thermique [W/m²·K]</p></li>
+<li><p>Résistances thermiques [K/W]</p></li>
+<li><p>Temperatures aux interfaces [°C]</p></li>
+<li><p>Déperditions by convection et rayonnement [W]</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="possible-parameters">
+<h2>Possible Parameters<a class="headerlink" href="#possible-parameters" title="Link to this heading"></a></h2>
+<p><strong>Matériaux de pipe disponibles (material)</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'Cuivre'</span></code> (λ = 380 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Plomb'</span></code> (λ = 35 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Acier'</span></code> (λ = 50 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Aluminium</span> <span class="pre">99%'</span></code> (λ = 160 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Fonte'</span></code> (λ = 50 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Zinc'</span></code> (λ = 110 W/m·K)</p></li>
+</ul>
+<p><strong>Matériaux d’isolation disponibles (insulation)</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'aucun</span> <span class="pre">isolant'</span></code> (λ = 0 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'laine</span> <span class="pre">minérale'</span></code> (λ = 0.04 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'polyuréthanne</span> <span class="pre">PUR'</span></code> (λ = 0.03 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'polystyrène'</span></code> (λ = 0.036 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'polyéthylène'</span></code> (λ = 0.038 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Liège</span> <span class="pre">(ICB)'</span></code> (λ = 0.05 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Laine</span> <span class="pre">minérale</span> <span class="pre">(MW)'</span></code> (λ = 0.045 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Polystyrène</span> <span class="pre">expansé</span> <span class="pre">(EPS)'</span></code> (λ = 0.045 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Polyéthylène</span> <span class="pre">extrudé</span> <span class="pre">(PEF)'</span></code> (λ = 0.045 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Mousse</span> <span class="pre">phénolique</span> <span class="pre">–</span> <span class="pre">revêtu</span> <span class="pre">(PF)'</span></code> (λ = 0.045 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Polyuréthane</span> <span class="pre">–</span> <span class="pre">revêtu</span> <span class="pre">(PUR/PIR)'</span></code> (λ = 0.035 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Polystyrène</span> <span class="pre">extrudé</span> <span class="pre">(XPS)'</span></code> (λ = 0.04 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Verre</span> <span class="pre">cellulaire</span> <span class="pre">(CG)'</span></code> (λ = 0.055 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Perlite</span> <span class="pre">(EPB)'</span></code> (λ = 0.06 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Vermiculite'</span></code> (λ = 0.065 W/m·K)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Vermiculite</span> <span class="pre">expansée</span> <span class="pre">(panneaux)'</span></code> (λ = 0.09 W/m·K)</p></li>
+</ul>
+<p><strong>Diameters nominaux (DN) disponibles</strong> :</p>
+<p>DN de 6 à 1050 mm (voir table complète in le code source)</p>
+</section>
+<section id="explication-du-model">
+<h2>Explication du model<a class="headerlink" href="#explication-du-model" title="Link to this heading"></a></h2>
+<p>Ce model calculates the heat loss d’un insulated pipe transportant un fluid chaud ou froid.</p>
+<p>The calculation prend en compte :</p>
+<ol class="arabic simple">
+<li><p><strong>Convection interne</strong> : Transfer between le fluid et la wall interne du pipe</p></li>
+<li><p><strong>Conduction in le pipe</strong> : Transfer à travers la wall métallique</p></li>
+<li><p><strong>Conduction in l’isolant</strong> : Transfer à travers l’isolation</p></li>
+<li><p><strong>Convection externe</strong> : Transfer between la surface et l’air ambiant (convection naturelle)</p></li>
+<li><p><strong>Rayonnement</strong> : Émission thermique to l’environnement</p></li>
+</ol>
+<p>The model détermine automatiquement :</p>
+<ul class="simple">
+<li><p>Le flow regime (laminaire ou turbulent)</p></li>
+<li><p>Les propriétés thermophysiques of the fluid via CoolProp</p></li>
+<li><p>Les coefficients de transfert thermique appropriés</p></li>
+<li><p>La surface temperature by itération (équilibre thermique)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="composite_wall_heat_transfer.html" class="btn btn-neutral float-left" title="Mur composite" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../transfert_chaleur.html" class="btn btn-neutral float-right" title="Transfer de Chaleur" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

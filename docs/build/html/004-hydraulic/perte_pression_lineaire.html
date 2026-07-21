@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loss de charge linéaire d’un water pipe &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Vanne d’équilibrage TA (Tour &amp; Andersson / IMI Hydronic)" href="TA_valve.html" />
+    <link rel="prev" title="4. Modèles Hydrauliques" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">4. Modèles Hydrauliques</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Loss de charge linéaire d’un water pipe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#possible-parameters">Possible Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explication-du-model">Explication du model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="TA_valve.html">Vanne d’équilibrage TA (Tour &amp; Andersson / IMI Hydronic)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">4. Modèles Hydrauliques</a></li>
+      <li class="breadcrumb-item active">Loss de charge linéaire d’un water pipe</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/004-hydraulic/perte_pression_lineaire.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="loss-de-charge-lineaire-d-un-water-pipe">
+<span id="straight-pipe"></span><h1>Loss de charge linéaire d’un water pipe<a class="headerlink" href="#loss-de-charge-lineaire-d-un-water-pipe" title="Link to this heading"></a></h1>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/004_hydraulic_straight_pipe.png"><img alt="Straight Pipe" class="align-center" src="../_images/004_hydraulic_straight_pipe.png" style="width: 800px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Hydraulic</span><span class="w"> </span><span class="kn">import</span> <span class="n">StraightPipe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Source</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Sink</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sink</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Connect</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fluid_connect</span>
+
+<span class="c1"># Source</span>
+<span class="n">SOURCE</span> <span class="o">=</span> <span class="n">Source</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">fluid</span> <span class="o">=</span> <span class="s2">&quot;water&quot;</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">Ti_degC</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">Pi_bar</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">F_m3h</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">SOURCE</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Tuyau droit</span>
+<span class="n">STRAIGHT_PIPE</span> <span class="o">=</span> <span class="n">StraightPipe</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">d_hyd</span> <span class="o">=</span> <span class="mf">0.050</span>
+<span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">L</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">K</span> <span class="o">=</span> <span class="mf">0.00002</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">SOURCE</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Puits</span>
+<span class="n">SINK</span> <span class="o">=</span> <span class="n">Sink</span><span class="o">.</span><span class="n">Object</span><span class="p">()</span>
+<span class="n">Fluid_connect</span><span class="p">(</span><span class="n">SINK</span><span class="o">.</span><span class="n">Inlet</span><span class="p">,</span> <span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">Outlet</span><span class="p">)</span>
+<span class="n">SINK</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
+
+<span class="c1"># Affichage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SOURCE</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SINK</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Tracer la courbe de réseau avec le point de fonctionnement</span>
+<span class="n">STRAIGHT_PIPE</span><span class="o">.</span><span class="n">Plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Source</strong> :</p>
+<ul class="simple">
+<li><p>Fluid : water</p></li>
+<li><p>T_input : 25°C</p></li>
+<li><p>P_input : 2 bar (200000 Pa)</p></li>
+<li><p>Flow rate : 8 m³/h = 2.216 kg/s</p></li>
+</ul>
+<p><strong>StraightPipe</strong> :</p>
+<ul class="simple">
+<li><p>Diameter hydraulique : 0.050 m</p></li>
+<li><p>Length : 500 m</p></li>
+<li><p>Roughness : 0.00002 m</p></li>
+<li><p>Section : 0.002 m²</p></li>
+<li><p>Speed : 1.132 m/s</p></li>
+<li><p>Reynolds : 63397 (turbulent)</p></li>
+<li><p><strong>Loss de pressure : 136627 Pa</strong> (1.37 bar)</p></li>
+</ul>
+<p><strong>Sink</strong> :</p>
+<ul class="simple">
+<li><p>P_output : 63373 Pa (0.63 bar)</p></li>
+<li><p>Density : 997.0 kg/m³</p></li>
+<li><p>Quality fluid : liquide</p></li>
+</ul>
+<p><strong>Courbe de network :</strong></p>
+<a class="reference internal image-reference" href="../_images/004_hydraulic_straight_pipe_courbe_reseau.png"><img alt="Courbe de network du pipe droit" class="align-center" src="../_images/004_hydraulic_straight_pipe_courbe_reseau.png" style="width: 800px;" />
+</a>
+</section>
+<section id="possible-parameters">
+<h2>Possible Parameters<a class="headerlink" href="#possible-parameters" title="Link to this heading"></a></h2>
+<p><strong>Source.Object()</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fluid</span></code> : Nom of the fluid (ex: “water”, “air”, voir CoolProp)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ti_degC</span></code> : Temperature d’input [°C]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pi_bar</span></code> : Pressure d’input [bar]</p></li>
+<li><p>Flow rates possibles :</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">F_m3h</span></code> : Flow rate volumique [m³/h]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F_m3s</span></code> : Flow rate volumique [m³/s]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F_Sm3h</span></code> : Flow rate volumique standard [Sm³/h]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F_Sm3s</span></code> : Flow rate volumique standard [Sm³/s]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F_kgh</span></code> : Flow rate massique [kg/h]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F</span></code> : Flow rate massique [kg/s]</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>StraightPipe.Object()</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">d_hyd</span></code> : Diameter hydraulique [m]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L</span></code> : Length du pipe [m]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K</span></code> : Roughness absolue [m]</p>
+<ul>
+<li><p>Acier commercial : 0.000045 m</p></li>
+<li><p>Acier galvanisé : 0.00015 m</p></li>
+<li><p>Fonte : 0.00026 m</p></li>
+<li><p>PVC/Plastique : 0.0000015 m</p></li>
+<li><p>Cuivre : 0.0000015 m</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> : Angle d’inclinaison du tube by rapport à l’horizontale [rad]
+(optionnel, défaut : π/2, soit un tube vertical)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inlet</span></code> : Connecté via <code class="docutils literal notranslate"><span class="pre">Fluid_connect()</span></code></p></li>
+</ul>
+<p><strong>Sink.Object()</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Inlet</span></code> : Connecté via <code class="docutils literal notranslate"><span class="pre">Fluid_connect()</span></code></p></li>
+<li><p>Calculated automatiquement les propriétés de output</p></li>
+</ul>
+</section>
+<section id="explication-du-model">
+<h2>Explication du model<a class="headerlink" href="#explication-du-model" title="Link to this heading"></a></h2>
+<p>Ce model calculates la pressure drop (perte de pressure) due aux frottements in un straight cylindrical pipe.</p>
+<p><strong>Équations useds</strong> :</p>
+<ol class="arabic">
+<li><p><strong>Number Reynolds number</strong> :</p>
+<div class="math notranslate nohighlight">
+\[Re = \frac{\rho \cdot V \cdot d_{hyd}}{\mu}\]</div>
+</li>
+<li><p><strong>Facteur de friction</strong> (Colebrook-White for écoulement turbulent) :</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{\sqrt{f}} = -2 \log_{10}\left(\frac{K/d_{hyd}}{3.7} + \frac{2.51}{Re\sqrt{f}}\right)\]</div>
+</li>
+<li><p><strong>Loss de pressure</strong> (Darcy-Weisbach) :</p>
+<div class="math notranslate nohighlight">
+\[\Delta P = f \cdot \frac{L}{d_{hyd}} \cdot \frac{\rho \cdot V^2}{2}\]</div>
+</li>
+</ol>
+<p><strong>Types d’écoulement</strong> :</p>
+<ul class="simple">
+<li><p><strong>Laminaire</strong> (Re &lt; 2300) : f = 64/Re</p></li>
+<li><p><strong>Turbulent</strong> (Re &gt; 4000) : Équation de Colebrook-White</p></li>
+<li><p><strong>Transition</strong> (2300 &lt; Re &lt; 4000) : Zone instable</p></li>
+</ul>
+<p>The model prend en compte :</p>
+<ul class="simple">
+<li><p>Les propriétés thermodynamiques of the fluid via CoolProp</p></li>
+<li><p>La roughness of the inner wall du pipe</p></li>
+<li><p>La géométrie (diamètre, longueur)</p></li>
+<li><p>L’effet de l’inclinaison (optionnel)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="4. Modèles Hydrauliques" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TA_valve.html" class="btn btn-neutral float-right" title="Vanne d’équilibrage TA (Tour &amp; Andersson / IMI Hydronic)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

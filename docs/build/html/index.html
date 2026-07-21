@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnergySystemModels Documentation &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=116ee311"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EnergySystemModels Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="energysystemmodels-documentation">
+<h1>EnergySystemModels Documentation<a class="headerlink" href="#energysystemmodels-documentation" title="Link to this heading"></a></h1>
+<p>Welcome to the EnergySystemModels library documentation!</p>
+<p><strong>Developed by Zoheir HADID</strong></p>
+<section id="objective-and-approach">
+<h2>Objective and Approach<a class="headerlink" href="#objective-and-approach" title="Link to this heading"></a></h2>
+<p>This documentation presents the EnergySystemModels Python library,
+conçue for faciliter les calculs et analyses liés à l’efficacité
+energy. Elle combine des explications métier, des examples exécutables
+et des pages de référence for passer rapidement d’un concept à son
+implémentation Python.</p>
+</section>
+<section id="acces-rapide">
+<h2>Accès rapide<a class="headerlink" href="#acces-rapide" title="Link to this heading"></a></h2>
+<p>Pour démarrer according to votre besoin :</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="quickstart.html"><span class="doc">Guide de Démarrage Rapide</span></a> for une prise en main rapide.</p></li>
+<li><p><a class="reference internal" href="usage.html"><span class="doc">Usage</span></a> for le parcours fonctionnel complet.</p></li>
+<li><p><a class="reference internal" href="gui_tools.html"><span class="doc">Graphical Interfaces and Visual Tools</span></a> for l’interface graphique <code class="docutils literal notranslate"><span class="pre">PyqtSimulator</span></code>.</p></li>
+<li><p><a class="reference internal" href="api.html"><span class="doc">API Reference</span></a> for les imports et entry points reals.</p></li>
+</ol>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Afin d’exploiter au mieux les models, il est recommandé d’avoir des bases en
+Python et en thermique/energy. Les examples restent structurés de façon
+progressive for être utilisables aussi en apprentissage.</p>
+</section>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Guide de Démarrage Rapide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#principe-d-usage">Principe d’usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#modules-disponibles">Modules disponibles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#unites-et-conventions">Unités et conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#structure-des-results">Structure des results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#building-the-documentation-en-local">Building the Documentation en local</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#pour-aller-plus-loin">Pour aller plus loin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#ressources-et-support">Ressources et support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contribuer a la documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#objectif-qualite">Objectif qualite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#workflow-recommande">Workflow recommande</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#commandes-utiles-powershell">Commandes utiles (PowerShell)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#regles-editoriales">Regles editoriales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#controle-final-rapide">Controle final rapide</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="010-achat-energie/index.html">10. Energy Purchasing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="010-achat-energie/index.html#energy-bill-gas-and-electricity-common-principles">Energy bill (gas and electricity): common principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="010-achat-energie/index.html#universal-principle">Universal principle</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/fluid_source.html">Fluid Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/fluid_source.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/fluid_source.html#possible-parameters">Possible Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/fluid_source.html#explication-du-model">Explication du model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/sink.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html">Compresseur</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html#example-graphique-with-pyqtsimulator">Example graphique with PyqtSimulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html#source-input-du-compresseur">Source (input du compresseur)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html#parameters-de-fluid-et-de-flow-rate-utilisables-en-input">Parameters de fluid et de flow rate utilisables en input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html#equations-de-preparation-d-input">Équations de préparation d’input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/compressor.html#puits-output-du-compresseur">Puits (output du compresseur)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/turbine.html">Turbine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/turbine.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/turbine.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/chiller.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/chiller.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/chiller.html#etude-parametrique">Étude paramétrique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/chiller.html#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/ng_heating_value.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/ng_heating_value.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/ng_boiler_efficiency.html#fonctionnalites">Fonctionnalités</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/ng_boiler_efficiency.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/ng_boiler_efficiency.html#example-1-rendement-a-flow-rate-impose">Example 1 : Rendement à flow rate imposé</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/ng_boiler_efficiency.html#example-2-consigne-temperature-eau">Example 2 : Consigne temperature eau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/ng_boiler_efficiency.html#example-3-port-fumees-et-dimensionnement-economiseur">Example 3 : Port fumées et dimensionnement économiseur</a></li>
+<li class="toctree-l2"><a class="reference internal" href="002-thermodynamic_cycles/ng_boiler_efficiency.html#methods-fluegasport">Methods FlueGasPort</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="001-heat_transfer/index.html">1. Heat Transfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="001-heat_transfer/corps_parallelepipedique.html">Corps parallélépipédique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="001-heat_transfer/composite_wall_heat_transfer.html">Mur composite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="001-heat_transfer/pipe_insulation_analysis.html">Isolation des pipex</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transfert_chaleur.html">Transfer de Chaleur</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transfert_chaleur.html#explanation-of-equations-used">Explanation of Equations Used</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="004-hydraulic/index.html">4. Modèles Hydrauliques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="004-hydraulic/perte_pression_lineaire.html">Loss de charge linéaire d’un water pipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="004-hydraulic/TA_valve.html">Vanne d’équilibrage TA (Tour &amp; Andersson / IMI Hydronic)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="005-aeraulic/index.html">5. Modèles Aerauliques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="005-aeraulic/perte_pression_lineaire.html">5.1. Calcul de la linear pressure drop d’une gaine d’air</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="003-ahu_modules/air_humide.html">Air humide — fonctions psychrométriques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="003-ahu_modules/cta_air_neuf.html">CTA d’air neuf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="003-ahu_modules/generic_ahu.html">GenericAHU — Simulation de CTA paramétrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="003-ahu_modules/nomenclature.html">Nomenclature</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="006-pinch_analysis/index.html">6. Analyse de pincement</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="006-pinch_analysis/index.html#le-probleme">Le problème</a></li>
+<li class="toctree-l2"><a class="reference internal" href="006-pinch_analysis/index.html#le-code">Le code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="006-pinch_analysis/index.html#les-results">Les results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="006-pinch_analysis/index.html#les-explications">Les explications</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html">11. Energy Savings Certificates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="011-cee/index.html#principe">Principe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="011-cee/index.html#references">Références</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="007-ipmvp/index.html">IPMVP - Measurement and Verification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="007-ipmvp/exemples.html">IPMVP — Example complet (Option C)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="007-ipmvp/mesure_economies.html">Mesure des économies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="007-ipmvp/modeles_mathematiques.html">Usage du module IPMVP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="007-ipmvp/contexte.html">Contexte et théorie IPMVP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="008-meteo/index.html">8. Meteorological Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="008-meteo/meteociel.html">MeteoCiel — Data historiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="008-meteo/openweathermap.html">OpenWeatherMap API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="008-meteo/degres_jours.html">Degrés-Jours Unifiés (DJU)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gui_tools.html">Graphical Interfaces and Visual Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#installation-and-launch">Installation and Launch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#pyqtsimulator-interface">PyqtSimulator Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#port-convention">Port Convention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#reading-a-graph">Reading a Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#graphs-with-multiple-outputs">Graphs with Multiple Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#storage-and-step-by-step-calculation">Storage and Step-by-Step Calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#evaluation-cycle">Evaluation Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#creating-a-new-node">Creating a New Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#development-best-practices">Development Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#results-and-figures-in-the-documentation">Results and Figures in the Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#generating-diagrams-and-plots">Generating Diagrams and Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#building-the-documentation">Building the Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gui_tools.html#checklist-for-finalizing-an-example">Checklist for Finalizing an Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nomenclature.html">Nomenclature générale</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nomenclature.html#transfer-thermique-heattransfer">Transfer thermique (HeatTransfer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nomenclature.html#thermodynamic-cycles">Thermodynamic Cycles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nomenclature.html#air-handling-ahu">Air Handling (AHU)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nomenclature.html#hydraulique">Hydraulique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nomenclature.html#conventions">Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#heat-transfer-heattransfer">Heat Transfer — <code class="docutils literal notranslate"><span class="pre">HeatTransfer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#thermodynamic-cycles-thermodynamiccycles">Thermodynamic Cycles — <code class="docutils literal notranslate"><span class="pre">ThermodynamicCycles</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#hydraulics-and-aeraulics">Hydraulics and Aeraulics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#air-handling-ahu">Air Handling — <code class="docutils literal notranslate"><span class="pre">AHU</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#pinch-analysis-pinchanalysis">Pinch Analysis — <code class="docutils literal notranslate"><span class="pre">PinchAnalysis</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#measurement-verification-ipmvp">Measurement &amp; Verification — <code class="docutils literal notranslate"><span class="pre">IPMVP</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#meteorology">Meteorology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#photovoltaics-pv">Photovoltaics — <code class="docutils literal notranslate"><span class="pre">PV</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#energy-purchasing-facture">Energy Purchasing — <code class="docutils literal notranslate"><span class="pre">Facture</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#energy-savings-certificates-cee">Energy Savings Certificates — <code class="docutils literal notranslate"><span class="pre">CEE</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

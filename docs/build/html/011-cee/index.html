@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11. Energy Savings Certificates &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="IPMVP - Measurement and Verification" href="../007-ipmvp/index.html" />
+    <link rel="prev" title="6. Analyse de pincement" href="../006-pinch_analysis/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_heating_value.html">NG Heating Value (PCS/PCI gaz naturel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../002-thermodynamic_cycles/ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">11. Energy Savings Certificates</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#principe">Principe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#references">Références</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">11. Energy Savings Certificates</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/011-cee/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="energy-savings-certificates">
+<span id="cee"></span><h1>11. Energy Savings Certificates<a class="headerlink" href="#energy-savings-certificates" title="Link to this heading"></a></h1>
+<p>The module <code class="docutils literal notranslate"><span class="pre">CEE</span></code> estime le volume de certificats (kWh cumac) d’une opération
+standardisée via un dispatcher unique, <code class="docutils literal notranslate"><span class="pre">calcul_CEE(fiche,</span> <span class="pre">**params)</span></code>. This
+page donne <strong>un example Python exécutable by fiche</strong>, rangé en trois secteurs :
+<strong>Industrie – Utilités</strong>, <strong>Bâtiment &amp; enveloppe</strong>, et <strong>Transport</strong>. Toutes les
+valeurs affichées ci-dessous sont produites en exécutant actually la
+library.</p>
+<section id="principe">
+<h2>Principe<a class="headerlink" href="#principe" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span><span class="p">,</span> <span class="n">list_fiches</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">list_fiches</span><span class="p">())</span>          <span class="c1"># 33 fiches en vigueur</span>
+
+<span class="c1"># Par défaut, calcul_CEE renvoie les kWh cumac ;</span>
+<span class="c1"># return_details=True renvoie un dictionnaire complet.</span>
+<span class="n">kwh</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-131&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;3*8h_sansArrWE&quot;</span><span class="p">,</span>
+                 <span class="n">Temperature</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">Geometry</span><span class="o">=</span><span class="s2">&quot;plan&quot;</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-131&quot;</span><span class="p">,</span> <span class="n">return_details</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;3*8h_sansArrWE&quot;</span><span class="p">,</span>
+               <span class="n">Temperature</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">Geometry</span><span class="o">=</span><span class="s2">&quot;plan&quot;</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;kWh_cumac&quot;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;MWh_cumac&quot;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;euro&quot;</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;titre&quot;</span><span class="p">])</span>
+<span class="c1"># 246960.0 246.96 1234.8 Isolation thermique des parois planes ou cylindriques …</span>
+</pre></div>
+</div>
+<p>Le prix interne <code class="docutils literal notranslate"><span class="pre">CEE.euro_MWhcumac</span></code> vaut <strong>5 €/MWh cumac</strong> by défaut
+(modifiable) ; c’est lui qui donne la colonne <code class="docutils literal notranslate"><span class="pre">euro</span></code> et les amounts indiqués
+en commentaire <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">-&gt;</span></code> ci-dessous. Les valeurs de <code class="docutils literal notranslate"><span class="pre">fonctionnement</span></code> usuelles
+sont <code class="docutils literal notranslate"><span class="pre">&quot;1*8h&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;2*8h&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;3*8h_ArrWE&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;3*8h_sansArrWE&quot;</span></code>.</p>
+</section>
+</section>
+<section id="secteur-1-industrie-utilites-ind-ut">
+<h1>Secteur 1 — Industrie · Utilités (IND-UT)<a class="headerlink" href="#secteur-1-industrie-utilites-ind-ut" title="Link to this heading"></a></h1>
+<p>Vingt-cinq sheets couvrant les utilités industrielles : moteurs et variation de
+vitesse, chaudières et fours, froid, air comprimé, waste heat, isolation et
+mesurage.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="c1"># --- Moteurs, variation de vitesse et transmissions ---</span>
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-102&quot;</span><span class="p">,</span> <span class="n">application</span><span class="o">=</span><span class="s2">&quot;pompage&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># -&gt; 1240 MWh cumac (6 200 €).  Variation électronique de vitesse sur moteur asynchrone</span>
+<span class="c1">#    applications : pompage / ventilation / &quot;compresseur d&#39;air&quot; / &quot;compresseur frigorifique&quot; / autres</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-114&quot;</span><span class="p">,</span> <span class="n">application</span><span class="o">=</span><span class="s2">&quot;pompage&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># -&gt; 1780 MWh cumac (8 900 €).  Moto-variateur synchrone à aimants permanents ou à réluctance</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-127&quot;</span><span class="p">,</span> <span class="n">type_transmission</span><span class="o">=</span><span class="s2">&quot;transmission_directe&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># -&gt; 190 MWh cumac (950 €).  Système de transmission performant  (ou &quot;poulie_courroie_synchrone&quot;)</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-132&quot;</span><span class="p">,</span> <span class="n">puissance_utile</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># -&gt; 19 MWh cumac (95 €).  Moteur asynchrone de classe IE4</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-133&quot;</span><span class="p">,</span> <span class="n">heures_fonctionnement</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span> <span class="n">taux_freinage</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">puissance_utile</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># -&gt; 277,5 MWh cumac (1 387,5 €).  Pilotage électronique d&#39;un moteur avec récupération d&#39;énergie</span>
+
+<span class="c1"># --- Chaudières, fours et récupération de chaleur ---</span>
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-103&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span> <span class="n">Department</span><span class="o">=</span><span class="mi">69</span><span class="p">,</span>
+           <span class="n">Heat_Use</span><span class="o">=</span><span class="s2">&quot;procédé industriel&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="c1"># -&gt; 2304 MWh cumac (11 520 €).  Récupération de chaleur sur un compresseur d&#39;air</span>
+<span class="c1">#    Heat_Use : &quot;chauffage de locaux&quot; / &quot;ECS&quot; / &quot;procédé industriel&quot;</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-104&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="c1"># -&gt; 720 MWh cumac (3 600 €).  Économiseur sur effluents gazeux d&#39;une chaudière vapeur</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-105&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="c1"># -&gt; 1200 MWh cumac (6 000 €).  Brûleur micro-modulant sur chaudière industrielle</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-118&quot;</span><span class="p">,</span> <span class="n">nature</span><span class="o">=</span><span class="s2">&quot;auto_recuperateur&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span>
+           <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">temperature_fumees</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+<span class="c1"># -&gt; 550 MWh cumac (2 750 €).  Brûleur avec récupération de chaleur sur four industriel</span>
+<span class="c1">#    nature : auto_recuperateur / regeneratif / recuperateur_fumees</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-125&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+<span class="c1"># -&gt; 100 MWh cumac (500 €).  Traitement d&#39;eau performant sur chaudière vapeur.  zone A/B/C/D</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-130&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;3*8h_sansArrWE&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">1500</span><span class="p">)</span>
+<span class="c1"># -&gt; 2100 MWh cumac (10 500 €).  Condenseur sur effluents gazeux d&#39;une chaudière vapeur</span>
+
+<span class="c1"># --- Froid industriel ---</span>
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-113&quot;</span><span class="p">,</span> <span class="n">type_condensation</span><span class="o">=</span><span class="s2">&quot;air_sec&quot;</span><span class="p">,</span> <span class="n">delta_T</span><span class="o">=</span><span class="mf">6.5</span><span class="p">,</span>
+           <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;1*8h&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># -&gt; 240 MWh cumac (1 200 €).  Condensation frigorifique à haute efficacité</span>
+<span class="c1">#    type_condensation : eau / air_sec / air_humide</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-115&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="c1"># -&gt; 75 MWh cumac (375 €).  Régulation groupe froid : basse pression flottante</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-116&quot;</span><span class="p">,</span> <span class="n">type_condensation</span><span class="o">=</span><span class="s2">&quot;atmosphere&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="s2">&quot;H1&quot;</span><span class="p">)</span>
+<span class="c1"># -&gt; 1430 MWh cumac (7 150 €).  Régulation groupe froid : haute pression flottante</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-135&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span> <span class="n">Department</span><span class="o">=</span><span class="mi">69</span><span class="p">,</span>
+           <span class="n">Supply_Temperature</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="c1"># -&gt; 4356 MWh cumac (21 780 €).  Freecooling par eau en substitution d&#39;un groupe froid</span>
+
+<span class="c1"># --- Air comprimé ---</span>
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-120&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># -&gt; 1930 MWh cumac (9 650 €).  Compresseur d&#39;air basse pression à vis ou centrifuge</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-122&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># -&gt; 500 MWh cumac (2 500 €).  Sécheur d&#39;air comprimé à adsorption à régénération calorifique</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-124&quot;</span><span class="p">,</span> <span class="n">nb_compresseurs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">type_sequenceur</span><span class="o">=</span><span class="s2">&quot;avec&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># -&gt; 360 MWh cumac (1 800 €).  Séquenceur électronique de centrale d&#39;air comprimé</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-140&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span> <span class="n">debit_air</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="c1"># -&gt; 114 MWh cumac (570 €).  Mise en veille automatique d&#39;une machine à air comprimé (débit L/min ANR)</span>
+
+<span class="c1"># --- Chaleur fatale ---</span>
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-137&quot;</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">Eelec</span><span class="o">=</span><span class="mi">200_000</span><span class="p">)</span>
+<span class="c1"># -&gt; 8788,8 MWh cumac (43 944 €).  PAC en rehausse de température de chaleur fatale récupérée</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-138&quot;</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span> <span class="n">Precup</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">rendement</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">Pconso</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="c1"># -&gt; 4664,22 MWh cumac (23 321,1 €).  Conversion de chaleur fatale en électricité ou air comprimé</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-139&quot;</span><span class="p">,</span> <span class="n">rendement</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">capacite_stockage</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">nb_cycles</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+<span class="c1"># -&gt; 3180,15 MWh cumac (15 900,75 €).  Système de stockage de chaleur fatale</span>
+
+<span class="c1"># --- Presse à injecter, isolation et mesurage ---</span>
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-129&quot;</span><span class="p">,</span> <span class="n">nature</span><span class="o">=</span><span class="s2">&quot;electrique_neuve&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;1*8h&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># -&gt; 120 MWh cumac (600 €).  Presse à injecter tout électrique ou hybride</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-131&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;3*8h_sansArrWE&quot;</span><span class="p">,</span> <span class="n">Temperature</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">Geometry</span><span class="o">=</span><span class="s2">&quot;plan&quot;</span><span class="p">,</span> <span class="n">S</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="c1"># -&gt; 246,96 MWh cumac (1 234,8 €).  Isolation de parois planes/cylindriques.  &quot;plan&quot; (S) ou &quot;cylindre&quot; (D, L)</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-UT-134&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span> <span class="n">duree_contrat</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
+<span class="c1"># -&gt; 149,54 MWh cumac (747,7 €).  Système de mesurage d&#39;indicateurs de performance énergétique</span>
+</pre></div>
+</div>
+</section>
+<section id="secteur-2-batiment-enveloppe-ind-ba-ind-en">
+<h1>Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)<a class="headerlink" href="#secteur-2-batiment-enveloppe-ind-ba-ind-en" title="Link to this heading"></a></h1>
+<p>Quatre sheets « bâtiment industriel » (IND-BA) et deux sheets « enveloppe outre-mer »
+(IND-EN).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="c1"># --- Bâtiment industriel (IND-BA) ---</span>
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-BA-110&quot;</span><span class="p">,</span> <span class="n">type_chauffage</span><span class="o">=</span><span class="s2">&quot;convectif&quot;</span><span class="p">,</span> <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;2*8h&quot;</span><span class="p">,</span>
+           <span class="n">hauteur</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="s2">&quot;H1&quot;</span><span class="p">)</span>
+<span class="c1"># -&gt; 270 MWh cumac (1 350 €).  Déstratification d&#39;air (local &gt;= 5 m).  type_chauffage : convectif / radiatif</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-BA-113&quot;</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="s2">&quot;H3&quot;</span><span class="p">)</span>
+<span class="c1"># -&gt; 1280 MWh cumac (6 400 €).  Lanterneaux d&#39;éclairage zénithal.  zone H1/H2/H3</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-BA-114&quot;</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">zone_geographique</span><span class="o">=</span><span class="s2">&quot;metropole&quot;</span><span class="p">)</span>
+<span class="c1"># -&gt; 342 MWh cumac (1 710 €).  Conduits de lumière naturelle.  zone_geographique : metropole / outremer</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-BA-117&quot;</span><span class="p">,</span> <span class="n">type_appareil</span><span class="o">=</span><span class="s2">&quot;aerotherme_modulant&quot;</span><span class="p">,</span>
+           <span class="n">fonctionnement</span><span class="o">=</span><span class="s2">&quot;1*8h&quot;</span><span class="p">,</span> <span class="n">puissance_nominale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">zone</span><span class="o">=</span><span class="s2">&quot;H1&quot;</span><span class="p">)</span>
+<span class="c1"># -&gt; 210 MWh cumac (1 050 €).  Chauffage décentralisé performant</span>
+
+<span class="c1"># --- Enveloppe outre-mer (IND-EN) ---</span>
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-EN-101&quot;</span><span class="p">,</span> <span class="n">type_construction</span><span class="o">=</span><span class="s2">&quot;existant&quot;</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="c1"># -&gt; 54 MWh cumac (270 €).  Isolation des murs (France d&#39;outre-mer).  existant / neuf</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;IND-EN-102&quot;</span><span class="p">,</span> <span class="n">type_construction</span><span class="o">=</span><span class="s2">&quot;existant&quot;</span><span class="p">,</span> <span class="n">surface</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="c1"># -&gt; 320 MWh cumac (1 600 €).  Isolation de combles/toitures (outre-mer).  (abrogée au 01/05/2027)</span>
+</pre></div>
+</div>
+</section>
+<section id="secteur-3-transport-tra-eq">
+<h1>Secteur 3 — Transport (TRA-EQ)<a class="headerlink" href="#secteur-3-transport-tra-eq" title="Link to this heading"></a></h1>
+<p>Deux sheets de transport intermodal.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">calcul_CEE</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;TRA-EQ-101&quot;</span><span class="p">,</span> <span class="n">longueur_uti</span><span class="o">=</span><span class="s2">&quot;UTIsup9&quot;</span><span class="p">,</span> <span class="n">nb_voyage_an</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">nb_uti</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># -&gt; 37 000 MWh cumac (185 000 €).  Transport intermodal rail-route.  longueur_uti : UTIinf9 / UTIsup9</span>
+
+<span class="n">calcul_CEE</span><span class="p">(</span><span class="s2">&quot;TRA-EQ-107&quot;</span><span class="p">,</span> <span class="n">type_bateau</span><span class="o">=</span><span class="s2">&quot;Bateau Grand Rhénan (2 500 t)&quot;</span><span class="p">,</span>
+           <span class="n">bassin_navigation</span><span class="o">=</span><span class="s2">&quot;Rhin/Moselle&quot;</span><span class="p">,</span> <span class="n">nb_voyage_uti</span><span class="o">=</span><span class="mi">220</span><span class="p">)</span>
+<span class="c1"># -&gt; 902 MWh cumac (4 510 €).  Transport intermodal fluvial-route</span>
+</pre></div>
+</div>
+</section>
+<section id="fiches-obsoletes-et-bonnes-pratiques">
+<h1>Fiches obsolètes et bonnes pratiques<a class="headerlink" href="#fiches-obsoletes-et-bonnes-pratiques" title="Link to this heading"></a></h1>
+<p>Deux sheets restent in le registre for l’historique mais sont <strong>exclues de</strong>
+<code class="docutils literal notranslate"><span class="pre">list_sheets()</span></code> et refusées by <code class="docutils literal notranslate"><span class="pre">calcul_CEE</span></code> (<code class="docutils literal notranslate"><span class="pre">ValueError</span></code>) :</p>
+<ul class="simple">
+<li><p><strong>IND-UT-136</strong> — Systèmes motor-controlled : <strong>repealed</strong> by arrêté du 18/08/2025 ;</p></li>
+<li><p><strong>TRA-EQ-108</strong> — Wagon d’autoroute ferroviaire : opération <strong>close</strong> au 31/03/2020.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CEE.CEE</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_fiches</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">list_fiches</span><span class="p">(</span><span class="n">include_deprecated</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="c1"># {&#39;available&#39;: [... 33 fiches ...], &#39;deprecated&#39;: [&#39;IND-UT-136&#39;, &#39;TRA-EQ-108&#39;]}</span>
+</pre></div>
+</div>
+<p>Bonnes pratiques :</p>
+<ul class="simple">
+<li><p>utiliser les noms exacts des paramètres attendus by chaque fiche (une valeur
+d’énumération invalide lève une <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> listant les valeurs acceptées) ;</p></li>
+<li><p>garder les unités du module (power en kW, surface en m², temperature en °C) ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">return_details=True</span></code> for tracer <code class="docutils literal notranslate"><span class="pre">kWh_cumac</span></code> / <code class="docutils literal notranslate"><span class="pre">MWh_cumac</span></code> / <code class="docutils literal notranslate"><span class="pre">euro</span></code> /
+<code class="docutils literal notranslate"><span class="pre">titre</span></code> in un audit ;</p></li>
+<li><p>ajuster <code class="docutils literal notranslate"><span class="pre">CEE.euro_MWhcumac</span></code> (défaut 5) ou appliquer un prix de marché externe ;</p></li>
+<li><p>vérifier l’éligibilité réglementaire on les sheets officielles (ADEME/ATEE)
+avant toute décision d’investissement.</p></li>
+</ul>
+<section id="references">
+<h2>Références<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Opérations standardisées : <a class="reference external" href="https://www.ecologie.gouv.fr/operations-standardisees-deconomies-denergy">https://www.ecologie.gouv.fr/operations-standardisees-deconomies-denergy</a></p></li>
+<li><p>Registre national des CEE : <a class="reference external" href="https://www.emmy.fr">https://www.emmy.fr</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../006-pinch_analysis/index.html" class="btn btn-neutral float-left" title="6. Analyse de pincement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../007-ipmvp/index.html" class="btn btn-neutral float-right" title="IPMVP - Measurement and Verification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

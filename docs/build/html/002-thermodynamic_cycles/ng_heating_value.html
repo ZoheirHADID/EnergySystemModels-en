@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NG Heating Value (PCS/PCI gaz naturel) &mdash; EnergySystemModels post9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=116ee311"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NG Boiler Efficiency (Rendement chaudière EN12952-15)" href="ng_boiler_efficiency.html" />
+    <link rel="prev" title="Chiller (Groupe froid / PAC)" href="chiller.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            EnergySystemModels
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">General contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Guide de Démarrage Rapide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contribuer a la documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">1. Energy purchase and supply</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../010-achat-energie/index.html">10. Energy Purchasing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2. Utilities and energy production</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fluid_source.html">Fluid Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sink.html">Sink (puits de fluid)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomenclature.html">Nomenclature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compressor.html">Compresseur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="turbine.html">Turbine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chiller.html">Chiller (Groupe froid / PAC)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">NG Heating Value (PCS/PCI gaz naturel)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ng_boiler_efficiency.html">NG Boiler Efficiency (Rendement chaudière EN12952-15)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html">Créer un system et calculatesr the production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#synthese-technique-et-economique-pv-summary">Synthèse technique et économique — <code class="docutils literal notranslate"><span class="pre">pv.summary()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#graphique-de-production-pv-plot">Graphique de production — <code class="docutils literal notranslate"><span class="pre">pv.plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#export-excel-pv-to-excel">Export Excel — <code class="docutils literal notranslate"><span class="pre">pv.to_excel()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../009-pv-solaire/index.html#etude-d-orientation-solarsystem-orientation-study">Étude d’orientation — <code class="docutils literal notranslate"><span class="pre">SolarSystem.orientation_study()</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">3. Utility transport</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../001-heat_transfer/index.html">1. Heat Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfert_chaleur.html">Transfer de Chaleur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../004-hydraulic/index.html">4. Modèles Hydrauliques</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../005-aeraulic/index.html">5. Modèles Aerauliques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">4. Energy uses</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../003-ahu_modules/index.html">3. Centrales de Traitement d’Air</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">5. Récupération de chaleur</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../006-pinch_analysis/index.html">6. Analyse de pincement</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">6. Financing and subsidies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html">11. Energy Savings Certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-1-industrie-utilites-ind-ut">Secteur 1 — Industrie · Utilités (IND-UT)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-2-batiment-enveloppe-ind-ba-ind-en">Secteur 2 — Bâtiment &amp; enveloppe (IND-BA, IND-EN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#secteur-3-transport-tra-eq">Secteur 3 — Transport (TRA-EQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../011-cee/index.html#fiches-obsoletes-et-bonnes-pratiques">Fiches obsolètes et bonnes pratiques</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">7. Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../007-ipmvp/index.html">IPMVP - Measurement and Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../008-meteo/index.html">8. Meteorological Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gui_tools.html">Graphical Interfaces and Visual Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nomenclature.html">Nomenclature générale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EnergySystemModels</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">NG Heating Value (PCS/PCI gaz naturel)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/002-thermodynamic_cycles/ng_heating_value.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ng-heating-value-pcs-pci-gaz-naturel">
+<span id="ng-heating-value"></span><h1>NG Heating Value (PCS/PCI gaz naturel)<a class="headerlink" href="#ng-heating-value-pcs-pci-gaz-naturel" title="Link to this heading"></a></h1>
+<p>The module <code class="docutils literal notranslate"><span class="pre">NG_Heating_Value</span></code> calculates the propriétés thermodynamiques d’un gaz naturel from sa composition molaire, according to la norme <strong>ISO 6976</strong>.</p>
+<p>Results : PCS (HHV), PCI (LHV), densité, indice de Wobbe, Cp, facteur de compressibilité Z.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<p>La composition est définie by une liste de <code class="docutils literal notranslate"><span class="pre">GasComponent(formule,</span> <span class="pre">fraction_molaire)</span></code> :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Composant</p></th>
+<th class="head"><p>Formule</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Méthane</p></td>
+<td><p>CH4</p></td>
+<td><p>0.9489</p></td>
+</tr>
+<tr class="row-odd"><td><p>Éthane</p></td>
+<td><p>C2H6</p></td>
+<td><p>0.01235</p></td>
+</tr>
+<tr class="row-even"><td><p>Propane</p></td>
+<td><p>C3H8</p></td>
+<td><p>0.00935</p></td>
+</tr>
+<tr class="row-odd"><td><p>Azote</p></td>
+<td><p>N2</p></td>
+<td><p>0.00839</p></td>
+</tr>
+<tr class="row-even"><td><p>CO2</p></td>
+<td><p>CO2</p></td>
+<td><p>0.01269</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ThermodynamicCycles.Combustion.NG_Heating_Value</span><span class="w"> </span><span class="kn">import</span> <span class="n">NG_Heating_Value</span>
+
+<span class="n">gas</span> <span class="o">=</span> <span class="n">NG_Heating_Value</span><span class="p">([</span>
+    <span class="n">NG_Heating_Value</span><span class="o">.</span><span class="n">GasComponent</span><span class="p">(</span><span class="s2">&quot;CH4&quot;</span><span class="p">,</span> <span class="mf">0.9489</span><span class="p">),</span>
+    <span class="n">NG_Heating_Value</span><span class="o">.</span><span class="n">GasComponent</span><span class="p">(</span><span class="s2">&quot;C2H6&quot;</span><span class="p">,</span> <span class="mf">0.01235</span><span class="p">),</span>
+    <span class="n">NG_Heating_Value</span><span class="o">.</span><span class="n">GasComponent</span><span class="p">(</span><span class="s2">&quot;C3H8&quot;</span><span class="p">,</span> <span class="mf">0.00935</span><span class="p">),</span>
+    <span class="n">NG_Heating_Value</span><span class="o">.</span><span class="n">GasComponent</span><span class="p">(</span><span class="s2">&quot;n-C4H10&quot;</span><span class="p">,</span> <span class="mf">0.00614</span><span class="p">),</span>
+    <span class="n">NG_Heating_Value</span><span class="o">.</span><span class="n">GasComponent</span><span class="p">(</span><span class="s2">&quot;i-C5H12&quot;</span><span class="p">,</span> <span class="mf">0.00162</span><span class="p">),</span>
+    <span class="n">NG_Heating_Value</span><span class="o">.</span><span class="n">GasComponent</span><span class="p">(</span><span class="s2">&quot;n-C6H14&quot;</span><span class="p">,</span> <span class="mf">0.00056</span><span class="p">),</span>
+    <span class="n">NG_Heating_Value</span><span class="o">.</span><span class="n">GasComponent</span><span class="p">(</span><span class="s2">&quot;N2&quot;</span><span class="p">,</span> <span class="mf">0.00839</span><span class="p">),</span>
+    <span class="n">NG_Heating_Value</span><span class="o">.</span><span class="n">GasComponent</span><span class="p">(</span><span class="s2">&quot;CO2&quot;</span><span class="p">,</span> <span class="mf">0.01269</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gas</span><span class="o">.</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output <code class="docutils literal notranslate"><span class="pre">gas.df</span></code> :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                 Property      Value     Unit
+0                      Cp   2.187875   J/kg/K
+1                   Z mix   0.997736        -
+2          HHV mass (PCS)  52.638600    MJ/kg
+3          LHV mass (PCI)  47.465641    MJ/kg
+4                 HHV vol  40.680428   MJ/Nm3
+5                 LHV vol  36.682635   MJ/Nm3
+6                HHV real  40.772744   MJ/Nm3
+7                LHV real  36.765879   MJ/Nm3
+8                 HHV vol  11.325762  kWh/Nm3
+9                 LHV vol  10.212744  kWh/Nm3
+10                Density   0.772825   kg/Nm3
+11           Density real   0.774579   kg/Nm3
+12       Relative density   0.598088        -
+13  Relative density real   0.599193        -
+14            Wobbe index  52.602098   MJ/Nm3
+15             Wobbe real  52.672812   MJ/Nm3
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chiller.html" class="btn btn-neutral float-left" title="Chiller (Groupe froid / PAC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ng_boiler_efficiency.html" class="btn btn-neutral float-right" title="NG Boiler Efficiency (Rendement chaudière EN12952-15)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024-2025, Zoheir HADID.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
