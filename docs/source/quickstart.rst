@@ -44,6 +44,27 @@ Environnement virtuel (recommandé)
 .. tip::
    L'usage d'un environnement virtuel est recommandée for éviter les conflits de dépendances.
 
+Lancer l'interface PyqtSimulator (développement)
+------------------------------------------------
+
+``PyqtSimulator`` est fourni by le dépôt source ``EnergySystemModels``.
+Dethen un clone local, vous pouvez le lancer ainsi :
+
+.. code-block:: powershell
+
+   cd A:\OneDrive\_Github_\EnergySystemModels
+   $env:PYTHONPATH = "$PWD\src"
+   python -m PyqtSimulator.main
+
+Alternative :
+
+.. code-block:: powershell
+
+   python A:\OneDrive\_Github_\EnergySystemModels\test\PyqtSimulator\_PyqtSimulator.py
+
+.. seealso::
+   Guide détaillé interface graphique : :doc:`gui_tools`
+
 ----
 
 Principe d'usage
@@ -244,6 +265,20 @@ Accès tabulaire for analyse et export :
 
 .. tip::
    Les DataFrames pandas allowstent une manipulation et analyse facile des results.
+
+----
+
+Building the Documentation en local
+====================================
+
+Pour prévisualiser la documentation ``EnergySystemModels-fr`` localement :
+
+.. code-block:: powershell
+
+   cd A:\OneDrive\_Github_\EnergySystemModels-fr\docs
+   python -m sphinx -b html source build\html
+
+Ouvrez ensuite ``build\html\index.html`` in votre navigateur.
 
 ----
 

@@ -1,13 +1,13 @@
 .. _ipmvp:
 
-7. IPMVP - Measurement and Verification
-=======================================
+IPMVP - Measurement and Verification
+====================================
 
 .. toctree::
    :maxdepth: 2
    :caption: IPMVP:
 
-   introduction
-   protocole
-   modeles_mathematiques
    exemples
+   mesure_economies
+   modeles_mathematiques
+   contexte

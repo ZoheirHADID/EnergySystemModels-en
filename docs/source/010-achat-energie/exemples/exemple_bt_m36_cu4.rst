@@ -47,7 +47,7 @@ power souscrite de 12 kW. Facturation mensuelle de February 2025.
    calc.plot()           # Repartition Fourniture / TURPE / Taxes
    calc.plot_detail()    # Cascades detaillees
 
-**Output attendue (extrait df_totaux)** :
+**Output realle (df_totaux)** :
 
 .. code-block:: text
 

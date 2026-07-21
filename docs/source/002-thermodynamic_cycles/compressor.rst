@@ -8,6 +8,12 @@ n'est pas saisi directement on le compresseur : il provient d'un composant amont
 (``Source``, échangeur…) **connecté via** ``Fluid_connect(COMP.Inlet, amont.Outlet)``.
 La consigne haute pressure est donnée by ``HP_bar`` (ou ``Tcond_degC``).
 
+Dans ce chapter, les explications ``Source`` et ``Sink`` sont intégrées
+directement with les sections :
+
+- **Source (input du compresseur)**
+- **Puits (output du compresseur)**
+
 Parameters
 ----------
 
@@ -87,3 +93,222 @@ et pressure de refoulement ``Outlet.P`` = 8 bar.
    Le compresseur ne définit pas ``Pi_bar``/``Ti_degC``/``F`` : ces grandeurs
    viennent du port ``Inlet`` connecté à l'amont. Sans ``Fluid_connect`` ni
    consigne ``HP_bar``/``Tcond_degC``, ``calculate()`` lève une erreur.
+
+Example graphique with PyqtSimulator
+------------------------------------
+
+Le même model can be utilisé in l'interface graphique PyqtSimulator. Le
+lancement du module se fait simplement with l'import suivant :
+
+.. code-block:: python
+
+   from PyqtSimulator import main
+
+En pratique, cet import lance l'application et ouvre l'éditeur de diagram où
+vous pouvez placer une ``Source``, connecter un ``Compresseur`` then visualiser
+les results in la fenêtre de configuration.
+
+.. note::
+  Insérez ici la capture de la simulation PyqtSimulator lorsque l'image sera
+  fournie. La page sera mise à jour with la figure correspondante.
+
+Source (input du compresseur)
+------------------------------
+
+En pratique, l'input du compresseur est fournie by un composant amont. Le cas
+le plus courant est une ``Source`` qui calculates un état thermodynamique cohérent
+(pressure, temperature, enthalpy, flow rate) before de l'envoyer vers
+``COMPRESSOR.Inlet`` via ``Fluid_connect``.
+
+Example détaillé de préparation d'input :
+
+.. code-block:: python
+
+    from ThermodynamicCycles.Source import Source
+
+    SOURCE = Source.Object()
+    SOURCE.Pi_bar = 1.01325
+    SOURCE.Ti_degC = 25          # température d'entrée obligatoire
+    SOURCE.fluid = "air"
+    SOURCE.F = 1                 # débit massique [kg/s]
+    SOURCE.calculate()
+
+    print(SOURCE.df)
+
+Output realle (``SOURCE.df``) :
+
+.. code-block:: text
+
+                                Source
+    Timestamp      2026-07-04 23:33:33
+    fluid                          air
+    Ti_degC                       25.0
+    Pi_bar                        1.01
+    F_Sm3h                      2937.5
+    F_Nm3h                 2784.081453
+    F_m3h                       3039.7
+    F_kgh                         3600
+    F_kgs                            1
+    F_m3s                        0.844
+    F_Sm3s                       0.816
+    self.Outlet.h        424436.043917
+
+Le DataFrame de préparation contient : ``Ti_degC`` [°C], ``Pi_bar`` [bar], les
+flow rates (Sm³/h, Nm³/h, m³/h, kg/h, kg/s, m³/s, Sm³/s) et ``Outlet.h`` [J/kg].
+
+.. note::
+   ``SOURCE.Ti_degC`` est obligatoire : without elle, ``calculate()`` lève une
+   ``TypeError`` (temperature à ``None``).
+
+Parameters de fluid et de flow rate utilisables en input
+--------------------------------------------------------
+
+**Fluids disponibles in CoolProp**
+
+**Fluids purs courants :**
+
+- ``'Water'`` - Eau
+- ``'Air'`` - Air
+- ``'Ammonia'`` (ou ``'NH3'``) - Ammoniac
+- ``'CO2'`` (ou ``'CarbonDioxide'``) - Dioxyde de carbone
+- ``'Nitrogen'`` (ou ``'N2'``) - Azote
+- ``'Oxygen'`` (ou ``'O2'``) - Oxygène
+- ``'Hydrogen'`` (ou ``'H2'``) - Hydrogène
+- ``'Methane'`` - Méthane
+- ``'Propane'`` - Propane
+- ``'n-Butane'`` - n-Butane
+- ``'IsoButane'`` - Isobutane
+
+**Frigorigènes HFC :**
+
+- ``'R134a'`` - 1,1,1,2-Tétrafluoroéthane
+- ``'R32'`` - Difluorométhane
+- ``'R125'`` - Pentafluoroéthane
+- ``'R143a'`` - 1,1,1-Trifluoroéthane
+- ``'R152a'`` - 1,1-Difluoroéthane
+- ``'R404A'`` - Mélange (R125/143a/134a)
+- ``'R407C'`` - Mélange (R32/125/134a)
+- ``'R410A'`` - Mélange (R32/125)
+- ``'R507A'`` - Mélange (R125/143a)
+
+**Frigorigènes naturels et autres :**
+
+- ``'R290'`` (ou ``'Propane'``) - Propane
+- ``'R600a'`` (ou ``'IsoButane'``) - Isobutane
+- ``'R717'`` (ou ``'Ammonia'``) - Ammoniac
+- ``'R744'`` (ou ``'CO2'``) - Dioxyde de carbone
+- ``'R1234yf'`` - 2,3,3,3-Tétrafluoropropène
+- ``'R1234ze(E)'`` - trans-1,3,3,3-Tétrafluoropropène
+
+**Fluids industriels :**
+
+- ``'Toluene'`` - Toluène
+- ``'Ethanol'`` - Éthanol
+- ``'Acetone'`` - Acétone
+- ``'Methanol'`` - Méthanol
+
+.. note::
+   Liste complète des fluids :
+   http://www.coolprop.org/fluid_properties/PurePseudoPure.html
+
+**Types de flow rates disponibles** :
+
+- ``F`` : flow rate massique [kg/s]
+- ``F_kgh`` : flow rate massique [kg/h]
+- ``F_Sm3s`` / ``F_Sm3h`` : flow rate volumique standard [Sm³/s] / [Sm³/h]
+- ``F_Nm3s`` / ``F_Nm3h`` : flow rate volumique normal [Nm³/s] / [Nm³/h]
+- ``F_m3s`` / ``F_m3h`` : flow rate volumique aux conditions d'input [m³/s] / [m³/h]
+
+Équations de préparation d'input
+---------------------------------
+
+The calculation d'input (source amont) repose on CoolProp et convertit les flow rates
+vers un flow rate massique, then calculates l'enthalpy de l'état transmis au
+compresseur.
+
+- Flow rate massique from Sm³/h :
+
+  .. math::
+    \dot{m} = \frac{F_{Sm3h}}{3600} \cdot \rho(P_{std}, T_{std})
+
+- Flow rate massique from Nm³/h :
+
+  .. math::
+    \dot{m} = \frac{F_{Nm3h}}{3600} \cdot \rho(P_{std}, T_{norm})
+
+- Flow rate massique from m³/s :
+
+  .. math::
+    \dot{m} = F_{m3s} \cdot \rho(P_{in}, T_{in})
+
+- Enthalpy de l'état transmis :
+
+  .. math::
+    h_{out} = \text{PropsSI}('H', 'P', P_{out}, 'T', T_{in}, \text{fluid})
+
+- Quality of the fluid :
+
+  .. math::
+    Q = 1 - \frac{H_v - h_{out}}{H_v - H_l}
+
+avec : :math:`\rho` densité, :math:`P_{std}/T_{std}` conditions standards,
+:math:`P_{norm}/T_{norm}` conditions normales, et :math:`P_{in}/T_{in}`
+conditions d'input.
+
+Puits (output du compresseur)
+-----------------------------
+
+En aval du compresseur, un ``Sink`` termine la ligne de fluid. Il reçoit
+l'état de output du compresseur via ``Fluid_connect`` et calculates the grandeurs
+de bilan (flow rates, power enthalpique, état de phase, temperature).
+
+Example :
+
+.. code-block:: python
+
+    from ThermodynamicCycles.Sink import Sink
+    # from ThermodynamicCycles.Connect import Fluid_connect
+
+    SINK = Sink.Object()
+
+    # État d'entrée (normalement : Fluid_connect(SINK.Inlet, COMPRESSOR.Outlet))
+    SINK.Inlet.fluid = "air"
+    SINK.Inlet.F = 0.334        # kg/s
+    SINK.Inlet.P = 101325       # Pa
+    SINK.Inlet.h = 420000       # J/kg
+
+    SINK.calculate()
+
+    print(SINK.df)
+    print(SINK.To_degC)
+
+Output realle :
+
+.. code-block:: text
+
+                                  Sink
+    Timestamp      2026-07-04 23:50:41
+    fluid                          air
+    F_kgs                        0.334
+    Inlet.P(Pa)                 101325
+    Inlet.P(bar)                   1.0
+    Inlet.h(J/kg)               420000
+    H(W)                      140280.0
+    fluid_quality                vapor
+    Q                         2.050715
+    D (kg/m3)                      1.2
+    F_Sm3h                       981.0
+    F_m3h                       1000.0
+    F_kgh                       1202.0
+
+    20.59143900300944
+
+Le ``Sink`` calculates notamment :
+
+- la power enthalpique : :math:`H = \dot{m} \times h`,
+- la temperature de output ``To_degC``,
+- les flow rates volumiques équivalents,
+- l'indicateur d'état ``fluid_quality``.
+
+Pour l'air, ``fluid_quality`` vaut généralement ``vapor`` (``Q > 1``), ce qui
+est normal for un gaz permanent.

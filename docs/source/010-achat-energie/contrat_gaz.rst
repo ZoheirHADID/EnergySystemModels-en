@@ -1309,7 +1309,7 @@ en Ile-de-France with un contrat T4.
    atr.plot()                       # Repartition globale
    atr.plot_detail()                # Detail par composante
 
-**Expected Results (verification against la facture EDF) :**
+**Output realle (verifiee contre la facture EDF) :**
 
 .. list-table::
    :header-rows: 1

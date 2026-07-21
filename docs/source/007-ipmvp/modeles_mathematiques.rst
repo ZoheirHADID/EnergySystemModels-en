@@ -22,6 +22,8 @@ Signature
        seuil_z_scores=8,
        degree=1,
        site="****",
+       imposed_intercept=None,
+       niveau_confiance=0.8,
    )
    (y_pred, df, conformite, table_incertitude,
     y_pred_report, df_report, conformite_report,
@@ -36,18 +38,30 @@ Parameters
 * **start/end_reporting_period** : period de suivi (``datetime``) ;
 * **degree** : degré du polynôme (1=linéaire, 2=quadratique, 3=cubique) ;
 * **print_report** : si ``True``, génère un rapport ``.docx`` (via ``docx_report``) ;
-* **seuil_z_scores** : seuil d'exclusion des points aberrants (**défaut 8**).
+* **seuil_z_scores** : seuil d'exclusion des points aberrants (**défaut 8**) ;
+* **imposed_intercept** : impose la constante du model. ``None`` (défaut) =
+  constante estimée librement ; ``0`` = régression by l'origine ; toute autre
+  valeur = « talon » de consumption imposé. Les pentes sont alors ajustées sur
+  le résidu :math:`y - b_0`, then l'ordonnée est fixée à :math:`b_0` ;
+* **niveau_confiance** : niveau de confiance du calcul d'incertitude
+  (**défaut 0,8**). Pilote la statistique de Student et donc la
+  ``precision_absolue`` / ``precision_relative`` de ``table_incertitude``.
 
 Valeurs de retour
 -----------------
 
-* ``y_pred`` : consumption prédite on la baseline ;
-* ``df`` : data baseline + colonne de prédiction (colonne ``"ANTE-POST"``) ;
+* ``y_pred`` : consumption prédite on la baseline (``DataFrame``) ;
+* ``df`` : coefficients et indicateurs du model baseline, en colonne
+  ``"ANTE-POST"`` (lignes ``coef_const``, ``coef_DJU``…, ``r2``, ``rmse``,
+  ``cv_rmse``, ``ddof``, ``serr_*``, ``stat_t_*``) ;
 * ``conformite`` : ``DataFrame`` des indicateurs (``r2``, ``cv_remse``,
   ``stat_t_*``) with la colonne ``conformité IPMVP`` (booléens) ;
-* ``table_incertitude`` : incertitude baseline (``precision_relative``, ``rmse``…) ;
+* ``table_incertitude`` : incertitude baseline (``gamma``, ``niveau_confiance``,
+  ``stat_t_normale``, ``Erreur type (rmse)``, ``precision_absolue +/-``,
+  ``precision_relative``) ;
 * ``y_pred_report``, ``df_report``, ``conformite_report``,
-  ``table_incertitude_report`` : équivalents for la period de suivi ;
+  ``table_incertitude_report`` : équivalents for la period de suivi
+  (colonne ``"POST-ANTE"``) ;
 * ``df_savings`` : économies **ANTE-POST** / **POST-ANTE** (relevé, prédiction,
   pourcentage d'économie).
 
@@ -111,6 +125,38 @@ précision/simplicité for la plupart des projets M&V.
    df_monthly = df.resample("MS").sum()   # agrégation mensuelle
    X = df_monthly[["DJU"]]
    y = df_monthly["consommation_kWh"]
+
+Incertitude propagée des économies
+----------------------------------
+
+The function ``incertitude_savings`` propage l'erreur-type du model de
+référence (``rmse``, ``ddof``, moyenne de consumption) on une durée de
+contrat et une period de reporting, according to the protocol IPMVP :
+
+.. code-block:: python
+
+   from IPMVP.IPMVP import incertitude_savings
+
+   inc = incertitude_savings(
+       rmse, ddof, moyenne,
+       gain_pct=0.18,            # économie mensuelle attendue
+       duree_contrat_mois=60,
+       duree_reporting_mois=12,
+       niveau_confiance=0.8,     # défaut 0,8
+   )
+
+Formule (identique au calcul Excel M&V) :
+
+.. math::
+
+   t = t_{\text{Student}}\!\left(\tfrac{1+\text{conf}}{2},\; ddof\right)
+   \qquad
+   \text{prec}_{\text{abs}}(m) = t \cdot rmse \cdot \sqrt{m}
+
+où :math:`m` est le nombre de mois. The function est **pure** (aucun effet de
+bord) et retourne un ``dict`` contenant les clés ``contrat`` et ``reporting``
+(chacune : ``mois``, ``economie_kwh``, ``precision_absolue_kwh``,
+``precision_relative``). Voir :doc:`exemples` for une output realle.
 
 Références
 ----------

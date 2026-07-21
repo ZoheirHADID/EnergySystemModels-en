@@ -8,12 +8,28 @@ Welcome to the EnergySystemModels library documentation!
 Objective and Approach
 ----------------------
 
-This documentation presents the EnergySystemModels Python library, designed to facilitate calculations and analyses related to energy efficiency. By providing Python-written models, you can easily put energy efficiency concepts into practice. The calculation tools can also facilitate understanding and analysis of complex data related to energy efficiency.
+This documentation presents the EnergySystemModels Python library,
+conçue for faciliter les calculs et analyses liés à l'efficacité
+energy. Elle combine des explications métier, des examples exécutables
+et des pages de référence for passer rapidement d'un concept à son
+implémentation Python.
+
+Accès rapide
+------------
+
+Pour démarrer according to votre besoin :
+
+1. :doc:`quickstart` for une prise en main rapide.
+2. :doc:`usage` for le parcours fonctionnel complet.
+3. :doc:`gui_tools` for l'interface graphique ``PyqtSimulator``.
+4. :doc:`api` for les imports et entry points reals.
 
 Prerequisites
 -------------
 
-In order to better understand the energy efficiency models presented in this document and the accompanying Python calculation tools, prior knowledge of programming is necessary, particularly in the Python language. However, the models are presented step by step, in a simple and accessible manner, to facilitate their adoption by a wide audience.
+Afin d'exploiter au mieux les models, il est recommandé d'avoir des bases en
+Python et en thermique/energy. Les examples restent structurés de façon
+progressive for être utilisables aussi en apprentissage.
 
 Table of Contents
 ------------------
@@ -24,6 +40,7 @@ Table of Contents
 
    usage
    quickstart
+   contributing
 
 .. toctree::
    :maxdepth: 2
@@ -52,14 +69,12 @@ Table of Contents
    :caption: 4. Energy uses
 
    003-ahu_modules/index
-   007-ipmvp/index
 
 .. toctree::
    :maxdepth: 2
-   :caption: 5. Heat recovery and waste heat
+   :caption: 5. Récupération de chaleur
 
    006-pinch_analysis/index
-   012-chaleur-fatale/index
 
 .. toctree::
    :maxdepth: 2
@@ -71,6 +86,7 @@ Table of Contents
    :maxdepth: 2
    :caption: 7. Other
 
+   007-ipmvp/index
    008-meteo/index
    gui_tools
    nomenclature

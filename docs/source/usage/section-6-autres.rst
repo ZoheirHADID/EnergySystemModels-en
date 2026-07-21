@@ -19,7 +19,6 @@ correspondantes du sommaire général :
 - **CTA / traitement d'air** : :doc:`../003-ahu_modules/index`
 - **Pinch Analysis** : :doc:`../006-pinch_analysis/index`
 - **IPMVP** : :doc:`../007-ipmvp/index`
-- **Waste Heat** : :doc:`../012-chaleur-fatale/index`
 
 7.2. Imports et dépendances
 ----------------------------
@@ -33,57 +32,47 @@ Imports essentiels
    import numpy as np
    import pandas as pd
    import matplotlib.pyplot as plt
-   
-   # Modules EnergySystemModels par domaine
-   
+
+   # Modules EnergySystemModels : ce sont des packages top-level
+   # (il n'existe PAS de package « energysystemmodels » à préfixer).
+
    # Facturation et finance
-   from energysystemmodels.Facture.TURPE import TURPEProfil, TURPECalculateur
-   from energysystemmodels.CEE import *
-   
+   from Facture.TURPE import TurpeCalculator, input_Contrat, input_Tarif, input_Facture
+   from CEE.CEE import calcul_CEE, list_fiches
+
    # Données météorologiques
-   from energysystemmodels.OpenWeatherMap import OpenWeatherMapClient
-   from energysystemmodels.MeteoCiel import MeteoCielClient, DJUCalculator
-   
-   # Production énergétique
-   from energysystemmodels.PV import PVSystem, ShadingProfile
-   
-   # Thermodynamique
-   from energysystemmodels.ThermodynamicCycles import (
-       RefrigerationCycle, HeatPump, Source, Sink,
-       Compressor, Evaporator, Condenser, ExpansionValve
-   )
-   
+   from OpenWeatherMap import OpenWeatherMap_call_location
+   from MeteoCiel.DJU_costic import DJU_costic
+   from MeteoCiel.MeteoCiel_Scraping import MeteoCiel_histoScraping
+
+   # Production photovoltaïque
+   from PV.ProductionElectriquePV import SolarSystem
+
+   # Thermodynamique — un sous-module par composant ; la classe s'appelle Object
+   # (usage : src = Source.Object() ; cmp = Compressor.Object() ; ...)
+   from ThermodynamicCycles.Source import Source
+   from ThermodynamicCycles.Sink import Sink
+   from ThermodynamicCycles.Compressor import Compressor
+   from ThermodynamicCycles.Condenser import Condenser
+   from ThermodynamicCycles.Evaporator import Evaporator
+   from ThermodynamicCycles.Expansion_Valve import Expansion_Valve
+   from ThermodynamicCycles.Chiller import Object as Chiller
+   from ThermodynamicCycles.Connect import Fluid_connect
+
    # Transfert de chaleur
-   from energysystemmodels.HeatTransfer import (
-       CompositeWall, Layer, PlateHeatExchanger, PipeInsulation
-   )
-   
-   # Hydraulique et aéraulique
-   from energysystemmodels.Hydraulic import (
-       StraightPipe, TA_Valve, AirDuct, Singularity
-   )
-   
-   # CTA et traitement d'air
-   from energysystemmodels.AHU import (
-       FreshAir, HeatingCoil, CoolingCoil, Humidifier, Fan
-   )
-   
-   # Analyse et optimisation
-   from energysystemmodels.PinchAnalysis import PinchAnalysis, Stream
-   from energysystemmodels.IPMVP import IPMVPModel, IPMVPReport
-   
-   # Modélisation bâtiment
-   from energysystemmodels.BuildingModel import RC_Model, RC_Model_Advanced
-   
-   # Utilitaires
-   from energysystemmodels.utils import (
-       APIConnector, ParallelCalculator
-   )
-   from energysystemmodels.visualization import EnergyPlotter
-   from energysystemmodels.exceptions import (
-       EnergySystemError, ConfigurationError, 
-       CalculationError, DataError
-   )
+   from HeatTransfer import CompositeWall, ParallelepipedicBody
+   from HeatTransfer import PipeInsulationAnalysis, PlateHeatTransfer
+
+   # Hydraulique (sous-package de ThermodynamicCycles)
+   from ThermodynamicCycles.Hydraulic import StraightPipe, TA_Valve
+
+   # CTA et traitement d'air humide
+   from AHU import FreshAir, HeatingCoil, CoolingCoil_Sensible, Humidifier
+   from AHU.air_humide import air_humide
+
+   # Analyse Pinch et mesure & vérification (IPMVP)
+   from PinchAnalysis import PinchAnalysis
+   from IPMVP.IPMVP import Mathematical_Models, incertitude_savings
 
 Dépendances externes
 ~~~~~~~~~~~~~~~~~~~~
@@ -101,25 +90,16 @@ Le package EnergySystemModels requires les dépendances suivantes :
    requests>=2.26.0
    psychrolib>=2.5.0
 
-Installation complète with toutes les dépendances :
-
-.. code-block:: console
-
-   $ pip install EnergySystemModels[all]
-
-Installation minimale :
+Installation :
 
 .. code-block:: console
 
    $ pip install EnergySystemModels
 
-Installation for des modules spécifiques :
-
-.. code-block:: console
-
-   $ pip install EnergySystemModels[pv]        # Photovoltaïque uniquement
-   $ pip install EnergySystemModels[hvac]      # CVC uniquement
-   $ pip install EnergySystemModels[analysis]  # Analyse uniquement
+Le paquet installe l'ensemble des dépendances ; il n'existe pas d'« extras »
+optionnels (``[pv]``, ``[hvac]``…). Certaines fonctions restent tributaires de
+dépendances lourdes ou d'un network access (``pvlib`` + PVGIS for le PV,
+``beautifulsoup4`` for le scraping MeteoCiel).
 
 7.3. Conclusion
 ---------------
@@ -134,19 +114,8 @@ This documentation covers all EnergySystemModels features according to the energ
 
 Pour plus d'informations, consultez :
 
-- Documentation complète : https://energysystemmodels.readthedocs.io
-- Code source : https://github.com/your-repo/EnergySystemModels
-- Examples : https://github.com/your-repo/EnergySystemModels/tree/main/examples
-- Issues : https://github.com/your-repo/EnergySystemModels/issues
-
-Support et contribution
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Pour toute question ou contribution :
-
-- Email : support@energysystemmodels.com
-- Forum : https://forum.energysystemmodels.com
-- Slack : https://energysystemmodels.slack.com
+- Code source : https://github.com/ZoheirHADID/EnergySystemModels
+- Issues : https://github.com/ZoheirHADID/EnergySystemModels/issues
 
 Licence
 ~~~~~~~
